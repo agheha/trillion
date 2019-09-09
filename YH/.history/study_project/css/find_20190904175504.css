@@ -1,0 +1,16 @@
+html,body {
+    width: 100%;
+    height: 100%;
+}
+fieldset {
+    width : 860px;
+    margin : 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+form>span:nth-child(1){
+    grid-column: 1,2;
+}
+form>span:nth-child(2){
+    grid-column: 1,2;
+}

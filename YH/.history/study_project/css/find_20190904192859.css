@@ -1,0 +1,21 @@
+html,body {
+    width: 100%;
+    height: 100%;
+}
+fieldset {
+    width : 900px;
+    margin : 0 auto;
+    padding : 0px;
+}
+
+.form_find {
+    /* width : 48%; */
+    width: 100%;
+    height: 52px;
+}
+.inputbox {
+    float: left;
+    margin : 10px;
+    width: 49%
+    
+}

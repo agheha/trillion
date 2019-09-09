@@ -1,0 +1,105 @@
+html, body {
+    margin : 0 0;
+    padding : 0 0;
+}   
+fieldset {
+    border : none;
+}
+.nav {
+    background: #FFD400;
+    height : 70px;
+    border-bottom: 1px solid #E6E6E6;
+    width: 100%;
+}
+
+.title {
+    font-size : 25px;
+    margin: 20px;
+    width : 100%;
+}
+.main {
+    width : 750px;
+    margin : 0 auto;
+    margin-top : 60px;
+}
+.find {
+    width : 100%;
+    display: flex;
+    justify-content: space-between;
+    padding : 20px;
+    margin-top: 50px;
+}
+.find-item {
+    width: 300px;
+    height: 300px;
+    border : 1px solid #E6E6E6;
+    border-radius: 4px;
+    text-align: center;
+    
+}
+.find-item-title {
+    font-size: 1.0rem;
+    background: #E8E8E8;
+    border : 1px solid #E6E6E6;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    padding-left: 15px;
+}
+.find-item-msg {
+    font-size : 0.8rem;
+}
+.find-item-button {
+    color : #fff;
+    background-color : #f26656;
+    background-image : none;
+    border-color : #f0513e;
+    padding: 15px 15px;
+    font-size: 13px;
+    line-height: 1.5438;
+    border-radius: 5px;
+    width: 100%;
+}
+.find-item-inputbox {   
+    width: 100%;
+    height: 50px;
+    padding-bottom: 5px;
+}
+input {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    padding : 10px;
+    color : #888;
+} 
+.find-item-msg {
+    padding-top : 10px;
+    padding-bottom: 20px;
+    text-align: left;
+    color : #888;
+    font-size: 12px;
+ 
+}  
+.find-item-content {
+    padding : 15px;
+
+}
+.foot {
+    border-top: 1px solid #E6E6E6;
+    margin-top : 90px;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    line-height: 90px;
+    color : #888;
+}
+html {
+    letter-spacing: -.3px;
+    font-size: 13px;
+    font-family: "NotoSansKR Regular" !important;
+}
+.form-item-box {
+    width: 100%;
+    height: 100px;
+    padding : 14px 16px;
+}

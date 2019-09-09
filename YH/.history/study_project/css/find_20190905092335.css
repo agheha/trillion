@@ -1,0 +1,38 @@
+.nav {
+    height : 70px;
+    border-bottom: 1px solid black;
+}
+.title {
+    font-size : 35px;
+    font-weight: bold;
+    margin: 20px;
+}
+.main {
+    width : 800px;
+    margin : 0 auto;
+    margin-top : 60px;
+}
+.find {
+    display: flex;
+}
+.find-item {
+    width: 300px;
+    height: 300px;
+    border : 1px solid #E6E6E6;
+    margin : 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.find-item-title {
+    font-size: 1.0rem;
+    background: #E8E8E8;
+    border : 1px solid #E6E6E6;
+    height: 50px;
+    line-height: 50px;
+}
+
+.find-item-button {
+    color : 
+    background-color :
+    
+}

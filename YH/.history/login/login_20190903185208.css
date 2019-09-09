@@ -1,0 +1,43 @@
+body,html {
+    width : 100%;
+    height: 100%;
+}
+input{
+    width: 450px;
+    height: 45px;
+    border: 1px solid #dadada;
+    font-size: 15px;
+}
+
+#gender{
+    width: 453px;
+    height: 46px;
+    border: 1px solid #dadada;
+    padding: .8em .5em;
+    font-family: inherit;
+    background: url('arrow.jpg') no-repeat 95% 50%;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+#birth_year,#birth_month,#birth_date {
+    width: 149px;
+    height: 46px;
+    border: 1px solid #dadada;
+    padding: .8em .5em;
+    font-family: inherit;
+    background: #FFF url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+h3 {
+    margin : 6px;
+}
+fieldset {
+    width: 890px;
+    margin : 0, auto;
+}

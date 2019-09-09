@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <h2>회원가입</h2>
+                <h3>아이디</h3>
+                <div><input type="text" name="msg"></div>
+                <h3>비밀번호</h3>
+                <div><input type="password" name="pass"></div>
+                <h3>비밀번호 재확인</h3>
+                <div><input type="password" name="pass"></div>
+                <h3>이름</h3>
+                <div><input type="password" name="name"></div>
+                <h3>생년월일</h3>
+                <div>
+                    <select name="year">
+                        <option value="1">서울</option>
+                        <option value="2">대구</option>
+                        <option value="0" selected>선택</option> 
+                    </select> 년
+                    <select name="year">
+                        <option value="1">서울</option>
+                        <option value="2">대구</option>
+                        <option value="0" selected>선택</option>
+                    </select> 월
+                    <select name="year">
+                        <option value="1">서울</option>
+                        <option value="2">대구</option>
+                        <option value="0" selected>선택</option>
+                    </select> 일
+                </div>
+                <h3>성별</h3>
+                <div>
+                    <input type="radio" id ="gen1" name="gender">
+                    <label for="gen1">남</label>
+                    <input type="radio" id="gen2"name="gender" value="1"> 
+                    <label for="gen2">여</label>
+                </div>
+                <h3>닉네임</h3>
+                <div><input type="password" name="nicname"></div>
+                <h3>이메일</h3>
+                <div></div><input type="email" name="email" required><div></div>
+                <h3>휴대전화</h3>
+                <div></div><input type="text" name="phNum"></div>
+        </fieldset>
+    </form>
+</body>
+</html>

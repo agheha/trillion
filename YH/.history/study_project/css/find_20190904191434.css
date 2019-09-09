@@ -1,0 +1,24 @@
+html,body {
+    width: 100%;
+    height: 100%;
+}
+section {
+    width : 900px;
+    margin : 0 auto;
+}
+section:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.form_find {
+    /* width : 48%; */
+    height: 52px;
+}
+span {
+    width : 25%;
+}
+.inwrap { width: 80%; }
+.inputbox {float: left; margin-right: 100px;}
+.inlutbox:first-child {margin-right: 0; }
+div input { width: 100%;}

@@ -1,0 +1,11 @@
+html {
+    letter-spacing: -.3px;
+    font-size: 13px;
+    font-family: "NotoSansKR Regular" !important;
+
+}
+.left_menu {
+    height : 40px;
+    line-height: 40px;
+    margin: 10px;
+}

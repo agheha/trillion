@@ -1,0 +1,158 @@
+body {
+    background-image: url("./../images/bg_image01.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+.main_wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* background 어둡게 표현 */
+.bgblack {
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.main_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* 회원수 & 진행중 스터디 */
+.main_memberCnt {
+    overflow: hidden;
+}
+.main_memberCnt > div {
+    display: table;
+    float: left;
+    margin: 0 40px 30px;
+}
+.main_memberCnt > div > h2 {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 35px;
+    color: #fff;
+}
+.main_memberCnt > div > p {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 35px;
+    color: #fff;
+    padding-left: 15px;
+}
+.main_memberCnt > div > h2 > span {
+    display: block;
+    font-size: 23px;
+    line-height: 0;
+    letter-spacing: 10px;
+    left: 4px;
+    position: relative;
+}
+
+/* 테스트 이름 */
+.main_title {
+    font-size: 65px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 35px;
+}
+
+/* under_line */
+.under_line {
+    display: block;
+    margin: 0 auto 30px;
+    width: 50px;
+    border-bottom: 3px solid #fff;
+}
+
+.main_title_cont {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 45px;
+}
+
+/* 게시판 */
+.main_board {
+    display: block;
+    width: 400px;
+    margin: 0 auto 45px;
+    color: #fff;
+}
+.main_board li {
+    position: relative;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.main_board li span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-right: 7px;
+    color: #fff;
+}
+.main_board li a {
+    display: block;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 25px;
+}
+.main_board li a:hover {
+    text-decoration: underline;
+}
+
+/* 검색바 */
+.main_content input {
+    width: 500px;
+    height: 45px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 60px 0 30px;
+    box-sizing: border-box;
+}
+
+/* 메인메뉴 */
+.main_menu {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main_menu > li {
+    float: left;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main_menu li:first-child {
+    border-top-left-radius: 8px;
+}
+.main_menu li:last-child {
+    border-top-right-radius: 8px;
+}
+.main_menu li a {
+    width: 80px;
+    text-align: center;
+    display: block;
+    color: #fff;
+    padding: 8px 10px;
+    transition: 0.3s;
+}
+
+.main_menu li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.main_menu:hover li a {
+    padding: 15px 15px;
+}
+.main_menu li a:hover {
+    padding: 15px 35px;
+    text-decoration: underline;
+}
