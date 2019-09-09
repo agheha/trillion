@@ -1,0 +1,54 @@
+#write-table td {
+    border: none;
+}
+#write-table textarea {
+    width: 100%;
+}
+h2 {
+    text-align: left;
+    margin-left: 5%;
+    font-size: 20px;
+}
+table {
+    text-align: center;
+    margin: 0px auto;
+}
+.title {
+    width: 600px;
+    height: 50px;
+}
+.content {
+    width: 800px;
+    resize: none;
+}
+.free {
+    text-align: center;
+}
+.content > textarea {
+    resize: none;
+}
+
+.file {
+   float: left;
+}
+.clear {
+    text-align: center; 
+    padding-bottom: 15px;
+}
+.clear > input {
+    width: 80px;
+}
+.clear123 {
+    width: 130px;
+    margin: 0 auto;
+}
+.clear2 {
+    display: inline-block;
+    text-align: center;
+}
+.clear123 > div:nth-child(1){
+    float: right;
+}
+.clear123 > div:nth-child(2){ 
+    float: left;
+}
