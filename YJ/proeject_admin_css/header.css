@@ -131,12 +131,13 @@ section:nth-child(3) {
 .section2 > div {
     width: 1200px; 
     margin: 0 auto;
-    background-color: #eee33333;
 }
 
 .content{
     width: 1000px;
     position: relative;
-    border: 1px solid black;
+    margin: 0 auto;
+    /* background-color: #eee33333; */
+    /* border: 1px solid black; */
 
 }
