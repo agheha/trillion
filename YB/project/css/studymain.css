@@ -1,0 +1,41 @@
+.top_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    height: 350px;
+}
+.bottom_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    height: 350px;
+}
+.dday {
+    padding: 50px 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10%;
+    margin: 18px;
+    height: 314px;
+}
+.dday h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px
+}
+.dday div {
+    font-size: large;
+}
+.mychart {
+    /* padding: 80px 80px; */
+    margin: 18px;
+    padding: 50px 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10%;
+    position: relative;
+}
+.page {
+    position: absolute;
+    left: 61px;
+}
+ .clearfix {
+    padding-bottom: 30px;
+} 
