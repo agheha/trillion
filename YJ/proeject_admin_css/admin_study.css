@@ -1,0 +1,58 @@
+#main{
+    margin: 0 auto;
+    width: 600px;
+}
+#main > div{
+    margin: 0;
+    border: 1px solid black;
+    margin-top: 30px;
+}
+div{
+    border-collapse: collapse;
+}
+.content >div{
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+}
+.content > div:nth-child(1){
+    width: 20%;
+    border-right: 1px solid black;
+    padding: 0 10px 0 10px;
+    text-align: center;
+}
+.content > div:nth-child(2){
+    width: 71%;
+    padding: 0 10px 0 10px;
+}
+/*  */
+.content2 >div{
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+}
+.content2 > div:nth-child(1){
+    width: 20%;
+    border-right: 1px solid black;
+    padding: 0 10px 0 10px;
+    text-align: center;
+}
+.content2 > div:nth-child(2){
+    width: 50%;
+    padding: 0 10px 0 10px;
+    text-align: center;
+}
+.content2 > div:nth-child(3){
+    width: 105px;
+    border-left: 1px solid black;
+    padding: 0 10px 0 10px;
+    text-align: center;
+}
+#con1{
+    text-align: center;
+    
+}
+#content{
+    height: 400px;
+    padding: 15px;
+}
