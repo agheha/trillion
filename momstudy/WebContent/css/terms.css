@@ -1,0 +1,46 @@
+.form_layout {
+    overflow: hidden;
+    clear:both;
+}
+.form_layout > div {
+    width: 600px;
+    float: left;
+    box-sizing: border-box;
+}
+.form_layout > div:first-child {
+    padding:0 25px 0 60px;
+}
+.form_layout > div:last-child {
+    padding:0 60px 0 25px;
+}
+.form-item-title {
+    font-size : 20px;
+    font-weight: bold;
+}
+.form-item-checkbox {
+    width: 100%;
+    padding: 0 0 8px 10px;
+    box-sizing: border-box;
+}
+.form-item-box {
+    height: 150px;
+    padding : 14px 16px;
+    overflow: auto;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    color: #999;
+}
+.form-item-all {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+form > .form-item-checkbox {
+    padding: 20px 0 0 70px;
+}
+.submit_btn {
+    margin: 0 auto;
+}
+.box > p {
+    font-size: 13px;
+}
