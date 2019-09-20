@@ -1,0 +1,36 @@
+body, button, dd, dl, dt, fieldset, 
+form, h1, h2, h3, h4, h5, h6, input, 
+legend, li, ol, p, select, table, td, 
+textarea, th, ul, a {
+    position: relative;
+    font-family: 'Noto Sans KR';
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-size: 16px;
+    color: #4d4d4d;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* button */
+.submit_btn {
+    display:block;
+    width : 300px;
+    height: 52px;
+    color: #fff;
+    background-color: #4d4d4d;
+    border: none;
+    border-radius: 3px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.submit_btn:hover {
+    background-color: #333;
+}

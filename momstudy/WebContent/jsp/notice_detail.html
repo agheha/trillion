@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>후기게시판</title>
+
+    <link rel="stylesheet" href="./../css/common.css">
+    <link rel="stylesheet" href="./../css/notice_detail.css">
+
+    <!-- jquery -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+</head>
+<body>
+    <header id="header"></header>
+
+    <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+    <section class="background_wrap">
+        <div class="background">
+            <h1>자유게시판</h1>
+        </div>
+    </section>
+
+    <div class="detail_board_wrap">
+        <div class="board_title">
+            <p>사이트가 오픈했어요.</p>
+            <div>
+                <span>admin</span>
+                <span>2019-09-10</span>
+            </div>
+        </div>
+
+        <div class="board_cont">
+            <p>오랜 준비기간을 거쳐, 드디어 "한국젠탱글협회 홈페이지"를 오픈합니다.</p><br />
+            <p>한국젠탱글협회는 회원분들께 젠탱글 메소드의 정확한 정보를 제공하기 위해,</p><br />
+            <p>미국 젠탱글사의 라이선스 하에 젠탱글사 홈페이지를 한국어로 번역하여 서비스합니다.</p><br />
+            <p>일부 페이지는 처음 젠탱글 메소드를 접하는 분들의 이해를 돕기 위해 한국젠탱글협회에서 직접 작성하였습니다.</p><br />
+            <p>앞으로 한국젠탱글협회 홈페이지는 젠탱글 메소드 또는 젠탱글 아트에 관한 최신소식을 한국어로 서비스하는 동시에,</p><br />
+            <p>젠탱글 아트를 배우고 싶은 회원님들을 위해 공인젠탱글교사들의 수준 높은 강의를 소개합니다.</p><br />
+            <p>오랜 준비기간을 거쳐, 드디어 "한국젠탱글협회 홈페이지"를 오픈합니다.</p><br />
+            <p>한국젠탱글협회는 회원분들께 젠탱글 메소드의 정확한 정보를 제공하기 위해,</p><br />
+            <p>미국 젠탱글사의 라이선스 하에 젠탱글사 홈페이지를 한국어로 번역하여 서비스합니다.</p><br />
+            <p>일부 페이지는 처음 젠탱글 메소드를 접하는 분들의 이해를 돕기 위해 한국젠탱글협회에서 직접 작성하였습니다.</p><br />
+            <p>앞으로 한국젠탱글협회 홈페이지는 젠탱글 메소드 또는 젠탱글 아트에 관한 최신소식을 한국어로 서비스하는 동시에,</p><br />
+            <p>젠탱글 아트를 배우고 싶은 회원님들을 위해 공인젠탱글교사들의 수준 높은 강의를 소개합니다.</p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#header").load("header.html");
+            $(".board_cont").mouseover("")
+        });
+    </script>
+</body>
+</html>

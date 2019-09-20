@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias alias="File" type="kr.co.momstudy.repository.vo.FileVO" />
 		<typeAlias alias="Vote" type="kr.co.momstudy.repository.vo.Vote" />
+		<typeAlias alias="User" type="kr.co.momstudy.user.vo.User" />
 	</typeAliases>
 	 
 	
@@ -25,6 +26,10 @@
 
 	<mappers>
 		<mapper resource="config/mapper/file.xml"/>
+<<<<<<< HEAD
 		<mapper resource="config/mapper/vote.xml"/>
+=======
+		<mapper resource="config/mapper/user.xml"/>
+>>>>>>> master
 	</mappers>
 </configuration>
