@@ -7,6 +7,7 @@
 	
 	<typeAliases>
 		<typeAlias alias="File" type="kr.co.momstudy.repository.vo.FileVO" />
+		<typeAlias alias="Vote" type="kr.co.momstudy.repository.vo.Vote" />
 	</typeAliases>
 	 
 	
@@ -24,5 +25,6 @@
 
 	<mappers>
 		<mapper resource="config/mapper/file.xml"/>
+		<mapper resource="config/mapper/vote.xml"/>
 	</mappers>
 </configuration>
