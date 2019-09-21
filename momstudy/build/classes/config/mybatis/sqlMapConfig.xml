@@ -26,10 +26,8 @@
 
 	<mappers>
 		<mapper resource="config/mapper/file.xml"/>
-<<<<<<< HEAD
 		<mapper resource="config/mapper/vote.xml"/>
-=======
 		<mapper resource="config/mapper/user.xml"/>
->>>>>>> master
 	</mappers>
+	
 </configuration>
