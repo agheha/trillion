@@ -28,7 +28,7 @@
 
 	<mappers>
 		<mapper resource="config/mapper/file.xml"/>
-<!-- 		<mapper resource="config/mapper/vote.xml"/> -->
+		<mapper resource="config/mapper/vote.xml"/>
 		<mapper resource="config/mapper/user.xml"/>
 	</mappers>
 	

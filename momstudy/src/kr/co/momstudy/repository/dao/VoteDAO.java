@@ -17,9 +17,11 @@ public interface VoteDAO {
 	
 	public void insertVoteAricle(VoteAricle va);
 	
+	public List<VoteAricle> selectVoteAricle(int num);
+	
 	public void insertVoteResult(VoteResult vr);
 
-	public VoteResult selectOneResult(VoteResult vr);
+	public List<VoteResult> selectResult(int num);
 	
 	public int selectCheckResult(VoteResult vr);
 	

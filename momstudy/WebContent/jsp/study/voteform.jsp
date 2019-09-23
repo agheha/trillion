@@ -9,25 +9,36 @@
 <link rel="stylesheet" href="<c:url value="/css/vote.css" ></c:url>" />
 </head>
 <body>
-	<div class="poll-container">
-		<div class="poll-voter">
-			<h4 class="poll-title">투표제목</h4>
-			<hr style="border: none; height: 2px; background: grey;">
-			<table class="poll-list">
-				<tbody>
-				<form action="<c:url value="/study/vote.do" />" method="post">
-					<c:forEach begin="1" end="10" step="1">
-					<tr class="vote-row" >
-						<td class="poll-option"><p>투표항목</p>
-							<div class="poll-option-bar" ></div>
-						</td>
-						<td><input type="radio"></input> </td>
-					</tr>
-					</c:forEach> 
-				</form>
-				</tbody>
-			</table>
+	<form action="<c:url value="/study/vote.do" />" method="post">
+		<div class="poll-container">
+			<div class="poll-voter">
+				<span class="poll-title">${vote.title}</span>
+				<button class="vote-btn">투표</button>
+				<hr style="border: none; height: 2px; background: grey;">
+				<table class="poll-list">
+					<tbody>
+						<c:forEach var="aricle" items="${valist}">
+							<tr class="vote-row">
+								<td class="poll-option"><p>${aricle.content}</p>
+									<div class="poll-option-bar"></div></td>
+								<c:choose>
+									<c:when test="${vote.duplication eq 1}">
+										<td><input type="radio" name="aricle"
+											value="${aricle.code}"></input></td>
+									</c:when>
+
+									<c:otherwise>
+										<td><input type="checkbox" name="aricle"
+											value="${aricle.code}"></input></td>
+									</c:otherwise>
+
+								</c:choose>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
+	</form>
 </body>
 </html>
