@@ -12,6 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginformController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+		req.getRequestDispatcher("/jsp/user/loginform.jsp").forward(req, res);
 	}
 }

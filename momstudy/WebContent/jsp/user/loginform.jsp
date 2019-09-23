@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +12,7 @@
         <!-- css -->
         <link rel="stylesheet" href="./../css/common.css">
         <link rel="stylesheet" href="./../css/login.css">
+        <link rel="stylesheet" href="./../css/header.css">
 
         <!-- jquery -->
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -33,14 +35,16 @@
         <!-- 오류를 띄워주는 영역이 추가될 예정 -->
         <section>
             <div class="fieldset">
-                <form action="log">
+                <form action="/user/login.do" method="post">
                     <div>
-                        <input  type="text" id="id" placeholder="아이디" name="email">
+                        <input  type="email" id="id" placeholder="이메일" name="email">
                     </div>
                     <div>
                         <input class="form_login"type="password" id="pass" placeholder="비밀번호" name="pass"> 
                     </div>
-                    <input class="submit_btn" type="button" value="로그인" />
+                 	<div>
+                 		<button>로그인</button>
+                 	</div>
                     <div>
                         <a href="">아이디/비밀번호 찾기</a>
                         <a href="./terms.html">회원가입</a>

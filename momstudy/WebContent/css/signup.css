@@ -1,11 +1,11 @@
 .fieldset {
     width: 600px;
-    float: left;
     padding: 0 40px 0 120px;
     box-sizing: border-box;
+    margin:0 auto;
 }
 .fieldset > p {
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 .fieldset > input {
     width: 100%;
@@ -15,11 +15,6 @@
     margin-bottom: 10px;
     border-radius: 4px;
     padding: 0 15px;
-}
-.fieldset > input:last-child {
-    width: 300px;
-    margin: 0 auto;
-    margin: 20px auto 30px;
 }
 .select_wrap {
     overflow: hidden;
@@ -32,7 +27,9 @@
     float: left;
     border: 1px solid #dadada;
     border-right: none;
-    background: #FFF url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 75px 50% no-repeat;
+    background: #FFF 
+        url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif)
+        115px 50% no-repeat;
     background-size: 15px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -56,7 +53,9 @@
     padding:0 30px 0 15px;
     border: 1px solid #dadada;
     border-radius: 4px;
-    background: #FFF url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 275px 50% no-repeat;
+    background: #FFF 
+    url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 
+    408px 50% no-repeat;
     background-size: 15px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -65,12 +64,21 @@
 }
 
 .category_wrap {
-    width: 600px;
-    float:left;
-    padding: 0 120px 0 40px;
+    width: 100%;
     box-sizing: border-box;
-    border: 1px solid red;
+    padding: 15px;
+    overflow: hidden;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    margin-bottom: 30px;
 }
-.category_wrap > div {
-    border: 1px solid red;
+
+.category_wrap li {
+    display: block;
+    width: 25%;
+    line-height: 50px;
+    float: left;
+}
+.category_wrap label {
+    padding: 6px;
 }

@@ -1,4 +1,4 @@
-package kr.co.momstudy.user.vo;
+package kr.co.momstudy.repository.vo;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ public class User {
 	private String name;
 	private String phoneNum;
 	private String birth;
-	private Date status;
+	private int status;
 	private int type;
 	private Date banDate;
 	private int fileGroupCode;
@@ -44,10 +44,10 @@ public class User {
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public Date getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(Date status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public int getType() {
