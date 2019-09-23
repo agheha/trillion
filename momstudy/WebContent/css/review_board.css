@@ -1,0 +1,73 @@
+.board_cont_wrap {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+
+.board_cont {
+    width: 275px;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.board_cont > a {
+    display: block;
+    width: 100%;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+} 
+.board_cont > a:hover {
+    border: 1px solid #333;
+}
+.cont_img {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+}
+.cont_img img {
+    width: 100%;
+}
+.board_cont > a:hover img {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.cont_text {
+    box-sizing: border-box;
+    width: 100%;
+    height: 120px;
+    padding: 10px 15px;
+}
+.cont_text > p {
+    font-weight: 900;
+    padding-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cont_text > span {
+    display:-webkit-box; 
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+    -webkit-line-clamp:3; 
+    -webkit-box-orient:vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+input.submit_btn {
+    height: 30px;
+    margin: 35px auto 50px;
+    line-height: 30px;
+    background-color: transparent;
+    border: 1px solid #dadada;
+    color: #333;
+    font-size: 14px;
+}
+input.submit_btn:hover {
+    border: 1px solid transparent;
+    background-color: #333;
+    color: #fff;
+}

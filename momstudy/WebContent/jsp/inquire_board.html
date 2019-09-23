@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- css -->
+        <link rel="stylesheet" href="./../css/common.css">
+        <link rel="stylesheet" href="./../css/inquire_board.css">
+
+        <!-- slide plugin -->
+        <link rel="stylesheet" type="text/css" href="./../script/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="./../script/slick/slick-theme.css"/>
+
+        <!-- jquery -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="./../script/slick/slick.js"></script>
+
+        <title>Login</title>
+    </head>
+    <body>
+        <header id="header"></header>
+
+        <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+        <section class="background_wrap">
+            <div class="background">
+                <h1>문의하기</h1>
+                <p>공지사항 및 1:1문의페이지</p>
+            </div>
+        </section>
+
+        <div class="notice_wrap">
+            <!-- <p class="notice_title">공지사항</p> -->
+            <div class="slide_wrap">
+
+                <div class="notice">
+                    <div class="notice_title">
+                        <p>
+                            <label><공지사항></label>
+                            <span>타이틀 !!!!!!!!!!</span>
+                        </p>
+                        <div>
+                            <span>2019.09.11</span>
+                            <span>admin</span>
+                        </div>
+                    </div>
+                    <div class="notice_cont">
+                        <div>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <div class="notice_title">
+                        <p>타이틀 !!!!!!!!!!</p>
+                        <div>
+                            <span>2019.09.11</span>
+                            <span>admin</span>
+                        </div>
+                    </div>
+                    <div class="notice_cont">
+                        <div>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <div class="notice_title">
+                        <p>타이틀 !!!!!!!!!!</p>
+                        <div>
+                            <span>2019.09.11</span>
+                            <span>admin</span>
+                        </div>
+                    </div>
+                    <div class="notice_cont">
+                        <div>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <div class="notice_title">
+                        <p>타이틀 !!!!!!!!!!</p>
+                        <div>
+                            <span>2019.09.11</span>
+                            <span>admin</span>
+                        </div>
+                    </div>
+                    <div class="notice_cont">
+                        <div>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                            <p>사이트가 오픈했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="inquire">
+            <p>1:1 문의</p>
+
+            <!-- action -->
+            <div class="inquire_cont">
+                <form action="#">
+                    <ul>
+                        <li>
+                            <p>이메일 주소</p>
+                            <input type="text" name="email" placeholder="이메일을 입력해 주세요" />
+                        </li>
+                        <li>
+                            <p>제목</p>
+                            <input type="text" name="title" placeholder="제목을 입력해 주세요.">
+                        </li>
+                        <li>
+                            <p>내용</p>
+                            <textarea name="content" id="" placeholder="내용을 입력해 주세요"></textarea>
+                        </li>
+                    </ul>
+                    <button class="submit_btn">보내기</button>
+                </form>
+            </div>
+            
+        </div>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#header").load("header.html");
+
+                $('.slide_wrap').slick({
+                autoplay: true,
+            });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,262 @@
+.body_wrap {
+    width: 100%;
+    min-width: 1200px;
+    background-image: url("./../images/bg_image01.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left top;
+    background-attachment: fixed;
+}
+
+.main_wrap {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    min-height: 700px;
+    height: 100vh;
+}
+
+.main_content_wrap {
+    width: 100%;
+    background-color: #fff;
+}
+.main_content {
+    position: absolute;
+    width: 1200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 11);
+}
+
+/* 회원수 & 진행중 스터디 */
+.main_memberCnt {
+    overflow: hidden;
+    width: 700px;
+    margin:0 auto 30px;;
+}
+.main_memberCnt > div {
+    display: table;
+    float: left;
+}
+.main_memberCnt > div:last-child {
+    float: right;
+}
+.main_memberCnt > div > h2 {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 35px;
+    /* color: #fff; */
+}
+.main_memberCnt > div > p {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 35px;
+    /* color: #fff; */
+    padding-left: 15px;
+}
+.main_memberCnt > div > h2 > span {
+    display: block;
+    font-size: 23px;
+    line-height: 0;
+    letter-spacing: 10px;
+    left: 4px;
+    position: relative;
+}
+
+/* 테스트 이름 */
+.main_title {
+    font-size: 70px;
+    font-weight: 900;
+    /* color: #fff; */
+    margin-bottom: 35px;
+}
+
+/* under_line */
+.under_line {
+    display: block;
+    margin: 0 auto 30px;
+    width: 50px;
+    border-bottom: 3px solid #333;
+}
+
+.main_title_cont {
+    font-size: 22px;
+    /* color: #fff; */
+    margin-bottom: 45px;
+}
+
+/* 게시판 */
+.slide_wrap_vertical {
+    display: block;
+    width: 400px;
+    margin: 0 auto 45px;
+    /* color: #fff; */
+}
+.slide_wrap_vertical .slick-arrow {
+    display: none !important;
+}
+.slide_wrap_vertical div {
+    position: relative;
+}
+.slide_wrap_vertical a:hover {
+    text-decoration: underline;
+}
+.slide_wrap_vertical p {
+    text-align: left;
+    padding: 0 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+}
+.slide_wrap_vertical span {
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+/* 검색바 */
+.main_content input {
+    width: 500px;
+    height: 45px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 60px 0 30px;
+    box-sizing: border-box;
+    background-image: url("./../images/icon_search.png");
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    background-position: 455px;
+}
+.main_content input:focus {
+    box-shadow: 1px 1px 1px #33333333;
+    bordeR: none;
+}
+
+/* 메인메뉴 */
+.main_menu {
+    position: absolute;
+    width: 630px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main_menu > li {
+    height: 70px;
+    float: left;
+    background-color: #ffffff;
+}
+.main_menu > li > div {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.main_menu li:first-child {
+    border-top-left-radius: 55px;
+    padding-lefT: 40px;
+}
+.main_menu li:last-child {
+    border-top-right-radius: 55px;
+    padding-right: 40px;
+}
+.main_menu i {
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    transition: 0.3s;
+}
+.main_menu li:hover i {
+    top: 23px;
+    color: #f36060;
+}
+.main_menu li:hover a {
+    color: #f36060;
+}
+.main_menu li a {
+    display: table-cell;
+    vertical-align: bottom;
+    width: 100%;
+    min-width:110px;
+    height: 100%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+
+
+section.main_bot {
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.main_bot > p {
+    font-size: 22px;
+    padding: 0 0 5px 50px;
+}
+.main_bot > div {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+}
+.main_bot .slick-slide {
+    box-sizing: border-box;
+    padding: 15px;
+}
+.main_bot .slick-slide > div > a {
+    width: 100%;
+    /* height: 230px; */
+    /* background-color: #ec7ec833; */
+}
+.main_bot .slick-arrow {
+    width: 50px;
+    height: 50px;
+}
+.main_bot .slick-arrow::before {
+    font-size: 45px;
+    color: #333;
+}
+.main_bot .slick-arrow.slick-prev {
+    left: -50px;
+}
+.main_bot .slick-arrow.slick-next {
+    right: -50px;
+}
+
+
+.content_wrap {
+    position: relative;
+    box-sizing: border-box;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.content_wrap img {
+    width: 100%;
+    height: 100%;
+}
+.content_wrap div {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(180deg,transparent,rgba(0,0,0,.8));
+    transition: 0.5s;
+}
+.content_wrap:hover > div {
+    top: 0;
+}
+.content_wrap p {
+    position: absolute;
+    top: 180px;
+    width: 100%;
+    padding-left: 15px;
+    color: #fff;
+    font-size: 18px;
+}

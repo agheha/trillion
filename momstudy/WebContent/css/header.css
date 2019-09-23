@@ -1,0 +1,147 @@
+header > div.header {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* header_top_wrap */
+.header_top_wrap {
+    width: 100%;
+    height: 55px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+.header_top_wrap > div:first-child {
+    display: table;
+    float: left;
+    height: 100%;
+}
+.header_top_wrap > div:first-child > a {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 24px;
+    font-weight: 900;
+}
+.header_top_wrap > div:last-child {
+    float: right;
+    height: 100%;
+    text-align: center;
+}
+.header_top_wrap ul {
+    display: table;
+    height: 100%;
+}
+.header_top_wrap ul li {
+    display: table;
+    float: left;
+    height: 100%;
+    padding: 0 15px;
+}
+.header_top_wrap ul li:nth-child(2) {
+    display:table-cell;
+    vertical-align: middle;
+    float: none;
+}
+.header_top_wrap ul li:last-child {
+    padding:0 0 0 15px;
+}
+.header_top_wrap ul li a {
+    display: table-cell;
+    vertical-align: middle;
+}
+.header_top_wrap ul li a:hover {
+    text-decoration:underline;
+}
+
+/* header_bot_wrap */
+.header_bot_wrap {
+    box-sizing: border-box;
+    width:100%;
+    height: 55px;
+    padding: 0 30px;
+}
+.header_bot_wrap > div {
+    width: 20%;
+    height: 100%;
+    float: left;
+    display: table;
+}
+.header_bot_wrap > div > a {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    text-align: center;
+}
+/* .header_bot_wrap > div > a > span:before {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    bottom: 0px;
+    content: '';
+    background: #333;
+    opacity: 0.1;
+    transition: all 0.3s;
+}
+.header_bot_wrap > div > a > span:hover:before {
+    height: 100%;
+} */
+.header_bot_wrap > div > a:hover {
+    color: #dd333d;
+}
+
+
+/* .header_bot_wrap > div > ul > li > a:before {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    bottom: 0px;
+    content: '';
+    background: #FFF;
+    opacity: 0.3;
+    transition: all 0.3s;
+}
+
+div.pullUp a:hover:before
+{
+    height: 100%;
+} */
+
+/* section 전체 범위 설정 */
+section {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* background-wrap */
+section.background_wrap {
+    width: 100%;
+    min-width: 1200px;
+    height: 150px;
+    margin-bottom: 116px;
+
+    /* 각페이지마다 background가 바뀌어야 하는 처리 필요 */
+    background-image: url("./../images/bg_image01.jpg");
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+.background_wrap > div.background {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    top: 150px;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+.background_wrap > div.background > h1 {
+    position: relative;
+    font-size: 60px;
+    top: -50px;
+}
+.background_wrap > div.background > p {
+    position: relative;
+    font-size: 18px;
+    top: -30px;
+    padding-left: 30px;
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.VoteDAO">
+
+	<resultMap type="Vote" id="voteMap">
+	<result column="study_no"  property="studyNo"/>
+	<result column="num"  property="num"/>
+	<result column="title"  property="title"/>
+	<result column="duplication"  property="duplication"/>
+	<result column="anonumous"  property="anonumous"/>
+	<result column="aricle_plus"  property="aricleplus"/>
+	</resultMap>
+	
+		<!-- 투표를 더함 -->
+	<insert id="insertVote" parameterType="Vote">
+		insert into tb_vote(study_no, num, title, duplication, anonumous, aricle_plus
+		) values (#{studyNo}, seq_vote_num.nextval, #{title}, #{duplication}, #{anonumous}, #{ariclePlus})
+	</insert>
+
+		<!-- 투표를 다 가져옴-->
+	<select id="selectVote" resultMap="voteMap" parameterType="int">
+		select *
+		  from tb_vote
+		 where study_no = #{studyNo}
+	</select>
+	
+		<!-- 투표 1개를 가져옴 -->
+	<select id="selectOneVote" resultMap="voteMap" parameterType="int">
+		select *
+		  from tb_vote
+		 where num = #{num}
+	</select>
+	
+		<!-- 투표 항목을 더함 -->
+	<insert id="insertVoteAricle" parameterType="VoteAricle">
+		insert into tb_vote_aricle(num, code, content
+		) values (#{num}, (select nvl(max(code),0) + 1 from tb_vote_aricle where num = #{num}), #{content})   
+		   
+	</insert>
+		
+		<!-- 투표 항목 1개의 투표를 함 -->
+	<insert id="insertVoteResult" parameterType="VoteResult">
+		insert into tb_vote_result(email, num, code
+		) values (#{email}, #{num}, #{code})
+	</insert>
+	
+		<!-- 투표 항목 1개의 결과를 가져옴 -->
+	<select id="selectOneResult" parameterType="VoteResult" resultType="VoteResult">
+		select *
+		  from tb_vote_result
+		 where num = {num} and code = {code}  
+	</select>
+	
+		<!-- 사용자 1명의 투표  1개의 대한 투표횟수를 가져옴 -->
+	<select id="selectCheckResult" parameterType="VoteResult" resultType="int">
+		select count(*)
+		  from tb_vote_result
+		 where email = {email} and num = {num} 
+	</select>
+	
+	
+
+
+</mapper>
