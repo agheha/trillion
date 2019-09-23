@@ -224,7 +224,7 @@
     white-space:nowrap
 }
 .board_list li:nth-child(3) {
-    width: 100px;
+    width: 150px;
     max-width: 100px;
 }
 .board_list li:nth-child(4) {
