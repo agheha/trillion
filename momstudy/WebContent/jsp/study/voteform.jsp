@@ -25,11 +25,14 @@
 									<c:when test="${vote.duplication eq 1}">
 										<td><input type="radio" name="aricle"
 											value="${aricle.code}"></input></td>
+											<input type="hidden" name="num" value="${vote.num}"/>
+											${vote.num}
 									</c:when>
 
 									<c:otherwise>
 										<td><input type="checkbox" name="aricle"
 											value="${aricle.code}"></input></td>
+											<input type="hidden" name="num" value="${vote.num}"/>
 									</c:otherwise>
 
 								</c:choose>
