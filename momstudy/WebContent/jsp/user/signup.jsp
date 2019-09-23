@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -141,12 +143,46 @@
                 <p>휴대전화</p>
                 <input type="text" name="phnum">
 
-                <input type="button" class="submit_btn" value="등록" />
-            </div>
+                <p>관심있는 카테고리</p>
+                <div class="category_wrap">
+                    <ul>
+                        <li>
+                            <input id="it" type="checkbox" name="it" />
+                            <label for="it">IT</label>
+                        </li>
+                        <li>
+                            <input id="certi" type="checkbox" name="certi" />
+                            <label for="certi">자격증</label>
+                        </li>
+                        <li>
+                            <input id="langu" type="checkbox" name="langu" />
+                            <label for="langu">언어</label>
+                        </li>
+                        <li>
+                            <input id="sport" type="checkbox" name="sport" />
+                            <label for="sport">운동</label>
+                        </li>
 
-            <div class="fieldset category_wrap">
-                <p>카테고리</p>
-                
+                        <li>
+                            <input id="hobby" type="checkbox" name="hobby" />
+                            <label for="hobby">취미</label>
+                        </li>
+                        <li>
+                            <input id="art" type="checkbox" name="art" />
+                            <label for="art">예술</label>
+                        </li>
+                        <li>
+                            <input id="music" type="checkbox" name="music" />
+                            <label for="music">음악</label>
+                        </li>
+                        <li>
+                            <input id="basicstudy" type="checkbox" name="basicstudy" />
+                            <label for="basicstudy">기초학문</label>
+                        </li>  
+                    </ul>
+                </div>
+
+                <input type="button" class="login_submit_btn" value="등록" />
             </div>
         </section>
 
@@ -158,11 +194,11 @@
                 $("#header").load("header.html");
             
                 // category_wrap & fieldset height 맞추기
-                var heightArray = $(".fieldset").map(function(){
-                    return $(this).height();
-                }).get();
-                var maxHeight = Math.max.apply(Math, heightArray);
-                $(".fieldset").height(maxHeight);
+                // var heightArray = $(".fieldset").map(function(){
+                //     return $(this).height();
+                // }).get();
+                // var maxHeight = Math.max.apply(Math, heightArray);
+                // $(".fieldset").height(maxHeight);
             });
         </script>
     </body>

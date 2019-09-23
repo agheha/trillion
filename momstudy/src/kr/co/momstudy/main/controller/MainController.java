@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/main/main.do")
+@WebServlet("/main.do")
 public class MainController extends HttpServlet{
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

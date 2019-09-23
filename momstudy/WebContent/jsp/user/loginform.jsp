@@ -35,7 +35,7 @@
         <!-- 오류를 띄워주는 영역이 추가될 예정 -->
         <section>
             <div class="fieldset">
-                <form action="/user/login.do" method="post">
+                <form action="<c:url value="/user/login.do"/>"method="post">
                     <div>
                         <input  type="email" id="id" placeholder="이메일" name="email">
                     </div>

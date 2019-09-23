@@ -22,16 +22,21 @@ public class LoginController extends HttpServlet {
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println(req.getParameter("email"));
+		System.out.println(req.getParameter("pass"));
 		User u = new User();
 		u.setEmail(req.getParameter("email"));
 		u.setPass(req.getParameter("pass"));
-		User User = dao.selectLogin(u);
-		if (User == null) {
+		User user = dao.selectLogin(u);
+		System.out.println(user);
+		if (user == null) {
 			res.sendRedirect("loginform.do");
+			return;
 		}
+		
 		HttpSession session = req.getSession();
-		session.setAttribute("user", User);
-		res.sendRedirect(req.getContextPath() + "/main/main.do");
+		session.setAttribute("user", user);
+		res.sendRedirect(req.getContextPath() + "/main.do");
 		
 	}
 }

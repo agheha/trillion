@@ -19,10 +19,11 @@ import kr.co.momstudy.repository.vo.User;
 public class AuthFilter implements Filter{
 	private List<String> list = new ArrayList<>();
 	
+	
 	@Override
 	public void init(FilterConfig config) throws ServletException {
 		String[] pages = config.getInitParameter("pages").split(";");
-		for (String page : pages) {
+		for (String page :pages) {
 			list.add(page.trim());
 		}
 	}
@@ -32,22 +33,26 @@ public class AuthFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse res = (HttpServletResponse)response;
-	
+		
+		// 사용자가 요청한 URI
 		String uri = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		uri = uri.substring(contextPath.length());
 		
+		// 로그인이 필요하지 않는 페이지에 속하는지 체크
+		
 		int index = list.indexOf(uri);
 		
-//		if(index == -1) {		
-//			HttpSession session = req.getSession();
-//			User user = (User)request.getAttribute("user");
-//			if (user== null) {
-//				res.sendRedirect(req.getContextPath() + "/user/loginform.do");
-//				return;
-//			}
-//		}
-		// 로그인 체크 통과된 경우...
+		// 로그인이 필요한 페이지만 체크해야 한다.
+		if (index == -1) {
+			HttpSession session = req.getSession();
+			User user = (User)session.getAttribute("user");
+			if ( user == null) {
+				res.sendRedirect(req.getContextPath() + "/user/loginform.do");
+				return;
+			}
+		}
+		// 로그인 체크가 통과된 경우,...
 		chain.doFilter(request, response);
 	}
-}
+}	
