@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- <link rel="stylesheet" href="./../css/common.css"> -->
+        <link rel="stylesheet" href="./../css/layout.css">
+        <link rel="stylesheet" href="./../css/study_layout.css">
+        <!-- <link rel="stylesheet" href="./../css/studyvote.css"> -->
+        <!-- <link rel="stylesheet" href="./../css/studymanage.css">     -->
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+
+        <!-- full calendar -->
+        <link rel="stylesheet" type="text/css"  href='./../script/core/main.css' />
+        <link rel="stylesheet" type="text/css"  href='./../script/daygrid/main.css' />
+        <script type="text/javascript" src='./../script/core/main.js'></script>
+        <script type="text/javascript" src='./../script/daygrid/main.js'></script>
+
+        <title>스터디</title>
+
+        <!-- jquery -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    </head>
+    <body>
+        <header id="header"></header>
+
+        <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+        <section class="background_wrap">
+            <div class="background">
+                <h1>스터디</h1>
+                <p>--------------</p>
+            </div>
+        </section>
+
+        <section id="layout">
+           <!-- jsp 작업 시 incluide로 변경 -->
+           <div>
+                <div class="profile">
+                    <img src="./../images/test_img2.jpg" alt="testImg">
+                </div>
+                <div class="left_list">
+                    <div>
+                        <p><a href="./study.html">스터디명</a></p>
+                        <ul>
+                            <!-- 스터디장 화면 다르게 보임 -->
+                            <li><a href="./studymembers.html">멤버</a></li>
+                            <li><a href="./studyvote.html">투표</a></li>
+                            <li><a href="./studyschedule.html">일정</a></li>
+                            <li><a href="./studyboard.html">게시판</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+   
+            <div class="study_right_wrap">
+                <div id='calendar'></div>
+                <!-- 일정 목록 보여줄시 div로 묶어서 코딩 -->
+            </div>
+
+
+        </section>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'dayGrid' ]
+                });
+
+                calendar.render();
+            });
+
+            $(document).ready(function() {
+                $("#header").load("header.html");
+            });
+        </script>
+    </body>
+</html>

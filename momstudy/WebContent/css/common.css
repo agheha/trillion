@@ -18,7 +18,7 @@ html, body {
 }
 
 /* button */
-.submit_btn {
+.login_submit_btn {
     display:block;
     width : 300px;
     height: 52px;
@@ -29,8 +29,56 @@ html, body {
     line-height: 50px;
     text-align: center;
     cursor: pointer;
+    margin-bottom: 8px;
+}
+.login_submit_btn:hover {
+    background-color: #333;
+}
+
+.buttons {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     margin-bottom: 30px;
 }
-.submit_btn:hover {
+.buttons > button {
+    width: 85px;
+    padding: 3px 0;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+.buttons > button:hover {
+    border: 1px solid transparent;
     background-color: #333;
+    color: #fff;
+}
+.buttons > button:first-child {
+    margin-right: 15px;
+}
+
+.more_btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    box-sizing:border-box;
+    padding: 3px 0;
+    margin: 30px 0;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #333;
+    background-color: transparent;
+    color: #333;
+    border-radius: 3px;
+    cursor: pointer
+}
+.more_btn:hover {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #333;
 }
