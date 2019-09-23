@@ -82,7 +82,7 @@
                 <c:when test="${empty user}">
                 <li>
                     <div>
-                        <a href="/user/loginform.do">
+                        <a href="<c:url value="/user/loginform.do"/>">
                             <i class="fas fa-address-card"></i>
                             마이페이지
                         </a>
