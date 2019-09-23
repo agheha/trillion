@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,26 +34,26 @@
                     
                     <div class="main_memberCnt">
                         <div>
-                            <h2>ȸ�� : </h2>
-                            <p><span>1,000,000</span>��</p>
+                            <h2>회원 : </h2>
+                            <p><span>1,000,000</span>명</p>
                         </div>
                         <div>
-                            <h2>���͵� : </h2>
-                            <p><span>300,000</span>��</p>
+                            <h2>스터디 : </h2>
+                            <p><span>300,000</span>개</p>
                         </div>
                     </div>
                     
-                    <!-- ����Ʈ �̸� or �ΰ� -->
+                    <!-- 사이트 이름 or 로고 -->
                     <h1 class="main_title">All About Study</h1>
                     
                     
                     <div class="under_line"></div>
                     
-                    <!-- ���͵��� ���� -->
-                    <p class="main_title_cont">���͵��� ��� ��</p>
+                    <!-- 스터디의 모든것 -->
+                    <p class="main_title_cont">스터디의 모든 것</p>
                     
                     <div> 
-                        <input type="input" placeholder="���͵� �˻� �� ������.">
+                        <input type="input" placeholder="스터디를 검색 해 보세요.">
                     </div>
                     
                 </div>
@@ -67,7 +67,7 @@
                     <div>
                         <a href="/user/loginform.do">
                             <i class="fas fa-address-card"></i>
-                            ����������
+                            마이페이지
                         </a>
                     </div>
                 </li>
@@ -77,7 +77,7 @@
                     <div>
                         <a href="mypage.do">
                             <i class="fas fa-address-card"></i>
-                            ����������
+                            마이페이지
                         </a>
                     </div>
                 </li>
@@ -87,7 +87,7 @@
                     <div>
                         <a href="study.html">
                             <i class="fas fa-book-reader"></i>
-                            ���͵�ã��
+                            스터디찾기
                         </a>
                     </div>
                 </li>
@@ -95,7 +95,7 @@
                     <div>
                         <a href="notice_board.html">
                             <i class="fas fa-chalkboard-teacher"></i>
-                            �����Խ���
+                            자유게시판
                         </a>
                     </div>
                 </li>
@@ -103,7 +103,7 @@
                     <div>
                         <a href="review_board.html">
                             <i class="fas fa-object-group"></i>
-                            �ı�Խ���
+                            후기게시판
                         </a>
                     </div>
                 </li>
@@ -111,7 +111,7 @@
                     <div>
                         <a href="inquire_board.html">
                             <i class="fas fa-question"></i>
-                            �����ϱ�
+                            문의하기
                         </a>
                     </div>
                 </li>
@@ -122,56 +122,56 @@
 
     <div class="main_content_wrap">
         <section class="main_bot">
-            <p>�α��ִ� ī�װ���</p>
+            <p>인기있는 카테고리</p>
             <div>
                 <div class="slide_wrap">
                     
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img1.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img2.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img3.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img4.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img5.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img6.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img7.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img8.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                 </div>
@@ -179,110 +179,110 @@
         </section>
 
         <section class="main_bot">
-            <p>�α��ִ� ī�װ���</p>
+            <p>인기있는 카테고리</p>
             <div>
                 <div class="slide_wrap">
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img1.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img2.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img3.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img4.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img5.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img6.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img7.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img8.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
                 </div>
             </div>
         </section>
 
         <section class="main_bot">
-            <p>�α��ִ� ī�װ���</p>
+            <p>인기있는 카테고리</p>
             <div>
                 <div class="slide_wrap">
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img1.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img2.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img3.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img4.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img5.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img6.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img7.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
                         <img src="./../images/test_img8.jpg" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
                 </div>
             </div>

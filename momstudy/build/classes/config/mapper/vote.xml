@@ -9,7 +9,9 @@
 	<result column="title"  property="title"/>
 	<result column="duplication"  property="duplication"/>
 	<result column="anonumous"  property="anonumous"/>
-	<result column="aricle_plus"  property="aricleplus"/>
+	<result column="aricle_plus"  property="ariclePlus"/>
+	<result column="reg_date"  property="regDate"/>
+	<result column="limit_date"  property="limitDate"/>
 	</resultMap>
 	
 		<!-- 투표를 더함 -->

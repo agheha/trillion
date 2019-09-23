@@ -8,6 +8,8 @@
 	<typeAliases>
 		<typeAlias alias="File" type="kr.co.momstudy.repository.vo.FileVO" />
 		<typeAlias alias="Vote" type="kr.co.momstudy.repository.vo.Vote" />
+		<typeAlias alias="VoteAricle" type="kr.co.momstudy.repository.vo.VoteAricle" />
+		<typeAlias alias="VoteResult" type="kr.co.momstudy.repository.vo.VoteResult" />
 		<typeAlias alias="User" type="kr.co.momstudy.user.vo.User" />
 	</typeAliases>
 	 
