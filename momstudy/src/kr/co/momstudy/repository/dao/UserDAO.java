@@ -1,6 +1,6 @@
-package kr.co.momstudy.user.dao;
+package kr.co.momstudy.repository.dao;
 
-import kr.co.momstudy.user.vo.User;
+import kr.co.momstudy.repository.vo.User;
 
 public interface UserDAO {
 	

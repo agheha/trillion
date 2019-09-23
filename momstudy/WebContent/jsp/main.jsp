@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./../css/common.css">
     <link rel="stylesheet" href="./../css/main.css">
+    <link rel="stylesheet" href="./../css/header.css">
 
     <!-- slide plugin -->
     <link rel="stylesheet" type="text/css" href="./../script/slick/slick.css"/>
@@ -44,13 +45,29 @@
                     </div>
                     
                     <!-- 사이트 이름 or 로고 -->
-                    <h1 class="main_title">All About Study</h1>
+                    <h1 class="main_title">MomStudy</h1>
                     
                     
                     <div class="under_line"></div>
                     
                     <!-- 스터디의 모든것 -->
-                    <p class="main_title_cont">스터디의 모든 것</p>
+                    <div class="login">
+                    <c:choose>
+                    <c:when test="${empty user}">
+                    	<a href="<c:url value="/user/loginform.do"/>">
+                    		<p class="main_title_cont">로그인하기</p>
+                    	</a>
+                    </c:when>
+                    <c:otherwise>
+                    	<p class="main_title_cont">${user.name}님 환영합니다.</p>
+               			<a href="<c:url value="/user/logout.do"/>">
+                    	<p class="main_title_cont">로그아웃</p>
+                    	</a>                   
+	                    
+                    </c:otherwise>
+                    </c:choose>
+                    </div>
+                    
                     
                     <div> 
                         <input type="input" placeholder="스터디를 검색 해 보세요.">
