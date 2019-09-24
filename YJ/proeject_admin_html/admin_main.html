@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <title>Document</title>
+    <link rel="stylesheet" href="../proeject_admin_css/admin_main.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../proeject_admin_css/common.css">
     <link rel="stylesheet" href="../proeject_admin_css/header.css">
-    <link rel="stylesheet" href="../proeject_admin_css/tap.css">
-
     <title>header</title>
 </head>
 
 <body>
+
     <header>
         <div class="header_top_wrap">
             <div><a href="#">All About Study</a></div>
@@ -43,21 +43,28 @@
     </section>
 
     <section class="section2">
-        <div class="section_wrap right_wrap">
-            <div class="content">
+        <div id="content">
+            <div id="responsive-admin-menu">
 
-                <div class="tabbed-area">
+                <div id="logo"></div>
 
-                    <ul class="tabs group">
+                <!--Menu-->
+                <div id="menu">
+                    <a href="#box-1"><i class="icon">=</i><span>신고된사람</span></a>
+                    <a href="#box-2"><i class="icon">=</i><span> 신고된 글</span></a>
+                    <a href="#box-3"><i class="icon">=</i><span> 신고된 스터디</span></a>
+                    <a href="#box-4"><i class="icon">=</i><span>회원</span></a>
+                    <a href="#box-5"><i class="icon">=</i><span>스터디</span></a>
+                    <a href="#box-6"><i class="icon">=</i><span>게시판</span></a>
+                    <a href="#box-7"><i class="icon">=</i><span>카테고리</span></a>
 
-                        <li><a href="#box-1">신고된사람</a></li>
-                        <li><a href="#box-2">신고된 글</a></li>
-                        <li><a href="#box-3">신고된 스터디</a></li>
-                        <li><a href="#box-4">회원</a></li>
-                        <li><a href="#box-5">스터디</a></li>
-                        <li><a href="#box-6">게시판</a></li>
-                        <li><a href="#box-7">카테고리</a></li>
-                    </ul>
+                </div>
+                <!--Menu-->
+            </div>
+
+            <div id="content-wrapper">
+
+                <div class="box-area">
 
                     <div class="box-wrap">
 
@@ -373,16 +380,16 @@
                         <div id="box-7">
                             <!-- box two content -->
                             <form class="saerch-ca">
-                                    <button type="button">추가</button>
-                                    <button type="button">삭제</button>
-                                    <select name="" id="">
-                                        <option value="">회원명</option>
-                                        <option value="">?1</option>
-                                        <option value="">?2</option>
-                                    </select>
-                                    <input type="text" name="" placeholder="saerch">
-                                    <button>검색</button>
-                                </form>
+                                <button type="button">추가</button>
+                                <button type="button">삭제</button>
+                                <select name="" id="">
+                                    <option value="">회원명</option>
+                                    <option value="">?1</option>
+                                    <option value="">?2</option>
+                                </select>
+                                <input type="text" name="" placeholder="saerch">
+                                <button>검색</button>
+                            </form>
                             <table>
                                 <thead>
                                     <th>카테고리명</th>
@@ -400,10 +407,10 @@
                                         <td>1</td>
                                         <td class="delete"><input type="checkbox" name="" value=""></td>
                                     </tr>
-                                    <tr >
+                                    <tr>
                                         <td>1</td>
                                         <td>1</td>
-                                        <td class="delete"><input  type="checkbox" name="" value=""></td>
+                                        <td class="delete"><input type="checkbox" name="" value=""></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -414,20 +421,9 @@
                 </div>
 
             </div>
+
         </div>
     </section>
-
-    <div class="foot">
-
-    </div>
-
-
-    <footer>
-        <div>
-            회사 정보 들 footerfooter
-        </div>
-    </footer>
-
 </body>
 
 </html>
