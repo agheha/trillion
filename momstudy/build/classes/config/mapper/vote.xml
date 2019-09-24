@@ -49,8 +49,8 @@
 		
 		<!-- 투표 항목 1개의 투표를 함 -->
 	<insert id="insertVoteResult" parameterType="VoteResult">
-		insert into tb_vote_result(email, num, code
-		) values (#{email}, #{num}, #{code})
+		insert into tb_vote_result(email, code
+		) values (#{email} , #{code})
 	</insert>
 	
 		<!-- 투표 항목 1개의 결과를 가져옴 -->
