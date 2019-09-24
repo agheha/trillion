@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
-<title>½ºÅÍµð</title>
+<title>ìŠ¤í„°ë””</title>
 
 <!-- jquery -->
 <script type="text/javascript"
@@ -35,17 +35,17 @@
 <body>
 	<header id="header"></header>
 
-	<!-- °¢ÆäÀÌÁö¸¶´Ù background°¡ ¹Ù²î¾î¾ß ÇÏ´Â Ã³¸® ÇÊ¿ä -->
+	<!-- ê°íŽ˜ì´ì§€ë§ˆë‹¤ backgroundê°€ ë°”ë€Œì–´ì•¼ í•˜ëŠ” ì²˜ë¦¬ í•„ìš” -->
 	<section class="background_wrap">
 		<div class="background">
-			<h1>½ºÅÍµð</h1>
+			<h1>ìŠ¤í„°ë””</h1>
 			<p>--------------</p>
 		</div>
 	</section>
 
 	<section id="layout">
 
-		<!-- jsp ÀÛ¾÷ ½Ã incluide·Î º¯°æ -->
+		<!-- jsp ìž‘ì—… ì‹œ incluideë¡œ ë³€ê²½ -->
 		<div>
 			<div class="profile">
 				<img src="<c:url value="/images/test_img2.jpg" />" alt="testImg">
@@ -53,14 +53,14 @@
 			<div class="left_list">
 				<div>
 					<p>
-						<a href="./study.html">½ºÅÍµð¸í</a>
+						<a href="./study.html">ìŠ¤í„°ë””ëª…</a>
 					</p>
 					<ul>
-						<!-- ½ºÅÍµðÀå È­¸é ´Ù¸£°Ô º¸ÀÓ -->
-						<li><a href="./studymembers.html">¸â¹ö</a></li>
-						<li><a href="./studyvote.html">ÅõÇ¥</a></li>
-						<li><a href="./studyschedule.html">ÀÏÁ¤</a></li>
-						<li><a href="./studyboard.html">°Ô½ÃÆÇ</a></li>
+						<!-- ìŠ¤í„°ë””ìž¥ í™”ë©´ ë‹¤ë¥´ê²Œ ë³´ìž„ -->
+						<li><a href="./studymembers.html">ë©¤ë²„</a></li>
+						<li><a href="./studyvote.html">íˆ¬í‘œ</a></li>
+						<li><a href="./studyschedule.html">ì¼ì •</a></li>
+						<li><a href="./studyboard.html">ê²Œì‹œíŒ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -69,21 +69,21 @@
 
 		<div class="study_right_wrap">
 			<div class="vote_title">
-				<p>ÅõÇ¥ ÇÏ±â</p>
+				<p>íˆ¬í‘œ í•˜ê¸°</p>
 				<div>
 					<input type="text" name="voteserach" /> <select name="vote"
 						id="vote">
-						<option value="1">Á¦¸ñ</option>
-						<option value="1">³»¿ë</option>
-						<option value="1">±Û¾´ÀÌ</option>
+						<option value="1">ì œëª©</option>
+						<option value="1">ë‚´ìš©</option>
+						<option value="1">ê¸€ì“´ì´</option>
 					</select>
-					<button>ÅõÇ¥µî·Ï</button>
+					<button>íˆ¬í‘œë“±ë¡</button>
 				</div>
 			</div>
 			<div class="board_list">
 				<c:if test="${empty vlist}">
 					<div>
-						<h2>ÅõÇ¥°¡ ¾ø½À´Ï´Ù</h2>
+						<h2>íˆ¬í‘œê°€ ì—†ìŠµë‹ˆë‹¤</h2>
 					</div>
 				</c:if>
 				<c:forEach var="vote" items="${vlist}">

@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Nunito|Bungee');
 
 *{
@@ -52,11 +52,10 @@ body{
   height: auto;
   border-radius: 3px;
   width: 100%;
-  padding: 7px 14px;
   padding-left: 10px;
   position: relative;
   z-index: 5;
-  min-height: 40px;
+  min-height: 50px;
   overflow: hidden;
 }
 .poll-option p{
@@ -84,6 +83,44 @@ body{
   outline: none;
   transition: 250ms;
 }
+
+.vote-btn-add{
+  //border: 2px solid #256b33;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 8px;
+  background: #39a84f;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  transition: 250ms;
+box-sizing: border-box;
+font-size: 13px;
+margin-top: 7px;
+  
+}
+
+tfoot{
+	text-align: center;
+}
+
+.vote-btn-remove{
+  //border: 2px solid #256b33;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 14px;
+  background: #39a84f;
+  color: white;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  transition: 250ms;
+  width: 50px;
+  height: 30px;
+  float: right;
+  font-size: 11px;
+}
+
 .vote-btn:active{
   background: #63ce78;
   border: 0px;
@@ -95,6 +132,29 @@ body{
   animation: popin 350ms linear;
 }
 
+.inputbox{
+	border: 0px solid;
+}
+
+tbody input[type=text]{
+	border: 0px;
+	background-color: #fafafa;
+	width: 90%;
+}
+
+tbody input[type=text]{
+	border: 0px;
+	background-color: #fafafa;
+	width: 90%;
+}
+
+.poll-title input[type=text]{
+	border: 0px;
+	background-color: #eee;
+	width: 70%;
+	height: 100%;
+	font-size: 20px;
+}
 
 
 @keyframes popin {

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -26,7 +26,6 @@
 										<td><input type="radio" name="aricle"
 											value="${aricle.code}"></input></td>
 											<input type="hidden" name="num" value="${vote.num}"/>
-											${vote.num}
 									</c:when>
 
 									<c:otherwise>
