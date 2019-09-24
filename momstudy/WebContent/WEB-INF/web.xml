@@ -12,6 +12,8 @@
 			<param-value>
   			/main.do;
   			/user/loginform.do;
+  			/user/signupform.do;
+  			/user/signup.do;
   			/user/login.do
   		</param-value>
 		</init-param>

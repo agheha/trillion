@@ -47,7 +47,7 @@
                  	</div>
                     <div>
                         <a href="">아이디/비밀번호 찾기</a>
-                        <a href="./terms.html">회원가입</a>
+                        <a href="<c:url value="/user/signupform.do"/>">회원가입</a>
                     </div>
                 </form>
             </div>      
