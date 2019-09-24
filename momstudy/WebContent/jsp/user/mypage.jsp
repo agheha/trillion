@@ -21,7 +21,7 @@
     <script type="text/javascript" src='./../script/daygrid/main.js'></script>
 
     <!-- slide plugin -->
-    <link rel="stylesheet" type="text/css" href="./../script/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../script/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="./../script/slick/slick-theme.css"/>
 
     <!-- jquery -->
