@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.BoardDAO">
+         <resultMap type="Board" id="boardMap">
+         <result column="num" property="num" />
+         <result column="title" property="title" />
+         <result column="content" property="content" />
+         <result column="reg_date" property="regDate" />
+         <result column="email" property="email" />
+         <result column="study_no" property="studyNo" />
+         <result column="type" property="type" />
+         <result column="notice" property="notice" />
+         <result column="comment_group_code" property="commentGroupCode" />
+</resultMap>
+
+<!-- 자유게시판  리스트! -->
+<select id="selectBoard" resultMap="boardMap">
+		select *
+		from tb_free_board
+		order by 
+		num desc
+	</select>
+	
+<!-- 글 상세 조회 -->
+<select id="selectOneBoard" parameterType="int" resultMap="boardMap">
+   select *
+   from tb_free_board;
+   where num = #{num};
+</select>
+</mapper>

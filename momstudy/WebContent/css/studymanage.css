@@ -1,0 +1,97 @@
+table {
+    width: 100%;
+    background: rgba(253, 250, 250, 0.472);
+    text-align: center;
+    margin: 10px auto;
+    border-collapse: collapse;
+    border-top: 3px solid rgb(251, 174, 51);
+}
+th {
+    text-align: center;
+    background: #f1eecd;
+    height: 40px;
+    padding: 8px;
+}
+td {
+    height: 35px;
+    padding: 9px;
+}
+.stm_title {
+    padding: 10px 0 15px 0;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+.stm_button { /* 강퇴 버튼*/
+    width: 130px;
+    height: 45px;
+    margin: 5px;
+    border-radius: 45px;
+    background: darkorange;
+    color: white;
+    font: normal normal 17px;
+    text-align: center;
+    outline: none;
+    border: none;
+    letter-spacing: 15px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+.agr_button { /* 스터디 신청 수락 버튼*/
+    width: 50px;
+    height: 27px;
+    border: none;
+    border-radius: 10%;
+    font-size: 12px;
+    background: rgb(251, 174, 51);
+    color: white;
+    cursor: pointer;
+}
+.smt_buttons {
+    float: right;
+}
+.stdmem_td{
+    height: auto;
+}
+.study_member tr:hover {
+    background: #dadada22;
+}
+.agr_button:hover, .stm_button:hover {
+    background: sandybrown;
+}
+.fas fa-crown{
+    padding: 20px;
+}
+.study_leader {
+    position: relative;
+}
+.study_leader span {
+    position: absolute;
+    left: 10px;
+}
+.apply_user {
+    margin-bottom: 20px;
+}
+table th:nth-child(1) {
+    max-width:120px;
+    width: 120px;
+}
+table th:nth-child(2) {
+    max-width:60px;
+    width: 60px;
+}
+table th:nth-child(3) {
+    max-width:272px;
+    width: 272px;
+}
+table th:nth-child(4) {
+    max-width:65px;
+    width: 65px;
+}
+table th:nth-child(5) {
+    max-width:120px;
+    width: 120px;
+}
+table th:nth-child(6) {
+    max-width:120px;
+    width: 120px;
+}

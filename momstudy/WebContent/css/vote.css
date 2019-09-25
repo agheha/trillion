@@ -1,0 +1,222 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito|Bungee');
+
+
+*{
+  box-sizing: border-box;
+  font-family: 'Nunito';
+  margin: 0;
+  padding: 0;
+}
+body{
+  padding: 10px;
+}
+.poll-container{
+  margin: 100px auto 0px auto;
+  
+  width: 500px;
+  height: auto;
+  position: relative;
+  border: 3px solid white;
+  border-radius: 3px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.poll-division .bar:last-child{
+  border-right: none;
+}
+.poll-voter{
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 10px;
+  border-radius: 3px;
+  background: #eee;
+}
+.poll-voter .poll-title{
+  margin-bottom: 5px;
+  color: #393939;
+  margin-left: 10px;
+  font-family: 'Bungee';
+  color: #1E417C;
+}
+
+.poll-list{
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  border-spacing: 7px 7px;
+}
+
+.poll-option{
+  background: #fafafa;
+  height: auto;
+  border-radius: 3px;
+  width: 100%;
+  padding-left: 10px;
+  position: relative;
+  z-index: 5;
+  min-height: 50px;
+  overflow: hidden;
+}
+.poll-option p{
+  z-index: 20;
+  float: left;
+}
+.poll-option > input{
+	float:right;
+}
+
+.poll-option-bar{
+  background: green;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  z-index: -10;
+  transition: 1s ease-out;
+}
+.vote-btn{
+  //border: 2px solid #256b33;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 14px;
+  background: #39a84f;
+  color: white;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  transition: 250ms;
+}
+
+.vote-btn-add{
+  //border: 2px solid #256b33;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 8px;
+  background: #39a84f;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  transition: 250ms;
+box-sizing: border-box;
+font-size: 13px;
+margin-top: 7px;
+  
+}
+
+tfoot{
+	text-align: center;
+}
+
+.vote-btn-remove{
+  //border: 2px solid #256b33;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 14px;
+  background: #39a84f;
+  color: white;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  transition: 250ms;
+  width: 50px;
+  height: 30px;
+  float: right;
+  font-size: 11px;
+}
+
+.vote-btn:active{
+  background: #63ce78;
+  border: 0px;
+  transition: 0ms;
+}
+
+.checkup{
+  font-weight: bold;
+  animation: popin 350ms linear;
+}
+
+.inputbox{
+	border: 0px solid;
+}
+
+tbody input[type=text]{
+	border: 0px;
+	background-color: #fafafa;
+	width: 90%;
+}
+
+tbody input[type=text]{
+	border: 0px;
+	background-color: #fafafa;
+	width: 90%;
+}
+
+.poll-title input[type=text]{
+	border: 0px;
+	background-color: #eee;
+	width: 70%;
+	height: 100%;
+	font-size: 20px;
+}
+
+
+@keyframes popin {
+  0%{transform: scale(0);}
+  65%{transform: scale(5);}
+  80%{transform: scale(0);}
+  100%{transform: scale(1);}
+}
+
+.checkbox-custom{
+    opacity: 0;
+    position: absolute;   
+}
+
+.checkbox-custom, .checkbox-custom-label{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox-custom-label{
+    position: relative;
+    margin: 10px 21px;
+ }
+
+.checkbox-custom + .checkbox-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+	content: "\2714";
+    background: #00ad40;
+    color:white;
+  }
+  
+
+.checkbox-custom:focus + .checkbox-custom-label{
+  outline: 1px solid #ddd; /* focus style */
+}
+
+.votecnt , .totalcnt{
+	float: right;
+	margin-right: 5px;
+}
+
+.revote{
+	overflow: hidden;
+    float: right;
+}
+

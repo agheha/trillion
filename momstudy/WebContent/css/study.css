@@ -1,0 +1,117 @@
+#layout > div:last-child {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+#layout > div:last-child > div > div {
+    float:left;
+    box-sizing: border-box;
+    padding: 15px 0;
+}
+#layout > div:last-child > div > div:hover {
+    background-color: #dadada33;
+}
+#layout > div:last-child > div.top_grid > div {
+    width: 33.3%;
+}
+#layout > div:last-child > div.top_grid > div > div {
+    height: 180px;
+}
+#layout > div:last-child > div.bottom_grid > div {
+    width: 50%;
+}
+#layout > div:last-child > div.bottom_grid > div > div {
+    height: 350px;
+}
+.study_main_cont {
+    border-right: 1px solid #33333344;
+    box-sizing: border-box;
+}
+.check {
+    border-right: none;
+}
+.calender {
+    border-right: none;
+}
+.study_main_cont > p {
+    font-weight: 500;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+.study_main_cont > div {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    width: 100%;
+    display: table;
+}
+
+/* d-day */
+.study_main_cont h2 {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+/* circle */
+.circle > div {
+    display: table;
+}
+.circle > div > .clearfix {
+    display: table-cell;
+    vertical-align: middle;
+}
+.c100 {
+    margin: 0 auto;
+}
+
+.notice ul {
+    max-height: 330px;
+    overflow: auto;
+    box-sizing:border-box;
+    padding-top: 15px;
+}
+.notice li:first-child {
+    border-top: 1px solid #dadada;
+}
+.notice li {
+    display: table;
+    width: 100%;
+    max-width: 354px;
+    height: 45px;
+    border-bottom: 1px solid #dadada;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+.notice li:hover > a {
+    color: #dd333d;
+}
+.notice li > a {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* calender */
+#calendar > div > .fc-left > h2 {
+    font-size: 18px;
+    font-family: 'Noto Sans KR';
+}
+
+#calendar > div > .fc-right > button {
+    font-size: 16px;
+    padding: 3px 5px;
+}
+
+#calendar > div > .fc-right > .fc-button-group {
+    height: 32px;
+}
+#calendar > div > .fc-right > .fc-button-group > button {
+    padding: 0 5px;
+}

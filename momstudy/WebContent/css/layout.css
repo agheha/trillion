@@ -1,0 +1,21 @@
+section#layout {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+section#layout > div {
+    box-sizing:  border-box;
+    float: left;
+}
+section#layout > div:first-child {
+    width: 280px;
+}
+section#layout > div:last-child {
+    width: 820px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 0 30px;
+    border-left: 3px solid #dadada;
+}

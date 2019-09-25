@@ -1,5 +1,7 @@
 package kr.co.momstudy.repository.vo;
 
+import java.util.Date;
+
 public class Vote {
 	int studyNo;
 	int num;
@@ -7,11 +9,13 @@ public class Vote {
 	int duplication;
 	int anonumous;
 	int ariclePlus;
+	Date regDate;
+	Date limitDate;
 	
-	public int getStudy_no() {
+	public int getStudyNo() {
 		return studyNo;
 	}
-	public void setStudy_no(int studyNo) {
+	public void setStudyNo(int studyNo) {
 		this.studyNo = studyNo;
 	}
 	public int getNum() {
@@ -43,6 +47,18 @@ public class Vote {
 	}
 	public void setAriclePlus(int ariclePlus) {
 		this.ariclePlus = ariclePlus;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+	public Date getLimitDate() {
+		return limitDate;
+	}
+	public void setLimitDate(Date limitDate) {
+		this.limitDate = limitDate;
 	}
 	
 	

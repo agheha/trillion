@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
-import kr.co.momstudy.user.dao.UserDAO;
-import kr.co.momstudy.user.vo.User;
+import kr.co.momstudy.repository.dao.UserDAO;
+import kr.co.momstudy.repository.vo.User;
 
 @WebServlet("/user/login.do")
 public class LoginController extends HttpServlet {
@@ -22,14 +22,20 @@ public class LoginController extends HttpServlet {
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		User user = new User();
-		user.setEmail(req.getParameter("email"));
-		user.setPass(req.getParameter("pass"));
-		user.setName(req.getParameter("name"));
-		dao.selectLogin(user);
-				
-				
+		User u = new User();
+		u.setEmail(req.getParameter("email"));
+		u.setPass(req.getParameter("pass"));
+		User user = dao.selectLogin(u);
+		System.out.println(user);
+		if (user == null) {
+			res.sendRedirect("loginform.do");
+			return;
+		}
+		
 		HttpSession session = req.getSession();
+		session.setAttribute("user", user);
+		res.sendRedirect(req.getContextPath() + "/main.do");
+		
 		
 	}
 }

@@ -8,7 +8,13 @@
 	<typeAliases>
 		<typeAlias alias="File" type="kr.co.momstudy.repository.vo.FileVO" />
 		<typeAlias alias="Vote" type="kr.co.momstudy.repository.vo.Vote" />
-		<typeAlias alias="User" type="kr.co.momstudy.user.vo.User" />
+		<typeAlias alias="VoteAricle" type="kr.co.momstudy.repository.vo.VoteAricle" />
+		<typeAlias alias="VoteResult" type="kr.co.momstudy.repository.vo.VoteResult" />
+		<typeAlias alias="VoteCnt" type="kr.co.momstudy.repository.vo.VoteCnt" />
+		<typeAlias alias="User" type="kr.co.momstudy.repository.vo.User" />
+		<typeAlias alias="UserCategory" type="kr.co.momstudy.repository.vo.UserCategory" />
+		<typeAlias alias="Category" type="kr.co.momstudy.repository.vo.Category" />
+		<typeAlias alias="Board" type="kr.co.momstudy.repository.vo.Board" />
 	</typeAliases>
 	 
 	
@@ -28,6 +34,7 @@
 		<mapper resource="config/mapper/file.xml"/>
 		<mapper resource="config/mapper/vote.xml"/>
 		<mapper resource="config/mapper/user.xml"/>
+		<mapper resource="config/mapper/board.xml"/>
 	</mappers>
 	
 </configuration>

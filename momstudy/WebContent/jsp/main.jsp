@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./../css/common.css">
-    <link rel="stylesheet" href="./../css/main.css">
+    <link rel="stylesheet" href="<c:url value="/css/common.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/header.css"/>">
 
     <!-- slide plugin -->
-    <link rel="stylesheet" type="text/css" href="./../script/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="./../script/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/script/slick/slick.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/script/slick/slick-theme.css"/>">
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="./../script/slick/slick.js"></script>
+    <script type="text/javascript" src="<c:url value="/script/slick/slick.js"/>"></script>
 
     <!-- font icon -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
@@ -27,6 +28,7 @@
     <title>Study Project</title>
 </head>
 <body>
+    <div class="background"></div>
     <div class="body_wrap">
         <div class="main_wrap">
             <div class="main_content">
@@ -34,60 +36,61 @@
                     
                     <div class="main_memberCnt">
                         <div>
-                            <h2>ȸ�� : </h2>
-                            <p><span>1,000,000</span>��</p>
+                            <h2>회원 : </h2>
+                            <p><span>1,000,000</span>명</p>
                         </div>
                         <div>
-                            <h2>���͵� : </h2>
-                            <p><span>300,000</span>��</p>
+                            <h2>스터디 : </h2>
+                            <p><span>300,000</span>개</p>
                         </div>
                     </div>
                     
-                    <!-- ����Ʈ �̸� or �ΰ� -->
-                    <h1 class="main_title">All About Study</h1>
+                    <!-- 사이트 이름 or 로고 -->
+                    <h1 class="main_title">MomStudy</h1>
                     
                     
                     <div class="under_line"></div>
                     
-                    <!-- ���͵��� ���� -->
-                    <p class="main_title_cont">���͵��� ��� ��</p>
+                    <!-- 스터디의 모든것 -->
+                    <div class="login">
+                    <c:choose>
+                    <c:when test="${empty user}">
+                    	<a href="<c:url value="/user/loginform.do"/>">
+                    		<p class="main_title_cont">로그인하기</p>
+                    	</a>
+                    </c:when>
+                    <c:otherwise>
+                    	<p class="main_title_cont">${user.name}님 환영합니다.</p>
+               			<a href="<c:url value="/user/logout.do"/>">
+                    	<p class="main_title_cont">로그아웃</p>
+                    	</a>                  
+                    </c:otherwise>
+                    </c:choose>
+                    </div>
+                    
                     
                     <div> 
-                        <input type="input" placeholder="���͵� �˻� �� ������.">
+                        <input type="input" placeholder="스터디를 검색 해 보세요.">
                     </div>
                     
                 </div>
             </div>
             
             <ul class="main_menu">
-                <li></li>
-                <c:choose>
-                <c:when test="${empty user}">
+                <li></li>                    
                 <li>
                     <div>
-                        <a href="/user/loginform.do">
+                        <a href="<c:url value="/user/mypage.do"/>">
                             <i class="fas fa-address-card"></i>
-                            ����������
+                            마이페이지
                         </a>
                     </div>
                 </li>
-                </c:when>
-                <c:otherwise>                
-                <li>
-                    <div>
-                        <a href="mypage.do">
-                            <i class="fas fa-address-card"></i>
-                            ����������
-                        </a>
-                    </div>
-                </li>
-                </c:otherwise>
-                </c:choose>
                 <li>
                     <div>
                         <a href="study.html">
                             <i class="fas fa-book-reader"></i>
-                            ���͵�ã��
+                            스터디찾기
                         </a>
                     </div>
                 </li>
@@ -95,7 +98,7 @@
                     <div>
                         <a href="notice_board.html">
                             <i class="fas fa-chalkboard-teacher"></i>
-                            �����Խ���
+                            자유게시판
                         </a>
                     </div>
                 </li>
@@ -103,7 +106,7 @@
                     <div>
                         <a href="review_board.html">
                             <i class="fas fa-object-group"></i>
-                            �ı�Խ���
+                            후기게시판
                         </a>
                     </div>
                 </li>
@@ -111,7 +114,7 @@
                     <div>
                         <a href="inquire_board.html">
                             <i class="fas fa-question"></i>
-                            �����ϱ�
+                            문의하기
                         </a>
                     </div>
                 </li>
@@ -122,56 +125,57 @@
 
     <div class="main_content_wrap">
         <section class="main_bot">
-            <p>�α��ִ� ī�װ���</p>
+            <p>인기있는 카테고리</p>
             <div>
                 <div class="slide_wrap">
                     
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img1.jpg" alt="">
+                   
+                        <img src="<c:url value="/images/test_img1.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img2.jpg" alt="">
+                        <img src="<c:url value="/images/test_img2.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img3.jpg" alt="">
+                        <img src="<c:url value="/images/test_img3.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img4.jpg" alt="">
+                        <img src="<c:url value="/images/test_img4.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img5.jpg" alt="">
+                        <img src="<c:url value="/images/test_img5.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img6.jpg" alt="">
+                        <img src="<c:url value="/images/test_img6.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img7.jpg" alt="">
+                        <img src="<c:url value="/images/test_img7.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img8.jpg" alt="">
+                        <img src="<c:url value="/images/test_img8.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                 </div>
@@ -179,110 +183,110 @@
         </section>
 
         <section class="main_bot">
-            <p>�α��ִ� ī�װ���</p>
+            <p>인기있는 카테고리</p>
             <div>
                 <div class="slide_wrap">
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img1.jpg" alt="">
+                        <img src="<c:url value="/images/test_img1.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img2.jpg" alt="">
+                        <img src="<c:url value="/images/test_img2.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img3.jpg" alt="">
+                        <img src="<c:url value="/images/test_img3.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img4.jpg" alt="">
+                        <img src="<c:url value="/images/test_img4.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img5.jpg" alt="">
+                        <img src="<c:url value="/images/test_img5.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img6.jpg" alt="">
+                        <img src="<c:url value="/images/test_img6.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img7.jpg" alt="">
+                        <img src="<c:url value="/images/test_img7.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img8.jpg" alt="">
+                        <img src="<c:url value="/images/test_img8.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
                 </div>
             </div>
         </section>
 
         <section class="main_bot">
-            <p>�α��ִ� ī�װ���</p>
+            <p>인기있는 카테고리</p>
             <div>
                 <div class="slide_wrap">
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img1.jpg" alt="">
+                        <img src="<c:url value="/images/test_img1.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img2.jpg" alt="">
+                        <img src="<c:url value="/images/test_img2.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img3.jpg" alt="">
+                        <img src="<c:url value="/images/test_img3.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img4.jpg" alt="">
+                        <img src="<c:url value="/images/test_img4.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img5.jpg" alt="">
+                        <img src="<c:url value="/images/test_img5.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img6.jpg" alt="">
+                        <img src="<c:url value="/images/test_img6.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img7.jpg" alt="">
+                        <img src="<c:url value="/images/test_img7.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
 
                     <a href="#" class="content_wrap">
-                        <img src="./../images/test_img8.jpg" alt="">
+                        <img src="<c:url value="/images/test_img8.jpg"/>" alt="">
                         <div class="gra"></div>
-                        <p>�ڹٽ�ũ��Ʈ �������</p>
+                        <p>자바스크립트 따라잡기</p>
                     </a>
                 </div>
             </div>
