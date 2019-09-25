@@ -7,13 +7,20 @@ public class User {
 	private String pass;
 	private String name;
 	private String phoneNum;
-	private String birth;
+	private Date birth;
 	private int status;
 	private int type;
 	private Date banDate;
 	private int fileGroupCode;
+	private String gender;
 	
 	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getPhoneNum() {
 		return phoneNum;
 	}
@@ -38,10 +45,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 	public int getStatus() {
