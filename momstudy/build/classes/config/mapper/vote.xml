@@ -22,8 +22,12 @@
 	
 		<!-- 투표를 더함 -->
 	<insert id="insertVote" parameterType="Vote">
+		<selectKey keyProperty="num" resultType="int" order="BEFORE">
+			select seq_vote_num.nextval
+			  from dual 
+		</selectKey>
 		insert into tb_vote(study_no, num, title, duplication, anonumous, aricle_plus
-		) values (#{studyNo}, seq_vote_num.nextval, #{title}, #{duplication}, #{anonumous}, #{ariclePlus})
+		) values (#{studyNo}, #{num}, #{title}, #{duplication}, #{anonumous}, #{ariclePlus})
 	</insert>
 
 		<!-- 투표를 다 가져옴-->

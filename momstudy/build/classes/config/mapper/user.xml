@@ -30,13 +30,13 @@
 	<!-- 	회원가입 -->
 	<insert id="insertUser" parameterType="User" >
 		insert into tb_user(email, pass, name, phone_num, birth, gender)
-		values(#{email), #{pass}, #{name}, #{phoneNum}, #{birth}, #{gender})
+		values(#{email}, #{pass}, #{name}, #{phoneNum}, #{birth}, #{gender})
 	</insert>
 	
 	<!--  관심분야 -->
 	<insert id="insertcadegory" parameterType="UserCategory" >
 		insert into tb_user(email, category_code)
-		values(#{email), #{categoryCode})
+		values(#{email}, #{categoryCode})
 	</insert>
 </mapper>
 

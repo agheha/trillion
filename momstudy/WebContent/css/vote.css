@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Nunito|Bungee');
 
+
 *{
   box-sizing: border-box;
   font-family: 'Nunito';
@@ -163,3 +164,45 @@ tbody input[type=text]{
   80%{transform: scale(0);}
   100%{transform: scale(1);}
 }
+
+.checkbox-custom{
+    opacity: 0;
+    position: absolute;   
+}
+
+.checkbox-custom, .checkbox-custom-label{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox-custom-label{
+    position: relative;
+    margin: 10px 21px;
+ }
+
+.checkbox-custom + .checkbox-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+	content: "\2714";
+    background: #00ad40;
+    color:white;
+  }
+  
+
+.checkbox-custom:focus + .checkbox-custom-label{
+  outline: 1px solid #ddd; /* focus style */
+}
+
