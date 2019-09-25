@@ -61,6 +61,10 @@ body{
 }
 .poll-option p{
   z-index: 20;
+  float: left;
+}
+.poll-option > input{
+	float:right;
 }
 
 .poll-option-bar{

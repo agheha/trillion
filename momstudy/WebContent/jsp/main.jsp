@@ -28,6 +28,7 @@
     <title>Study Project</title>
 </head>
 <body>
+    <div class="background"></div>
     <div class="body_wrap">
         <div class="main_wrap">
             <div class="main_content">
