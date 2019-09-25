@@ -24,6 +24,9 @@ public class VoteController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		
 		String[] aricles = req.getParameterValues("aricle");
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("user");
@@ -33,12 +36,13 @@ public class VoteController extends HttpServlet {
 				VoteResult vr = new VoteResult();
 				vr.setCode(Integer.parseInt(aricle));
 				vr.setEmail(user.getEmail());
-				vr.setNum(num);
 				dao.insertVoteResult(vr);
 			}
 		}
 		
-//		resp.sendRedirect("/momstudy/study/voteresult.do");
+		
+		
+		resp.sendRedirect("/momstudy/study/voteresult.do?num=" + num);
 	}
 
 }

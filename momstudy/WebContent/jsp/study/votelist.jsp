@@ -88,7 +88,7 @@
 				</c:if>
 				<c:forEach var="vote" items="${vlist}">
 					<div>
-							<a href="<c:url value="/study/detailVote.do?num=${vote.num}"/>">	
+							<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>">	
 							<ul>
 								<li>${vote.num}</li>
 								<li>${vote.title}</li>

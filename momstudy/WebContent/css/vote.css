@@ -68,11 +68,11 @@ body{
 }
 
 .poll-option-bar{
+  background: green;
   position: absolute;
   left: 0px;
   top: 0px;
   height: 100%;
-  background: #dce6f7;
   z-index: -10;
   transition: 1s ease-out;
 }
@@ -208,5 +208,15 @@ tbody input[type=text]{
 
 .checkbox-custom:focus + .checkbox-custom-label{
   outline: 1px solid #ddd; /* focus style */
+}
+
+.votecnt , .totalcnt{
+	float: right;
+	margin-right: 5px;
+}
+
+.revote{
+	overflow: hidden;
+    float: right;
 }
 

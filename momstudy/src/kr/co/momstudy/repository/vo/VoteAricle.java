@@ -1,10 +1,19 @@
 package kr.co.momstudy.repository.vo;
 
+import java.util.List;
+
 public class VoteAricle {
 	private int num;
 	private int code;
 	private String content;
+	private List<VoteResult> list;
 
+	public List<VoteResult> getList() {
+		return list;
+	}
+	public void setList(List<VoteResult> list) {
+		this.list = list;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -23,5 +32,6 @@ public class VoteAricle {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 	
 }

@@ -10,6 +10,7 @@
 		<typeAlias alias="Vote" type="kr.co.momstudy.repository.vo.Vote" />
 		<typeAlias alias="VoteAricle" type="kr.co.momstudy.repository.vo.VoteAricle" />
 		<typeAlias alias="VoteResult" type="kr.co.momstudy.repository.vo.VoteResult" />
+		<typeAlias alias="VoteCnt" type="kr.co.momstudy.repository.vo.VoteCnt" />
 		<typeAlias alias="User" type="kr.co.momstudy.repository.vo.User" />
 		<typeAlias alias="UserCategory" type="kr.co.momstudy.repository.vo.UserCategory" />
 	</typeAliases>
