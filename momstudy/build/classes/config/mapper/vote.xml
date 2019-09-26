@@ -115,7 +115,12 @@
 		                           on b.code = a.code
 		                        where email = #{email})
 	</delete>
-
+	
+	<select id="selectAricleContent" parameterType="int" resultType="string">
+	select content
+  	  from tb_vote_aricle
+  	 where code = #{code}
+	</select>
 
 
 

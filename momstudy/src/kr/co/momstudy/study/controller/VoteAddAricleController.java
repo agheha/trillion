@@ -23,17 +23,13 @@ public class VoteAddAricleController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int num = Integer.parseInt(req.getParameter("num"));
 		String content = req.getParameter("addAricle");
-		System.out.println(content);
-		System.out.println(num);
 		VoteAricle va = new VoteAricle();
 		va.setNum(num);
 		va.setContent(content);
 		dao.insertVoteAricle(va);
 		
 		resp.sendRedirect(req.getContextPath() + "/study/detailvote.do?num=" + num );
-		
-		
-		
+				
 	}
 	
 }

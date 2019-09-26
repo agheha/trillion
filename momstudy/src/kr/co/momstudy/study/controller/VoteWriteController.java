@@ -24,17 +24,18 @@ public class VoteWriteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Enumeration<String> names = req.getParameterNames();
-		int duplication = 1;
-		int anonumous= 1;
-		int ariclePlus = 1;
+		int duplication = 2;
+		int anonumous= 2;
+		int addaricle = 2;
+		
 		String title = req.getParameter("title");
-		if(("on".equalsIgnoreCase(req.getParameter("duplication")))) duplication = 2;
-		if("on".equalsIgnoreCase(req.getParameter("anonumous"))) anonumous = 2;
-		if("on".equalsIgnoreCase(req.getParameter("ariclePlus"))) ariclePlus = 2;
+		if(("on".equalsIgnoreCase(req.getParameter("duplication")))) duplication = 1;
+		if("on".equalsIgnoreCase(req.getParameter("anonumous"))) anonumous = 1;
+		if("on".equalsIgnoreCase(req.getParameter("ariclePlus"))) addaricle = 1;
 		
 		Vote vote = new Vote();
 		vote.setAnonumous(anonumous);
-		vote.setAriclePlus(ariclePlus);
+		vote.setAriclePlus(addaricle);
 		vote.setDuplication(duplication);
 		vote.setTitle(title);
 		vote.setStudyNo(1);

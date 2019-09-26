@@ -220,3 +220,10 @@ tbody input[type=text]{
     float: right;
 }
 
+#golist{
+	margin-right: 5px;
+}
+
+#deletevote{
+	margin-right: 5px;
+}

@@ -30,6 +30,7 @@ public interface VoteDAO {
 	
 	public void deleteVoteResultByEmail(VoteCnt vc);
 	
+	public String selectAricleContent(int code); 
 	
 	
 }

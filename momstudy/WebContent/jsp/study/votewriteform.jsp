@@ -54,7 +54,7 @@
 								<input id="checkbox-2" class="checkbox-custom" name="anonumous"
 								type="checkbox"> <label for="checkbox-2"
 								class="checkbox-custom-label">익명투표</label> <input
-								id="checkbox-3" class="checkbox-custom" name="ariclePlus"
+								id="checkbox-3" class="checkbox-custom" name="addaricle"
 								type="checkbox"> <label for="checkbox-3"
 								class="checkbox-custom-label">항목추가</label></td>
 						</tr>

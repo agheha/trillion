@@ -9,49 +9,22 @@
 <link rel="stylesheet" href="<c:url value="/css/vote.css" ></c:url>" />
 </head>
 <body>
-	<form name="myform" action="<c:url value="/study/vote.do" />" method="post">
 		<div class="poll-container">
 			<div class="poll-voter">
-				<span class="poll-title">${vote.title}</span>
-				<button class="vote-btn" onclick="votesubmit(2)">투표</button>
-				<button class="vote-btn" type="button" id="deletevote">삭제</button>
+				<span class="poll-title">${content}</span>
+				<a href="<c:url value="/study/votelist.do" />"><button class="vote-btn">목록</button></a>
 				<hr style="border: none; height: 2px; background: grey;">
 				<table class="poll-list">
 					<tbody id=aricle>
-						<c:forEach var="aricle" items="${valist}">
+						<c:forEach var="result" items="${vrlist}">
 							<tr class="vote-row">
-								<td colspan="2" class="poll-option"><p>${aricle.content}</p>
+								<td colspan="2" class="poll-option"><p>${result.email}</p>
 									<div class="poll-option-bar"></div>
-								<c:choose>
-									<c:when test="${vote.duplication eq 2}">
-										<input type="radio" name="aricle"
-											value="${aricle.code}"></input>
-											<input type="hidden" name="num" value="${vote.num}"/>
-									</c:when>
-
-									<c:otherwise>
-										<input type="checkbox" name="aricle"
-											value="${aricle.code}"></input>
-											<input type="hidden" name="num" value="${vote.num}"/>
-									</c:otherwise>
-
-								</c:choose>
-								</td>
-							</tr>
 						</c:forEach>
 					</tbody>
-					<tfoot>
-					<c:if test="${vote.ariclePlus == 2}">
-						<tr id="addbutton">
-							<td colspan="3"><button type="button" class="vote-btn-add"
-									onclick="add_tr(this)">항목추가</button></td>
-						</tr>
-					</c:if>
-					</tfoot>
 				</table>
 			</div>
 		</div>
-	</form>
 
 
 
@@ -95,17 +68,6 @@
 			document.myform.action=`<c:url value="/study/vote.do" />`;
 		}
 		}
-		
-		
-		
-		window.history.forward();
-
-		function noBack() {
-
-			window.history.forward();
-
-		}
-
 	</script>
 
 

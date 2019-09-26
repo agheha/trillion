@@ -77,7 +77,7 @@
 						<option value="1">내용</option>
 						<option value="1">글쓴이</option>
 					</select>
-					<button onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록</button>
+					<button onclick="location.href='<c:url value="/study/votewriteform.do"/>'"  >투표등록</button>
 				</div>
 			</div>
 			<div class="board_list">
@@ -88,7 +88,7 @@
 				</c:if>
 				<c:forEach var="vote" items="${vlist}">
 					<div>
-							<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>">	
+							<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>" >	
 							<ul>
 								<li>${vote.num}</li>
 								<li>${vote.title}</li>
