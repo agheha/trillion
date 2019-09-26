@@ -6,6 +6,27 @@
     padding: 0 50px;
 }
 
+.btn_wrap {
+	text-align: right;
+    width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 70px;
+}
+
+.btn_wrap button {
+	box-sizing: border-box;
+    padding: 3px 24px;
+    font-size: 14px;
+    border: 1px solid #333;
+    background-color: transparent;
+    border-radius: 2px;
+}
+.btn_wrap button:hover {
+	background-color: #fff;
+	color: #333;
+}
+
 .board_cont {
     width: 275px;
     float: left;
@@ -49,13 +70,14 @@
 
 .cont_text > span {
     display:-webkit-box; 
-    line-height: 20px;
+    line-height: 25px;
     font-size: 14px;
     letter-spacing: -0.3px;
     -webkit-line-clamp:3; 
     -webkit-box-orient:vertical;
     text-overflow: ellipsis;
     overflow: hidden;
+    overflow-wrap: break-word;
 }
 input.submit_btn {
     height: 30px;

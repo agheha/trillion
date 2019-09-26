@@ -84,8 +84,8 @@
     width: 60px;
 }
 .board_list li:nth-child(2) {
-    min-width: 447px;
-    max-width: 447px;
+    min-width: 397px;
+    max-width: 397px;
     position:relative;
     text-align: left;
     text-overflow: ellipsis;
@@ -93,8 +93,8 @@
     white-space:nowrap
 }
 .board_list li:nth-child(3) {
-    width: 100px;
-    max-width: 100px;
+    width: 150px;
+    max-width: 150px;
 }
 .board_list li:nth-child(4) {
     width: 150px;

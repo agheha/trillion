@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.ReviewBoardDAO">
+
+	<resultMap type="ReviewBoard" id="reviewBoardMap">
+		<result column="num"  property="num"/>
+		<result column="title"  property="title"/>
+		<result column="content"  property="content"/>
+		<result column="reg_date"  property="regDate"/>
+		<result column="study_num"  property="studyNum"/>
+		<result column="see_cnt"  property="seeCnt"/>
+		<result column="score"  property="score"/>
+		<result column="email"  property="email"/>
+		<result column="file_group_code"  property="fileGroupCode"/>
+		<result column="comment_group_code"  property="commentGroupCode"/>
+	</resultMap>
+
+	<select id="selectReviewBoard" resultMap="reviewBoardMap">
+		select *
+		  from tb_review_study
+		 order by num desc   
+	</select>
+	
+	<!-- <update id="updateViewCnt" parameterType="int">
+		update tb_board 
+		   set see_cnt = see_cnt + 1
+		 where no = #{no}
+	</update> -->
+
+	<!-- <resultMap type="Vote" id="voteMap">
+	<result column="study_no"  property="studyNo"/>
+	<result column="num"  property="num"/>
+	<result column="title"  property="title"/>
+	<result column="duplication"  property="duplication"/>
+	<result column="anonumous"  property="anonumous"/>
+	<result column="aricle_plus"  property="ariclePlus"/>
+	<result column="reg_date"  property="regDate"/>
+	<result column="limit_date"  property="limitDate"/>
+	</resultMap>
+	
+	<resultMap type="VoteAricle" id="voteAricleMap">
+	<result column="num"  property="num"/>
+	<result column="code"  property="code"/>
+	<result column="content"  property="content"/>
+	</resultMap>
+	
+		투표를 더함
+	<insert id="insertVote" parameterType="Vote">
+		<selectKey keyProperty="num" resultType="int" order="BEFORE">
+			select seq_vote_num.nextval
+			  from dual 
+		</selectKey>
+		insert into tb_vote(study_no, num, title, duplication, anonumous, aricle_plus
+		) values (#{studyNo}, #{num}, #{title}, #{duplication}, #{anonumous}, #{ariclePlus})
+	</insert>
+
+		투표를 다 가져옴
+	<select id="selectVote" resultMap="voteMap" parameterType="int">
+		select *
+		  from tb_vote
+		 where study_no = #{studyNo}
+	</select>
+	
+		투표 1개를 가져옴
+	<select id="selectOneVote" resultMap="voteMap" parameterType="int">
+		select *
+		  from tb_vote
+		 where num = #{num}
+	</select>
+	
+		투표 항목을 더함
+	<insert id="insertVoteAricle" parameterType="VoteAricle">
+		insert into tb_vote_aricle(num, code, content
+		) values (#{num}, seq_vote_aricle_code.nextval, #{content})   
+		   
+	</insert>
+		
+		투표 항목 1개의 투표를 함
+	<insert id="insertVoteResult" parameterType="VoteResult">
+		insert into tb_vote_result(email, code
+		) values (#{email} , #{code})
+	</insert>
+	
+		투표 항목 1개의 결과를 가져옴
+	<select id="selectResult" parameterType="int" resultType="VoteResult">
+		select *
+		  from tb_vote_result
+		 where code = {code}  
+	</select>
+	
+		사용자 1명의 투표  1개의 대한 투표횟수를 가져옴
+	<select id="selectCheckResult" parameterType="VoteResult" resultType="int">
+		select count(*)
+		  from tb_vote_result
+		 where email = {email} and num = {num} 
+	</select>
+	
+	<select id="selectVoteAricle" parameterType="int" resultMap="voteAricleMap">
+		select *
+		  from tb_vote_aricle
+		 where num = #{num} 
+	</select> -->
+	
+	
+
+
+</mapper>

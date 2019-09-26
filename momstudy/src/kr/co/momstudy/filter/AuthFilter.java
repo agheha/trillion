@@ -44,14 +44,11 @@ public class AuthFilter implements Filter{
 		int index = list.indexOf(uri);
 		
 		// 로그인이 필요한 페이지만 체크해야 한다.
-		if (index == -1) {
-			HttpSession session = req.getSession();
-			User user = (User)session.getAttribute("user");
-			if ( user == null) {
-				res.sendRedirect(req.getContextPath() + "/user/loginform.do");
-				return;
-			}
-		}
+		/*
+		 * if (index == -1) { HttpSession session = req.getSession(); User user =
+		 * (User)session.getAttribute("user"); if ( user == null) {
+		 * res.sendRedirect(req.getContextPath() + "/user/loginform.do"); return; } }
+		 */
 		// 로그인 체크가 통과된 경우,...
 		chain.doFilter(request, response);
 	}
