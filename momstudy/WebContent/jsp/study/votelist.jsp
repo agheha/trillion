@@ -77,10 +77,16 @@
 						<option value="1">내용</option>
 						<option value="1">글쓴이</option>
 					</select>
-					<button onclick="location.href='<c:url value="/study/votewriteform.do"/>'"  >투표등록</button>
+					<button
+						onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록</button>
 				</div>
 			</div>
 			<div class="board_list">
+				<ul>
+					<li>번호</li>
+					<li>제목</li>
+					<li>마감날짜</li>
+				</ul>
 				<c:if test="${empty vlist}">
 					<div>
 						<h2>투표가 없습니다</h2>
@@ -88,15 +94,14 @@
 				</c:if>
 				<c:forEach var="vote" items="${vlist}">
 					<div>
-							<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>" >	
+						<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>">
 							<ul>
 								<li>${vote.num}</li>
 								<li>${vote.title}</li>
 								<li><fmt:formatDate value="${vote.limitDate}"
 										pattern="yyyy-MM-dd" /></li>
 							</ul>
-							</a>
-						</a>
+						</a> </a>
 					</div>
 				</c:forEach>
 			</div>

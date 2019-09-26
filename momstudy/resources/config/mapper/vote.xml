@@ -121,8 +121,18 @@
   	  from tb_vote_aricle
   	 where code = #{code}
 	</select>
+	
+	<delete id="deleteVote" parameterType="int">
+		delete 
+		  from tb_vote
+		 where num = #{num}
+	</delete>
 
-
+	<update id="updateVote" parameterType="hashmap">
+		update tb_vote
+		   set num = #{newNum}
+		 where num = #{oldNum}  
+	</update>
 
 
 
