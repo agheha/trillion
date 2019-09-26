@@ -25,7 +25,16 @@
 <!-- 글 상세 조회 -->
 <select id="selectOneBoard" parameterType="int" resultMap="boardMap">
    select *
-   from tb_free_board;
-   where num = #{num};
+   from tb_free_board
+   where num = #{num}
 </select>
+
+<!-- 글 등록  -->
+<insert id ="insertBoard"  parameterType="Board">
+insert into tb_free_board (
+ title, content 
+ ) values (
+ #{title}, #{content}
+ )
+</insert>
 </mapper>
