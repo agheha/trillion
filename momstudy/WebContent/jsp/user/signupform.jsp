@@ -10,8 +10,9 @@
 
 
 <!-- css -->
-<link rel="stylesheet" href="./../css/common.css">
-<link rel="stylesheet" href="./../css/signup.css">
+<link rel="stylesheet" href="<c:url value="/css/common.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/header.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/signup.css"/>">
 
 <!-- jquery -->
 <script type="text/javascript"

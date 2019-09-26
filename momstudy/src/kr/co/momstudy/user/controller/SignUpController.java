@@ -32,7 +32,7 @@ public class SignUpController extends HttpServlet{
 		String birDate = req.getParameter("year") +"-"+ req.getParameter("month") +"-"+ req.getParameter("date");
 		String gender = req.getParameter("gender");
 		String[] category = req.getParameterValues("category");
-		String page= "";
+		
 		if (!pass1.equals(pass2)) res.sendRedirect(req.getContextPath() + "/user/signupform.do?fail=0");			
 		
 		Date birth = null;
@@ -51,18 +51,15 @@ public class SignUpController extends HttpServlet{
 		user.setPhoneNum(phoneNum);
 		user.setBirth(birth);
 		user.setGender(gender);
+		dao.insertUser(user);
+		
 		for (String val : category) {
 			UserCategory userCategory = new UserCategory();
 			userCategory.setEmail(email);
 			userCategory.setCategoryCode(Integer.parseInt(val));
-			
+			dao.insertCategory(userCategory);
 		}
-		dao.insertUser(user);
-	
-		
 		res.sendRedirect(req.getContextPath() + "/main.do");			
-		
-		
-		
+	
 	}
 }
