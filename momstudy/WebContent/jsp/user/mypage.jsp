@@ -6,23 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="./../css/common.css">
-    <link rel="stylesheet" href="./../css/layout.css">
-    <link rel="stylesheet" href="./../css/mypage.css">
+	<link rel="stylesheet" href="<c:url value="/css/common.css"/>">
+	<link rel="stylesheet" href="<c:url value="/css/layout.css"/>">
+	<link rel="stylesheet" href="<c:url value="/css/mypage.css"/>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
     <title>마이페이지</title>
     <!-- full calendar -->
-    <link rel="stylesheet" type="text/css"  href='./../script/core/main.css' />
-    <link rel="stylesheet" type="text/css"  href='./../script/daygrid/main.css' />
+	<link rel="stylesheet" href="<c:url value="/script/core/main.css"/>">
+	<link rel="stylesheet" href="<c:url value="/script/daygrid/main.css"/>">
     <script type="text/javascript" src='./../script/core/main.js'></script>
     <script type="text/javascript" src='./../script/daygrid/main.js'></script>
 
     <!-- slide plugin -->
-    <link rel="stylesheet" type="text/css" href="../script/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="./../script/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="<c:url value="/script/slick/slick.css"/>">
+    <link rel="stylesheet" href="<c:url value="/script/slick/slick-theme.css"/>">
 
     <!-- jquery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>

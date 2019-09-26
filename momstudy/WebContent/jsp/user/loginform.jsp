@@ -46,8 +46,8 @@
                  		<button>로그인</button>
                  	</div>
                     <div>
-                        <a href="">아이디/비밀번호 찾기</a>
-                        <a href="<c:url value="/user/signupform.do"/>">회원가입</a>
+                        <a href="findform.do">아이디/비밀번호 찾기</a>
+                        <a href="<c:url value="/user/termsform.do"/>">회원가입</a>
                     </div>
                 </form>
             </div>      
