@@ -41,7 +41,7 @@
 						</c:forEach>
 					</tbody>
 					<tfoot>
-					<c:if test="${vote.ariclePlus == 2}">
+					<c:if test="${vote.ariclePlus == 1}">
 						<tr id="addbutton">
 							<td colspan="3"><button type="button" class="vote-btn-add"
 									onclick="add_tr(this)">항목추가</button></td>

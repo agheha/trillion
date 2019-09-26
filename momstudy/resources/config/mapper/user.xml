@@ -15,11 +15,11 @@
 		<result column="gender" property="gender" />
 	</resultMap>
 	
-	<resultMap type="UserCategory" id="userCategoryMap">
+ 	<resultMap type="UserCategory" id="userCategoryMap">
 		<result column="email" property="email"/>
 		<result column="category_code" property="categoryCode"/>
 	</resultMap>
-	
+
 	<!-- 	로그인 -->
 	<select id="selectLogin" resultType="User" parameterType="User">
 		select * 

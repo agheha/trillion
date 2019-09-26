@@ -31,7 +31,7 @@ public class VoteWriteController extends HttpServlet{
 		String title = req.getParameter("title");
 		if(("on".equalsIgnoreCase(req.getParameter("duplication")))) duplication = 1;
 		if("on".equalsIgnoreCase(req.getParameter("anonumous"))) anonumous = 1;
-		if("on".equalsIgnoreCase(req.getParameter("ariclePlus"))) addaricle = 1;
+		if("on".equalsIgnoreCase(req.getParameter("addaricle"))) addaricle = 1;
 		
 		Vote vote = new Vote();
 		vote.setAnonumous(anonumous);

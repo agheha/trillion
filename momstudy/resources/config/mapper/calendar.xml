@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.CalendarDAO">
+
+	<resultMap type="Calendar" id="calendarMap">
+		<result column="num" property="num" />
+		<result column="study_no" property="studyNo" />
+		<result column="content" property="content" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+	</resultMap>
+
+	<!-- 일정 추가 -->
+	<insert id="insertCalendar" parameterType="Calendar">
+		insert into tb_callender(num, study_no, content, start_date, end_date, type
+		) values (
+			seq_tb_callender_num.nextval, #{studyNo}, #{content}, #{startDate}, #{endDate}, #{type})
+	</insert>
+	
+	<!-- 현재 달의 일정 리스트 -->
+	<select id="selectMonth" resultMap="calendarMap" parameterType="int">
+		select *
+		  from tb_callender
+		 where start_date between date_add(now(), interval - 1 month) and now() 
+	</select>
+	
+	<delete id="deleteCalendar" parameterType="Calendar" >
+	
+	</delete>
+</mapper>
