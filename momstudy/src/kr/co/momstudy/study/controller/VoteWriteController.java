@@ -49,7 +49,7 @@ public class VoteWriteController extends HttpServlet{
 				va.setNum(voteNum);
 				dao.insertVoteAricle(va);
 			}
-		}
+		}	
 		resp.sendRedirect("votelist.do");
 		
 	}
