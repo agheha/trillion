@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
+import kr.co.momstudy.repository.vo.VoteCnt;
 
 @WebServlet("/study/voteupdateform.do")
 public class VoteUpdateFormController extends HttpServlet {
@@ -26,7 +28,11 @@ public class VoteUpdateFormController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int num = Integer.parseInt(req.getParameter("num"));
 		Vote vote = dao.selectOneVote(num);
-		List<VoteAricle> valist = dao.selectVoteAricle(num);
+		User user = (User)req.getAttribute("user");
+		VoteCnt vc = new VoteCnt();
+		vc.setNum(num);
+		vc.setEmail(user.getEmail());
+		List<VoteAricle> valist = dao.selectVoteAricle(vc);
 		req.setAttribute("vote", vote);
 		req.setAttribute("valist", valist);
 		
