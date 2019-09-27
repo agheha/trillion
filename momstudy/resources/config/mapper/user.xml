@@ -55,6 +55,13 @@
 		 where name = #{name}
 		   and phone_num = #{phoneNum}
 	</select>
+	<!--  비밀번호 찾기 --> 
+	<select id="searchPass" parameterType="User" resultType="User">
+		select * 
+		  from tb_user
+		 where name = #{name}
+		   and email = #{email}
+	</select>
 </mapper>
 
 
