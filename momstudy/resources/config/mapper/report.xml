@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.co.momstudy.repository.dao.ReportDAO">
+
+	<resultMap type="Report" id="Repor
+	tMap">
+		<result column="NUM" property="num"/>
+		<result column="TYPE" property="type"/>
+		<result column="REPORT_TARGET" property="reportTarget"/>
+		<result column="BOARD_NUM" property="boardNum"/>
+		<result column="CONTENT" property="content"/>
+		<result column="CODE" property="code"/>
+		<result column="EMAIL" property="email"/>
+		<result column="REG_DATE" property="regDate"/>
+		<result column="RESEAON" property="reseaon"/>
+	</resultMap>
+	
+	
+
+</mapper>
