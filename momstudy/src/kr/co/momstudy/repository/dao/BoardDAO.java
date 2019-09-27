@@ -7,6 +7,7 @@ import kr.co.momstudy.repository.vo.Board;
 public interface BoardDAO {
  
 	List<Board> selectBoard();
-	Board selectOneBoard(int no);
+	Board selectOneBoard(int num);
 	void insertBoard(Board board);
+	int deleteBoard(int no);
 }
