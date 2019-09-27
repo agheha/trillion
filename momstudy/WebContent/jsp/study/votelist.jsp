@@ -93,7 +93,18 @@
 					</div>
 				</c:if>
 				<c:forEach var="vote" items="${vlist}">
-					<div>
+						<div>
+						<c:if test="${vote.type eq 2}">
+						<a href="<c:url value="/study/voteresult.do?num=${vote.num}"/>">
+							<ul>
+								<li>${vote.num}</li>
+								<li>${vote.title}<span>(마감된 투표입니다.)</span></li>
+								<li><fmt:formatDate value="${vote.limitDate}"
+										pattern="yyyy-MM-dd" /></li>
+							</ul>
+						</a>
+						</c:if>
+						<c:if test="${vote.type eq 1}">
 						<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>">
 							<ul>
 								<li>${vote.num}</li>
@@ -101,7 +112,8 @@
 								<li><fmt:formatDate value="${vote.limitDate}"
 										pattern="yyyy-MM-dd" /></li>
 							</ul>
-						</a> </a>
+						</a>
+						</c:if>
 					</div>
 				</c:forEach>
 			</div>

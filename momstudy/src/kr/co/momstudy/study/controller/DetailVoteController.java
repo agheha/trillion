@@ -36,6 +36,8 @@ public class DetailVoteController extends HttpServlet{
 		VoteCnt vc = new  VoteCnt();
 		int num = Integer.parseInt(req.getParameter("num"));
 		Vote vote = dao.selectOneVote(num);
+		int cnt = dao.selectVoteResultCnt(num);
+		
 		
 		vc.setEmail(user.getEmail());
 		vc.setNum(vote.getNum());
@@ -44,9 +46,11 @@ public class DetailVoteController extends HttpServlet{
 			return;
 		}
 		
+		
 		List<VoteAricle> valist = dao.selectVoteAricle(num);
 		req.setAttribute("vote", vote);
 		req.setAttribute("valist", valist);
+		req.setAttribute("cnt", cnt);
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/voteform.jsp");
 		rd.forward(req, res);
 	}

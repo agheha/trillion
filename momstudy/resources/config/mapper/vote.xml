@@ -12,6 +12,9 @@
 		<result column="aricle_plus" property="ariclePlus" />
 		<result column="reg_date" property="regDate" />
 		<result column="limit_date" property="limitDate" />
+		<result column="limit_date" property="limitDate" />
+		<result column="type" property="type" />
+		<result column="email" property="email" />
 	</resultMap>
 
 	<resultMap type="VoteAricle" id="voteAricleMap">
@@ -30,9 +33,9 @@
 			from dual
 		</selectKey>
 		insert into tb_vote(study_no, num, title, duplication, anonumous,
-		aricle_plus
+		aricle_plus, email
 		) values (#{studyNo}, #{num}, #{title}, #{duplication},
-		#{anonumous}, #{ariclePlus})
+		#{anonumous}, #{ariclePlus},#{email})
 	</insert>
 
 	<!-- 투표를 다 가져옴 -->
@@ -40,6 +43,7 @@
 		select *
 		from tb_vote
 		where study_no = #{studyNo}
+		order by num desc
 	</select>
 
 	<!-- 투표 1개를 가져옴 -->
@@ -56,7 +60,6 @@
 		tb_vote_aricle(num, code, content
 		) values (#{num},
 		seq_vote_aricle_code.nextval, #{content})
-
 	</insert>
 
 	<!-- 투표 항목 1개의 투표를 함 -->
@@ -89,8 +92,9 @@
 	<select id="selectVoteAricle" parameterType="int"
 		resultMap="voteAricleMap">
 		select *
-		from tb_vote_aricle
-		where num = #{num}
+		  from tb_vote_aricle
+		 where num = #{num}
+	  	 order by code
 	</select>
 
 	<select id="selectVoteResultCnt" parameterType="int"
