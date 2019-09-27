@@ -6,17 +6,17 @@
 
 	<resultMap type="Report" id="Repor
 	tMap">
-		<result column="NUM" property="num"/>
-		<result column="TYPE" property="type"/>
-		<result column="REPORT_TARGET" property="reportTarget"/>
-		<result column="BOARD_NUM" property="boardNum"/>
-		<result column="CONTENT" property="content"/>
-		<result column="CODE" property="code"/>
-		<result column="EMAIL" property="email"/>
-		<result column="REG_DATE" property="regDate"/>
-		<result column="RESEAON" property="reseaon"/>
+		<result column="NUM" property="num" />
+		<result column="TYPE" property="type" />
+		<result column="REPORT_TARGET" property="reportTarget" />
+		<result column="BOARD_NUM" property="boardNum" />
+		<result column="CONTENT" property="content" />
+		<result column="CODE" property="code" />
+		<result column="EMAIL" property="email" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="RESEAON" property="reseaon" />
 	</resultMap>
-	
-	
+
+
 
 </mapper>
