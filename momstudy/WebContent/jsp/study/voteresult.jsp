@@ -24,8 +24,9 @@
 					<tbody id=aricle>
 						<c:forEach var="aricle" items="${valist}">
 							<tr class="vote-row">
-							
-								<td colspan="2" class="poll-option" ><span>${aricle.content}</span><span class="votecnt">${aricle.list.size()}표</span>
+								<td colspan="2" class="poll-option" >
+								<c:if test="${aricle.type == 2}"><span class="myariclecheck">V</span></c:if>
+								<span>${aricle.content}</span><span class="votecnt">${aricle.list.size()}표</span>
 								<c:choose>
 								<c:when test="${vote.anonumous == 2}">
 								<a href='<c:url value="/study/voteresultdetail.do?code=" />${aricle.code}'><div class="poll-option-bar" style="width:${aricle.list.size()/voteCnt*100}%"></div></a>								

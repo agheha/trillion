@@ -21,6 +21,7 @@
 		<result column="num" property="num" />
 		<result column="code" property="code" />
 		<result column="content" property="content" />
+		<result column="type" property="type" />
 		<collection property="list" column="code"
 			select="selectResult" />
 	</resultMap>
@@ -89,12 +90,26 @@
 		 where email = #{email}
 	</select>
 	<!-- 투표 1개의 항목들을 받아옴 -->
-	<select id="selectVoteAricle" parameterType="int"
+	<select id="selectVoteAricle" parameterType="VoteCnt"
 		resultMap="voteAricleMap">
-		select *
-		  from tb_vote_aricle
-		 where num = #{num}
-	  	 order by code
+    select c.num,
+           c.code,
+           c.content, 
+           nvl(d.type,1) as type
+     from tb_vote_aricle c
+left outer join (select a.num,
+                        a.code,
+                        a.content,
+                        '2' type
+                        from tb_vote_aricle a
+                  inner join (select code
+                                from tb_vote_result
+                               where email = #{email}) b            
+                          on a.code = b.code
+                       where num = #{num}
+                       order by code) d
+        on d.code = c.code
+     where c.num = #{num}
 	</select>
 
 	<select id="selectVoteResultCnt" parameterType="int"
@@ -138,7 +153,17 @@
 		 where num = #{oldNum}  
 	</update>
 
-
+	<select id="selectMyVote" parameterType="VoteCnt" resultType="int">
+		select a.code
+		  from tb_vote_aricle a
+         inner join (select code
+                      from tb_vote_result
+                     where email = #{email}) b
+            on a.code = b.code
+		 where num = #{num}
+	  	 order by code
+	</select>
+		
 
 
 </mapper>

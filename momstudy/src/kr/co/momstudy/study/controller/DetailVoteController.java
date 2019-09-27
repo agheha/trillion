@@ -38,7 +38,6 @@ public class DetailVoteController extends HttpServlet{
 		Vote vote = dao.selectOneVote(num);
 		int cnt = dao.selectVoteResultCnt(num);
 		
-		
 		vc.setEmail(user.getEmail());
 		vc.setNum(vote.getNum());
 		if(dao.selectCheckResult(vc) > 0) {
@@ -47,7 +46,7 @@ public class DetailVoteController extends HttpServlet{
 		}
 		
 		
-		List<VoteAricle> valist = dao.selectVoteAricle(num);
+		List<VoteAricle> valist = dao.selectVoteAricle(vc);
 		req.setAttribute("vote", vote);
 		req.setAttribute("valist", valist);
 		req.setAttribute("cnt", cnt);

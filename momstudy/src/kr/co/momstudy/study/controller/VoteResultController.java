@@ -1,6 +1,7 @@
 package kr.co.momstudy.study.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
+import kr.co.momstudy.repository.vo.VoteCnt;
 
 @WebServlet("/study/voteresult.do")
 public class VoteResultController extends HttpServlet{
@@ -27,11 +30,15 @@ public class VoteResultController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
 		int num = Integer.parseInt(req.getParameter("num"));
 		Vote vote = dao.selectOneVote(num);
 		int voteCnt = dao.selectVoteResultCnt(vote.getNum());
-		List<VoteAricle> valist = dao.selectVoteAricle(num);
+		
+		VoteCnt vc = new VoteCnt();		
+		User user = (User)req.getSession().getAttribute("user");
+		vc.setNum(num);
+		vc.setEmail(user.getEmail());
+		List<VoteAricle> valist = dao.selectVoteAricle(vc);
 		req.setAttribute("vote", vote);
 		req.setAttribute("valist", valist);
 		req.setAttribute("voteCnt", voteCnt);
