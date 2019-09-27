@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
 
@@ -23,6 +24,8 @@ public class VoteWriteController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		User user = (User)req.getSession().getAttribute("user");
+		
 		Enumeration<String> names = req.getParameterNames();
 		int duplication = 2;
 		int anonumous= 2;
@@ -39,6 +42,8 @@ public class VoteWriteController extends HttpServlet{
 		vote.setDuplication(duplication);
 		vote.setTitle(title);
 		vote.setStudyNo(1);
+		vote.setEmail(user.getEmail());
+		
 		dao.insertVote(vote);
 		int voteNum = vote.getNum();
 		
