@@ -25,9 +25,7 @@ public class FindEmailController extends HttpServlet{
 		User user = new User();
 		user.setName(req.getParameter("name"));
 		user.setPhoneNum(req.getParameter("phnum"));
-		if (dao.searcheEmail(user) == -1) {
-			req.setAttribute("fail", fail);			
-		}
+	
 		req.getRequestDispatcher("/jsp/user/findform.jsp").forward(req, res);
 	}
 }
