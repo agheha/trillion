@@ -17,6 +17,8 @@
 		<typeAlias alias="Category" type="kr.co.momstudy.repository.vo.Category" />
 		<typeAlias alias="Board" type="kr.co.momstudy.repository.vo.Board" />
 		<typeAlias alias="ReviewBoard" type="kr.co.momstudy.repository.vo.ReviewBoard" />
+		<typeAlias alias="Report" type="kr.co.momstudy.repository.vo.Report" />
+		<typeAlias alias="ReportReseaon" type="kr.co.momstudy.repository.vo.ReportReseaon" />
 	</typeAliases>
 	 
 	
@@ -39,6 +41,7 @@
 		<mapper resource="config/mapper/calendar.xml"/>
 		<mapper resource="config/mapper/board.xml"/>
 		<mapper resource="config/mapper/reviewBoard.xml"/>
+		<mapper resource="config/mapper/report.xml"/>
 	</mappers>
 	
 </configuration>
