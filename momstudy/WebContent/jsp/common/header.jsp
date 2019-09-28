@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./../css/common.css">
-        <link rel="stylesheet" href="./../css/header.css">
-
-        <title>header</title>
-    </head>
-    <body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="header">
             <div class="header_top_wrap">
                 <div><a href="./main.html">All About Study</a></div>
                 <div>
                     <ul>
-                        <li><a href="./login.html">로그인</a></li>
-                        <li>/</li>
+                    	<c:choose>
+                    		<c:when test="${empty user}">
+                        		<li><a href='<c:url value="/loginform.do"></c:url>'>로그인</a></li>
+                    		</c:when>
+	                    	<c:otherwise>
+    	                    	<li><a href='<c:url value="/user/logout.do"></c:url>'>로그아웃</a></li>
+       		             	</c:otherwise>
+                    	</c:choose>
+                    	<li>/</li>
                         <li><a href="./terms.html">회원가입</a></li>
                     </ul>
                 </div>
@@ -31,5 +27,3 @@
                 <div><a href="./inquire_board.html">문의하기</a></div>
             </div>
         </div>
-    </body>
-</html>
