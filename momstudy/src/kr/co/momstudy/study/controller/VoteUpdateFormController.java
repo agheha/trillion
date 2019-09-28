@@ -28,7 +28,7 @@ public class VoteUpdateFormController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int num = Integer.parseInt(req.getParameter("num"));
 		Vote vote = dao.selectOneVote(num);
-		User user = (User)req.getAttribute("user");
+		User user = (User)req.getSession().getAttribute("user");
 		VoteCnt vc = new VoteCnt();
 		vc.setNum(num);
 		vc.setEmail(user.getEmail());

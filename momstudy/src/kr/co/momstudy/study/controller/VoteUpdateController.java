@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
 
@@ -27,6 +28,9 @@ public class VoteUpdateController extends HttpServlet{
 		int num = Integer.parseInt(req.getParameter("num"));
 		dao.deleteVote(num);
 		
+		User user = (User)req.getSession().getAttribute("user");
+		
+		
 		Enumeration<String> names = req.getParameterNames();
 		int duplication = 2;
 		int anonumous= 2;
@@ -38,6 +42,7 @@ public class VoteUpdateController extends HttpServlet{
 		if("on".equalsIgnoreCase(req.getParameter("addaricle"))) addaricle = 1;
 		
 		Vote vote = new Vote();
+		vote.setEmail(user.getEmail());
 		vote.setAnonumous(anonumous);
 		vote.setAriclePlus(addaricle);
 		vote.setDuplication(duplication);
