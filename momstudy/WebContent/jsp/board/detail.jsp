@@ -80,7 +80,7 @@
 
 			<div class="buttons">
 				<button>수정</button>
-				<button>삭제</button>
+				<button type="button"><a class="del" href='delete.do?num=${board.num}'>삭제</a></button>
 			</div>
 		</div>
 

@@ -36,8 +36,6 @@ public class DetailBoardController extends HttpServlet {
 		*/
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/detail.jsp");
 		rd.forward(req, res);
-		
-		
 	}
 }
 

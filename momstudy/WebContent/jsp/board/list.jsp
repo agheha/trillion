@@ -70,7 +70,7 @@
                             <option value="2">내용</option>
                             <option value="3">글쓴이</option>
                         </select>
-                        <button>글등록</button>
+                        <button type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
                     </div>
                 </div>
                 <div class="board_list">
