@@ -37,11 +37,11 @@
     box-sizing: border-box;
     padding-left: 15px;
 }
-#birth_year {
+#birth_year, #local1 {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
-#birth_date {
+#birth_date, #local2 {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     border-right: 1px solid #dadada;
@@ -61,6 +61,40 @@
     -moz-appearance: none;
     appearance: none;
     margin-bottom: 10px;
+}
+.local {
+    display: flex;
+    margin-bottom: 10px;
+}
+#local1 {
+    width: 50%;
+    height: 45px;
+    box-sizing: border-box;
+    padding:0 30px 0 15px;
+    border: 1px solid #dadada;
+    border-right: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-appearance: none;
+    background: #FFF 
+    url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 
+    198px 50% no-repeat;
+    background-size: 15px;
+}
+#local2 {
+    width: 50%;
+    height: 45px;
+    box-sizing: border-box;
+    padding:0 30px 0 15px;
+    border: 1px solid #dadada;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: #FFF; 
+    -webkit-appearance: none;
+    background: #FFF 
+    url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 
+    198px 50% no-repeat;
+    background-size: 15px;
 }
 
 .category_wrap {
