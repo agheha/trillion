@@ -7,7 +7,14 @@ public class VoteAricle {
 	private int code;
 	private String content;
 	private List<VoteResult> list;
+	private int type;
 
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
 	public List<VoteResult> getList() {
 		return list;
 	}

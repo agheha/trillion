@@ -14,7 +14,13 @@
 			<div class="poll-voter">
 				<span class="poll-title">${vote.title}</span>
 				<button class="vote-btn" onclick="votesubmit(2)">투표</button>
-				<button class="vote-btn" type="button" id="deletevote">삭제</button>
+				<c:if test="${user.email eq vote.email}">
+				<a href='<c:url value="/study/deletevote.do?num="/>${vote.num}'><button class="vote-btn" type="button" id="deletevote">삭제</button></a>
+				<c:if test="${cnt eq 0}">
+				<a href='<c:url value="/study/voteupdateform.do?num="/>${vote.num}'><button class="vote-btn" type="button" id="deletevote">수정</button></a>
+				</c:if>
+				</c:if>
+				
 				<hr style="border: none; height: 2px; background: grey;">
 				<table class="poll-list">
 					<tbody id=aricle>
@@ -72,7 +78,6 @@
 			tr.innerHTML = str;
 			document.getElementById('aricle').appendChild(tr);
 			document.getElementById('addbutton').removeChild(obj.parentNode);
-
 		}
 
 		function remove_tr(obj) {

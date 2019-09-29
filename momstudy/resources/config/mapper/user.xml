@@ -15,11 +15,16 @@
 		<result column="gender" property="gender" />
 	</resultMap>
 	
- 	<resultMap type="UserCategory" id="userCategoryMap">
+	<resultMap type="UserCategory" id="userCategoryMap">
 		<result column="email" property="email"/>
 		<result column="category_code" property="categoryCode"/>
 	</resultMap>
-
+	
+	<resultMap type="Category" id="categoryMap">
+		<result column="category_name" property="categoryName"/>
+		<result column="category_code" property="categoryCode"/>
+	</resultMap>
+	
 	<!-- 	로그인 -->
 	<select id="selectLogin" resultType="User" parameterType="User">
 		select * 
@@ -34,10 +39,29 @@
 	</insert>
 	
 	<!--  관심분야 -->
-	<insert id="insertcadegory" parameterType="UserCategory" >
-		insert into tb_user(email, category_code)
+	<insert id="insertCategory" parameterType="UserCategory" >
+		insert into tb_user_Category(email, category_code)
 		values(#{email}, #{categoryCode})
 	</insert>
+	
+	<select id="selectCategory" resultMap="categoryMap">
+		select * 
+		  from tb_category
+	</select>
+	<!--  아이디 찾기 -->
+	<select id="searchEmail" resultType="User" parameterType="User">
+		select * 
+		  from tb_user
+		 where name = #{name}
+		   and phone_num = #{phoneNum}
+	</select>
+	<!--  비밀번호 찾기 --> 
+	<select id="searchPass" parameterType="User" resultType="User">
+		select * 
+		  from tb_user
+		 where name = #{name}
+		   and email = #{email}
+	</select>
 </mapper>
 
 

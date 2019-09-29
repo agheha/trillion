@@ -1,0 +1,54 @@
+#layout > form > div {
+    width: 100%;
+    margin-bottom:15px;
+}
+#layout > form > div > p {
+    margin-bottom: 8px;
+}
+#layout > form > div > input {
+    width: 100%;
+    margin-bottom: 18px;
+    border: 1px solid #dadada;
+}
+#layout > form > div > textarea {
+    width: 100%;
+    resize: none;
+    overflow: auto;
+    /* resize: vertical; */
+    height: 200px;
+    overflow:visible;
+    margin-bottom: 18px;
+    border: 1px solid #dadada;
+}
+#layout > form > div.buttons {
+    width: unset;
+    margin-bottom: 40px;
+}
+#layout > form > div.buttons > button {
+    margin-right: 0;
+}
+.upload {
+    width: auto;
+}
+.upload label { 
+    display: inline-block; 
+    padding: 6px 15px; 
+    color: #999; 
+    font-size: inherit; 
+    line-height: normal; 
+    vertical-align: middle; 
+    background-color: transparent;
+    cursor: pointer; 
+    border: 1px solid #dadada;
+    border-radius: 4px;
+} 
+.upload input[type="file"] {
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip:rect(0,0,0,0); 
+    border: 0; 
+}

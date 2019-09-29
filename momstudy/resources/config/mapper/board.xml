@@ -19,13 +19,35 @@
 		select *
 		from tb_free_board
 		order by 
-		num desc
+		type asc, num desc
 	</select>
 	
 <!-- 글 상세 조회 -->
 <select id="selectOneBoard" parameterType="int" resultMap="boardMap">
    select *
-   from tb_free_board;
-   where num = #{num};
+   from tb_free_board
+   where num = #{num}
 </select>
+
+<!-- 글 등록  -->
+<insert id="insertBoard" parameterType="Board">
+insert into tb_free_board (num, title, content, email) 
+values (seq_free_board_num.nextval, #{title}, #{content}, #{email})
+</insert>
+
+<!-- 글 수정 -->
+<update id="updateBoard" parameterType="Board">
+ update tb_free_board
+    set title = #{title},
+       content = #{content}
+       where num = #{num}  
+</update>
+
+<!-- 글 삭제 -->
+<delete id="deleteBoard" parameterType="int">
+   delete
+     from tb_free_board
+     where
+     num = #{num}
+</delete>
 </mapper>

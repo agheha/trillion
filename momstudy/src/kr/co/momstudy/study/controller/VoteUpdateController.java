@@ -2,6 +2,7 @@ package kr.co.momstudy.study.controller;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +16,20 @@ import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
 
-@WebServlet("/study/votewrite.do")
-public class VoteWriteController extends HttpServlet{
+@WebServlet("/study/voteupdate.do")
+public class VoteUpdateController extends HttpServlet{
 	VoteDAO dao;
-	public VoteWriteController() {
+	public VoteUpdateController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(VoteDAO.class);
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int num = Integer.parseInt(req.getParameter("num"));
+		dao.deleteVote(num);
+		
 		User user = (User)req.getSession().getAttribute("user");
+		
 		
 		Enumeration<String> names = req.getParameterNames();
 		int duplication = 2;
@@ -37,13 +42,12 @@ public class VoteWriteController extends HttpServlet{
 		if("on".equalsIgnoreCase(req.getParameter("addaricle"))) addaricle = 1;
 		
 		Vote vote = new Vote();
+		vote.setEmail(user.getEmail());
 		vote.setAnonumous(anonumous);
 		vote.setAriclePlus(addaricle);
 		vote.setDuplication(duplication);
 		vote.setTitle(title);
 		vote.setStudyNo(1);
-		vote.setEmail(user.getEmail());
-		
 		dao.insertVote(vote);
 		int voteNum = vote.getNum();
 		
@@ -55,8 +59,16 @@ public class VoteWriteController extends HttpServlet{
 				va.setNum(voteNum);
 				dao.insertVoteAricle(va);
 			}
-		}	
+		}
+		
+		HashMap<String,Integer> nums = new HashMap();
+		nums.put("newNum", num);
+		nums.put("oldNum", voteNum);
+		
+		dao.updateVote(nums);
+		
 		resp.sendRedirect("votelist.do");
+		
 		
 	}
 	

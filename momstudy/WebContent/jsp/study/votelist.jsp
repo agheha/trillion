@@ -33,7 +33,12 @@
 
 </head>
 <body>
-	<header id="header"></header>
+	<header id="header">
+	
+		<%--헤더 인클루드 --%>
+	<%@include file="/jsp/common/header.jsp" %>
+	
+	</header>
 
 	<!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
 	<section class="background_wrap">
@@ -43,30 +48,12 @@
 		</div>
 	</section>
 
+
 	<section id="layout">
-
-		<!-- jsp 작업 시 incluide로 변경 -->
-		<div>
-			<div class="profile">
-				<img src="<c:url value="/images/test_img2.jpg" />" alt="testImg">
-			</div>
-			<div class="left_list">
-				<div>
-					<p>
-						<a href="./study.html">스터디명</a>
-					</p>
-					<ul>
-						<!-- 스터디장 화면 다르게 보임 -->
-						<li><a href="./studymembers.html">멤버</a></li>
-						<li><a href="./studyvote.html">투표</a></li>
-						<li><a href="./studyschedule.html">일정</a></li>
-						<li><a href="./studyboard.html">게시판</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-
+		
+		<%--사이드바 인클루드 --%>
+		<%@include file="/jsp/common/sidebar.jsp" %>
+		
 		<div class="study_right_wrap">
 			<div class="vote_title">
 				<p>투표 하기</p>
@@ -77,26 +64,43 @@
 						<option value="1">내용</option>
 						<option value="1">글쓴이</option>
 					</select>
-					<button onclick="location.href='<c:url value="/study/votewriteform.do"/>'"  >투표등록</button>
+					<button
+						onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록</button>
 				</div>
 			</div>
 			<div class="board_list">
+				<ul>
+					<li>번호</li>
+					<li>제목</li>
+					<li>마감날짜</li>
+				</ul>
 				<c:if test="${empty vlist}">
 					<div>
 						<h2>투표가 없습니다</h2>
 					</div>
 				</c:if>
 				<c:forEach var="vote" items="${vlist}">
-					<div>
-							<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>" >	
+						<div>
+						<c:if test="${vote.type eq 2}">
+						<a href="<c:url value="/study/voteresult.do?num=${vote.num}"/>">
+							<ul>
+								<li>${vote.num}</li>
+								<li>${vote.title}<span>(마감된 투표입니다.)</span></li>
+								<li><fmt:formatDate value="${vote.limitDate}"
+										pattern="yyyy-MM-dd" /></li>
+							</ul>
+						</a>
+						</c:if>
+						<c:if test="${vote.type eq 1}">
+						<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>">
 							<ul>
 								<li>${vote.num}</li>
 								<li>${vote.title}</li>
 								<li><fmt:formatDate value="${vote.limitDate}"
 										pattern="yyyy-MM-dd" /></li>
 							</ul>
-							</a>
 						</a>
+						</c:if>
 					</div>
 				</c:forEach>
 			</div>

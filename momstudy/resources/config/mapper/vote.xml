@@ -12,12 +12,16 @@
 		<result column="aricle_plus" property="ariclePlus" />
 		<result column="reg_date" property="regDate" />
 		<result column="limit_date" property="limitDate" />
+		<result column="limit_date" property="limitDate" />
+		<result column="type" property="type" />
+		<result column="email" property="email" />
 	</resultMap>
 
 	<resultMap type="VoteAricle" id="voteAricleMap">
 		<result column="num" property="num" />
 		<result column="code" property="code" />
 		<result column="content" property="content" />
+		<result column="type" property="type" />
 		<collection property="list" column="code"
 			select="selectResult" />
 	</resultMap>
@@ -30,9 +34,9 @@
 			from dual
 		</selectKey>
 		insert into tb_vote(study_no, num, title, duplication, anonumous,
-		aricle_plus
+		aricle_plus, email
 		) values (#{studyNo}, #{num}, #{title}, #{duplication},
-		#{anonumous}, #{ariclePlus})
+		#{anonumous}, #{ariclePlus},#{email})
 	</insert>
 
 	<!-- 투표를 다 가져옴 -->
@@ -40,6 +44,7 @@
 		select *
 		from tb_vote
 		where study_no = #{studyNo}
+		order by num desc
 	</select>
 
 	<!-- 투표 1개를 가져옴 -->
@@ -56,7 +61,6 @@
 		tb_vote_aricle(num, code, content
 		) values (#{num},
 		seq_vote_aricle_code.nextval, #{content})
-
 	</insert>
 
 	<!-- 투표 항목 1개의 투표를 함 -->
@@ -86,11 +90,26 @@
 		 where email = #{email}
 	</select>
 	<!-- 투표 1개의 항목들을 받아옴 -->
-	<select id="selectVoteAricle" parameterType="int"
+	<select id="selectVoteAricle" parameterType="VoteCnt"
 		resultMap="voteAricleMap">
-		select *
-		from tb_vote_aricle
-		where num = #{num}
+    select c.num,
+           c.code,
+           c.content, 
+           nvl(d.type,1) as type
+     from tb_vote_aricle c
+left outer join (select a.num,
+                        a.code,
+                        a.content,
+                        '2' type
+                        from tb_vote_aricle a
+                  inner join (select code
+                                from tb_vote_result
+                               where email = #{email}) b            
+                          on a.code = b.code
+                       where num = #{num}
+                       order by code) d
+        on d.code = c.code
+     where c.num = #{num}
 	</select>
 
 	<select id="selectVoteResultCnt" parameterType="int"
@@ -121,10 +140,30 @@
   	  from tb_vote_aricle
   	 where code = #{code}
 	</select>
+	
+	<delete id="deleteVote" parameterType="int">
+		delete 
+		  from tb_vote
+		 where num = #{num}
+	</delete>
 
+	<update id="updateVote" parameterType="hashmap">
+		update tb_vote
+		   set num = #{newNum}
+		 where num = #{oldNum}  
+	</update>
 
-
-
+	<select id="selectMyVote" parameterType="VoteCnt" resultType="int">
+		select a.code
+		  from tb_vote_aricle a
+         inner join (select code
+                      from tb_vote_result
+                     where email = #{email}) b
+            on a.code = b.code
+		 where num = #{num}
+	  	 order by code
+	</select>
+		
 
 
 </mapper>

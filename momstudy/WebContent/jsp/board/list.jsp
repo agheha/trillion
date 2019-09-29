@@ -20,7 +20,7 @@
               integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
               crossorigin="anonymous">
         <link rel="stylesheet" 
-           href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+              href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
         <title>스터디</title>
 
@@ -70,7 +70,7 @@
                             <option value="2">내용</option>
                             <option value="3">글쓴이</option>
                         </select>
-                        <button>글등록</button>
+                        <button type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
                     </div>
                 </div>
                 <div class="board_list">
@@ -81,7 +81,7 @@
                         </c:if>
                         <c:forEach var="b" items="${list}">
                         <div>
-                            <a href="<c:url value="/study/detail.do=${b.num}" />">
+                            <a href="<c:url value="/board/detail.do?no=${b.num}" />">
 	                            <ul>
 	                                <li>${b.num}</li>
 	                                <li>${b.title}</li>
