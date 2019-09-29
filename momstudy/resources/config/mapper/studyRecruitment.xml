@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.StudyDAO">
+	<resultMap type="StudyRecruitment" id="studyRecruitmentMap">
+		<result column="num" property="num" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="email" property="email" />
+		<result column="condition" property="condition" />
+		<result column="category_code" property="categoryCode" />
+		<result column="address_code" property="addressCode" />
+		<result column="study_num" property="studyNum" />
+		<result column="open_condition" property="openCondition" />
+		<result column="see_cnt" property="seeCnt" />
+		<result column="file_group_code" property="fileGroupCode" />
+		<result column="comment_group_code" property="commentGroupCode" />
+	</resultMap>
