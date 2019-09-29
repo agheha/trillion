@@ -15,9 +15,9 @@
 				<c:if test="${vote.type eq 1}">
 				<form class="revote" action="revote.do" method="post">
 				<button class="vote-btn">재투표</button><input type="hidden" value="${vote.num}" name="num">
-				<a href="<c:url value="/study/votelist.do" />"><button class="vote-btn" id="golist" type="button">목록</button></a>
 				</form>
 				</c:if>			
+				<a href="<c:url value="/study/votelist.do" />"><button class="vote-btn" id="golist" type="button">목록</button></a>
 			</div>
 				<span class="poll-title">${vote.title}</span>
 				<hr style="border: none; height: 2px; background: grey;">

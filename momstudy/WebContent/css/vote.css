@@ -14,12 +14,6 @@ body{
   width: 100%;
 }
 
-.contents{
-  display: grid;
-  grid-template-columns: 500px 68px;
-  grid-template-rows: 1fr;
-  margin: auto;
-}
 .buttons{
 	height: 43px;
 }
