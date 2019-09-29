@@ -9,5 +9,6 @@ public interface BoardDAO {
 	List<Board> selectBoard();
 	Board selectOneBoard(int num);
 	void insertBoard(Board board);
-	int deleteBoard(int no);
+	void updateBoard(Board board);
+	int deleteBoard(int num);	
 }
