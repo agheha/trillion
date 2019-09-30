@@ -50,4 +50,39 @@ values (seq_free_board_num.nextval, #{title}, #{content}, #{email})
      where
      num = #{num}
 </delete>
+
+ 
+<!-- 댓글 파트 시작 -->
+<!--  
+<resultMap id="commentMap" type="Comment">
+    <result column="email" property="email" />
+    <result column="num" property="num" />
+    <result column="content" property="content" />
+    <result column="regdate" property="regDate" />
+    <result column="comment_group_code" property="commentGroupCode" />
+    <result column="parent" property="parent" />
+</resultMap>
+-->
+
+<!-- 댓글 리스트 -->
+<!--  
+<select id="selectComment" parameterType="int" resultMap="commentMap">
+     select *
+       from tb_comment
+      where num = #{num}
+      order by comment_group_code
+</select>
+-->
+
+<!-- 댓글 등록 -
+<insert id="insertComment" parameterType="Comment">
+  insert into tb_comment(
+    num, comment_group_code, email, content 
+   ) values (
+   seq_comment_num.nextVal,
+   #{comment_group_code}, #{email}, #{content}
+   ) 
+</insert>   
+-->
+
 </mapper>
