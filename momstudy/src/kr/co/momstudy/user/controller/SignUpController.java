@@ -15,6 +15,7 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.UserCategory;
+import kr.co.momstudy.util.PhoneNumformat;
 
 @WebServlet("/user/signup.do")
 public class SignUpController extends HttpServlet{
@@ -29,6 +30,7 @@ public class SignUpController extends HttpServlet{
 		String pass2 = req.getParameter("pass2");
 		String name = req.getParameter("name");
 		String phoneNum = req.getParameter("phnum");
+		phoneNum = PhoneNumformat.phone(phoneNum);
 		String birDate = req.getParameter("year") +"-"+ req.getParameter("month") +"-"+ req.getParameter("date");
 		String gender = req.getParameter("gender");
 		String[] category = req.getParameterValues("category");

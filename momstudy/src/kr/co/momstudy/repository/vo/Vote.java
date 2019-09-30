@@ -11,7 +11,21 @@ public class Vote {
 	int ariclePlus;
 	Date regDate;
 	Date limitDate;
+	String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	int type;
 	
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
 	public int getStudyNo() {
 		return studyNo;
 	}

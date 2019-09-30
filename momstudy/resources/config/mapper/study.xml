@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.StudyDAO">
+	<resultMap type="Study" id="studyMap">
+		<result column="name" property="name" />
+		<result column="reg_date" property="regDate" />
+		<result column="email" property="email" />
+		<result column="category_code" property="categoryCode" />
+		<result column="address_code" property="addressCode" />
+		<result column="num" property="num" />
+	</resultMap>
+	
+	<!-- 스터디 등록 -->
+	<insert id="insertStudy" parameterType="Study">
+		insert into tb_study(name, reg_date, email, category_code, address_code, num
+		) values (
+			#{name}, #{regDate}, #{email}, #{categoryCode}, #{addressCode}, seq_study_num.nextval)
+		)
+	</insert>
+	</mapper>

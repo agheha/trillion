@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+        <!-- css -->
+        <link rel="stylesheet" href="./../css/common.css">
+        <link rel="stylesheet" href="./../css/signup.css">
+
+        <!-- jquery -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        
+        <title>Login</title>
+    </head>
+    <body>
+        <header id="header"></header>
+
+        <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+        <section class="background_wrap">
+            <div class="background">
+                <h1>스터디 등록</h1>
+                <p>필수 항목은 꼭 적어주세요.</p>
+            </div>
+        </section>
+
+        <!-- 아이디 및 비밀번호를 잘못 입력 시 -->
+        <!-- 오류를 띄워주는 영역이 추가될 예정 -->
+        <section>
+            <div class="fieldset">
+                <p>스터디 이름</p>
+                <input class="user_id" type="text" name="msg">
+
+                <!-- DB에서 tb_address 의 내용 가져와 넣어야 한다.-->
+                <p>활동 지역</p>
+                <div class="local">
+                    <select id="local1" name="address">
+                        <option value="1">강원</option>
+                        <option value="2">경기</option>
+                        <option value="3">서울</option>
+                        <option value="4">인천</option>
+                        <option value="5">전북</option>
+                        <option value="6">전남</option>
+                        <option value="7">충북</option>
+                        <option value="8">충남</option>
+                        <option value="0" selected>시·도</option>
+                    </select>
+                    <select id="local2" name="address_detail">
+                        <option value="1">강릉</option>
+                        <option value="2">속초</option>
+                        <option value="0" selected>읍·면·동</option>
+                    </select>
+                </div>
+                
+                <p>스터디 분류</p>
+                <div class="category_wrap">
+                    <ul>
+                        <li>
+                            <input id="it" type="checkbox" name="it" />
+                            <label for="it">IT</label>
+                        </li>
+                        <li>
+                            <input id="certi" type="checkbox" name="certi" />
+                            <label for="certi">자격증</label>
+                        </li>
+                        <li>
+                            <input id="langu" type="checkbox" name="langu" />
+                            <label for="langu">언어</label>
+                        </li>
+                        <li>
+                            <input id="sport" type="checkbox" name="sport" />
+                            <label for="sport">운동</label>
+                        </li>
+
+                        <li>
+                            <input id="hobby" type="checkbox" name="hobby" />
+                            <label for="hobby">취미</label>
+                        </li>
+                        <li>
+                            <input id="art" type="checkbox" name="art" />
+                            <label for="art">예술</label>
+                        </li>
+                        <li>
+                            <input id="music" type="checkbox" name="music" />
+                            <label for="music">음악</label>
+                        </li>
+                        <li>
+                            <input id="basicstudy" type="checkbox" name="basicstudy" />
+                            <label for="basicstudy">기초학문</label>
+                        </li>  
+                    </ul>
+                </div>
+
+
+                <input type="button" class="login_submit_btn" value="등록" />
+            </div>
+        </section>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                
+                // header 불러오기
+                $("#header").load("header.html");
+            
+                // category_wrap & fieldset height 맞추기
+                // var heightArray = $(".fieldset").map(function(){
+                //     return $(this).height();
+                // }).get();
+                // var maxHeight = Math.max.apply(Math, heightArray);
+                // $(".fieldset").height(maxHeight);
+            });
+        </script>
+    </body>
+</html>

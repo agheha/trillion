@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.repository.vo.User;
+import kr.co.momstudy.util.PhoneNumformat;
 
 @WebServlet("/user/findemail.do")
 public class FindEmailController extends HttpServlet{
@@ -21,13 +22,15 @@ public class FindEmailController extends HttpServlet{
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String fail = "failpass";
-		User user = new User();
-		user.setName(req.getParameter("name"));
-		user.setPhoneNum(req.getParameter("phnum"));
-		if (dao.searcheEmail(user) == -1) {
-			req.setAttribute("fail", fail);			
+		String  result = "succese";
+		User u = new User();
+		u.setName(req.getParameter("name"));
+		u.setPhoneNum(PhoneNumformat.phone(req.getParameter("phnum")));
+		User user = dao.searchEmail(u);
+		if (user == null) {
+			result = "fail";
 		}
+		req.setAttribute("user", user);
 		req.getRequestDispatcher("/jsp/user/findform.jsp").forward(req, res);
 	}
 }

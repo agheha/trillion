@@ -19,7 +19,7 @@ public interface VoteDAO {
 	
 	 void insertVoteAricle(VoteAricle va);
 	
-	 List<VoteAricle> selectVoteAricle(int num);
+	 List<VoteAricle> selectVoteAricle(VoteCnt vc);
 	
 	 void insertVoteResult(VoteResult vr);
 
@@ -30,6 +30,8 @@ public interface VoteDAO {
 	 int selectVoteResultCnt(int num);
 	
 	 void deleteVoteResultByEmail(VoteCnt vc);
+	 
+	 int[] selectMyVote(VoteCnt vc);
 	
 	 String selectAricleContent(int code); 
 	

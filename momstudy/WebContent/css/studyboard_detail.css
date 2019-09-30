@@ -35,3 +35,7 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #dadada;
 }
+.del {
+	color: black;
+	text-decoration: unset
+}

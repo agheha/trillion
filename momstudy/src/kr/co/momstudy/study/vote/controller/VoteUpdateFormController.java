@@ -1,4 +1,4 @@
-package kr.co.momstudy.study.controller;
+package kr.co.momstudy.study.vote.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,30 +12,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
+import kr.co.momstudy.repository.vo.VoteCnt;
 
-@WebServlet("/study/voteresult.do")
-public class VoteResultController extends HttpServlet{
-		VoteDAO dao;
-		
-		
-	public VoteResultController() {
-			this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(VoteDAO.class);
-		}
-
-
+@WebServlet("/study/voteupdateform.do")
+public class VoteUpdateFormController extends HttpServlet {
+	VoteDAO dao;
+	
+	public VoteUpdateFormController() {
+		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(VoteDAO.class);
+	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
 		int num = Integer.parseInt(req.getParameter("num"));
 		Vote vote = dao.selectOneVote(num);
-		int voteCnt = dao.selectVoteResultCnt(vote.getNum());
-		List<VoteAricle> valist = dao.selectVoteAricle(num);
+		User user = (User)req.getSession().getAttribute("user");
+		VoteCnt vc = new VoteCnt();
+		vc.setNum(num);
+		vc.setEmail(user.getEmail());
+		List<VoteAricle> valist = dao.selectVoteAricle(vc);
 		req.setAttribute("vote", vote);
 		req.setAttribute("valist", valist);
-		req.setAttribute("voteCnt", voteCnt);
-		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/voteresult.jsp");
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/voteupdateform.jsp");
 		rd.forward(req, res);
 	}
 	

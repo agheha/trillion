@@ -10,9 +10,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="<c:url value="/css/find.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/header.css"/>">
+    
 </head>
 <body>
-    <fieldset>  
+	<c:if test="${param.result} eq 'fail'" >
+		
+	</c:if>
+    <fieldset>
             <div class="nav"></div>
             <div class="main">
                 <div class="title">
@@ -21,7 +25,7 @@
                 <div class="find">
                     <div class="find-item">
                         <div class="find-item-title">
-                            아이디 찾기  
+                            아이디 찾기 
                         </div>
                         <div class="find-item-content">
             				<form action="<c:url value="/user/findemail.do"/>" >
@@ -30,10 +34,26 @@
 	                            </div>
 	                            <div class="find-item-inputbox">
 	                                <input type="text" placeholder="휴대폰" name="phnum">
-	                            </div>
-	                            <div class="find-item-msg">
-	                                본인인증시 사용하였던 휴대전화로 가입 시 등록했던 이메일을 보내드립니다. 
-	                            </div>
+	                             </div>
+	                      		
+	                  			<c:choose>
+								<c:when test="${empty param.name }">
+		                            <div class="find-item-msg">
+		                                 본인인증시 사용하였던 휴대전화로 가입 시 등록했던 이메일을 보내드립니다.
+	    	                        </div>						
+								</c:when>
+								<c:when test="${empty user}">
+		                            <div class="find-item-msg">
+		                                 입력한 정보를 확인할수 없습니다.		                
+	    	                        </div>						
+								</c:when>
+								<c:otherwise>
+		                            <div class="find-item-msg">
+		                           	인증되었습니다.
+		                            <div>Email : ${user.email}</div>
+		                            </div>
+								</c:otherwise>
+								</c:choose>
 	                            <button class="find-item-button">
 	                                눌러라                         
 	                            </button>
@@ -54,7 +74,7 @@
 	                            </div>
 	                            <div class="find-item-msg">
 	                                본인인증시 사용하였던 휴대전화로 가입 시 등록했던 이메일을 보내드립니다.
-	                            </div>
+    	                        </div>						
 	                            <button class="find-item-button">
 	                                눌러라
 	                            </button>

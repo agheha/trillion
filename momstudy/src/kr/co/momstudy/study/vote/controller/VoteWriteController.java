@@ -1,8 +1,7 @@
-package kr.co.momstudy.study.controller;
+package kr.co.momstudy.study.vote.controller;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
 
-@WebServlet("/study/voteupdate.do")
-public class VoteUpdateController extends HttpServlet{
+@WebServlet("/study/votewrite.do")
+public class VoteWriteController extends HttpServlet{
 	VoteDAO dao;
-	public VoteUpdateController() {
+	public VoteWriteController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(VoteDAO.class);
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int num = Integer.parseInt(req.getParameter("num"));
-		dao.deleteVote(num);
+		User user = (User)req.getSession().getAttribute("user");
 		
 		Enumeration<String> names = req.getParameterNames();
 		int duplication = 2;
@@ -43,6 +42,8 @@ public class VoteUpdateController extends HttpServlet{
 		vote.setDuplication(duplication);
 		vote.setTitle(title);
 		vote.setStudyNo(1);
+		vote.setEmail(user.getEmail());
+		
 		dao.insertVote(vote);
 		int voteNum = vote.getNum();
 		
@@ -54,16 +55,8 @@ public class VoteUpdateController extends HttpServlet{
 				va.setNum(voteNum);
 				dao.insertVoteAricle(va);
 			}
-		}
-		
-		HashMap<String,Integer> nums = new HashMap();
-		nums.put("newNum", num);
-		nums.put("oldNum", voteNum);
-		
-		dao.updateVote(nums);
-		
+		}	
 		resp.sendRedirect("votelist.do");
-		
 		
 	}
 	
