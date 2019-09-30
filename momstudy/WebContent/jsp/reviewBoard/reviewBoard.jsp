@@ -31,7 +31,7 @@
     </section>
 
    	<div class="btn_wrap">
-   		<form action="<c:url value="/review/writeForm.do" />"  method="post">
+   		<form action="<c:url value="/review/selectStudy.do" />"  method="post">
    			<button>등록</button>
    		</form>
    	</div>

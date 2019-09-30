@@ -11,12 +11,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
-<link rel="stylesheet" href="../../css/admin_main.css">
+<link rel="stylesheet" href="../../../css/admin_main.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="../../css/common.css">
-<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../../css/common.css">
+<link rel="stylesheet" href="../../../css/header.css">
 <title>header</title>
 </head>
 
@@ -69,19 +69,19 @@
 
 				<!--Menu-->
 				<div id="menu">
-					<a href="<c:url value="/jsp/admin/admin_main1.jsp"/>"><i
+					<a href="<c:url value="/jsp/admin/admin_main/admin_main1.jsp"/>"><i
 						class="icon">=</i><span>신고된사람</span></a> <a
-						href="<c:url value="/jsp/admin/admin_main2.jsp"/>"><i
+						href="<c:url value="/jsp/admin/admin_main/admin_main2.jsp"/>"><i
 						class="icon">=</i><span> 신고된 글</span></a> <a
-						href="<c:url value="/jsp/admin/admin_main3.jsp"/>"><i
+						href="<c:url value="/jsp/admin/admin_main/admin_main3.jsp"/>"><i
 						class="icon">=</i><span> 신고된 스터디</span></a> <a
-						href="<c:url value="/jsp/admin/admin_main4.jsp"/>"><i
+						href="<c:url value="/jsp/admin/admin_main/admin_main4.jsp"/>"><i
 						class="icon">=</i><span>회원</span></a> <a
-						href="<c:url value="/jsp/admin/admin_main5.jsp"/>"><i
+						href="<c:url value="/jsp/admin/admin_main/admin_main5.jsp"/>"><i
 						class="icon">=</i><span>스터디</span></a> <a
-						href="<c:url value="/jsp/admin/admin_main6.jsp"/>"><i
+						href="<c:url value="/jsp/admin/admin_main/admin_main6.jsp"/>"><i
 						class="icon">=</i><span>게시판</span></a> <a
-						href="<c:url value="/jsp/admin/admin_main7.jsp"/>"><i
+						href="<c:url value="/jsp/admin/admin_main/admin_main7.jsp"/>"><i
 						class="icon">=</i><span>카테고리</span></a>
 
 				</div>

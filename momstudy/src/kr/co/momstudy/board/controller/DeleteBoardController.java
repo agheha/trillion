@@ -2,7 +2,6 @@ package kr.co.momstudy.board.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,30 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.BoardDAO;
 
-@WebServlet("/board/detail.do")
-public class DetailBoardController extends HttpServlet {
-
+@WebServlet("/board/delete.do")
+public class DeleteBoardController extends HttpServlet {
+	
 	private BoardDAO dao;
 	
-	public DetailBoardController() {
+	public DeleteBoardController() {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(BoardDAO.class);
 	}
 	
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// 게시물 상세 정보 조회하기
-		int num = Integer.parseInt(req.getParameter("no"));
-		//dao.updateViewCnt(no);
-		
-		req.setAttribute("board", dao.selectOneBoard(num));
-		
-		/*
-		// 댓글 목록 공유
-		List<Comment> commentList = dao.selectComment(no);
-		req.setAttribute("commentList", commentList);
-		*/
-		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/detail.jsp");
-		rd.forward(req, res);
+		// 데이터베이스 처리하기
+		dao.deleteBoard(Integer.parseInt(req.getParameter("num"))); 
+		res.sendRedirect("list.do");
 	}
 }
 

@@ -13,10 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 public class WriteFormBoardController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.getRequestDispatcher("writeform.jsp").forward(req, res);
+		req.getRequestDispatcher("/jsp/board/writeform.jsp").forward(req, res);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("writeform.jsp");
-		rd.forward(req, res);
 	}
 }
 

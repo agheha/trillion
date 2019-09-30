@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|Bungee');
 
 
+
 *{
   box-sizing: border-box;
   font-family: 'Nunito';
@@ -10,16 +11,18 @@
 }
 body{
   padding: 10px;
+  width: 100%;
+}
+
+.buttons{
+	height: 43px;
 }
 .poll-container{
-  margin: 100px auto 0px auto;
-  
   width: 500px;
   height: auto;
   position: relative;
   border: 3px solid white;
   border-radius: 3px;
-  padding: 10px;
   box-sizing: border-box;
 }
 .poll-division .bar:last-child{
@@ -224,6 +227,8 @@ tbody input[type=text]{
 	margin-right: 5px;
 }
 
-#deletevote{
+#listvote{
 	margin-right: 5px;
 }
+
+

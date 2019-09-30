@@ -3,11 +3,18 @@ package kr.co.momstudy.repository.dao;
 import java.util.List;
 
 import kr.co.momstudy.repository.vo.Board;
+import kr.co.momstudy.repository.vo.Comment;
 
 public interface BoardDAO {
  
 	List<Board> selectBoard();
 	Board selectOneBoard(int num);
 	void insertBoard(Board board);
-	int deleteBoard(int no);
+	void updateBoard(Board board);
+	int deleteBoard(int num);	
+	
+	// 댓글 파트
+	
+	List<Comment> selectComment(int no);
+	void insertComment(Comment comment);
 }

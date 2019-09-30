@@ -12,33 +12,32 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.BoardDAO;
 
-@WebServlet("/board/detail.do")
-public class DetailBoardController extends HttpServlet {
+@WebServlet("/board/updateform.do")
+public class UpdateFormBoardController extends HttpServlet {
 
 	private BoardDAO dao;
 	
-	public DetailBoardController() {
+	public UpdateFormBoardController() {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(BoardDAO.class);
 	}
 	
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// 게시물 상세 정보 조회하기
-		int num = Integer.parseInt(req.getParameter("no"));
-		//dao.updateViewCnt(no);
-		
-		req.setAttribute("board", dao.selectOneBoard(num));
-		
 		/*
-		// 댓글 목록 공유
-		List<Comment> commentList = dao.selectComment(no);
-		req.setAttribute("commentList", commentList);
+		int no = Integer.parseInt(req.getParameter("no"));
+		Board board = dao.selectOneBoard(no);
+		req.setAttribute("board", board);
+		RequestDispatcher rd = req.getRequestDispatcher("updateform.jsp");
+		rd.forward(req, res);
 		*/
-		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/detail.jsp");
+		
+		req.setAttribute("board", dao.selectOneBoard(Integer.parseInt(req.getParameter("num"))));
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/updateform.jsp");
 		rd.forward(req, res);
 	}
 }
-
 
 
 
