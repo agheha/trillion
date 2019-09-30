@@ -42,7 +42,7 @@
 		<mapper resource="config/mapper/calendar.xml"/>
 		<mapper resource="config/mapper/board.xml"/>
 		<mapper resource="config/mapper/reviewBoard.xml"/>
-		<mapper resource="config/mapper/Study.xml"/>
+		<mapper resource="config/mapper/study.xml"/>
 
 	</mappers>
 	
