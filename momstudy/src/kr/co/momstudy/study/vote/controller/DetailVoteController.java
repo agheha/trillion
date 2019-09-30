@@ -1,4 +1,4 @@
-package kr.co.momstudy.study.controller;
+package kr.co.momstudy.study.vote.controller;
 
 import java.io.IOException;
 import java.util.List;
