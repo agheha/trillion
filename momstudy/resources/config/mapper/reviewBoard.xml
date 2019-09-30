@@ -22,6 +22,35 @@
 		 order by num desc   
 	</select>
 	
+	
+	<!-- ====================================================== -->
+	<!-- ====================================================== -->
+	
+	<resultMap type="Study" id="studyMap">
+		<result column="name"  property="name"/>
+		<result column="reg_date"  property="regDate"/>
+		<result column="email"  property="email"/>
+		<result column="category_code"  property="categoryCode"/>
+		<result column="address_code"  property="addressCode"/>
+		<result column="num"  property="num"/>
+	</resultMap>
+	
+	<select id="selectStudy" resultMap="studyMap" parameterType="String">
+		select *
+		from tb_participant p
+		inner join tb_study s
+		on (p.num = s.num)
+		where p.condition = 2
+		and p.email = #{email}
+	</select>
+	
+	<select id="selectStudy2" resultMap="studyMap" parameterType="int">
+		select * from tb_study
+		where num = #{studyNum}
+	</select>
+	
+	
+	
 	<!-- <update id="updateViewCnt" parameterType="int">
 		update tb_board 
 		   set see_cnt = see_cnt + 1

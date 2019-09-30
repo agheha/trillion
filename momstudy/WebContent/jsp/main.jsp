@@ -28,7 +28,9 @@
     <title>Study Project</title>
 </head>
 <body>
-    <div class="background"></div>
+    <div class="background">
+    	<div></div>
+    </div>
     <div class="body_wrap">
         <div class="main_wrap">
             <div class="main_content">
@@ -82,7 +84,7 @@
                     <div>
                         <a href="<c:url value="/user/mypage.do"/>">
                             <i class="fas fa-address-card"></i>
-                            마이페이지
+                            	마이페이지
                         </a>
                     </div>
                 </li>
@@ -90,7 +92,7 @@
                     <div>
                         <a href="study.html">
                             <i class="fas fa-book-reader"></i>
-                            스터디찾기
+                            	스터디찾기
                         </a>
                     </div>
                 </li>
@@ -98,15 +100,15 @@
                     <div>
                         <a href="notice_board.html">
                             <i class="fas fa-chalkboard-teacher"></i>
-                            자유게시판
+                            	자유게시판
                         </a>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <a href="review_board.html">
+                        <a href="<c:url value="/review/list.do"/>">
                             <i class="fas fa-object-group"></i>
-                            후기게시판
+                            	후기게시판
                         </a>
                     </div>
                 </li>
@@ -114,7 +116,7 @@
                     <div>
                         <a href="inquire_board.html">
                             <i class="fas fa-question"></i>
-                            문의하기
+                            	문의하기
                         </a>
                     </div>
                 </li>

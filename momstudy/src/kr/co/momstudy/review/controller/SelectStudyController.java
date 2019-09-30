@@ -8,28 +8,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.ReviewBoardDAO;
-import kr.co.momstudy.repository.vo.ReviewBoard;
+import kr.co.momstudy.repository.vo.Study;
+import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/review/list.do")
-public class ReviewBoardListController extends HttpServlet {
+@WebServlet("/review/selectStudy.do")
+public class SelectStudyController extends HttpServlet {
 	
 	private ReviewBoardDAO dao;
-	public ReviewBoardListController() {
+	public SelectStudyController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardDAO.class);
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		System.out.println("후기게시판 리스트 출력화면");
+		System.out.println("스터디 리스트 출력 폼으로 이동함");
 		
-		// 전체 리스트 구해와서 파라미터로 공유
-		req.setAttribute("list", dao.selectReviewBoard());
-		
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("user");
+
+		// 현재 가입되어 있으면서 후기를 등록하지않은 모든 스터디 목록을 불러옴
+		List<Study> slist = dao.selectStudy(user.getEmail());
+		req.setAttribute("slist", slist);
 		// 사용할 화면으로 이동하기
-		req.getRequestDispatcher("/jsp/reviewBoard/reviewBoard.jsp").forward(req, res);
+		req.getRequestDispatcher("/jsp/reviewBoard/choiceStudy.jsp").forward(req, res);
 	}
 }
