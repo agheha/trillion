@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/votewriteform.do")
-public class VoteWriteFormController extends HttpServlet {
+@WebServlet("/study/studywriteform.do")
+public class StudyWriteFormController extends HttpServlet{
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/votewriteform.jsp");
-		rd.forward(req, res);
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher rd =  req.getRequestDispatcher("/jsp/study/studywriteform.jsp");
+		rd.forward(req, resp);
 	}
 	
 }

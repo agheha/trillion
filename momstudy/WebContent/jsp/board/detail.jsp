@@ -14,6 +14,7 @@
 <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/comment.css" />'>
 
 
 <link rel="stylesheet"
@@ -79,12 +80,19 @@
 			</div>
 
 			<div class="buttons">
-				<button>수정</button>
-				<button>삭제</button>
+				<button type="button"><a class="del" href='updateform.do?num=${board.num}'>수정</a></button>
+				<button type="button"><a class="del" href='delete.do?num=${board.num}'>삭제</a></button>
 			</div>
+			<br>
+	 		<div class="review">
+                <textarea id="comment_text" cols="90" class="comment"></textarea>
+                  <div class="insert1">
+                <button type="button" class="but">등록</button>
+            </div>
 		</div>
 
 	</section>
+
 
 	<script type="text/javascript">
 		$(document).ready(function() {

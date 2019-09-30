@@ -58,14 +58,15 @@
 			<div class="vote_title">
 				<p>투표 하기</p>
 				<div>
+					<form action="" method="get">
+					<button type="button" onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록</button>
 					<input type="text" name="voteserach" /> <select name="vote"
 						id="vote">
 						<option value="1">제목</option>
-						<option value="1">내용</option>
-						<option value="1">글쓴이</option>
+						<option value="2">글쓴이</option>
 					</select>
-					<button
-						onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록</button>
+					<button>검색</button>
+					</form>
 				</div>
 			</div>
 			<div class="board_list">

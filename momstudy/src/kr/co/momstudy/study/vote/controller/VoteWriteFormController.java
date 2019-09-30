@@ -1,4 +1,4 @@
-package kr.co.momstudy.board.controller;
+package kr.co.momstudy.study.vote.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/writeform.do")
-public class WriteFormBoardController extends HttpServlet {
+@WebServlet("/study/votewriteform.do")
+public class VoteWriteFormController extends HttpServlet {
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.getRequestDispatcher("/jsp/board/writeform.jsp").forward(req, res);
-		
+		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/votewriteform.jsp");
+		rd.forward(req, res);
 	}
+	
 }
-
-
-
-
-
-
-
-
-

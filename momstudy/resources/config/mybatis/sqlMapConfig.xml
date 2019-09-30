@@ -19,6 +19,8 @@
 		<typeAlias alias="ReviewBoard" type="kr.co.momstudy.repository.vo.ReviewBoard" />
 		<typeAlias alias="Report" type="kr.co.momstudy.repository.vo.Report" />
 		<typeAlias alias="ReportReseaon" type="kr.co.momstudy.repository.vo.ReportReseaon" />
+		<typeAlias alias="Study" type="kr.co.momstudy.repository.vo.Study"/>
+		<typeAlias alias="StudyRecruitment" type="kr.co.momstudy.repository.vo.StudyRecruitment"/>
 
 	</typeAliases>
 	 
@@ -43,6 +45,7 @@
 		<mapper resource="config/mapper/board.xml"/>
 		<mapper resource="config/mapper/reviewBoard.xml"/>
 		<mapper resource="config/mapper/report.xml"/>
+		<mapper resource="config/mapper/study.xml"/>
 
 	</mappers>
 	
