@@ -1,5 +1,6 @@
+@charset "UTF-8";
 .fieldset {
-    width: 300px;
+    width: 800px;
     border: none;
     margin:0 auto;
 }
@@ -15,12 +16,11 @@
 
 /* input box */
 .fieldset > form input {
-    width : 300px;
+    width : 800px;
     height: 52px;
     padding : 0 15px;
     border: 1px solid #dadada;
     border-radius: 3px;
-    
 }
 .fieldset > form input.submit_btn {
     margin: 20px 0 8px 0;
@@ -28,7 +28,7 @@
 
 .fieldset > form > div > a:hover {
     text-decoration:underline;
-    color: #4d4d4d;
+    color: #e7545e;
 }
 
 .fieldset > form > div > a {

@@ -65,12 +65,12 @@
                             비밀번호 찾기
                         </div>
                         <div class="find-item-content">
-                  			 <form action="<c:url value="/user/findepass.do"/>" >
+                  			 <form action="<c:url value='/user/findpass.do'/>" method="post">
 	                            <div class="find-item-inputbox">
-	                                <input type="text" placeholder="이름">
+	                                <input type="text" placeholder="이름" name="name">
 	                            </div>
 	                            <div class="find-item-inputbox">
-	                                <input type="text" placeholder="이메일">
+	                                <input type="email" placeholder="이메일" name="email">
 	                            </div>
 	                            <div class="find-item-msg">
 	                                본인인증시 사용하였던 휴대전화로 가입 시 등록했던 이메일을 보내드립니다.

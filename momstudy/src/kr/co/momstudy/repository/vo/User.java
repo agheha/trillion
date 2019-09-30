@@ -13,8 +13,15 @@ public class User {
 	private Date banDate;
 	private int fileGroupCode;
 	private String gender;
+	private String certifiedCode;
 	
 	
+	public String getCertifiedCode() {
+		return certifiedCode;
+	}
+	public void setCertifiedCode(String certifiedCode) {
+		this.certifiedCode = certifiedCode;
+	}
 	public String getGender() {
 		return gender;
 	}
