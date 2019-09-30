@@ -13,9 +13,18 @@
 	
 	<!-- 스터디 등록 -->
 	<insert id="insertStudy" parameterType="Study">
-		insert into tb_study(name, reg_date, email, category_code, address_code, num
-		) values (
-			#{name}, #{regDate}, #{email}, #{categoryCode}, #{addressCode}, seq_study_num.nextval)
-		)
+	<selectKey keyProperty="num" resultType="int" order="BEFORE">
+		select seq_study_num.nextval
+		  from dual
+	</selectKey>
+		insert into tb_study(name, email, category_code, address_code, num
+		) values (#{name}, #{email}, #{categoryCode}, #{addressCode},#{num})
+		
 	</insert>
+		
+	<insert id="insertParticipant" parameterType="Participant">
+		insert into tb_participant(num, email, condition, study_num
+		) values (seq_participant_num.nextval, #{email}, #{condition}, #{studyNum})
+	</insert>
+	
 	</mapper>

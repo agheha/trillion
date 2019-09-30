@@ -2,6 +2,7 @@ package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.UserCategory;
@@ -21,4 +22,7 @@ public interface UserDAO {
 	// 비밀번호 찾기
 	User searchPass(User user);
 	
+	List<String> selectBigAddress();
+	
+	List<Address> selectSmallAddress(String bigaddress);
 }
