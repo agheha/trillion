@@ -39,3 +39,14 @@
 	color: black;
 	text-decoration: unset
 }
+
+
+/* 이미지 띄우는 공간 */
+.image_wrap {
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 15px;
+}
+.image_wrap > img {
+    max-width: 100%;
+}

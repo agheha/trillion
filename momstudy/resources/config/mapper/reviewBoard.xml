@@ -22,6 +22,20 @@
 		 order by num desc   
 	</select>
 	
+	<insert id="insertReviewBoard" parameterType="ReviewBoard">
+		insert into tb_review_study (
+		    num, title, content, study_num, score, email
+		) values (
+		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}
+		)
+	</insert>
+	
+	<update id="updateViewCnt" parameterType="int">
+		update tb_review_study 
+		   set see_cnt = see_cnt + 1
+		 where no = #{no}
+	</update>
+	
 	
 	<!-- ====================================================== -->
 	<!-- ====================================================== -->
