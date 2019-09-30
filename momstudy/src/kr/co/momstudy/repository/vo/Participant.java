@@ -4,9 +4,17 @@ import java.util.Date;
 
 public class Participant {
 	private int num;
+	private int studyNum;
 	private String email;
 	private Date partDate;
 	private int condition;
+	
+	public int getStudyNum() {
+		return studyNum;
+	}
+	public void setStudyNum(int studyNum) {
+		this.studyNum = studyNum;
+	}
 	
 	public int getNum() {
 		return num;
@@ -32,4 +40,5 @@ public class Participant {
 	public void setCondition(int condition) {
 		this.condition = condition;
 	}
+	
 }
