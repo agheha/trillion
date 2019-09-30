@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,9 +9,9 @@
 
 
         <!-- css -->
-        <link rel="stylesheet" href="./../css/common.css">
-        <link rel="stylesheet" href="./../css/login.css">
-        <link rel="stylesheet" href="./../css/header.css">
+        <link rel="stylesheet" href="./../common.css">
+        <link rel="stylesheet" href="./../certified.css">
+        <link rel="stylesheet" href="./../header.css">
 
         <!-- jquery -->
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -26,8 +25,8 @@
         <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
         <section class="background_wrap">
             <div class="background">
-                <h1>로그인</h1>
-                <p>로그인 페이지입니다.</p>
+                <h1>인증</h1>
+                <p>비밀번호 찾기 인증센터입니다.</p>
             </div>
         </section>
 
@@ -35,20 +34,15 @@
         <!-- 오류를 띄워주는 영역이 추가될 예정 -->
         <section>
             <div class="fieldset">
-                <form action="<c:url value="/user/login.do"/>"method="post">
+                <form action="<c:url value='/user/certified.do'/>"method="post">
+                    <input type="hidden" name="name" value = ${user.name}>
+                    <input type="hidden" name="email" value = ${user.email}>
                     <div>
-                        <input  type="email" id="id" placeholder="이메일" name="email">
-                    </div>
-                    <div>
-                        <input class="form_login"type="password" id="pass" placeholder="비밀번호" name="pass"> 
+                        <input  type="text" id="id" placeholder="인증번호" name="certified" autocomplete="off">
                     </div>
                  	<div>
-                        <input class="submit_btn" type="submit" value="로그인" />
-                 	</div>
-                    <div>
-                        <a href="findform.do">아이디/비밀번호 찾기</a>
-                        <a href="<c:url value="/user/termsform.do"/>">회원가입</a>
-                    </div>
+                        <input class="submit_btn" type="submit" />
+                     </div>
                 </form>
             </div>      
         </section>

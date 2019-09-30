@@ -88,8 +88,7 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<button>등록</button>
-<!-- 				<input type="button" class="login_submit_btn" value="등록" /> -->
+				<input type="submit" class="login_submit_btn" value="등록" />
 			</div>
 		</form>
 	</section>
