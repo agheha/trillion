@@ -18,3 +18,4 @@
 			#{name}, #{regDate}, #{email}, #{categoryCode}, #{addressCode}, seq_study_num.nextval)
 		)
 	</insert>
+	</mapper>

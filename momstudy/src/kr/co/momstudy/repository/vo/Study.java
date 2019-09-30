@@ -1,4 +1,4 @@
-package src.kr.co.momstudy.repository.vo;
+package kr.co.momstudy.repository.vo;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
-package src.kr.co.momstudy.repository.dao;
+package kr.co.momstudy.repository.dao;
 
-import src.kr.co.momstudy.repository.vo.Study;
+import kr.co.momstudy.repository.vo.Study;
 
 public interface StudyDAO {
 
