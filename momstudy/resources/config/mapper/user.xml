@@ -32,7 +32,7 @@
 	</resultMap>
 	
 	<!-- 	로그인 -->
-	<select id="selectLogin" resultType="User" parameterType="User">
+	<select id="selectLogin" resultMap="userMap" parameterType="User">
 		select * 
 		  from tb_user
 		 where email = #{email}
@@ -68,6 +68,18 @@
 		 where name = #{name}
 		   and email = #{email}
 	</select>
+	<!--  유저 카데고리 코드 찾기 -->
+	<select id="selectUserCategoryCode" parameterType="string" resultMap="userCategoryMap">
+		select *
+		  from tb_user_category
+		 where email = #{email}
+	</select>
+	<!--  유저 카데고리 수정 -->
+	<delete id="deleteUserCategoryCode" parameterType="string">
+		delete 
+		  from tb_user_category
+		 where email = #{email}
+	</delete>	
 	
 	<!-- 주소의 대분류를 가져옴  -->
 	<select id="selectBigAddress" resultType="string">
@@ -82,6 +94,7 @@
 		  from tb_address   
 		 where address_detail = #{addr};
 	</select>
+	
 	
 	
 </mapper>
