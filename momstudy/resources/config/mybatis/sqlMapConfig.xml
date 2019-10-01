@@ -45,6 +45,7 @@
 		<mapper resource="config/mapper/board.xml"/>
 		<mapper resource="config/mapper/reviewBoard.xml"/>
 		<mapper resource="config/mapper/study.xml"/>
+		<mapper resource="config/mapper/studyRecruitment.xml"/>
 
 	</mappers>
 	
