@@ -23,10 +23,14 @@
 	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
 <!-- full calendar -->
-<link rel="stylesheet" type="text/css" href='<c:url value="/script/core/main.css" />' />
-<link rel="stylesheet" type="text/css" href='<c:url value="/script/daygrid/main.css" />' />
-<script type="text/javascript" src='<c:url value="/script/core/main.js" />'></script>
-<script type="text/javascript" src='<c:url value="/script/daygrid/main.js" />'></script>
+<link rel="stylesheet" type="text/css"
+	href='<c:url value="/script/core/main.css" />' />
+<link rel="stylesheet" type="text/css"
+	href='<c:url value="/script/daygrid/main.css" />' />
+<script type="text/javascript"
+	src='<c:url value="/script/core/main.js" />'></script>
+<script type="text/javascript"
+	src='<c:url value="/script/daygrid/main.js" />'></script>
 
 <title>스터디</title>
 
@@ -51,29 +55,8 @@
 	</section>
 
 	<section id="layout">
-	
-		<%@include file="/jsp/common/sidebar.jsp"%>
-		
-		<div>
-			<div class="profile">
-				<img src='<c:url value="/images/test_img2.jpg" />' alt="testImg">
-			</div>
-			<div class="left_list">
-				<div>
-					<p>
-						<a href="<c:url value="/jsp/study/study.jsp"/>">스터디명</a>
-					</p>
-					<ul>
-						<!-- 스터디장 화면 다르게 보임 -->
-						<li><a href="./studymembers.html">멤버</a></li>
-						<li><a href="./studyvote.html">투표</a></li>
-						<li><a href="./studyschedule.html">일정</a></li>
-						<li><a href="./studyboard.html">게시판</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
 
+		<%@include file="/jsp/common/sidebar.jsp"%>
 
 		<div class="study_right_wrap">
 			<div class="top_grid">
@@ -152,7 +135,6 @@
 
 			calendar.render();
 		});
-
 	</script>
 </body>
 </html>

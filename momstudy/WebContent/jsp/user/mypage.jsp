@@ -71,13 +71,16 @@
             <div class="left_list">
                 <div>
                     <p>내가 가입한 스터디</p>
+                    <form action='<c:url value="/study/studymain.do"/>' method="post" name="myForm">
+                    <input type="hidden" value="" name="num">
                     <ul>
-                        <li><a href="#">자바스크립트</a></li>
-                        <li><a href="#">자바스크립트</a></li>
-                        <li><a href="#">자바스크립트</a></li>
-                        <li><a href="#">자바스크립트</a></li>
-                        <li><a href="#">자바스크립트</a></li>
+                    	<c:forEach var="study" items="${slist}">
+                        <li><a href="#" onclick="moveStudy(${study.num});">
+                        <span>${study.name}</span></a>
+                        </li>
+                    	</c:forEach>
                     </ul>
+                    </form>
                 </div>
             </div>
         </div>
@@ -137,5 +140,18 @@
     </section>
 
     <script src='<c:url value="/script/core/slide.js" />'></script>
+    <script type="text/javascript">
+     function moveStudy(num){
+    	 let f = document.myForm;
+    	 f.num.value = num;
+    	 f.submit();
+     }
+    </script>
 </body>
 </html>
+
+
+
+
+
+
