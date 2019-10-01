@@ -3,6 +3,7 @@ package kr.co.momstudy.repository.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
 import kr.co.momstudy.repository.vo.VoteCnt;
@@ -10,10 +11,9 @@ import kr.co.momstudy.repository.vo.VoteResult;
 
 public interface VoteDAO {
 
-
 	 void insertVote(Vote vote);
 
-	 List<Vote> selectVote(int num);
+	 List<Vote> selectVote(Search search);
 
 	 Vote selectOneVote(int num);
 	
