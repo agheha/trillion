@@ -20,7 +20,8 @@
 		<typeAlias alias="Study" type="kr.co.momstudy.repository.vo.Study"/>
 		<typeAlias alias="StudyRecruitment" type="kr.co.momstudy.repository.vo.StudyRecruitment"/>
 		<typeAlias alias="Participant" type="kr.co.momstudy.repository.vo.Participant" />
-		<typeAlias alias="Address" type="kr.co.momstudy.repository.vo.Address" />			
+		<typeAlias alias="Address" type="kr.co.momstudy.repository.vo.Address" />
+
 	</typeAliases>
 	 
 	

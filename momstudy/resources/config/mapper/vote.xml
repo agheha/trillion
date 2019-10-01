@@ -43,7 +43,7 @@
 	<select id="selectVote" resultMap="voteMap" parameterType="int">
 		select *
 		from tb_vote
-		where study_no = #{studyNo}
+		where study_no = #{snum}
 		order by num desc
 	</select>
 

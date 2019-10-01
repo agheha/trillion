@@ -10,21 +10,41 @@
 		<result column="address_code" property="addressCode" />
 		<result column="num" property="num" />
 	</resultMap>
-	
+
 	<!-- 스터디 등록 -->
 	<insert id="insertStudy" parameterType="Study">
-	<selectKey keyProperty="num" resultType="int" order="BEFORE">
-		select seq_study_num.nextval
-		  from dual
-	</selectKey>
+		<selectKey keyProperty="num" resultType="int" order="BEFORE">
+			select seq_study_num.nextval
+			from dual
+		</selectKey>
 		insert into tb_study(name, email, category_code, address_code, num
-		) values (#{name}, #{email}, #{categoryCode}, #{addressCode},#{num})
-		
+		)
+		values (#{name}, #{email}, #{categoryCode}, #{addressCode},#{num})
+
 	</insert>
-		
+
+	<!-- 스터디 등록한 사람 참여자로 넣음 -->
 	<insert id="insertParticipant" parameterType="Participant">
-		insert into tb_participant(num, email, condition, study_num
-		) values (seq_participant_num.nextval, #{email}, #{condition}, #{studyNum})
+		insert into
+		tb_participant(num, email, condition, study_num
+		) values
+		(seq_participant_num.nextval, #{email}, #{condition}, #{studyNum})
 	</insert>
-	
-	</mapper>
+
+	<!-- 참여한 스터디를 가져옴 -->
+	<select id="selectStudy" parameterType="string" resultMap="studyMap">
+		select *
+		  from tb_study
+		 where num in (select study_num
+					     from tb_participant
+					    where email = #{email} and condition = 2)
+	</select>
+
+	<select id="selectOneStudy" parameterType="int" resultMap="studyMap">
+		select *
+		  from tb_study
+		 where num = #{num} 
+	</select>
+
+
+</mapper>
