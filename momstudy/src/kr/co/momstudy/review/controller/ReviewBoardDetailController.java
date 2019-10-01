@@ -1,7 +1,6 @@
 package kr.co.momstudy.review.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,30 +11,30 @@ import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.ReviewBoardDAO;
-import kr.co.momstudy.repository.vo.Study;
+import kr.co.momstudy.repository.vo.ReviewBoard;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/review/selectStudy.do")
-public class SelectStudyController extends HttpServlet {
+@WebServlet("/review/detailBoard.do")
+public class ReviewBoardDetailController extends HttpServlet {
 	
 	private ReviewBoardDAO dao;
-	public SelectStudyController() {
+	public ReviewBoardDetailController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardDAO.class);
 	}
-	
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		System.out.println("스터디 리스트 출력 폼으로 이동함");
+		ReviewBoard rb = dao.selectOneReviewBoard(Integer.parseInt(req.getParameter("num")));
 		
-		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("user");
+		System.out.println(rb.getTitle());
+		System.out.println(rb.getContent());
+		System.out.println(rb.getEmail());
+		System.out.println(rb.getNum());
+		
+		req.setAttribute("rBoard", rb);
+		req.setAttribute("name", dao.selectName(rb.getEmail()));
 
-		// 현재 가입되어 있으면서 후기를 등록하지않은 모든 스터디 목록을 불러옴
-		List<Study> slist = dao.selectStudy(user.getEmail());
-		req.setAttribute("slist", slist);
-		
-		// 사용할 화면으로 이동하기
-		req.getRequestDispatcher("/jsp/reviewBoard/choiceStudy.jsp").forward(req, res);
+		req.getRequestDispatcher("/jsp/reviewBoard/detailBoard.jsp").forward(req, res);
 	}
 }

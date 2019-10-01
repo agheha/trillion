@@ -10,12 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 	<link rel="stylesheet" href='<c:url value="/css/common.css" />'>
+	<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/review_board.css" />'>
 
-    <!-- jquery -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<title>후기게시판</title>
 </head>
@@ -29,51 +29,59 @@
             <p>--------------</p>
         </div>
     </section>
-
-   	<div class="btn_wrap">
-   		<form action="<c:url value="/review/selectStudy.do" />"  method="post">
-   			<button>등록</button>
-   		</form>
-   	</div>
-    <div class="board_cont_wrap">
-       	<c:if test="${empty list}">
-       		<div>게시물이 없습니다.</div>
-       	</c:if>
-       	<c:forEach var="rb" items="${list}">
-	      	<div class="board_cont">
-	      	
-	      		<!-- ------------------------------ -->
-	      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
-		        <a href='<c:url value="/study/votelist.do?num="/>${rb.studyNum}' ">
-	      		<!-- ------------------------------ -->
-		        
-		            <div class="cont_img">
-		            
-		            	<!-- ------------ -->
-		            	<!-- 이미지경로 추후 추가 -->
-		                <img src="./../images/test_img1.jpg" alt="">
-		            	<!-- ------------ -->
-		                
-		            </div>
-		           	<div class="cont_text">
-		                <p>${rb.title}</p>
-		                <span>${rb.content}</span>
-		           	</div>
-		       	</a>
-	      	</div>
-        </c:forEach>
-    </div>
     
-    
-    
-    <input class="more_btn" type="button" value="더보기" />
+    <section id="layout">
+	    <div>
+	        <div class="left_list">
+	            <ul>
+	            	<c:forEach var="ct" items="${cList}">
+		                <li><a href="" value=`${ct.categoryCode}`>${ct.categoryName}</a></li>
+	                </c:forEach>
+	            </ul>
+	        </div>
+	    </div>
+	
+		<div>
+		   	<div class="btn_wrap">
+		   		<form action="<c:url value="/review/selectStudy.do" />"  method="post">
+		   			<button>등록</button>
+		   		</form>
+		   	</div>
+		    <div class="board_cont_wrap">
+		       	<c:if test="${empty list}">
+		       		<div>게시물이 없습니다.</div>
+		       	</c:if>
+		       	<c:forEach var="rb" items="${list}">
+			      	<div class="board_cont">
+			      	
+			      		<!-- ------------------------------ -->
+			      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
+				        <a href='<c:url value="/review/detailBoard.do?num="/>${rb.studyNum}' ">
+			      		<!-- ------------------------------ -->
+				        
+				            <div class="cont_img">
+				            
+				            	<!-- ------------ -->
+				            	<!-- 이미지경로 추후 추가 -->
+				                <img src="./../images/test_img1.jpg" alt="">
+				            	<!-- ------------ -->
+				                
+				            </div>
+				           	<div class="cont_text">
+				                <p>${rb.title}</p>
+				                <span>${rb.content}</span>
+				           	</div>
+				       	</a>
+			      	</div>
+		        </c:forEach>
+		    </div>	
+    		<input class="more_btn" type="button" value="더보기" />
+    	</div>
+    </section>
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-            $(".board_cont").mouseover("")
-        });
+       
     </script>
 </body>
 </html>

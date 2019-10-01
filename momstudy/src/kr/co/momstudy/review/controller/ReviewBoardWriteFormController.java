@@ -7,9 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.ReviewBoardDAO;
+import kr.co.momstudy.repository.vo.ReviewBoard;
+import kr.co.momstudy.repository.vo.User;
 
 @WebServlet("/review/writeForm.do")
 public class ReviewBoardWriteFormController extends HttpServlet {
@@ -25,7 +28,11 @@ public class ReviewBoardWriteFormController extends HttpServlet {
 		
 		// 선택한 스터디의 value번호를 받아옴
 		int sNum = Integer.parseInt(req.getParameter("studyNum"));
-		System.out.println(sNum);
+//		ReviewBoard rb = dao.selectOneReviewBoard(sNum);
+		
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("user");
+		user.getEmail();
 		
 		req.setAttribute("study", dao.selectStudy2(sNum));
 		

@@ -31,14 +31,14 @@
     </section>
 
     <section id="layout">
-        <form action="<c:url value="/review/write.do" />" method="post" enctype="multipart/form-data" name="mForm">
+        <form action="<c:url value="/review/update.do" />" method="post" enctype="multipart/form-data" name="mForm">
             <div>
-            	<p>스터디명</p>
-            	<div>${study.name}</div>
+            	<p>작성자</p>
+            	<div>${user.email}</div>
             	<input type="hidden" name="studyNum" value="${study.num}"/>
             	
                 <p>제목</p>
-                <input type="text" name="title" />
+                <div>${study.title}</div>
                 
                 <p>내용</p>
                 <textarea name="content"></textarea>

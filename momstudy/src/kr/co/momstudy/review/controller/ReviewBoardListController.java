@@ -26,6 +26,13 @@ public class ReviewBoardListController extends HttpServlet {
 		
 		System.out.println("후기게시판 리스트 출력화면");
 		
+		// 카테고리 리스트
+		req.setAttribute("cList", dao.selectCategory());
+		List clist = dao.selectCategory();
+		for (int i = 0; i < clist.size(); i++) {
+			System.out.println(clist);
+		}
+		
 		// 전체 리스트 구해와서 파라미터로 공유
 		req.setAttribute("list", dao.selectReviewBoard());
 		

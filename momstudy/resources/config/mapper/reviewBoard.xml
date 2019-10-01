@@ -15,11 +15,29 @@
 		<result column="file_group_code"  property="fileGroupCode"/>
 		<result column="comment_group_code"  property="commentGroupCode"/>
 	</resultMap>
-
+	
+	<!-- 후기게시판에 등록된 글을 불러오는 쿼리 -->
 	<select id="selectReviewBoard" resultMap="reviewBoardMap">
 		select *
-		  from tb_review_study
-		 order by num desc   
+		from tb_review_study
+		order by num desc   
+	</select>
+	
+	<!-- 카테고리 불러오는 쿼리 -->
+	<resultMap type="Category" id="categoryMap">
+		<result column="category_code"  property="categoryCode"/>
+		<result column="category_name"  property="categoryName"/>
+	</resultMap>
+	<select id="selectCategory" resultMap="categoryMap">
+		select *
+		from tb_category
+	</select>
+	
+	<!-- email로 해당하는 User 이름 받아오는 쿼리 -->
+	<select id="selectName" parameterType="String" resultType="String">
+		select name
+		from tb_user
+		where email = #{email}
 	</select>
 	
 	<insert id="insertReviewBoard" parameterType="ReviewBoard">
@@ -33,8 +51,14 @@
 	<update id="updateViewCnt" parameterType="int">
 		update tb_review_study 
 		   set see_cnt = see_cnt + 1
-		 where no = #{no}
+		 where num = #{no}
 	</update>
+	
+	<select id="selectOneReviewBoard" resultMap="reviewBoardMap" parameterType="int">
+		select *
+		from tb_review_study
+		where study_num = #{no}
+	</select>
 	
 	
 	<!-- ====================================================== -->
@@ -50,12 +74,17 @@
 	</resultMap>
 	
 	<select id="selectStudy" resultMap="studyMap" parameterType="String">
-		select *
-		from tb_participant p
-		inner join tb_study s
-		on (p.num = s.num)
-		where p.condition = 2
-		and p.email = #{email}
+		select a.*   
+		from (select *          
+     		  from tb_study         
+      		  where num not in(select study_num
+                         	   from (select count(*),study_num
+                               		 from tb_review_study   
+                                	 where email = #{email}      
+                                	 group by study_num))) a 
+		inner join tb_participant b    
+		on a.num = b.study_num  
+		where a.email = #{email}
 	</select>
 	
 	<select id="selectStudy2" resultMap="studyMap" parameterType="int">
@@ -63,89 +92,5 @@
 		where num = #{studyNum}
 	</select>
 	
-	
-	
-	<!-- <update id="updateViewCnt" parameterType="int">
-		update tb_board 
-		   set see_cnt = see_cnt + 1
-		 where no = #{no}
-	</update> -->
-
-	<!-- <resultMap type="Vote" id="voteMap">
-	<result column="study_no"  property="studyNo"/>
-	<result column="num"  property="num"/>
-	<result column="title"  property="title"/>
-	<result column="duplication"  property="duplication"/>
-	<result column="anonumous"  property="anonumous"/>
-	<result column="aricle_plus"  property="ariclePlus"/>
-	<result column="reg_date"  property="regDate"/>
-	<result column="limit_date"  property="limitDate"/>
-	</resultMap>
-	
-	<resultMap type="VoteAricle" id="voteAricleMap">
-	<result column="num"  property="num"/>
-	<result column="code"  property="code"/>
-	<result column="content"  property="content"/>
-	</resultMap>
-	
-		투표를 더함
-	<insert id="insertVote" parameterType="Vote">
-		<selectKey keyProperty="num" resultType="int" order="BEFORE">
-			select seq_vote_num.nextval
-			  from dual 
-		</selectKey>
-		insert into tb_vote(study_no, num, title, duplication, anonumous, aricle_plus
-		) values (#{studyNo}, #{num}, #{title}, #{duplication}, #{anonumous}, #{ariclePlus})
-	</insert>
-
-		투표를 다 가져옴
-	<select id="selectVote" resultMap="voteMap" parameterType="int">
-		select *
-		  from tb_vote
-		 where study_no = #{studyNo}
-	</select>
-	
-		투표 1개를 가져옴
-	<select id="selectOneVote" resultMap="voteMap" parameterType="int">
-		select *
-		  from tb_vote
-		 where num = #{num}
-	</select>
-	
-		투표 항목을 더함
-	<insert id="insertVoteAricle" parameterType="VoteAricle">
-		insert into tb_vote_aricle(num, code, content
-		) values (#{num}, seq_vote_aricle_code.nextval, #{content})   
-		   
-	</insert>
-		
-		투표 항목 1개의 투표를 함
-	<insert id="insertVoteResult" parameterType="VoteResult">
-		insert into tb_vote_result(email, code
-		) values (#{email} , #{code})
-	</insert>
-	
-		투표 항목 1개의 결과를 가져옴
-	<select id="selectResult" parameterType="int" resultType="VoteResult">
-		select *
-		  from tb_vote_result
-		 where code = {code}  
-	</select>
-	
-		사용자 1명의 투표  1개의 대한 투표횟수를 가져옴
-	<select id="selectCheckResult" parameterType="VoteResult" resultType="int">
-		select count(*)
-		  from tb_vote_result
-		 where email = {email} and num = {num} 
-	</select>
-	
-	<select id="selectVoteAricle" parameterType="int" resultMap="voteAricleMap">
-		select *
-		  from tb_vote_aricle
-		 where num = #{num} 
-	</select> -->
-	
-	
-
 
 </mapper>
