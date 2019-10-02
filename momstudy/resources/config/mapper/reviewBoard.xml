@@ -17,9 +17,49 @@
 	</resultMap>
 
 	<select id="selectReviewBoard" resultMap="reviewBoardMap">
-		select *
-		  from tb_review_study
-		 order by num desc   
+		    select *
+              from (select rownum rnum,a.*
+					  from(select *
+				       	     from (select a.*,
+                                        c.category_code as category_code,
+                                        c.name as name
+                               	     from tb_review_study a
+                              	    inner join tb_study c
+                                       on a.study_num = c.num)
+	                        <where>
+                      	    <choose>
+                      	    <when test="type == 'title'">
+                        	  title like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    <when test="type == 'email'">
+                        	  email like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    <when test="type == 'content'">
+                        	  content like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    <when test="type == 'name'">
+                        	  name like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    </choose> 
+                      	    <if test="categoryCode != 0">                      	    
+                      	      category_code = #{categoryCode}
+                      	    </if> 
+                            </where>
+                       	    order by 
+                      	    <choose>
+							<when test="filter =='regDate'">
+                      	    reg_date 
+							</when>
+							<when test="filter =='seeCnt'">
+                      	    see_cnt 
+							</when>
+							<when test="filter =='score'">
+                      	    score 
+							</when>
+                      	    </choose>                       	    
+                      	    desc
+                      	    ) a)
+             where rnum between #{begin} and #{end}
 	</select>
 	
 	<insert id="insertReviewBoard" parameterType="ReviewBoard">

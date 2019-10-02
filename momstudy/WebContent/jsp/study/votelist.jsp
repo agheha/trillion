@@ -58,12 +58,12 @@
 			<div class="vote_title">
 				<p>투표 하기</p>
 				<div>
-					<form action="" method="get">
+					<form action="#" method="get">
 					<button type="button" onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록</button>
-					<input type="text" name="voteserach" /> <select name="vote"
-						id="vote">
-						<option value="1">제목</option>
-						<option value="2">글쓴이</option>
+					<input type="text" name="keyword" /> 
+					<select name="type" id="vote">
+						<option value="title">제목</option>
+						<option value="email">글쓴이</option>
 					</select>
 					<button>검색</button>
 					</form>
@@ -80,10 +80,12 @@
 						<h2>투표가 없습니다</h2>
 					</div>
 				</c:if>
+				<form name="detailForm" action="" method="post">
+				<input type="hidden" value="${vote.num}" name="num" id="inputEle"/>
 				<c:forEach var="vote" items="${vlist}">
 						<div>
 						<c:if test="${vote.type eq 2}">
-						<a href="<c:url value="/study/voteresult.do?num=${vote.num}"/>">
+						<a href="#" onclick="goResult(${vote.num});">
 							<ul>
 								<li>${vote.num}</li>
 								<li>${vote.title}<span>(마감된 투표입니다.)</span></li>
@@ -93,7 +95,7 @@
 						</a>
 						</c:if>
 						<c:if test="${vote.type eq 1}">
-						<a href="<c:url value="/study/detailvote.do?num=${vote.num}"/>">
+						<a href="#" onclick="goDetail(${vote.num});">
 							<ul>
 								<li>${vote.num}</li>
 								<li>${vote.title}</li>
@@ -104,6 +106,7 @@
 						</c:if>
 					</div>
 				</c:forEach>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -112,5 +115,24 @@
 		$(document).ready(function() {
 			$("#header").load("header.html");
 		});
+		
+		function goDetail(vnum){
+			let inputEle = document.querySelector("#inputEle");
+			inputEle.value = vnum; 
+			let f = document.detailForm;
+			f.action = `<c:url value="/study/detailvote.do"/>`;
+			f.submit();
+		}
+		
+		function goResult(vnum){
+			let inputEle = document.querySelector("#inputEle");
+			inputEle.value = vnum; 
+			let f = document.detailForm;
+			f.action = `<c:url value="/study/voteresult.do"/>`;
+			f.submit();
+		}
+		
+		
+		
 	</script>
 </body>

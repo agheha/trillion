@@ -22,7 +22,6 @@ public class ListBoardController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	// 데이터를 구하고 공유 영역에 올림
       req.setAttribute("list", dao.selectBoard());
-      
       req.getRequestDispatcher("/jsp/board/list.jsp").forward(req, res);
     }	
 
