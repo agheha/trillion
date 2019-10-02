@@ -42,7 +42,7 @@
             	<button>이미지수정</button>
             </div>
 				<ul>
-					<li><a href="#">비밀번호 변경</a></li>
+					<li><a href="<c:url value='/jsp/user/updatepass.jsp' />">비밀번호 변경</a></li>
 					<li><a href="#">회원탈퇴</a></li>
 				</ul>
 			</div>

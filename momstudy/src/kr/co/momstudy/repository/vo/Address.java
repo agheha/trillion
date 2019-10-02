@@ -1,18 +1,19 @@
 package kr.co.momstudy.repository.vo;
 
 public class Address {
-	private int address_code;
+	private int addressCode;
 	private String addressDetail;
 	private String addressDetail2;
 	
-	public int getAddress_code() {
-		return address_code;
-	}
-	public void setAddress_code(int address_code) {
-		this.address_code = address_code;
-	}
+
 	public String getAddressDetail() {
 		return addressDetail;
+	}
+	public int getAddressCode() {
+		return addressCode;
+	}
+	public void setAddressCode(int addressCode) {
+		this.addressCode = addressCode;
 	}
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;

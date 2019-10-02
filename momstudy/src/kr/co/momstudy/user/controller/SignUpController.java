@@ -35,6 +35,7 @@ public class SignUpController extends HttpServlet{
 		String gender = req.getParameter("gender");
 		String[] category = req.getParameterValues("category");
 		
+		
 		if (!pass1.equals(pass2)) res.sendRedirect(req.getContextPath() + "/user/signupform.do?fail=0");			
 		
 		Date birth = null;
