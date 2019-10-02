@@ -43,7 +43,7 @@
                         <input class="form_login"type="password" id="pass" placeholder="비밀번호" name="pass"> 
                     </div>
                  	<div>
-                 		<button>로그인</button>
+                        <input class="submit_btn" type="submit" value="로그인" />
                  	</div>
                     <div>
                         <a href="findform.do">아이디/비밀번호 찾기</a>

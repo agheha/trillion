@@ -20,13 +20,19 @@
 		<result column="category_code" property="categoryCode"/>
 	</resultMap>
 	
+	<resultMap type="Address" id="addressMap">
+		<result column="address_code" property="code"/>
+		<result column="address_detail" property="addressDetail"/>
+		<result column="address_detail2" property="addressDetail2"/>
+	</resultMap>
+	
 	<resultMap type="Category" id="categoryMap">
 		<result column="category_name" property="categoryName"/>
 		<result column="category_code" property="categoryCode"/>
 	</resultMap>
 	
 	<!-- 	로그인 -->
-	<select id="selectLogin" resultType="User" parameterType="User">
+	<select id="selectLogin" resultMap="userMap" parameterType="User">
 		select * 
 		  from tb_user
 		 where email = #{email}
@@ -62,6 +68,35 @@
 		 where name = #{name}
 		   and email = #{email}
 	</select>
+	<!--  유저 카데고리 코드 찾기 -->
+	<select id="selectUserCategoryCode" parameterType="string" resultMap="userCategoryMap">
+		select *
+		  from tb_user_category
+		 where email = #{email}
+	</select>
+	<!--  유저 카데고리 수정 -->
+	<delete id="deleteUserCategoryCode" parameterType="string">
+		delete 
+		  from tb_user_category
+		 where email = #{email}
+	</delete>	
+	
+	<!-- 주소의 대분류를 가져옴  -->
+	<select id="selectBigAddress" resultType="string">
+		select distinct address_detail
+		  from tb_address   
+	</select>	
+	
+	<!-- 주소의 코드와 소분류를 가져옴  -->
+	<select id="selectSmallAddress" resultMap="addressMap" parameterType="string">
+		select address_detail2,
+               address_code
+		  from tb_address   
+		 where address_detail = #{addr};
+	</select>
+	
+	
+	
 </mapper>
 
 

@@ -40,11 +40,24 @@
 	</insert>
 
 	<!-- 투표를 다 가져옴 -->
-	<select id="selectVote" resultMap="voteMap" parameterType="int">
+	<select id="selectVote" resultMap="voteMap" parameterType="Search">
 		select *
-		from tb_vote
-		where study_no = #{studyNo}
-		order by num desc
+		  from (select rownum rnum,a.*
+				from(select *
+				       from tb_vote
+			   	      where study_no = #{studyNum}
+			   	      	<if test="type == 'email'">
+			   	      		and email like '%'||#{keyword}||'%'
+			   	      	</if>
+			   	      	<if test="type == 'title'">
+			   	      		and title like '%'||#{keyword}||'%'
+			   	      	</if>
+			          order by
+			          <if test="filter == 'regDate'">
+			          		reg_date 
+			          </if>
+			           desc) a)
+		  where rnum between #{begin} and #{end}            
 	</select>
 
 	<!-- 투표 1개를 가져옴 -->
