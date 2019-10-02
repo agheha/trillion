@@ -30,8 +30,8 @@ public class VoteListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		Study study = (Study)req.getSession().getAttribute("study"); 
 		int studyNum = study.getNum();
-		String sPageNo = req.getParameter("PageNo");
 		
+		String sPageNo = req.getParameter("PageNo");
 		int pageNo = 1;
 		if(sPageNo != null) {
 			pageNo = Integer.parseInt(sPageNo);

@@ -18,7 +18,7 @@ public class Search extends Page{
 
 	private String type;
 	private String keyword;
-	private int category;
+	private int categoryCode;
 	private int studyNum;
 	private String filter;
 	
@@ -34,12 +34,14 @@ public class Search extends Page{
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-	public int getCategory() {
-		return category;
+	public int getCategoryCode() {
+		return categoryCode;
 	}
-	public void setCategory(int category) {
-		this.category = category;
+
+	public void setCategoryCode(int categoryCode) {
+		this.categoryCode = categoryCode;
 	}
+
 	public int getStudyNum() {
 		return studyNum;
 	}
