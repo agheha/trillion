@@ -82,8 +82,8 @@
 				<div class="category_wrap">
 					<ul>
 						<c:forEach items="${cateList}" var="category">
-							<li><input id="it" type="checkbox" name="category"
-								value="${category.categoryCode}"/> <label for="it">${category.categoryName}</label>
+							<li><input type="checkbox" name="category"
+								value="${category.categoryCode}"/> <label>${category.categoryName}</label>
 							</li>
 						</c:forEach>
 					</ul>
@@ -92,7 +92,7 @@
 				<div>
 					<Select id="area" name="bigaddr" onchange="show()">
 					<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
-							<option value="${bigAddr}" index="addr${s.count}">${bigAddr}</option>
+							<option value="addr${s.count}">${bigAddr}</option>
 					</c:forEach>
 					</Select>
 				</div>
@@ -124,19 +124,21 @@
 	<script type="text/javascript">
 		
 		function show() {
-			let list;
-			let area = document.querySelector("#area").index
+			
+			let ulEle = document.querySelectorAll("#forfor > ul");
+			
+			ulEle.forEach((ele) => {
+				ele.style.display="none"
+			})
+			
+			let area = document.querySelector("#area").value
 			console.log(area)
 			
-			let ulEle = document.queryselectorAll("#forfor > ul");
 			
-			areaList.forEach((val) => {
-				if(area === val[0]){
-					document.querySelector("#"+val[1]).style="display:block"
+			ulEle.forEach((ele)=> {
+				if(area === ele.id) {
+					ele.style.display="block";
 				}
-			})
-			ulEle.forEach((ele)=>{
-				if(area === ele.id) ele.style.display="block";
 			})
 			
 			
