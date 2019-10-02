@@ -21,7 +21,7 @@
               from (select rownum rnum,a.*
 					  from(select *
 				       	     from (select a.*,
-                                        c.category_code as category_code
+                                        c.category_code as category_code,
                                         c.name as name
                                	     from tb_review_study a
                               	    inner join tb_study c
