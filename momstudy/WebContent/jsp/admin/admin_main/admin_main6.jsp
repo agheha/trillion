@@ -3,6 +3,8 @@
 
 <%@ include file="include_main_top.jsp"%>
 
+<script type="text/javascript" src="../../../script/admin_main_allDelete/allChechk.js"></script>
+
 <div id="box-6">
 	<!-- box two content -->
 	<form action="" method="get" class="saerch-board">
@@ -19,7 +21,7 @@
 		</select> <input type="text" name="" placeholder="saerch">
 		<button>검색</button>
 	</form>
-	<form action="" method="post">
+	<form action="" method="post" name="mform">
 		<table>
 			<thead>
 				<tr>
@@ -30,7 +32,7 @@
 					<th>조회수</th>
 					<th>추천수</th>
 					<th>신고수</th>
-					<th>삭제</th>
+					<th>삭제  <input type="checkbox" id="all" onclick="allCheck();"></th>
 				<tr>
 			</thead>
 			<tbody>
@@ -58,14 +60,14 @@
 						<%-- ${ } --%>
 					</td>
 
-					<td class="delete"><input type="checkbox" name="delete"
+					<td class="delete"><input type="checkbox" name="dleNo"
 						value="<%-- ${ } --%>"></td>
 
 				</tr>
 				<%-- </c:forEach> --%>
 			</tbody>
 		</table>
-		<button id="del" type="button">삭제</button>
+		<button id="del1" type="button">삭제</button>
 	</form>
 </div>
 

@@ -179,8 +179,14 @@ html, body {
 }
 
 /* 버튼 */
-#del {
-	position: absolute;
+#del1 {
+	position: relative;
 	left: 417px;
-	bottom: 69px;
+	bottom: 116px;
+}
+
+#del2 {
+	position: relative;
+	left: 476px;
+	bottom: 116px;
 }
