@@ -8,13 +8,13 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <style>
-ul {
-	width: 370px;
+.ulcontent {
+	width: max-content;
 	margin: auto;
 	list-style-type: none;
 }
 
-li {
+.lis {
 	width: 20px;
 	height: 20px;
 	float: left;
@@ -22,23 +22,23 @@ li {
 	text-align: center;
 }
 
-li:hover {
+.lis:hover {
 	color: rgb(12, 209, 209);
 }
 </style>
 </head>
 <body>
-	<div class="content">
+	<div class="ulcontent">
 		<ul>
-			<li><button><<</button></li>
-			<li><button><</button></li>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-			<li><button>></button></li>
-			<li><button>>></button></li>
+			<li class="lis"><button><<</button></li>
+			<li class="lis"><button><</button></li>
+			<li class="lis">1</li>
+			<li class="lis">2</li>
+			<li class="lis">3</li>
+			<li class="lis">4</li>
+			<li class="lis">5</li>
+			<li class="lis"><button>></button></li>
+			<li class="lis"><button>>></button></li>
 		</ul>
 	</div>
 </body>
