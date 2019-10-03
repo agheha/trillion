@@ -25,7 +25,7 @@ public class PageResult {
 		this.beginPage = (currTab - 1) * tabSize + 1;
 		this.endPage = currTab * tabSize;
 		if(endPage > lastPage) {endPage = lastPage;}
-		this.prev = (pageNo != 1);
+		this.prev = (beginPage != 1);
 		this.next = (endPage != lastPage);
 	}
 	

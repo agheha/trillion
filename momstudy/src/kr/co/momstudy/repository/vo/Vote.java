@@ -12,6 +12,14 @@ public class Vote {
 	Date regDate;
 	Date limitDate;
 	String email;
+	int cnt;
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public String getEmail() {
 		return email;
 	}
