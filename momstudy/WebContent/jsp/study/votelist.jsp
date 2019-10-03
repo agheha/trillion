@@ -57,8 +57,7 @@
 					<p>투표 하기</p>
 					<div>
 							<button type="button"
-								onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록 </button> <input
-								type="text" name="keyword" />
+								onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록 </button> 
 					</div>
 				</div>
 				<div class="board_list">
