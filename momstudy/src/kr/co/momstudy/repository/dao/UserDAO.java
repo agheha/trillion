@@ -25,10 +25,10 @@ public interface UserDAO {
 	List<Category> selectUserCategoryCode(String email);
 	
 	void deleteUserCategoryCode(String email);
-	
+	// 주소 대분류만 가져옴
 	List<String> selectBigAddress();
-	
-	List<Address> selectSmallAddress(String bigaddress);
+	// 주소테이블 모든 데이터를 가져옴
+	List<Address> selectSmallAddress();
 	
 	
 }

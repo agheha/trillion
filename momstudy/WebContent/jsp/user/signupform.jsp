@@ -82,11 +82,38 @@
 				<div class="category_wrap">
 					<ul>
 						<c:forEach items="${cateList}" var="category">
-							<li><input id="it" type="checkbox" name="category"
-								value="${category.categoryCode}"/> <label for="it">${category.categoryName}</label>
+							<li><input type="checkbox" name="category"
+								value="${category.categoryCode}"/> <label>${category.categoryName}</label>
 							</li>
 						</c:forEach>
 					</ul>
+				</div>
+				<p>관심 지역</p>
+				<div>
+					<Select id="area" name="bigaddr" onchange="show()">
+					<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
+							<option value="addr${s.count}">${bigAddr}</option>
+					</c:forEach>
+					</Select>
+				</div>
+				<div class="category_wrap">
+					<div id="forfor">
+						<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
+
+						<ul style="display:none" id="addr${loop.index +1}">
+							<c:forEach items="${smallAddr}" var="smallAddr" >
+							
+								<c:if test="${bigAddr eq smallAddr.addressDetail}">								
+								<li>
+									<input type="checkbox" name="userAddr"
+									value="${smallAddr.addressCode}"/> 
+									<label >${smallAddr.addressDetail2}</label>
+								</li>
+								</c:if>
+							</c:forEach>
+						</ul>
+						</c:forEach>
+					</div>	
 				</div>
 				<input type="submit" class="login_submit_btn" value="등록" />
 			</div>
@@ -95,18 +122,29 @@
 
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-
-			// header 불러오기
-			$("#header").load("header.html");
-
-			// category_wrap & fieldset height 맞추기
-			// var heightArray = $(".fieldset").map(function(){
-			//     return $(this).height();
-			// }).get();
-			// var maxHeight = Math.max.apply(Math, heightArray);
-			// $(".fieldset").height(maxHeight);
-		});
+		
+		function show() {
+			
+			let ulEle = document.querySelectorAll("#forfor > ul");
+			
+			ulEle.forEach((ele) => {
+				ele.style.display="none"
+			})
+			
+			let area = document.querySelector("#area").value
+			console.log(area)
+			
+			
+			ulEle.forEach((ele)=> {
+				if(area === ele.id) {
+					ele.style.display="block";
+				}
+			})
+			
+			
+			
+		}
+		
 	</script>
 </body>
 </html>

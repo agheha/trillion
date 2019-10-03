@@ -21,7 +21,7 @@
 	</resultMap>
 	
 	<resultMap type="Address" id="addressMap">
-		<result column="address_code" property="code"/>
+		<result column="address_code" property="addressCode"/>
 		<result column="address_detail" property="addressDetail"/>
 		<result column="address_detail2" property="addressDetail2"/>
 	</resultMap>
@@ -88,11 +88,9 @@
 	</select>	
 	
 	<!-- 주소의 코드와 소분류를 가져옴  -->
-	<select id="selectSmallAddress" resultMap="addressMap" parameterType="string">
-		select address_detail2,
-               address_code
+	<select id="selectSmallAddress" resultMap="addressMap" >
+		select *
 		  from tb_address   
-		 where address_detail = #{addr};
 	</select>
 	
 	
