@@ -24,6 +24,9 @@ public class StucyRecruitmentListController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		req.getParameter("PageNo");
+		
 		List<StudyRecruitment> strList = strDao.selectStudyRecruitment();
 		req.setAttribute("strList", strList);
 		RequestDispatcher rd = req.getRequestDispatcher("");
