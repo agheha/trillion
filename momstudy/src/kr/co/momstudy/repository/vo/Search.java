@@ -82,6 +82,9 @@ public class Search extends Page{
 			case "별점":
 				list.add(new String [] {"score",filter});
 				break;
+			case "신청일":
+				list.add(new String [] {"partDate",filter});
+				break;
 			}
 		}
 		
@@ -98,7 +101,7 @@ public class Search extends Page{
 			case "내용":
 				list.add(new String [] {"content",type});
 				break;
-			case "글쓴이":
+			case "글쓴이": case "이메일":
 				list.add(new String [] {"email",type});
 				break;
 			case "스터디이름":

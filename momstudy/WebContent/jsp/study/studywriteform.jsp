@@ -126,7 +126,7 @@ select {
 						<select name="address1">
 							<option value="">선택</option>
 							<c:forEach items="${bigAList}" var="addr">
-								<option value="${addr}">${addr}</option>
+								<option value="${addr.addressDetail}">${addr.addressDetail}</option>
 							</c:forEach>
 						</select> <select name="address2">
 							<option>선택</option>
