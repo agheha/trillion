@@ -24,7 +24,7 @@ public interface UserDAO {
 	User searchPass(User user);
 	// 유저 카테고리 코드 찾기
 	List<Category> selectUserCategoryCode(String email);
-	
+	// 수정탭에서 카데고리 수정클릭시 원본 데이터 삭제
 	void deleteUserCategoryCode(String email);
 	// 주소 대분류만 가져옴
 	List<String> selectBigAddress();
@@ -32,5 +32,6 @@ public interface UserDAO {
 	List<Address> selectSmallAddress();
 	// 관심지역 등록
 	void insertAddress(UserArea area);
-	
+	// 유저관심지역 목록뽑기 
+	List<UserArea> selectUserArea(String email);
 }

@@ -26,6 +26,11 @@
 		<result column="address_detail2" property="addressDetail2"/>
 	</resultMap>
 	
+	<resultMap type="UserArea" id="userAreaMap">
+		<result column="eamil" property="email"/>
+		<result column="address_code" property="addressCode"/>
+	</resultMap>
+	
 	<resultMap type="Category" id="categoryMap">
 		<result column="category_name" property="categoryName"/>
 		<result column="category_code" property="categoryCode"/>
@@ -92,11 +97,17 @@
 		select *
 		  from tb_address   
 	</select>
-	
+	<!-- 유저 지역 추가 -->
 	<insert id="insertAddress" parameterType="UserCategory" >
 		insert into tb_user_address(email, address_code)
 		values(#{email}, #{addressCode})
 	</insert>
+	<!--  유저관심지역 목록뽑기 -->
+	<select id="selectUserArea" parameterType="String" resultMap="userAreaMap">
+		select *
+		  from tb_user_address
+		 where email = #{email}
+	</select>
 	
 	
 	

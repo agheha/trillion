@@ -91,14 +91,13 @@
 				<p>관심 지역</p>
 				<div>
 					<Select id="area" name="bigaddr" onchange="show()">
-							<option selected>선택</option>
 					<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
 							<option value="addr${s.count}">${bigAddr}</option>
 					</c:forEach>
 					</Select>
 				</div>
 				<div class="category_wrap">
-					<div id="forfor">
+					<div id="showArea">
 						<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
 
 						<ul style="display:none" id="addr${loop.index +1}">
@@ -124,16 +123,17 @@
 
 	<script type="text/javascript">
 		
+		document.querySelector("#addr1").style.display="block";
+	
 		function show() {
 			
-			let ulEle = document.querySelectorAll("#forfor > ul");
+			let ulEle = document.querySelectorAll("#showArea > ul");
 			
 			ulEle.forEach((ele) => {
 				ele.style.display="none"
 			})
 			
 			let area = document.querySelector("#area").value
-			console.log(area)
 			
 			
 			ulEle.forEach((ele)=> {
