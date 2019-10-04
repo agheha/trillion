@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.title {
+	padding-bottom: 20px;
+	font-size : 25px;
+	font-weight: bold;
+}
+.subtitle {
+	font-size : 16px;
+	padding : 0 15px;
+	height: 52px;
+	line-height: 60px;
+	font-weight: bold;
+}
+.heightAuto {
+	box-sizing: border-box;
+	border: 1px solid transparent;
+}
+.inputbox {
+	width : 800px;
+    height: 45px;
+    padding : 0 15px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+}

@@ -8,27 +8,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
+import kr.co.momstudy.repository.vo.User;
+import kr.co.momstudy.repository.vo.UserArea;
 
-@WebServlet("/user/signupform.do")
-public class SignUpformController extends HttpServlet{
+@WebServlet("/user/userinfo.do")
+public class UserInfoController extends HttpServlet{
 	private UserDAO dao;
 	
-	public SignUpformController() {
+	public UserInfoController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
-	}
+	}	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("user");
 		List<Category> cateList = dao.selectCategory();
+		List<Category> userCate = dao.selectUserCategoryCode(user.getEmail());
+		List<UserArea> userArea = dao.selectUserArea(user.getEmail());
 		List<String> bigAddr = dao.selectBigAddress();
 		List<Address> smallAddr = dao.selectSmallAddress();
-		req.setAttribute("cateList",cateList);
-		req.setAttribute("bigAddr",bigAddr);
+		
 		req.setAttribute("smallAddr",smallAddr);
-		req.getRequestDispatcher("/jsp/user/signupform.jsp").forward(req, res);
+		req.setAttribute("bigAddr",bigAddr);
+		req.setAttribute("userArea", userArea);
+		req.setAttribute("userCate", userCate);
+		req.setAttribute("cateList", cateList);
+		req.getRequestDispatcher("/jsp/user/userinfo.jsp").forward(req, res);
 	}
 }
