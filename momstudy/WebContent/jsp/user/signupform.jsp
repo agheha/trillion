@@ -89,31 +89,39 @@
 					</ul>
 				</div>
 				<p>관심 지역</p>
-				<div>
-					<Select id="area" name="bigaddr" onchange="show()">
-					<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
-							<option value="addr${s.count}">${bigAddr}</option>
+				<div class="category_wrap" id="area">
+					<ul>
+					<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
+						<li>
+							<a href="#" onclick="show(${loop.count})" id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail} 
+								<span>
+									${bigAddr.count}
+								</span>
+							</a>
+						</li>
 					</c:forEach>
-					</Select>
+					</ul>
 				</div>
 				<div class="category_wrap">
 					<div id="showArea">
 						<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
 
-						<ul style="display:none" id="addr${loop.index +1}">
-							<c:forEach items="${smallAddr}" var="smallAddr" >
-							
-								<c:if test="${bigAddr eq smallAddr.addressDetail}">								
+						<ul style="display:none" id="addr${loop.count}">
+							<c:forEach items="${smallAddr}" var="smallAddr" varStatus="i" >
+								<c:if test="${bigAddr.addressDetail eq smallAddr.addressDetail}">								
 								<li>
-									<input type="checkbox" name="userAddr"
+									<input id="add${i.count}" type="checkbox" name="userAddr" sAdd="${smallAddr.addressDetail2}"
 									value="${smallAddr.addressCode}"/> 
-									<label >${smallAddr.addressDetail2}</label>
+									<label for="add${i.count}">${smallAddr.addressDetail2}</label>
 								</li>
 								</c:if>
 							</c:forEach>
 						</ul>
 						</c:forEach>
 					</div>	
+				</div>
+				<div class="category_wrap" id="selArea">
+					
 				</div>
 				<input type="submit" class="login_submit_btn" value="등록" />
 			</div>
@@ -122,10 +130,8 @@
 
 
 	<script type="text/javascript">
-		
-		document.querySelector("#addr1").style.display="block";
-	
-		function show() {
+		let select = document.querySelectorAll('input[name="userAddr"]')
+		function show(index) {
 			
 			let ulEle = document.querySelectorAll("#showArea > ul");
 			
@@ -133,18 +139,41 @@
 				ele.style.display="none"
 			})
 			
-			let area = document.querySelector("#area").value
-			
-			
+			let area = document.querySelector("#baddr"+ index).getAttribute("value")
 			ulEle.forEach((ele)=> {
 				if(area === ele.id) {
 					ele.style.display="block";
 				}
 			})
-			
-			
-			
 		}
+		
+		select.forEach((ele) => {
+			ele.addEventListener("click",showText);
+		})
+		select.forEach((ele) => {
+			ele.addEventListener("click",del);
+		})
+
+		function showText(e) {
+
+			let textArea = document.querySelector("#selArea");
+			if (e.target.checked){
+				let spanEle = document.createElement("span");
+				spanEle.id = 'show'+e.target.value;
+				spanEle.innerText =  e.target.getAttribute("sAdd");
+				textArea.append(spanEle);
+				return
+			}
+		}
+
+		function del(e){
+			let textArea = document.querySelector("#selArea");
+			if (e.target.checked === false){
+			document.querySelector('#show' + e.target.value).remove();	
+			return 	
+			}
+		}
+
 		
 	</script>
 </body>

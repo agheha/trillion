@@ -20,4 +20,7 @@ public interface StudyRecruitmentDAO {
 	
 	// 스터디 모집글 삭제
 	int deleteStudyRecruitment(int strNum);
+	
+	// 모집글 조회수 업데이트
+	void updateViewCnt(int strNum);
 } 

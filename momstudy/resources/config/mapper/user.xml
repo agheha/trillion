@@ -87,9 +87,10 @@
 	</delete>	
 	
 	<!-- 주소의 대분류를 가져옴  -->
-	<select id="selectBigAddress" resultType="string">
-		select distinct address_detail
-		  from tb_address   
+	<select id="selectBigAddress" resultMap="addressMap">
+		select count(*) count, address_detail
+ 		  from tb_address
+		 group by address_detail
 	</select>	
 	
 	<!-- 주소의 코드와 소분류를 가져옴  -->

@@ -26,8 +26,8 @@ public interface UserDAO {
 	List<Category> selectUserCategoryCode(String email);
 	// 수정탭에서 카데고리 수정클릭시 원본 데이터 삭제
 	void deleteUserCategoryCode(String email);
-	// 주소 대분류만 가져옴
-	List<String> selectBigAddress();
+	// 주소와 안에 갯수를 뽑아옴 
+	List<Address> selectBigAddress();
 	// 주소테이블 모든 데이터를 가져옴
 	List<Address> selectSmallAddress();
 	// 관심지역 등록

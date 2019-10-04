@@ -144,14 +144,23 @@
 				}		
 			})
 		})
-		
+		// 유저가 선택한 관심지역 추가 
 		let selectAreas = [
 			<c:forEach items="${userArea}" var="userArea">
 			<c:out value="${userArea.addressCode}" />,
 			</c:forEach>
 		]
 		
+		let userAreas = document.querySelectorAll('input[name="userAddr"]')
 		
+		userAreas.forEach(area => {			
+			selectAreas.forEach(addressCode => {
+				if (addressCode === parseInt(area.value)) {
+					area.checked = true
+				}		
+			})
+		})
+	
 		function doAction() {
 			alert("수정이 완료되었습니다.")
 		}
