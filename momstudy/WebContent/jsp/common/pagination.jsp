@@ -1,98 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
-<style>
 
-.totalContent{
-	width: 100%;
-	background: rgb(243, 243, 243);	
-}
-.pageContent {
-	width: max-content;
-	margin: auto;
-	list-style-type: none;
-	height: 40px;
-}
-
-.searchContent {
-	width: max-content;
-	margin: auto;	
-	list-style-type: none;
-	height: 40px;
-	line-height: 40px;
-}
-
-.check {
-	background: white;
-	border: 1px solid  rgb(243, 243, 243);	
-	color: rgb(245, 181, 63);
-}
-
-.lis {
-	    box-sizing: border-box;
-    float: left;
-    height: 40px;
-    width: 40px;
-    line-height: 26px;
-        text-align: center;
-    border: 5px solid  rgb(243, 243, 243);	
-}
-
-.prev, .next {
-	width: 33px;
-	height: 100%;
-	text-align: center;
-	line-height: 45px;
-}
-
-.prev {
-	float: left;
-}
-
-.next {
-	float: right;
-}
-
-.page {
-	float: left;
-	width: max-content;
-}
-
-.lis:hover {
-	  text-decoration: underline;
-	  cursor: pointer;
-}
+<link rel="stylesheet" href='<c:url value="/css/pagination.css" />'>
 
 
-.searchContent > form > input, .searchContent > form > select, .searchContent > form > div {
-	height: 30px;
-}
-
-.searchContent > form > div {
-	float: right;
-    width: 60px;
-    text-align: center;
-    line-height: 30px;
-	font-size: 13px;
-	position: relative;
-	top: 5px;	
-	background: rgb(44, 44, 44);
-    color: white;
-}
-.line{
-	border-top: 1px solid rgb(223, 223, 223);
-}
-
-</style>
-</head>
-<body>
 	<div class="totalContent">
 		<div class="pageContent">
 			<c:if test="${pr.prev}">
@@ -140,22 +52,4 @@
 		</form>
 		</div>
 	</div>
-	<script>
-		let p = document.pForm;
-		let s = document.sForm;
-		let lis = document.querySelectorAll(".lis");
-		let checkedEle = document.querySelector("#checked");
-		checkedEle && checkedEle.classList.add("check");
-		let searchbtn = document.querySelector("#searchbtn");
-		searchbtn.addEventListener('click',(e)=>{
-			s.submit();
-		})
-		lis.forEach((ele)=>{
-			ele.addEventListener('click',(e)=>{
-				document.querySelector("#pageNo").value = e.target.innerText;
-				p.submit();
-			})
-		})
-	</script>
-</body>
-</html>
+	<script src="<c:url value="/script/common/pagination.js" />"></script>
