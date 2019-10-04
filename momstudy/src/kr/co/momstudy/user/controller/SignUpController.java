@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.repository.vo.User;
+import kr.co.momstudy.repository.vo.UserArea;
 import kr.co.momstudy.repository.vo.UserCategory;
 import kr.co.momstudy.util.PhoneNumformat;
 
@@ -34,6 +35,7 @@ public class SignUpController extends HttpServlet{
 		String birDate = req.getParameter("year") +"-"+ req.getParameter("month") +"-"+ req.getParameter("date");
 		String gender = req.getParameter("gender");
 		String[] category = req.getParameterValues("category");
+		String[] userAddr = req.getParameterValues("userAddr");
 		
 		
 		if (!pass1.equals(pass2)) res.sendRedirect(req.getContextPath() + "/user/signupform.do?fail=0");			
@@ -62,6 +64,14 @@ public class SignUpController extends HttpServlet{
 			userCategory.setCategoryCode(Integer.parseInt(val));
 			dao.insertCategory(userCategory);
 		}
+		// 관심지역 등록
+		for (String val : userAddr) {
+			UserArea  userArea= new UserArea();
+			userArea.setEmail(email);
+			userArea.setAddressCode(Integer.parseInt(val));
+			dao.insertAddress(userArea);
+		}
+		
 		res.sendRedirect(req.getContextPath() + "/main.do");			
 	
 	}

@@ -93,6 +93,11 @@
 		  from tb_address   
 	</select>
 	
+	<insert id="insertAddress" parameterType="UserCategory" >
+		insert into tb_user_address(email, address_code)
+		values(#{email}, #{addressCode})
+	</insert>
+	
 	
 	
 </mapper>

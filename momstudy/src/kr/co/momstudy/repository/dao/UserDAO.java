@@ -5,6 +5,7 @@ import java.util.List;
 import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
 import kr.co.momstudy.repository.vo.User;
+import kr.co.momstudy.repository.vo.UserArea;
 import kr.co.momstudy.repository.vo.UserCategory;
 
 public interface UserDAO {
@@ -29,6 +30,7 @@ public interface UserDAO {
 	List<String> selectBigAddress();
 	// 주소테이블 모든 데이터를 가져옴
 	List<Address> selectSmallAddress();
-	
+	// 관심지역 등록
+	void insertAddress(UserArea area);
 	
 }

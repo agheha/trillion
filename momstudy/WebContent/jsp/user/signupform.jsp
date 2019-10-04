@@ -91,6 +91,7 @@
 				<p>관심 지역</p>
 				<div>
 					<Select id="area" name="bigaddr" onchange="show()">
+							<option selected>선택</option>
 					<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
 							<option value="addr${s.count}">${bigAddr}</option>
 					</c:forEach>

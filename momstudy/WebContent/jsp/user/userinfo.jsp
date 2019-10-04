@@ -120,7 +120,6 @@
 			</c:forEach>
 		];
 	
-		console.log(aaa)
 		let categorys = document.querySelectorAll('input[name="category"]');
 		categorys.forEach(category => {			
 			aaa.forEach(categoryCode => {
