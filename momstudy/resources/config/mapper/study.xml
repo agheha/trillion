@@ -18,8 +18,7 @@
 			from dual
 		</selectKey>
 		insert into tb_study(name, email, category_code, address_code, num
-		)
-		values (#{name}, #{email}, #{categoryCode}, #{addressCode},#{num})
+		) values (#{name}, #{email}, #{categoryCode}, #{addressCode}, #{num})
 
 	</insert>
 

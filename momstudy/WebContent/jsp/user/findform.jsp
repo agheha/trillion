@@ -72,9 +72,23 @@
 	                            <div class="find-item-inputbox">
 	                                <input type="email" placeholder="이메일" name="email">
 	                            </div>
-	                            <div class="find-item-msg">
-	                                본인인증시 사용하였던 휴대전화로 가입 시 등록했던 이메일을 보내드립니다.
-    	                        </div>						
+	                        	<c:choose>
+								<c:when test="${empty param.yyy }">
+		                            <div class="find-item-msg">
+		                                 본인인증 완료 후  가입 시 등록했던 이메일을 보내드립니다.
+	    	                        </div>						
+								</c:when>
+								<c:when test="${empty user}">
+		                            <div class="find-item-msg">
+		                                 입력한 정보를 확인할수 없습니다.		                
+	    	                        </div>						
+								</c:when>
+								<c:otherwise>
+		                            <div class="find-item-msg">
+		                           	인증되었습니다 전송된 이메일을 확인해주세요.
+		                            </div>
+								</c:otherwise>
+								</c:choose>			
 	                            <button class="find-item-button">
 	                                눌러라
 	                            </button>

@@ -23,7 +23,7 @@
 	</div>
 	<div class="header_bot_wrap">
 		<div>
-			<a href="./mypage.html"><span>마이페이지</span></a>
+			<a href="<c:url value="/user/mypage.do"></c:url>"><span>마이페이지</span></a>
 		</div>
 		<div>
 			<a href="#">스터디</a>

@@ -21,7 +21,7 @@
 	</resultMap>
 	
 	<resultMap type="Address" id="addressMap">
-		<result column="address_code" property="code"/>
+		<result column="address_code" property="addressCode"/>
 		<result column="address_detail" property="addressDetail"/>
 		<result column="address_detail2" property="addressDetail2"/>
 	</resultMap>
@@ -32,7 +32,7 @@
 	</resultMap>
 	
 	<!-- 	로그인 -->
-	<select id="selectLogin" resultType="User" parameterType="User">
+	<select id="selectLogin" resultMap="userMap" parameterType="User">
 		select * 
 		  from tb_user
 		 where email = #{email}
@@ -68,6 +68,18 @@
 		 where name = #{name}
 		   and email = #{email}
 	</select>
+	<!--  유저 카데고리 코드 찾기 -->
+	<select id="selectUserCategoryCode" parameterType="string" resultMap="userCategoryMap">
+		select *
+		  from tb_user_category
+		 where email = #{email}
+	</select>
+	<!--  유저 카데고리 수정 -->
+	<delete id="deleteUserCategoryCode" parameterType="string">
+		delete 
+		  from tb_user_category
+		 where email = #{email}
+	</delete>	
 	
 	<!-- 주소의 대분류를 가져옴  -->
 	<select id="selectBigAddress" resultType="string">
@@ -76,12 +88,11 @@
 	</select>	
 	
 	<!-- 주소의 코드와 소분류를 가져옴  -->
-	<select id="selectSmallAddress" resultMap="addressMap" parameterType="string">
-		select address_detail2,
-               address_code
+	<select id="selectSmallAddress" resultMap="addressMap" >
+		select *
 		  from tb_address   
-		 where address_detail = #{addr};
 	</select>
+	
 	
 	
 </mapper>

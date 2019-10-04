@@ -21,8 +21,14 @@ public interface UserDAO {
 	User searchEmail(User user);
 	// 비밀번호 찾기
 	User searchPass(User user);
+	// 유저 카테고리 코드 찾기
+	List<Category> selectUserCategoryCode(String email);
 	
+	void deleteUserCategoryCode(String email);
+	// 주소 대분류만 가져옴
 	List<String> selectBigAddress();
+	// 주소테이블 모든 데이터를 가져옴
+	List<Address> selectSmallAddress();
 	
-	List<Address> selectSmallAddress(String bigaddress);
+	
 }

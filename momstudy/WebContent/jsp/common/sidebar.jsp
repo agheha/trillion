@@ -8,9 +8,12 @@
 		</div>
 		<div class="left_list">
 			<div>
+					<form name="myForm" action="<c:url value="/study/studymain.do"/>" method="post">
 				<p>
-					<a href="<c:url value="/study/studymain.do"/>">${study.name}</a>
+					<a href="#" onclick="goMain();">${study.name}</a>
 				</p>
+					<input type="hidden" value="${study.num}" name="num"/> 
+					</form>
 				<ul>
 					<!-- 스터디장 화면 다르게 보임 -->
 					<li><a href="./studymembers.html">멤버</a></li>
@@ -23,8 +26,8 @@
 		</div>
 	</div>
 <script>
-	function moveCont(num){
-		
-		
+	function goMain(){
+		let f = document.myForm;
+		f.submit();
 	}
 </script>

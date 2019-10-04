@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.VoteDAO;
+import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.Vote;
 import kr.co.momstudy.repository.vo.VoteAricle;
@@ -29,7 +30,7 @@ public class VoteUpdateController extends HttpServlet{
 		dao.deleteVote(num);
 		
 		User user = (User)req.getSession().getAttribute("user");
-		
+		Study study = (Study)req.getSession().getAttribute("study");
 		
 		Enumeration<String> names = req.getParameterNames();
 		int duplication = 2;
@@ -47,7 +48,7 @@ public class VoteUpdateController extends HttpServlet{
 		vote.setAriclePlus(addaricle);
 		vote.setDuplication(duplication);
 		vote.setTitle(title);
-		vote.setStudyNo(1);
+		vote.setStudyNo(study.getNum());
 		dao.insertVote(vote);
 		int voteNum = vote.getNum();
 		
