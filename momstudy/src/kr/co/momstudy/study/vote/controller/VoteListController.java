@@ -45,8 +45,8 @@ public class VoteListController extends HttpServlet{
 		
 		Search search = new Search(pageNo);
 		
-		search.setTypes("제목","글쓴이");
-		search.setFilters("일자","조회수","별점");
+		search.setTypes("제목","글쓴이","내용");
+		search.setFilters("일자");
 		search.setStudyNum(studyNum);
 		search.setFilter(filter);
 		search.setKeyword(keyword);
