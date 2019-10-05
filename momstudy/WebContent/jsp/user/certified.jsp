@@ -9,9 +9,9 @@
 
 
         <!-- css -->
-        <link rel="stylesheet" href="./../common.css">
-        <link rel="stylesheet" href="./../certified.css">
-        <link rel="stylesheet" href="./../header.css">
+        <link rel="stylesheet" href="./../css/common.css">
+        <link rel="stylesheet" href="./../css/certified.css">
+        <link rel="stylesheet" href="./../css/header.css">
 
         <!-- jquery -->
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>

@@ -17,12 +17,8 @@
 					type="hidden" value="${search.categoryCode}" name="categoryCode">
 				<input type="hidden" value="" name="pageNo" id="pageNo">
 				<ul class="page">
-					<c:forEach begin="${pr.beginPage}" end="${pr.endPage}"
-						varStatus="status">
-						<li class="lis"
-							<c:if test="${pr.pageNo eq (pr.beginPage + status.count-1)}">
-				id="checked"
-			</c:if>>${pr.beginPage + status.count-1}</li>
+					<c:forEach begin="${pr.beginPage}" end="${pr.endPage}" varStatus="status">
+						<li class="lis" <c:if test="${pr.pageNo eq (pr.beginPage + status.count-1)}"> id="checked" </c:if>>${pr.beginPage + status.count-1}</li>
 					</c:forEach>
 
 				</ul>

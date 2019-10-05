@@ -1,9 +1,10 @@
-package kr.co.momstudy.repository.dao;
+﻿package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
 import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
+import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.UserArea;
 import kr.co.momstudy.repository.vo.UserCategory;
@@ -38,4 +39,8 @@ public interface UserDAO {
 	void insertAddress(UserArea area);
 	// 유저관심지역 목록뽑기 
 	List<UserArea> selectUserArea(String email);
+	// 스터디에 참여한 유저목록 뽑기
+	List<User> selectUserByStudyNum(Search search);
+	// 스터디에 신청한 유저목록 뽑기
+	List<User> selectUserByStudyNum2(Search search);
 }

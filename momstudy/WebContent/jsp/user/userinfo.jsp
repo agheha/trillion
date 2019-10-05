@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./../css/header.css">
 <link rel="stylesheet" href="./../css/layout.css">
 <link rel="stylesheet" href="./../css/userinfo.css">
+<link rel="stylesheet" here="./../css/study_layout.css">
 
 <title>계정관리</title>
 <!-- full calendar -->
@@ -38,9 +39,7 @@
 				<div class="profile">
 					<img src="./../images/test_img2.jpg" width="200" height="200"
 						alt="testImg">
-				</div>
-				<div>
-					<button>이미지수정</button>
+					<button></button>
 				</div>
 				<ul>
 					<li><a href="<c:url value='/jsp/user/updatepass.jsp' />">비밀번호
@@ -56,24 +55,18 @@
 				<div class="title">기본정보</div>
 				<div>
 					<div class="slide_wrap">
-						<div class="">
-							<div class="subtitle">이메일</div>
-						</div>
 						<div>
+							<div class="subtitle">이메일</div>
 							<input class="inputbox" type="text" placeholder="${user.email}"
 								disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">이름</div>
-						</div>
-						<div>
 							<input class="inputbox" type="text" placeholder="${user.name}"
 								disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">휴대전화번호</div>
-						</div>
-						<div>
 							<input class="inputbox" type="text"
 								placeholder="${user.phoneNum}" disabled="disabled" />
 						</div>
@@ -82,17 +75,13 @@
 						</div>
 						<form action="<c:url value='/user/updateinfo.do' />"
 							onsubmit="doAction()" )>
-							<div>
-								<div>
-									<ul>
-										<c:forEach items="${cateList}" var="category">
-											<li><input type="checkbox" name="category"
-												value="${category.categoryCode}" /> <label>${category.categoryName}</label>
-											</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
+							<ul>
+								<c:forEach items="${cateList}" var="category">
+									<li><input type="checkbox" name="category"
+										value="${category.categoryCode}" /> <label>${category.categoryName}</label>
+									</li>
+								</c:forEach>
+							</ul>
 							<div>
 								<div class="subtitle">관심 지역</div>
 							</div>
@@ -124,8 +113,12 @@
 									</c:forEach>
 								</div>
 							</div>
+<<<<<<< HEAD
 							<div class="category_wrap" id="selArea"></div>
 							<button>수정</button>
+=======
+							<button class="submit_btn">수정</button>
+>>>>>>> master
 						</form>
 					</div>
 				</div>

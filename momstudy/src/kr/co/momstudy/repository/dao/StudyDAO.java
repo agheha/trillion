@@ -16,4 +16,8 @@ public interface StudyDAO {
 	List<Study> selectStudy(String email);
 	
 	Study selectOneStudy(int studyNum);
+	
+	void deleteParticipant(Participant pt);
+	
+	void aprovalParticipant(Participant pt);
 }
