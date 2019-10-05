@@ -96,29 +96,35 @@
 							<div>
 								<div class="subtitle">관심 지역</div>
 							</div>
-							<div>
-								<div>
-									<Select id="area" name="bigaddr" onchange="show()">
-										<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
-											<option value="addr${s.count}">${bigAddr}</option>
-										</c:forEach>
-									</Select>
-								</div>
+							<div class="category_wrap" id="area">
+								<ul>
+									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
+										<li><a href="#" onclick="show(${loop.count})"
+											id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail}
+												<span> ${bigAddr.count} </span>
+										</a></li>
+									</c:forEach>
+								</ul>
+							</div>
+							<div class="category_wrap">
 								<div id="showArea">
 									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
-										<ul style="display:none" id="addr${loop.index +1}">
-											<c:forEach items="${smallAddr}" var="smallAddr">
-												<c:if test="${bigAddr eq smallAddr.addressDetail}">
-													<li>
-													<input type="checkbox" name="userAddr" id="val${loop.index + 1 }"
-														value="${smallAddr.addressCode}" /> <label for="val${loop.index + 1}">${smallAddr.addressDetail2}</label>
-													</li>
+
+										<ul style="display: none" id="addr${loop.count}">
+											<c:forEach items="${smallAddr}" var="smallAddr" varStatus="i">
+												<c:if
+													test="${bigAddr.addressDetail eq smallAddr.addressDetail}">
+													<li><input id="add${i.count}" type="checkbox"
+														name="userAddr" sAdd="${smallAddr.addressDetail2}"
+														value="${smallAddr.addressCode}" /> <label
+														for="add${i.count}">${smallAddr.addressDetail2}</label></li>
 												</c:if>
 											</c:forEach>
 										</ul>
 									</c:forEach>
 								</div>
 							</div>
+							<div class="category_wrap" id="selArea"></div>
 							<button>수정</button>
 						</form>
 					</div>
@@ -130,20 +136,8 @@
 	</section>
 
 	<script type="text/javascript">
-		let selectCategorys = [
-			<c:forEach items="${userCate}" var="usercategory">
-				<c:out value="${usercategory.categoryCode}" />,
-			</c:forEach>
-		];
-	
-		let categorys = document.querySelectorAll('input[name="category"]');
-		categorys.forEach(category => {			
-			selectCategorys.forEach(categoryCode => {
-				if (categoryCode === parseInt(category.value)) {
-					category.checked = true
-				}		
-			})
-		})
+		
+		
 		// 유저가 선택한 관심지역 추가 
 		let selectAreas = [
 			<c:forEach items="${userArea}" var="userArea">

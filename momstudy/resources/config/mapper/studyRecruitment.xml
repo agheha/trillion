@@ -66,7 +66,7 @@
 	</update>
 	
 	<!-- 조회수 증가 -->
-	<update id="updateViewCnt" paramaterType="int">
+	<update id="updateViewCnt" parameterType="int">
 		update tb_study_recruitment
 		   set see_cnt = see_scnt + 1
 		 where no = #{no}

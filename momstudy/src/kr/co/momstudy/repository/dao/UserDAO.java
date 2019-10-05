@@ -12,6 +12,8 @@ public interface UserDAO {
 	
 	// 로그인 - 이메일 비밀번호 확인
 	User selectLogin(User user);
+	// 비밀번호 찾기로 로그인
+	User selectFindLogin(User user);
 	// 회원가입 
 	void insertUser(User user);
 	// 관심분야 등록 
@@ -24,6 +26,8 @@ public interface UserDAO {
 	User searchPass(User user);
 	// 유저 카테고리 코드 찾기
 	List<Category> selectUserCategoryCode(String email);
+	// 비밀번호 변경
+	void updatePass(User user);
 	// 수정탭에서 카데고리 수정클릭시 원본 데이터 삭제
 	void deleteUserCategoryCode(String email);
 	// 주소와 안에 갯수를 뽑아옴 

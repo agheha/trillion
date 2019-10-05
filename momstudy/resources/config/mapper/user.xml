@@ -43,6 +43,19 @@
 		 where email = #{email}
 		   and pass = #{pass}
 	</select>
+	<!-- 비밀번호 찾기로 들어온 회원 정보 세션에 올리기위함 -->
+	<select id="selectFindLogin" resultMap="userMap" parameterType="User">
+		select * 
+		  from tb_user
+		 where email = #{email}
+		   and name = #{name}
+	</select>
+	<!--  비밀번호 수정 -->
+	<update id="updatePass" parameterType="User">
+		update tb_user
+		   set pass = #{pass}
+		 where email = #{email}
+	</update>
 	<!-- 	회원가입 -->
 	<insert id="insertUser" parameterType="User" >
 		insert into tb_user(email, pass, name, phone_num, birth, gender)
@@ -99,6 +112,7 @@
 		  from tb_address   
 	</select>
 	<!-- 유저 지역 추가 -->
+	
 	<insert id="insertAddress" parameterType="UserCategory" >
 		insert into tb_user_address(email, address_code)
 		values(#{email}, #{addressCode})

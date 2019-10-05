@@ -54,7 +54,7 @@
 				<div class="title">비밀번호 변경</div>
 				<div>
 					<div class="slide_wrap">
-						<form name ="pForm" action="<c:url value='/user/updateinfo.do' />" method="post" onsubmit="return chkpass()" >
+						<form name ="pForm" action="<c:url value='/user/updatepass.do' />" method="post" onsubmit="return chkpass()" >
 							<div>
 								<div class="subtitle">변경 비밀번호</div>
 							</div>

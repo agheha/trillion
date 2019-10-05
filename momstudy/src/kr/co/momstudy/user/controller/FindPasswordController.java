@@ -56,22 +56,13 @@ public class FindPasswordController extends HttpServlet {
 			session.setAttribute("user", user);
 
 			String url = "http://" + req.getServerName() + ":" + req.getServerPort() + "/" + req.getContextPath()
-					+ "/jsp/user/certified.jsp?name=" + name  + "&email=" + email ;
+					+ "/user/certified.do?name=" + name  + "&email=" + email ;
 
-//			String msg = "";
-//			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-//			msg += "<h3 style='color: blue;'>비밀번호 찾기 인증코드 입니다.</h3>";
-//			msg += "<div style='font-size: 130%'>";
-//			msg += "비밀번호 찾기 페이지로 돌아가 인증코드 <strong>";
-//			msg += keyCode + "</strong> 를 입력해주세요, </div><br/>";
-//			msg += "<div>안증링크 접속하기<div>";
-//			msg += "<a href='" + url + "?" + "name=" + name + "&email=" + email + "'>" + url + "</a>";
-//			
 			String msg = "인증이 완료되었습니다 \n"
 					+ "링크를 클릭해 주세요 \n";
 			String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
-			final String us = "네이버 아이디"; // 패스워드 
-			final String pw = "네이버 비밀번호";      // SMTP 서버 정보를 설정한다. 
+			final String us = "cute1990@naver.com"; // 패스워드 
+			final String pw = "sms1990q!!";      // SMTP 서버 정보를 설정한다. 
 			
 			Properties props = new Properties(); 
 			props.put("mail.smtp.host", host); 
