@@ -25,10 +25,10 @@
 					<li><a id="admin">스터디 관리</a></li>
 					<form name="adminForm" action="" method="post">
 						<ul class="admin">
-							<li><a class="adminele" go="<c:url value="/study/studymain.do"/>">정보 관리</a></li>
-							<li><a class="adminele" go="<c:url value="/study/adminmember.do"/>">스터디원 관리</a></li>
-							<li><a class="adminele" go="<c:url value="/study/adminaprovalmember.do"/>">스터디 신청자 관리</a></li>
-							<li><a class="adminele" go="<c:url value="/study/studymain.do"/>">모집글 관리</a></li>
+							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/studymain.do"/>">정보 관리</a></li>
+							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminmember.do"/>">스터디원 관리</a></li>
+							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminaprovalmember.do"/>">스터디 신청자 관리</a></li>
+							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/studymain.do"/>">모집글 관리</a></li>
 						</ul>
 					</form>
 				</c:if>
