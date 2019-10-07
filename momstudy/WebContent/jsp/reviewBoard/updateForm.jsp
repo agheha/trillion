@@ -25,7 +25,9 @@
 	<title>스터디</title>
 </head>
 <body>
-	<header id="header"></header>
+	<header id="header">
+		<%@include file="/jsp/common/header.jsp" %>
+	</header>
 
     <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
     <section class="background_wrap">
