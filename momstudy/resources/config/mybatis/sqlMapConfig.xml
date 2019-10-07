@@ -24,6 +24,7 @@
 		<typeAlias alias="Participant" type="kr.co.momstudy.repository.vo.Participant" />
 		<typeAlias alias="Address" type="kr.co.momstudy.repository.vo.Address" />
 		<typeAlias alias="Search" type="kr.co.momstudy.repository.vo.Search" />
+		<typeAlias alias="UserArea" type="kr.co.momstudy.repository.vo.UserArea" />
 	</typeAliases>
 	 
 	

@@ -18,7 +18,7 @@ html, body {
 }
 
 /* button */
-.login_submit_btn {
+.submit_btn {
     display:block;
     width : 300px;
     height: 52px;
@@ -29,9 +29,8 @@ html, body {
     line-height: 50px;
     text-align: center;
     cursor: pointer;
-    margin-bottom: 8px;
 }
-.login_submit_btn:hover {
+.submit_btn:hover {
     background-color: #333;
 }
 
@@ -81,4 +80,14 @@ html, body {
     background-color: #333;
     color: #fff;
     border: 1px solid #333;
+}
+.alert_wrap {
+    float: right;
+    color: red;
+    font-size: 13px;
+}
+.alert_wrap_left {
+    color: red;
+    font-size: 13px;
+    margin-left: 5px;
 }

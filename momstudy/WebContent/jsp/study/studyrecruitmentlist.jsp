@@ -59,10 +59,82 @@
                     </div>
                 </a>
 
+                <a href="#" class="content_wrap">
+                    <div class="imgbg">
+                        <div>
+                            <img src="./../images/test_img2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./../images/test_img2.jpg" alt="">
+                    </div>
+                    <div class="study_cont">
+                        <p>자바스크립트 따라잡기</p>
+                        <div>
+                            <span>평점 5점</span>
+                            <span>회원 3명</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="content_wrap">
+                    <div class="imgbg">
+                        <div>
+                            <img src="./../images/test_img3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./../images/test_img3.jpg" alt="">
+                    </div>
+                    <div class="study_cont">
+                        <p>자바스크립트 따라잡기</p>
+                        <div>
+                            <span>평점 5점</span>
+                            <span>회원 3명</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="content_wrap">
+                    <div class="imgbg">
+                        <div>
+                            <img src="./../images/test_img4.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./../images/test_img4.jpg" alt="">
+                    </div>
+                    <div class="study_cont">
+                        <p>자바스크립트 따라잡기</p>
+                        <div>
+                            <span>평점 5점</span>
+                            <span>회원 3명</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="content_wrap">
+                    <div class="imgbg">
+                        <div>
+                            <img src="./../images/test_img5.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./../images/test_img5.jpg" alt="">
+                    </div>
+                    <div class="study_cont">
+                        <p>자바스크립트 따라잡기</p>
+                        <div>
+                            <span>평점 5점</span>
+                            <span>회원 3명</span>
+                        </div>
+                    </div>
+                </a>
 
             </div>
         </div>
     </div>
+
 
     <input class="submit_btn" type="button" value="더보기" />
 

@@ -46,6 +46,7 @@
 							</label>
 						</div>
 						<div class="form-item-box"></div>
+						<span class="alert_wrap">이용약관은 필수로 체크 되어야 할 사항입니다.</span>
 					</div>
 					<div>
 						<div class="form-item-checkbox">
@@ -55,20 +56,23 @@
 							</label>
 						</div>
 						<div class="form-item-box"></div>
+						<span class="alert_wrap">개인정보보호는 필수로 체크 되어야 할 사항입니다.</span>
 					</div>
 				</div>
 				<div class="form-item-checkbox">
 					 <input class="check" type="checkbox" name="menu">
 					<label>
 						만 14세 이상입니다. (필수)
+						
 					</label>
+					<span class="alert_wrap">나이제한은 필수로 체크 되어야 할 사항입니다.</span>
 				</div>
 				<div class="form-item-all">
 					<input class="checkall" type="checkbox" id="chkall" onclick="doCheck()" name="chkAll">
 					<label for="chkAll"> 전체동의하기 </label>
 				</div>
 				<div class="form-item-btn">
-					<button class="login_submit_btn">다음</button>
+					<button class="submit_btn">다음</button>
 				</div>
 			</form>
 		</div>

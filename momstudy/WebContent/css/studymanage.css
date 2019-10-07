@@ -20,9 +20,10 @@ td {
     padding: 10px 0 15px 0;
     box-sizing: border-box;
     font-size: 18px;
+    float:left;
 }
 .stm_button { /* 강퇴 버튼*/
-    width: 130px;
+    width: 100px;
     height: 45px;
     margin: 5px;
     border-radius: 45px;
@@ -94,4 +95,8 @@ table th:nth-child(5) {
 table th:nth-child(6) {
     max-width:120px;
     width: 120px;
+}
+
+.contents{
+    height: 492px;
 }

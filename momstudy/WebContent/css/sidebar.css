@@ -1,0 +1,18 @@
+.admin{
+	display: none;
+}
+
+.clicked{
+	background-color: #333;
+	color: #fff;
+	
+}
+.adminele{
+	font-size: 13px;
+	background: rgb(221, 221, 221);
+}
+.space {
+	width: 30px;
+	height: 10px;
+    float: left;
+}

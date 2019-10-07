@@ -38,9 +38,11 @@
                 <form action="<c:url value="/user/login.do"/>"method="post">
                     <div>
                         <input  type="email" id="id" placeholder="이메일" name="email">
+                        <span class="alert_wrap">아이디를 다시 확인해 주세요</span>
                     </div>
                     <div>
                         <input class="form_login"type="password" id="pass" placeholder="비밀번호" name="pass"> 
+                        <span class="alert_wrap">비밀번호를 다시 확인해 주세요</span>
                     </div>
                  	<div>
                         <input class="submit_btn" type="submit" value="로그인" />

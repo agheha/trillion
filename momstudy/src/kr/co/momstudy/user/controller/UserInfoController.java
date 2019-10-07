@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
+import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
 import kr.co.momstudy.repository.vo.User;
+import kr.co.momstudy.repository.vo.UserArea;
 
 @WebServlet("/user/userinfo.do")
 public class UserInfoController extends HttpServlet{
@@ -28,7 +30,13 @@ public class UserInfoController extends HttpServlet{
 		User user = (User)session.getAttribute("user");
 		List<Category> cateList = dao.selectCategory();
 		List<Category> userCate = dao.selectUserCategoryCode(user.getEmail());
-			
+		List<UserArea> userArea = dao.selectUserArea(user.getEmail());
+		List<Address> bigAddr = dao.selectBigAddress();
+		List<Address> smallAddr = dao.selectSmallAddress();
+		
+		req.setAttribute("smallAddr",smallAddr);
+		req.setAttribute("bigAddr",bigAddr);
+		req.setAttribute("userArea", userArea);
 		req.setAttribute("userCate", userCate);
 		req.setAttribute("cateList", cateList);
 		req.getRequestDispatcher("/jsp/user/userinfo.jsp").forward(req, res);

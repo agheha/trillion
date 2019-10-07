@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./../css/header.css">
 <link rel="stylesheet" href="./../css/layout.css">
 <link rel="stylesheet" href="./../css/userinfo.css">
+<link rel="stylesheet" here="./../css/study_layout.css">
 
 <title>계정관리</title>
 <!-- full calendar -->
@@ -35,14 +36,14 @@
 
 		<div class="left_list">
 			<div>
-          	 <div class="profile">
-                <img src="./../images/test_img2.jpg" width="200" height="200" alt="testImg">
-            </div>
-            <div>
-            	<button>이미지수정</button>
-            </div>
+				<div class="profile">
+					<img src="./../images/test_img2.jpg" width="200" height="200"
+						alt="testImg">
+					<button></button>
+				</div>
 				<ul>
-					<li><a href="#">비밀번호 변경</a></li>
+					<li><a href="<c:url value='/jsp/user/updatepass.jsp' />">비밀번호
+							변경</a></li>
 					<li><a href="#">회원탈퇴</a></li>
 				</ul>
 			</div>
@@ -54,55 +55,70 @@
 				<div class="title">기본정보</div>
 				<div>
 					<div class="slide_wrap">
-						<div class="">
-							<div class="subtitle">이메일</div>
-						</div>
 						<div>
-							<input class="inputbox" type="text" placeholder="${user.email}" disabled="disabled"/>
+							<div class="subtitle">이메일</div>
+							<input class="inputbox" type="text" placeholder="${user.email}"
+								disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">이름</div>
-						</div>
-						<div>
-							<input class="inputbox" type="text" placeholder="${user.name}" disabled="disabled"/>
+							<input class="inputbox" type="text" placeholder="${user.name}"
+								disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">휴대전화번호</div>
-						</div>
-						<div>
-							<input class="inputbox" type="text" placeholder="${user.phoneNum}" disabled="disabled"/>
+							<input class="inputbox" type="text"
+								placeholder="${user.phoneNum}" disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">관심분야</div>
 						</div>
-						<form action="<c:url value='/user/updateinfo.do' />" >
+						<form action="<c:url value='/user/updateinfo.do' />"
+							onsubmit="doAction()" )>
+							<ul>
+								<c:forEach items="${cateList}" var="category">
+									<li><input type="checkbox" name="category"
+										value="${category.categoryCode}" /> <label>${category.categoryName}</label>
+									</li>
+								</c:forEach>
+							</ul>
 							<div>
-								<div>
-									<ul>
-										<c:forEach items="${cateList}" var="category">
-											<li>
-												<input id="it" type="checkbox" name="category"
-												value="${category.categoryCode}"/> <label for="it">${category.categoryName}</label>
-											</li>
-										</c:forEach>
-									</ul>
+								<div class="subtitle">관심 지역</div>
+							</div>
+							<div class="category_wrap" id="area">
+								<ul>
+									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
+										<li><a href="#" onclick="show(${loop.count})"
+											id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail}
+												<span> ${bigAddr.count} </span>
+										</a></li>
+									</c:forEach>
+								</ul>
+							</div>
+							<div class="category_wrap">
+								<div id="showArea">
+									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
+
+										<ul style="display: none" id="addr${loop.count}">
+											<c:forEach items="${smallAddr}" var="smallAddr" varStatus="i">
+												<c:if
+													test="${bigAddr.addressDetail eq smallAddr.addressDetail}">
+													<li><input id="add${i.count}" type="checkbox"
+														name="userAddr" sAdd="${smallAddr.addressDetail2}"
+														value="${smallAddr.addressCode}" /> <label
+														for="add${i.count}">${smallAddr.addressDetail2}</label></li>
+												</c:if>
+											</c:forEach>
+										</ul>
+									</c:forEach>
 								</div>
 							</div>
-							<div>
-								<div class="subtitle">지역</div>
-							</div>
-							<div>
-								<div>
-	<!-- 							<ul> -->
-	<!-- 								<c:forEach items="${cateList}" var="category"> -->
-	<!-- 									<li><input id="it" type="checkbox" name="category" -->
-	<!-- 										value="${category.categoryCode}"/> <label for="it">${category.categoryName}</label> -->
-	<!-- 									</li> -->
-	<!-- 								</c:forEach> -->
-	<!-- 							</ul> -->
-								</div>
-							</div>
-						<button>수정</button>
+<<<<<<< HEAD
+							<div class="category_wrap" id="selArea"></div>
+							<button>수정</button>
+=======
+							<button class="submit_btn">수정</button>
+>>>>>>> master
 						</form>
 					</div>
 				</div>
@@ -113,22 +129,45 @@
 	</section>
 
 	<script type="text/javascript">
-
-		let aaa = [
-			<c:forEach items="${userCate}" var="usercategory">
-				<c:out value="${usercategory.categoryCode}" />,
+		
+		
+		// 유저가 선택한 관심지역 추가 
+		let selectAreas = [
+			<c:forEach items="${userArea}" var="userArea">
+			<c:out value="${userArea.addressCode}" />,
 			</c:forEach>
-		];
-	
-		console.log(aaa)
-		let categorys = document.querySelectorAll('input[name="category"]');
-		categorys.forEach(category => {			
-			aaa.forEach(categoryCode => {
-				if (categoryCode === parseInt(category.value)) {
-					category.checked = true
+		]
+		
+		let userAreas = document.querySelectorAll('input[name="userAddr"]')
+		
+		userAreas.forEach(area => {			
+			selectAreas.forEach(addressCode => {
+				if (addressCode === parseInt(area.value)) {
+					area.checked = true
 				}		
 			})
 		})
+	
+		function doAction() {
+			alert("수정이 완료되었습니다.")
+		}
+		
+		function show() {
+			
+			let ulEle = document.querySelectorAll("#showArea > ul");
+			
+			ulEle.forEach((ele) => {
+				ele.style.display="none"
+			})
+			
+			let area = document.querySelector("#area").value
+			
+			ulEle.forEach((ele)=> {
+				if(area === ele.id) {
+					ele.style.display="block";
+				}
+			})
+		}
 		
 		
 		
