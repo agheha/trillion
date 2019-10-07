@@ -8,13 +8,14 @@ import kr.co.momstudy.repository.vo.Comment;
 public interface BoardDAO {
  
 	List<Board> selectBoard();
+	
 	Board selectOneBoard(int num);
+	
 	void insertBoard(Board board);
+	
 	void updateBoard(Board board);
+	
 	int deleteBoard(int num);	
-	
-	// 댓글 파트
-	
-	List<Comment> selectComment(int no);
-	void insertComment(Comment comment);
+
+
 }
