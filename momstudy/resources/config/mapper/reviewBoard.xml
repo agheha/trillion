@@ -17,10 +17,93 @@
 	</resultMap>
 
 	<select id="selectReviewBoard" resultMap="reviewBoardMap">
-		select *
-		  from tb_review_study
-		 order by num desc   
+		    select *
+              from (select rownum rnum,a.*
+					  from(select *
+				       	     from (select a.*,
+                                        c.category_code as category_code,
+                                        c.name as name
+                               	     from tb_review_study a
+                              	    inner join tb_study c
+                                       on a.study_num = c.num)
+	                        <where>
+                      	    <choose>
+                      	    <when test="type == 'title'">
+                        	  title like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    <when test="type == 'email'">
+                        	  email like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    <when test="type == 'content'">
+                        	  content like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    <when test="type == 'name'">
+                        	  name like '%'||#{keyword}||'%'
+                      	    </when>
+                      	    </choose> 
+                      	    <if test="categoryCode != 0">                      	    
+                      	      category_code = #{categoryCode}
+                      	    </if> 
+                            </where>
+                       	    order by 
+                      	    <choose>
+							<when test="filter =='regDate'">
+                      	    reg_date 
+							</when>
+							<when test="filter =='seeCnt'">
+                      	    see_cnt 
+							</when>
+							<when test="filter =='score'">
+                      	    score 
+							</when>
+                      	    </choose>                       	    
+                      	    desc
+                      	    ) a)
+             where rnum between #{begin} and #{end}
 	</select>
+	
+	<insert id="insertReviewBoard" parameterType="ReviewBoard">
+		insert into tb_review_study (
+		    num, title, content, study_num, score, email
+		) values (
+		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}
+		)
+	</insert>
+	
+	<update id="updateViewCnt" parameterType="int">
+		update tb_review_study 
+		   set see_cnt = see_cnt + 1
+		 where no = #{no}
+	</update>
+	
+	
+	<!-- ====================================================== -->
+	<!-- ====================================================== -->
+	
+	<resultMap type="Study" id="studyMap">
+		<result column="name"  property="name"/>
+		<result column="reg_date"  property="regDate"/>
+		<result column="email"  property="email"/>
+		<result column="category_code"  property="categoryCode"/>
+		<result column="address_code"  property="addressCode"/>
+		<result column="num"  property="num"/>
+	</resultMap>
+	
+	<select id="selectStudy" resultMap="studyMap" parameterType="String">
+		select *
+		from tb_participant p
+		inner join tb_study s
+		on (p.num = s.num)
+		where p.condition = 2
+		and p.email = #{email}
+	</select>
+	
+	<select id="selectStudy2" resultMap="studyMap" parameterType="int">
+		select * from tb_study
+		where num = #{studyNum}
+	</select>
+	
+	
 	
 	<!-- <update id="updateViewCnt" parameterType="int">
 		update tb_board 

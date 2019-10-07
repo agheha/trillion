@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.momstudy.repository.dao.StudyDAO">
+<mapper namespace="kr.co.momstudy.repository.dao.StudyRecruitmentDAO">
 	<resultMap type="StudyRecruitment" id="studyRecruitmentMap">
 		<result column="num" property="num" />
 		<result column="title" property="title" />
@@ -17,4 +17,68 @@
 		<result column="file_group_code" property="fileGroupCode" />
 		<result column="comment_group_code" property="commentGroupCode" />
 	</resultMap>
+	
+	<!-- 모집글 전체 리스트 -->
+	<select id="selectStudyRecruitment" resultMap="studyRecruitmentMap">
+		 select str.*,
+        	    (select avg(nvl(score, 0))
+                   from tb_review_study) average
+           from tb_study_recruitment str
+           left outer join tb_review_study rv
+             on str.study_num = rv.study_num
+          order by average desc, str.see_cnt, str.reg_date desc
+          
+	</select>
+	
+	<!-- 모집글 상세 조회 -->
+	<select id="selectOneStudyRecruitment" parameterType="int" resultMap="studyRecruitmentMap">
+   		select str.*,
+       		   (select avg(nvl(score, 0))
+                  from tb_review_study) average
+          from tb_study_recruitment str
+          left outer join tb_review_study rv
+            on str.study_num = rv.study_num
+         where str.study_num = #{num}
+	</select>
+	
+	<!-- 모집글 등록 -->
+	<insert id="insertStudyRecruitment" parameterType="StudyRecruitment">
+		insert into tb_study_recruitment(
+			num, title, content, email, category_code, address_code, study_num, file_group_code, comment_group_code
+		) values (
+            seq_study_recruitment_num.nextval, 
+            #{title}, 
+            #{content}, #{email}, 
+            #{categoryCode}, 
+            #{addressCode}, 
+            #{studyNum}, 
+            #{fileGroupCode}, 
+            #{commentGroupCode}
+		)
+	</insert>
+	
+	<!-- 모집글 수정 -->
+	<update id="updateStudyRecruitment" parameterType="StudyRecruitment">
+ 		update tb_study_recruitment
+   		   set title = #{title},
+    	       content = #{content}
+         where num = #{num}  
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateViewCnt" parameterType="int">
+		update tb_study_recruitment
+		   set see_cnt = see_scnt + 1
+		 where no = #{no}
+	</update>
+	
+	
+	<!-- 모집글 삭제 -->
+	<delete id="deleteStudyRecruitment" parameterType="int">
+ 		delete
+          from tb_study_recruitment
+         where num = #{num}
+	</delete>
+	
+	
 	</mapper>

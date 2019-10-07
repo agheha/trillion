@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.momstudy.repository.dao.UserDAO">
@@ -13,11 +13,24 @@
 		<result column="ban_date" property="banDate" />
 		<result column="file_group_code" property="fileGroupCode" />
 		<result column="gender" property="gender" />
+		<result column="part_date" property="partDate" />
+		<result column="cnt" property="cnt" />
 	</resultMap>
 	
 	<resultMap type="UserCategory" id="userCategoryMap">
 		<result column="email" property="email"/>
 		<result column="category_code" property="categoryCode"/>
+	</resultMap>
+	
+	<resultMap type="Address" id="addressMap">
+		<result column="address_code" property="addressCode"/>
+		<result column="address_detail" property="addressDetail"/>
+		<result column="address_detail2" property="addressDetail2"/>
+	</resultMap>
+	
+	<resultMap type="UserArea" id="userAreaMap">
+		<result column="eamil" property="email"/>
+		<result column="address_code" property="addressCode"/>
 	</resultMap>
 	
 	<resultMap type="Category" id="categoryMap">
@@ -26,12 +39,25 @@
 	</resultMap>
 	
 	<!-- 	로그인 -->
-	<select id="selectLogin" resultType="User" parameterType="User">
+	<select id="selectLogin" resultMap="userMap" parameterType="User">
 		select * 
 		  from tb_user
 		 where email = #{email}
 		   and pass = #{pass}
 	</select>
+	<!-- 비밀번호 찾기로 들어온 회원 정보 세션에 올리기위함 -->
+	<select id="selectFindLogin" resultMap="userMap" parameterType="User">
+		select * 
+		  from tb_user
+		 where email = #{email}
+		   and name = #{name}
+	</select>
+	<!--  비밀번호 수정 -->
+	<update id="updatePass" parameterType="User">
+		update tb_user
+		   set pass = #{pass}
+		 where email = #{email}
+	</update>
 	<!-- 	회원가입 -->
 	<insert id="insertUser" parameterType="User" >
 		insert into tb_user(email, pass, name, phone_num, birth, gender)
@@ -62,6 +88,97 @@
 		 where name = #{name}
 		   and email = #{email}
 	</select>
+	<!--  유저 카데고리 코드 찾기 -->
+	<select id="selectUserCategoryCode" parameterType="string" resultMap="userCategoryMap">
+		select *
+		  from tb_user_category
+		 where email = #{email}
+	</select>
+	<!--  유저 카데고리 수정 -->
+	<delete id="deleteUserCategoryCode" parameterType="string">
+		delete 
+		  from tb_user_category
+		 where email = #{email}
+	</delete>	
+	
+	<!-- 주소의 대분류를 가져옴  -->
+	<select id="selectBigAddress" resultMap="addressMap">
+		select count(*) count, address_detail
+ 		  from tb_address
+		 group by address_detail
+	</select>	
+	
+	<!-- 주소의 코드와 소분류를 가져옴  -->
+	<select id="selectSmallAddress" resultMap="addressMap" >
+		select *
+		  from tb_address   
+	</select>
+	<!-- 유저 지역 추가 -->
+	
+	<insert id="insertAddress" parameterType="UserCategory" >
+		insert into tb_user_address(email, address_code)
+		values(#{email}, #{addressCode})
+	</insert>
+	<!--  유저관심지역 목록뽑기 -->
+	<select id="selectUserArea" parameterType="String" resultMap="userAreaMap">
+		select *
+		  from tb_user_address
+		 where email = #{email}
+	</select>
+	<!--  스터디별 참여인원 -->
+	<select id="selectUserByStudyNum" parameterType="Search"
+		resultMap="userMap">
+		select *
+		  from (select rownum rnum,
+		               c.*,
+		               count(*) over() as cnt
+				from(select a.*,
+                            b.PART_DATE 
+                            from tb_user a
+                            inner join tb_participant b
+                               on a.email = b.email
+                               where b.study_num = #{studyNum} and b.condition = 2   
+
+			   	      	<if test="type == 'email'">
+			   	      		and b.email like '%'||#{keyword}||'%'
+			   	      	</if>
+                               order by
+			          <if test="filter == 'partDate'">
+			          		part_date 
+			          </if>
+			          
+			           desc) c)
+		  where rnum between #{begin} and #{end}
+	</select>
+	
+		<!--  스터디별 신청인원 -->
+		<select id="selectUserByStudyNum2" parameterType="Search"
+		resultMap="userMap">
+		select *
+		  from (select rownum rnum,
+		               c.*,
+		               count(*) over() as cnt
+				from(select a.*,
+                            b.PART_DATE 
+                            from tb_user a
+                            inner join tb_participant b
+                               on a.email = b.email
+                               where b.study_num = #{studyNum} and b.condition = 1   
+
+			   	      	<if test="type == 'email'">
+			   	      		and b.email like '%'||#{keyword}||'%'
+			   	      	</if>
+                               order by
+			          <if test="filter == 'partDate'">
+			          		part_date 
+			          </if>
+			          
+			           desc) c)
+		  where rnum between #{begin} and #{end}
+	</select>
+	
+	
+	
 </mapper>
 
 

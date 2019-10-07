@@ -8,7 +8,7 @@ public class StudyRecruitment {
 	private String content;
 	private Date regDate;
 	private String email;
-	private int condition;
+	private int condition; // 마감여부
 	private int categoryCode;
 	private int addressCode;
 	private int studyNum;

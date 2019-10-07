@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.fieldset > form > div:nth-child(3) {
+    overflow: hidden;
+    margin: 150px auto 40px;
+    width: 300px;
+}
+
+#id {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    line-height: 35px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+}
+
+.submit_btn {
+    margin: 0 auto;
+}
+.alert_wrap {
+    margin-top: 5px;
+}

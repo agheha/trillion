@@ -1,26 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript">
-	function check_form() {
-
-		var form = document.regiform;
-		if (!form.agree_chk.checked) {
-			form.agree_chk.focus();
-			alert("회원약관에 동의하셔야 다음단계로 이동합니다.");
-			return false;
-		}
-
-		form.submit();
-	}
-</script>
+<script src=""></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
+<script src="<c:url value='/script/user/terms.js' />"></script>
 <!-- css -->
 <link rel="stylesheet" href="./../css/common.css">
 <link rel="stylesheet" href="./../css/terms.css">
@@ -47,37 +36,43 @@
 
 	<section>
 		<div class="main">
-			<form name="agree_chk" action="loginform.do">
+			<form name="sForm" action="<c:url value='/user/signupform.do'/>" onsubmit="return doAction()">
 				<div class="form_layout">
 					<div>
 						<div class="form-item-checkbox">
-							<label> <input class="check" type="checkbox" name="agree_chk">
+							 <input class="check" type="checkbox" name="menu">
+							<label>
 								서비스 이용약관 동의 (필수)
 							</label>
 						</div>
 						<div class="form-item-box"></div>
+						<span class="alert_wrap">이용약관은 필수로 체크 되어야 할 사항입니다.</span>
 					</div>
 					<div>
 						<div class="form-item-checkbox">
-							<label> <input class="check" type="checkbox" name="agree_chk">
+							<input class="check" type="checkbox" name="menu">
+							<label> 
 								개인정보보호를 위한 이용자 동의 (필수)
 							</label>
 						</div>
 						<div class="form-item-box"></div>
+						<span class="alert_wrap">개인정보보호는 필수로 체크 되어야 할 사항입니다.</span>
 					</div>
 				</div>
 				<div class="form-item-checkbox">
-					<label> <input class="check" type="checkbox" name="agree_chk">
+					 <input class="check" type="checkbox" name="menu">
+					<label>
 						만 14세 이상입니다. (필수)
+						
 					</label>
+					<span class="alert_wrap">나이제한은 필수로 체크 되어야 할 사항입니다.</span>
 				</div>
 				<div class="form-item-all">
-					<label> <input class="checkall" type="checkbox" id="terms">
-						전체동의하기
-					</label>
+					<input class="checkall" type="checkbox" id="chkall" onclick="doCheck()" name="chkAll">
+					<label for="chkAll"> 전체동의하기 </label>
 				</div>
 				<div class="form-item-btn">
-					<button class="login_submit_btn">다음</button>
+					<button class="submit_btn">다음</button>
 				</div>
 			</form>
 		</div>
