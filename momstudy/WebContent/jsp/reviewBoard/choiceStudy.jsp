@@ -27,7 +27,14 @@
 					<span>${rb.name}</span>
 		      	</div>
 	        </c:forEach>
-	        <button type="submit" class="">선택</button>
+	        <c:choose>
+		        <c:when test="${empty slist}">
+			        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>	        
+		        </c:when>
+		        <c:otherwise>
+			        <button type="submit">선택</button>
+		        </c:otherwise>
+	        </c:choose>
 		</form>
 	</div>
 </body>

@@ -44,7 +44,7 @@
 	      	
 	      		<!-- ------------------------------ -->
 	      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
-		        <a href='<c:url value="/study/votelist.do?num="/>${rb.studyNum}' ">
+		        	<a href='<c:url value="/review/detail.do?num=${rb.studyNum}" /> '>
 	      		<!-- ------------------------------ -->
 		        
 		            <div class="cont_img">
