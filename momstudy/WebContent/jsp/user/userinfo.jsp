@@ -23,6 +23,22 @@
 </head>
 <body>
 	<header id="header"></header>
+	
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+ 
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>비밀번호를 입력해주세요</p>
+        <br>
+        <label for="passchk">현재 비밀번호</label>                                                               
+        <input type="password" id="passchk" />
+        <button id="btn">확인</button>
+      </div>
+ 
+    </div>
+	
 
 	<!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
 	<section class="background_wrap">
@@ -31,7 +47,8 @@
 			<hr>
 		</div>
 	</section>
-
+ 
+	
 	<section id="layout">
 
 		<div class="left_list">
@@ -42,9 +59,8 @@
 					<button></button>
 				</div>
 				<ul>
-					<li><a href="<c:url value='/jsp/user/updatepass.jsp' />">비밀번호
-							변경</a></li>
-					<li><a href="#">회원탈퇴</a></li>
+					<li><span id="passUpdate">비밀번호 변경</span></li>
+					<li><span id="userDelete">회원탈퇴</span></li>
 				</ul>
 			</div>
 		</div>
@@ -74,11 +90,11 @@
 							<div class="subtitle">관심분야</div>
 						</div>
 						<form action="<c:url value='/user/updateinfo.do' />"
-							onsubmit="doAction()" )>
+							onsubmit="doAction()">
 							<ul>
-								<c:forEach items="${cateList}" var="category">
-									<li><input type="checkbox" name="category"
-										value="${category.categoryCode}" /> <label>${category.categoryName}</label>
+								<c:forEach items="${cateList}" var="category" varStatus="i">
+									<li><input type="checkbox" name="category" id="cate${i.count}"
+										value="${category.categoryCode}" /> <label for="cate${i.count}">${category.categoryName}</label>
 									</li>
 								</c:forEach>
 							</ul>
@@ -88,7 +104,7 @@
 							<div class="category_wrap" id="area">
 								<ul>
 									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
-										<li><a href="#" onclick="show(${loop.count})"
+										<li><a href="#1" onclick="show(${loop.count})"
 											id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail}
 												<span> ${bigAddr.count} </span>
 										</a></li>
@@ -99,7 +115,7 @@
 								<div id="showArea">
 									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
 
-										<ul style="display: none" id="addr${loop.count}">
+										<ul style="display: none" id="addr${loop.count}" >
 											<c:forEach items="${smallAddr}" var="smallAddr" varStatus="i">
 												<c:if
 													test="${bigAddr.addressDetail eq smallAddr.addressDetail}">
@@ -113,12 +129,8 @@
 									</c:forEach>
 								</div>
 							</div>
-<<<<<<< HEAD
 							<div class="category_wrap" id="selArea"></div>
-							<button>수정</button>
-=======
 							<button class="submit_btn">수정</button>
->>>>>>> master
 						</form>
 					</div>
 				</div>
@@ -129,48 +141,19 @@
 	</section>
 
 	<script type="text/javascript">
-		
-		
 		// 유저가 선택한 관심지역 추가 
-		let selectAreas = [
+		let selectCate = [
+			<c:forEach items="${userCate}" var="userCate">
+			<c:out value="${userCate.categoryCode}" />,
+			</c:forEach>
+		];
+
+		let userAddrCode = [
 			<c:forEach items="${userArea}" var="userArea">
-			<c:out value="${userArea.addressCode}" />,
+			<c:out value="${userArea.addressCode}"/>,
 			</c:forEach>
 		]
-		
-		let userAreas = document.querySelectorAll('input[name="userAddr"]')
-		
-		userAreas.forEach(area => {			
-			selectAreas.forEach(addressCode => {
-				if (addressCode === parseInt(area.value)) {
-					area.checked = true
-				}		
-			})
-		})
-	
-		function doAction() {
-			alert("수정이 완료되었습니다.")
-		}
-		
-		function show() {
-			
-			let ulEle = document.querySelectorAll("#showArea > ul");
-			
-			ulEle.forEach((ele) => {
-				ele.style.display="none"
-			})
-			
-			let area = document.querySelector("#area").value
-			
-			ulEle.forEach((ele)=> {
-				if(area === ele.id) {
-					ele.style.display="block";
-				}
-			})
-		}
-		
-		
-		
 	</script>
+	<script src="<c:url value="/script/user/userinfo.js" />"></script>		
 </body>
 </html>
