@@ -17,7 +17,7 @@ import kr.co.momstudy.repository.vo.StudyRecruitment;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.FileUpload;
 
-@WebServlet("/study/recruitmentwrite.do")
+@WebServlet("/study/studyrecruitmentwrite.do")
 public class StudyRecruitmentWriteController extends HttpServlet {
 	private StudyRecruitmentDAO strDao;
 	
@@ -55,6 +55,6 @@ public class StudyRecruitmentWriteController extends HttpServlet {
 		
 		strDao.insertStudyRecruitment(str);
 		
-		res.sendRedirect(req.getContextPath() + "/recruitment/list.do");
+		res.sendRedirect(req.getContextPath() + "/study/studyrecruitmentlist.do");
 	}
 }

@@ -1,7 +1,5 @@
 package kr.co.momstudy.util;
 
-import kr.co.momstudy.repository.vo.Search;
-
 public class PageResult {
 	int pageNo;
 	int count;

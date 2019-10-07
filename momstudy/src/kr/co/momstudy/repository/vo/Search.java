@@ -69,6 +69,7 @@ public class Search extends Page{
 		this.filter = filter;
 	}
 	
+	// 리스트 정렬
 	public void setFilters(String ...strings) {
 		List<String[]> list = new ArrayList<>();
 		for(String filter : strings) {			
@@ -88,6 +89,7 @@ public class Search extends Page{
 		this.filters = list;
 	}
 	
+	// 검색할 컬럼
 	public void setTypes(String ...strings) {
 		List<String[]> list = new ArrayList<>();
 		for(String type : strings) {			
