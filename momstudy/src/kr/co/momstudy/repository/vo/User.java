@@ -14,8 +14,22 @@ public class User {
 	private int fileGroupCode;
 	private String gender;
 	private String certifiedCode;
+	private Date partDate;
+	private int cnt;
 	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	
+	public Date getPartDate() {
+		return partDate;
+	}
+	public void setPartDate(Date partDate) {
+		this.partDate = partDate;
+	}
 	public String getCertifiedCode() {
 		return certifiedCode;
 	}

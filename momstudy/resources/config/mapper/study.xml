@@ -44,6 +44,18 @@
 		  from tb_study
 		 where num = #{num} 
 	</select>
+	
+	<delete id="deleteParticipant" parameterType="Participant">
+		delete 
+  		  from tb_participant
+ 		 where email = #{email} and  study_num = #{studyNum}
+	</delete>
+	
+	<update id="aprovalParticipant" parameterType="Participant">
+		update tb_participant
+		   set condition = 2
+		 where email = #{email} and study_num = #{studyNum}  
+	</update>
 
 
 </mapper>

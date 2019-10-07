@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
 		u.setEmail(req.getParameter("email"));
 		u.setPass(req.getParameter("pass"));
 		User user = dao.selectLogin(u);
-		System.out.println(user);
+		
 		if (user == null) {
 			res.sendRedirect("loginform.do");
 			return;

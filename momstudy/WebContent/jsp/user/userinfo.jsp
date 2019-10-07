@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./../css/header.css">
 <link rel="stylesheet" href="./../css/layout.css">
 <link rel="stylesheet" href="./../css/userinfo.css">
+<link rel="stylesheet" here="./../css/study_layout.css">
 
 <title>계정관리</title>
 <!-- full calendar -->
@@ -38,9 +39,7 @@
 				<div class="profile">
 					<img src="./../images/test_img2.jpg" width="200" height="200"
 						alt="testImg">
-				</div>
-				<div>
-					<button>이미지수정</button>
+					<button></button>
 				</div>
 				<ul>
 					<li><a href="<c:url value='/jsp/user/updatepass.jsp' />">비밀번호
@@ -56,24 +55,18 @@
 				<div class="title">기본정보</div>
 				<div>
 					<div class="slide_wrap">
-						<div class="">
-							<div class="subtitle">이메일</div>
-						</div>
 						<div>
+							<div class="subtitle">이메일</div>
 							<input class="inputbox" type="text" placeholder="${user.email}"
 								disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">이름</div>
-						</div>
-						<div>
 							<input class="inputbox" type="text" placeholder="${user.name}"
 								disabled="disabled" />
 						</div>
 						<div>
 							<div class="subtitle">휴대전화번호</div>
-						</div>
-						<div>
 							<input class="inputbox" type="text"
 								placeholder="${user.phoneNum}" disabled="disabled" />
 						</div>
@@ -82,44 +75,50 @@
 						</div>
 						<form action="<c:url value='/user/updateinfo.do' />"
 							onsubmit="doAction()" )>
-							<div>
-								<div>
-									<ul>
-										<c:forEach items="${cateList}" var="category">
-											<li><input type="checkbox" name="category"
-												value="${category.categoryCode}" /> <label>${category.categoryName}</label>
-											</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
+							<ul>
+								<c:forEach items="${cateList}" var="category">
+									<li><input type="checkbox" name="category"
+										value="${category.categoryCode}" /> <label>${category.categoryName}</label>
+									</li>
+								</c:forEach>
+							</ul>
 							<div>
 								<div class="subtitle">관심 지역</div>
 							</div>
-							<div>
-								<div>
-									<Select id="area" name="bigaddr" onchange="show()">
-										<c:forEach items="${bigAddr}" var="bigAddr" varStatus="s">
-											<option value="addr${s.count}">${bigAddr}</option>
-										</c:forEach>
-									</Select>
-								</div>
+							<div class="category_wrap" id="area">
+								<ul>
+									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
+										<li><a href="#" onclick="show(${loop.count})"
+											id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail}
+												<span> ${bigAddr.count} </span>
+										</a></li>
+									</c:forEach>
+								</ul>
+							</div>
+							<div class="category_wrap">
 								<div id="showArea">
 									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
-										<ul style="display:none" id="addr${loop.index +1}">
-											<c:forEach items="${smallAddr}" var="smallAddr">
-												<c:if test="${bigAddr eq smallAddr.addressDetail}">
-													<li>
-													<input type="checkbox" name="userAddr" id="val${loop.index + 1 }"
-														value="${smallAddr.addressCode}" /> <label for="val${loop.index + 1}">${smallAddr.addressDetail2}</label>
-													</li>
+
+										<ul style="display: none" id="addr${loop.count}">
+											<c:forEach items="${smallAddr}" var="smallAddr" varStatus="i">
+												<c:if
+													test="${bigAddr.addressDetail eq smallAddr.addressDetail}">
+													<li><input id="add${i.count}" type="checkbox"
+														name="userAddr" sAdd="${smallAddr.addressDetail2}"
+														value="${smallAddr.addressCode}" /> <label
+														for="add${i.count}">${smallAddr.addressDetail2}</label></li>
 												</c:if>
 											</c:forEach>
 										</ul>
 									</c:forEach>
 								</div>
 							</div>
+<<<<<<< HEAD
+							<div class="category_wrap" id="selArea"></div>
 							<button>수정</button>
+=======
+							<button class="submit_btn">수정</button>
+>>>>>>> master
 						</form>
 					</div>
 				</div>
@@ -130,28 +129,25 @@
 	</section>
 
 	<script type="text/javascript">
-		let selectCategorys = [
-			<c:forEach items="${userCate}" var="usercategory">
-				<c:out value="${usercategory.categoryCode}" />,
-			</c:forEach>
-		];
-	
-		let categorys = document.querySelectorAll('input[name="category"]');
-		categorys.forEach(category => {			
-			selectCategorys.forEach(categoryCode => {
-				if (categoryCode === parseInt(category.value)) {
-					category.checked = true
-				}		
-			})
-		})
 		
+		
+		// 유저가 선택한 관심지역 추가 
 		let selectAreas = [
 			<c:forEach items="${userArea}" var="userArea">
 			<c:out value="${userArea.addressCode}" />,
 			</c:forEach>
 		]
 		
+		let userAreas = document.querySelectorAll('input[name="userAddr"]')
 		
+		userAreas.forEach(area => {			
+			selectAreas.forEach(addressCode => {
+				if (addressCode === parseInt(area.value)) {
+					area.checked = true
+				}		
+			})
+		})
+	
 		function doAction() {
 			alert("수정이 완료되었습니다.")
 		}

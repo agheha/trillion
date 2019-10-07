@@ -31,7 +31,7 @@ public class UserInfoController extends HttpServlet{
 		List<Category> cateList = dao.selectCategory();
 		List<Category> userCate = dao.selectUserCategoryCode(user.getEmail());
 		List<UserArea> userArea = dao.selectUserArea(user.getEmail());
-		List<String> bigAddr = dao.selectBigAddress();
+		List<Address> bigAddr = dao.selectBigAddress();
 		List<Address> smallAddr = dao.selectSmallAddress();
 		
 		req.setAttribute("smallAddr",smallAddr);

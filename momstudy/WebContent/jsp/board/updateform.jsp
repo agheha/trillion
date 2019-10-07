@@ -27,7 +27,9 @@
 
     </head>
     <body>
-        <header id="header"></header>
+        <header id="header">
+         <%@include file="/jsp/common/header.jsp" %>
+         </header>
 
         <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
         <section class="background_wrap">
@@ -38,23 +40,9 @@
         </section>
         
            <section id="layout">
-            <div>
-                <div class="profile">
-                    <img src="./../images/test_img2.jpg" alt="testImg">
-                </div>
-                <div class="left_list">
-                    <div>
-                        <p><a href="./study.html">스터디명</a></p>
-                        <ul>
                             <!-- 스터디장 화면 다르게 보임 -->
-                            <li><a href="./studymembers.html">멤버</a></li>
-                            <li><a href="./studyvote.html">투표</a></li>
-                            <li><a href="./studyschedule.html">일정</a></li>
-                            <li><a href="./studyboard.html">게시판</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <%@include file="/jsp/common/sidebar.jsp" %>
+            
              <div class="study_right_wrap">
             <form action="update.do" method="post" enctype="multipart/form-data">
             <input type="hidden" name="no" value="${board.num}" />                

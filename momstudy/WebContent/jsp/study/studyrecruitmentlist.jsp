@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<link rel="stylesheet" href='<c:url value="/css/common.css"/>'>
-<link rel="stylesheet" href='<c:url value="/css/study_nlogin.css"/>'>
-<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
+    <link rel="stylesheet" href="./../css/common.css">
+    <link rel="stylesheet" href="./../css/study_nlogin.css">
 
-<!-- slide plugin -->
-<link rel="stylesheet" type="text/css" href='<c:url value="/script/slick/slick.css"/>'>
-<link rel="stylesheet" type="text/css" href='<c:url value="/script/slick/slick-theme.css"/>'>
+     <!-- slide plugin -->
+     <link rel="stylesheet" type="text/css" href="./../script/slick/slick.css"/>
+     <link rel="stylesheet" type="text/css" href="./../script/slick/slick-theme.css"/>
 
-<title>후기게시판</title>
+<title>스터디원 모집</title>
 
 <!-- jquery -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -27,8 +25,7 @@
 </head>
 <body>
     <header id="header">
-    	<%--헤더 인클루드 --%>
-		<%@include file="/jsp/common/header.jsp" %>
+    	<%@include file="/jsp/common/header.jsp" %>
     </header>
 
     <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->

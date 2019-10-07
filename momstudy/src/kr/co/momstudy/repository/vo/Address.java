@@ -4,8 +4,16 @@ public class Address {
 	private int addressCode;
 	private String addressDetail;
 	private String addressDetail2;
+	private int count;
+	
 	
 
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getAddressDetail() {
 		return addressDetail;
 	}

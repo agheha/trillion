@@ -24,7 +24,7 @@ public class SignUpformController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		List<Category> cateList = dao.selectCategory();
-		List<String> bigAddr = dao.selectBigAddress();
+		List<Address> bigAddr = dao.selectBigAddress();
 		List<Address> smallAddr = dao.selectSmallAddress();
 		req.setAttribute("cateList",cateList);
 		req.setAttribute("bigAddr",bigAddr);
