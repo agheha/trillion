@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <link rel="stylesheet" href='<c:url value="/css/common.css" /> '>
+         <link rel="stylesheet" href='<c:url value="/css/common.css" /> '>
         <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
         <link rel="stylesheet" href='<c:url value="/css/boardWriteForm.css" /> '>
         <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
@@ -27,7 +27,9 @@
 
     </head>
     <body>
-        <header id="header"></header>
+        <header id="header">
+         <%@include file="/jsp/common/header.jsp" %>
+         </header>
 
         <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
         <section class="background_wrap">
@@ -38,35 +40,22 @@
         </section>
         
            <section id="layout">
-            <div>
-                <div class="profile">
-                    <img src="./../images/test_img2.jpg" alt="testImg">
-                </div>
-                <div class="left_list">
-                    <div>
-                        <p><a href="./study.html">스터디명</a></p>
-                        <ul>
                             <!-- 스터디장 화면 다르게 보임 -->
-                            <li><a href="./studymembers.html">멤버</a></li>
-                            <li><a href="./studyvote.html">투표</a></li>
-                            <li><a href="./studyschedule.html">일정</a></li>
-                            <li><a href="./studyboard.html">게시판</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+          <%@include file="/jsp/common/sidebar.jsp" %>
+          
              <div class="study_right_wrap">
-            <form action="write.do" method="post" enctype="multipart/form-data">
+            <form action="write.do" method="post" >
+            <div>
+            <input class="notice" type="checkbox" name="notice" />공지사항
+            </div>
+            
                 <div>
                     <p>제목</p>
                     <input type="text" name="title" />
                     <p>내용</p>
                     <textarea name="content" id=""></textarea>
-                    <p>파일</p>
-                    <div class="upload">
-                        <label for="ex_file">파일 업로드</label>
-                        <input id="ex_file" type="file" name="attach" multiple />
-                    </div>
+                
+                
                 </div>
                 <div class="buttons">
                     <button class="submit_btn" type="submit">등록</button>

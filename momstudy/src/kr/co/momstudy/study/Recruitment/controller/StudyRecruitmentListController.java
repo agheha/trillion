@@ -15,7 +15,7 @@ import kr.co.momstudy.repository.dao.StudyRecruitmentDAO;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
 
-@WebServlet("/study/recruitmentlist.do")
+@WebServlet("/study/studyrecruitmentlist.do")
 public class StudyRecruitmentListController extends HttpServlet{
 	private StudyRecruitmentDAO strDao;
 	
@@ -32,14 +32,24 @@ public class StudyRecruitmentListController extends HttpServlet{
 			pageNo = Integer.parseInt(sPageNo);
 		}
 		
-		Search search = new Search(pageNo);
-		search.setFilter("regDate");
-		search.setType("title");
-		search.setKeyword("");
-
+		String filter = "regDate";
+		String type = req.getParameter("type");
+		String keyword = req.getParameter("keyword");
+		int categoryCode = Integer.parseInt(req.getParameter("categoryCode"));
 		
-		List<StudyRecruitment> strList = strDao.selectStudyRecruitment();
+		Search search = new Search(pageNo);
+		
+		search.setTypes("제목", "글쓴이", "내용");
+		search.setFilters("일자", "조회수", "별점");
+		search.setFilter(filter);
+		search.setKeyword(keyword);
+		search.setCategoryCode(categoryCode);
+		search.setType(type);
+
+		List<StudyRecruitment> strList = strDao.selectStudyRecruitment(search);
+		
 		req.setAttribute("strList", strList);
+		req.setAttribute("search", search);
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentlist.jsp");
 		rd.forward(req, res);
 	}
