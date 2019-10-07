@@ -37,6 +37,7 @@ public class DetailBoardController extends HttpServlet {
 		// req.setAttribute("commentGroupCode", commentGroupCode);
 		req.setAttribute("type", type);
 		
+		// 댓글 수정
 		if(type.equals("modify")) {
 			int commentGroupCode = Integer.parseInt(req.getParameter("commentGroupCode"));
 			int commentNo = Integer.parseInt(req.getParameter("commentNo"));

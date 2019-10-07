@@ -35,11 +35,11 @@ public class CommentWriteController extends HttpServlet {
 		
 		
 		// 게시판과 파일 테이블에 저장할 글번호를 조회
-		if ()
+	//	if ()
 		Comment comment = new Comment();
 		comment.setCommentGroupCode(no);
 		comment.setContent(req.getParameter("content"));
-		comment.setCommentGroup(req.getParameter(""));
+	//	comment.setCommentGroup(req.getParameter(""));
 //		comment.setEmail(user.getEmail());
 		comment.setEmail("a@a.a");
 
