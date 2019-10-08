@@ -16,6 +16,23 @@ public class StudyRecruitment {
 	private int seeCnt;
 	private int fileGroupCode;
 	private int commentGroupCode;
+	private double avr;  // 평점
+	private int pCnt; // 스터디별 인원수
+	
+	
+	
+	public int getpCnt() {
+		return pCnt;
+	}
+	public void setpCnt(int pCnt) {
+		this.pCnt = pCnt;
+	}
+	public double getAvr() {
+		return avr;
+	}
+	public void setAvr(double avr) {
+		this.avr = avr;
+	}
 	public int getNum() {
 		return num;
 	}

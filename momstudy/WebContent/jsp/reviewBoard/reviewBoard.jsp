@@ -20,7 +20,9 @@
 	<title>후기게시판</title>
 </head>
 <body>
-	<header id="header"></header>
+	<header id="header">
+		<%@include file="/jsp/common/header.jsp" %>
+	</header>
  
     <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
     <section class="background_wrap">
@@ -44,7 +46,7 @@
 	      	
 	      		<!-- ------------------------------ -->
 	      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
-		        <a href='<c:url value="/study/votelist.do?num="/>${rb.studyNum}' ">
+		        	<a href='<c:url value="/review/detail.do?num=${rb.studyNum}" /> '>
 	      		<!-- ------------------------------ -->
 		        
 		            <div class="cont_img">
@@ -53,7 +55,10 @@
 		            	<!-- 이미지경로 추후 추가 -->
 		                <img src="./../images/test_img1.jpg" alt="">
 		            	<!-- ------------ -->
-		                
+		            	<div>
+							<span>${rb.email}</span>		            	
+			                <span><fmt:formatDate value="${rb.regDate}" pattern="yyyy-MM-dd" /></span>
+		            	</div>
 		            </div>
 		           	<div class="cont_text">
 		                <p>${rb.title}</p>
@@ -63,17 +68,11 @@
 	      	</div>
         </c:forEach>
     </div>
-    
-    
-    
-    <input class="more_btn" type="button" value="더보기" />
+    <%@include file="/jsp/common/pagination.jsp" %>
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-            $(".board_cont").mouseover("")
-        });
+
     </script>
 </body>
 </html>

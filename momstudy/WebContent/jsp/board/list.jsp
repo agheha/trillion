@@ -30,7 +30,9 @@
 
     </head>
     <body>
-        <header id="header"></header>
+        <header id="header">
+        <%@include file="/jsp/common/header.jsp" %>
+        </header>
 
         <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
         <section class="background_wrap">
@@ -41,25 +43,9 @@
         </section>
 
         <section id="layout">
-           <!-- jsp 작업 시 include로 변경 -->
-           <div>
-                <div class="profile">
-                    <img src="<c:url value="/images/test_img2.jpg" />" alt="testImg">
-                </div>
-                <div class="left_list">
-                    <div>
-                        <p><a href="./study.jsp">스터디명</a></p>
-                        <ul>
-                            <!-- 스터디장 화면 다르게 보임 -->
-                            <li><a href="./studymembers.html">멤버</a></li>
-                            <li><a href="./studyvote.html">투표</a></li>
-                            <li><a href="./studyschedule.html">일정</a></li>
-                            <li><a href="./studyboard.html">게시판</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-   
+           
+          <%@include file="/jsp/common/sidebar.jsp" %>
+         
             <div class="study_right_wrap">
                 <div class="vote_title">
                     <p>스터디 게시판</p>
@@ -79,7 +65,7 @@
                               <h2>게시글이 없습니다.</h2>
                            </div>
                         </c:if>
-                        <c:forEach var="b" items="${list}">
+                        <c:forEach var="b" items="${list}">s
                         <div>
                             <a href="<c:url value="/board/detail.do?no=${b.num}" />">
 	                            <ul>
@@ -89,10 +75,11 @@
 	                                <li><fmt:formatDate pattern="yyyy-MM-dd" value="${b.regDate}" /></li>
 	                            </ul>
                             </a>
-                            </div>
+                        </div>
                         </c:forEach>
                     </div>   
                  </div>
+                 <%@include file="/jsp/common/pagination.jsp" %>
         </section>
         <script type="text/javascript">
             $(document).ready(function() {

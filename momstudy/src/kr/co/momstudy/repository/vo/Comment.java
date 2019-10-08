@@ -8,7 +8,9 @@ public class Comment {
 	private int num;
 	private int commentGroupCode;
 	private int parent;
+	private int commentGroup;
 	private Date regDate;
+	
 	public String getEmail() {
 		return email;
 	}
@@ -45,5 +47,12 @@ public class Comment {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	public int getCommentGroup() {
+		return commentGroup;
+	}
+	public void setCommentGroup(int commentGroup) {
+		this.commentGroup = commentGroup;
+	}
+	
 
 }

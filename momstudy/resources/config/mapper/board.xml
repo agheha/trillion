@@ -20,7 +20,7 @@
 		from tb_free_board
 		order by 
 		type asc, num desc
-	</select>
+</select>
 	
 <!-- 글 상세 조회 -->
 <select id="selectOneBoard" parameterType="int" resultMap="boardMap">
