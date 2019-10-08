@@ -18,6 +18,8 @@ public class StudyRecruitment {
 	private int commentGroupCode;
 	private double avr;  // 평점
 	private int pCnt; // 스터디별 인원수
+	private int cnt;
+	
 	
 	
 	
