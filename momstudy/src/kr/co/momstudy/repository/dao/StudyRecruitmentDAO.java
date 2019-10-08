@@ -25,4 +25,6 @@ public interface StudyRecruitmentDAO {
 	// 스터디 모집글 삭제
 	void deleteStudyRecruitment(int strNum);
 	
+	
+	
 } 

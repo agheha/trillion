@@ -63,7 +63,7 @@ public class FileUpload  {
 				file.setPath(f.getParent());
 				Thumbnails.of(new File(f.getParent(),systemName)).forceSize(300, 200).outputFormat("jpg").toFile(new File(f.getParent(),"thumb_" + systemName));
 				dao.insertFile(file);
-			}
+				}
 			}	
 		}
 		

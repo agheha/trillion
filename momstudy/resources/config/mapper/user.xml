@@ -46,11 +46,10 @@
 		   and pass = #{pass}
 	</select>
 	<!-- 비밀번호 찾기로 들어온 회원 정보 세션에 올리기위함 -->
-	<select id="selectFindLogin" resultMap="userMap" parameterType="User">
+	<select id="selectFindLogin" resultMap="userMap" parameterType="string">
 		select * 
 		  from tb_user
 		 where email = #{email}
-		   and name = #{name}
 	</select>
 	<!--  비밀번호 수정 -->
 	<update id="updatePass" parameterType="User">
@@ -100,6 +99,12 @@
 		  from tb_user_category
 		 where email = #{email}
 	</delete>	
+	<!--  유저 관심분야 수정 -->
+	<delete id="deleteUserAddressCode" parameterType="string">
+		delete 
+		  from tb_user_address
+		 where email = #{email}
+	</delete>	
 	
 	<!-- 주소의 대분류를 가져옴  -->
 	<select id="selectBigAddress" resultMap="addressMap">
@@ -114,7 +119,6 @@
 		  from tb_address   
 	</select>
 	<!-- 유저 지역 추가 -->
-	
 	<insert id="insertAddress" parameterType="UserCategory" >
 		insert into tb_user_address(email, address_code)
 		values(#{email}, #{addressCode})
@@ -124,6 +128,13 @@
 		select *
 		  from tb_user_address
 		 where email = #{email}
+	</select>
+	<!-- 현재비밀번호 확인하기 -->
+	<select id="passCheck" parameterType="User" resultType="int">
+		select count(*)
+		  from tb_user
+		 where pass = #{pass}
+		   and email = #{email}
 	</select>
 	<!--  스터디별 참여인원 -->
 	<select id="selectUserByStudyNum" parameterType="Search"

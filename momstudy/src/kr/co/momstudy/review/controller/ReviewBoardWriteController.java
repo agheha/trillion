@@ -27,9 +27,6 @@ public class ReviewBoardWriteController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		System.out.println("글등록 화면으로 들어옴");
-		
 		FileUpload fu = new FileUpload(req, "reviewBoard");
 		fu.upload();
 		MultipartRequest request =  fu.getRequest();

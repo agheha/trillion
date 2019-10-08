@@ -25,9 +25,9 @@
 	<title>스터디</title>
 </head>
 <body>
-    <header id="header">
-    	<%@include file="/jsp/common/header.jsp" %>
-    </header>
+	<header id="header">
+		<%@include file="/jsp/common/header.jsp" %>
+	</header>
 
     <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
     <section class="background_wrap">
@@ -38,17 +38,17 @@
     </section>
 
     <section id="layout">
-        <form action="<c:url value="/review/write.do" />" method="post" enctype="multipart/form-data">
+        <form action="<c:url value="/review/update.do?num=${rBoard.num}" />" method="post" enctype="multipart/form-data">
             <div>
             	<p>스터디명</p>
             	<div>${study.name}</div>
             	<input type="hidden" name="studyNum" value="${study.num}"/>
             	
                 <p>제목</p>
-                <input type="text" name="title" />
+                <input type="text" name="title" value="${rBoard.title}" />
                 
                 <p>내용</p>
-                <textarea name="content"></textarea>
+                <textarea name="content">${rBoard.content}</textarea>
                 <p>평가</p>
                 <select id="score" name="score">
                 	<c:forEach var="score" begin="1" end="10">

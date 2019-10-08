@@ -14,11 +14,12 @@ public interface UserDAO {
 	// 로그인 - 이메일 비밀번호 확인
 	User selectLogin(User user);
 	// 비밀번호 찾기로 로그인
-	User selectFindLogin(User user);
+	User selectFindLogin(String email);
 	// 회원가입 
 	void insertUser(User user);
 	// 관심분야 등록 
 	void insertCategory(UserCategory userCate);
+	// 관심지역 등록 
 	// 관심분야 이름검색
 	List<Category> selectCategory();
 	// 이메일 찾기 
@@ -27,10 +28,14 @@ public interface UserDAO {
 	User searchPass(User user);
 	// 유저 카테고리 코드 찾기
 	List<Category> selectUserCategoryCode(String email);
+	// 현재비밀번호 확인하기
+	int passCheck(User user);
 	// 비밀번호 변경
 	void updatePass(User user);
 	// 수정탭에서 카데고리 수정클릭시 원본 데이터 삭제
 	void deleteUserCategoryCode(String email);
+	// 수정탭에서 관심지역 수정클릭시 원본 데이터 삭제
+	void deleteUserAddressCode(String email);
 	// 주소와 안에 갯수를 뽑아옴 
 	List<Address> selectBigAddress();
 	// 주소테이블 모든 데이터를 가져옴
