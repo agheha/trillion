@@ -17,10 +17,10 @@ import kr.co.momstudy.repository.vo.StudyRecruitment;
 
 @WebServlet("/study/studyrecruitmentlist.do")
 public class StudyRecruitmentListController extends HttpServlet{
-	private StudyRecruitmentDAO strDao;
+	private StudyRecruitmentDAO dao;
 	
 	public StudyRecruitmentListController() {
-		this.strDao = MyAppSqlConfig.getSqlSessionInstance().getMapper(StudyRecruitmentDAO.class);
+		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(StudyRecruitmentDAO.class);
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class StudyRecruitmentListController extends HttpServlet{
 		String filter = "regDate";
 		String type = req.getParameter("type");
 		String keyword = req.getParameter("keyword");
-		int categoryCode = Integer.parseInt(req.getParameter("categoryCode"));
+//		int categoryCode = Integer.parseInt(req.getParameter("categoryCode"));
 		
 		Search search = new Search(pageNo);
 		
@@ -43,12 +43,12 @@ public class StudyRecruitmentListController extends HttpServlet{
 		search.setFilters("일자", "조회수", "별점");
 		search.setFilter(filter);
 		search.setKeyword(keyword);
-		search.setCategoryCode(categoryCode);
+//		search.setCategoryCode(categoryCode);
 		search.setType(type);
 
-		List<StudyRecruitment> strList = strDao.selectStudyRecruitment(search);
+		List<StudyRecruitment> list = dao.selectStudyRecruitment(search);
 		
-		req.setAttribute("strList", strList);
+		req.setAttribute("list", list);
 		req.setAttribute("search", search);
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentlist.jsp");
 		rd.forward(req, res);

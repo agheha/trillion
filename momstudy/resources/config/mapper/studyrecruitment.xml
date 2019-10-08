@@ -16,6 +16,8 @@
 		<result column="see_cnt" property="seeCnt" />
 		<result column="file_group_code" property="fileGroupCode" />
 		<result column="comment_group_code" property="commentGroupCode" />
+		<result column="avr" property="avr" /> 
+		<result column="pcnt" property="pCnt" />
 	</resultMap>
 	
 	<!-- 모집글 전체 리스트 -->
@@ -23,22 +25,27 @@
 	select * 
 	  from (select rownum as rnum, a.*
 		  	  from (select str.*,
-      			           (select avg(nvl(score, 0))
-        		       		  from tb_review_study) avr
-    				  from tb_study_recruitment str
-  					  left outer join tb_review_study rv
-    					on str.study_num = rv.study_num
-           			<where>
-           				<if test="type == 'email'">
-			   	    		str.email like '%' || #{keyword} || '%'
-			   			</if>
-			   			<if test="type == 'title'">
-			   	   			and str.title like '%' || #{keyword} || '%'
-			   			</if>
-			   			<if test="type == 'content'">
-			   	   			and str.content like '%' || #{keyword} || '%'
-			   			</if>
-           			</where>
+      			           (select round(avg(nvl(score, 0)), 1)
+        		       		  from tb_review_study) avr,
+        		       	    nvl(man, 0) + 1 pcnt
+    				  from tb_study_recruitment str,
+  					       tb_review_study rv,
+    					  (select study_num, 
+    					          count(*) man
+                             from TB_PARTICIPANT
+                            where condition = 2
+                            group by study_num) c
+    			      where c.STUDY_NUM(+) = str.STUDY_NUM
+                        and str.study_num = rv.study_num(+)
+           			<if test="type == 'email'">
+			   	    	and str.email like '%' || #{keyword} || '%'
+			   		</if>
+			   		<if test="type == 'title'">
+			   	   		and str.title like '%' || #{keyword} || '%'
+			   		</if>
+			   		<if test="type == 'content'">
+			   	   		and str.content like '%' || #{keyword} || '%'
+			   		</if>
            			<choose>  
 						<when test="filter == 'seeCnt'"> 
 							order by str.see_cnt
@@ -47,9 +54,10 @@
 							order by str.reg_date desc
 						</when>
 						<otherwise> <!-- 기본 조건은 평점으로 -->
-							order by avr desc) a)
+							order by avr desc
 						</otherwise>
 					</choose>
+					) a)
 	 where rnum between #{begin} and #{end}		 
 	</select>
 	
@@ -99,6 +107,5 @@
           from tb_study_recruitment
          where num = #{num}
 	</delete>
-	
 	
 	</mapper>
