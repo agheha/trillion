@@ -14,6 +14,7 @@ public class PageResult {
 		this(pageNo, count, 10, 10);
 	}
 	
+	// 현재 페이지번호, 게시물 전체 갯수, 보여줄 게시물 갯수, 페이징 보여줄 갯수
 	public PageResult(int pageNo, int count, int listSize, int tabSize) {
 		this.pageNo = pageNo;
 		this.count = count;

@@ -16,7 +16,7 @@ public interface ReviewBoardDAO {
 	Study selectStudy2(int sNum);
 	
 	// 스터디번호를 넘겨서 게시판을 불러옴
-	ReviewBoard selectOneBoard(int Studynum);
+	ReviewBoard selectOneBoard(int num);
 	// 글번호를 넘겨서 게시판을 불러옴
 	ReviewBoard selectOneBoard2(int num);
 	
@@ -29,4 +29,10 @@ public interface ReviewBoardDAO {
 	void deleteReviewBoard(int num);
 	
 	void updateReviewBoard(ReviewBoard reviewBoard);
+	
+	// 카테고리 리스트 불러오기
+	List<String> categorySelect();
+	
+	// 후기게시판의 전체 갯수 불러오기
+	int listCount();
 }
