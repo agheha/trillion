@@ -1,0 +1,64 @@
+
+.card {
+	height: 250px;
+	width: 480px;
+	border: 7px solid lightgray;
+	border-radius: 10px;
+	background: #fefefe;
+}
+
+.cardimg {
+	height: 250px;
+	width: 180px;
+	float: left;
+}
+
+.userimg {
+	height: 130px;
+	width: 130px;
+	border-radius: 50%;
+	background-image: url(../images/test_img1.jpg);
+	background-size: 130px 130px;
+	background-repeat: no-repeat;
+	position: relative;
+	top: 30px;
+	left: 35px;
+}
+
+.userId {
+	position: relative;
+	background: rgba(0, 0, 0, 0.493);
+	top: 55px;
+	height: 15%;
+	text-align: center;
+	line-height: 35px;
+	margin: auto;
+	border-radius: 15px;
+	width: 120px;
+	left: 12px;
+}
+
+.score {
+	width: 300px;
+	height: 250px;
+	float: left;
+}
+
+.inputscore {
+	width: 300px;
+	height: 70px;
+	position: relative;
+	top: 23px;
+	text-align: center;
+	line-height: 52px;
+	font-size: 16px;
+}
+
+#scorebtn{
+margin-right: 25px;
+}
+
+#scoresle{
+margin: 0 10px;
+    height: 25px;
+}

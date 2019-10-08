@@ -14,11 +14,13 @@
 	<!-- 스터디 등록 -->
 	<insert id="insertStudy" parameterType="Study">
 		<selectKey keyProperty="num" resultType="int" order="BEFORE">
-			select seq_study_num.nextval
+			select
+			seq_study_num.nextval
 			from dual
 		</selectKey>
 		insert into tb_study(name, email, category_code, address_code, num
-		) values (#{name}, #{email}, #{categoryCode}, #{addressCode}, #{num})
+		)
+		values (#{name}, #{email}, #{categoryCode}, #{addressCode}, #{num})
 
 	</insert>
 
@@ -31,31 +33,59 @@
 	</insert>
 
 	<!-- 참여한 스터디를 가져옴 -->
-	<select id="selectStudy" parameterType="string" resultMap="studyMap">
+	<select id="selectStudy" parameterType="string"
+		resultMap="studyMap">
 		select *
-		  from tb_study
-		 where num in (select study_num
-					     from tb_participant
-					    where email = #{email} and condition = 2)
+		from tb_study
+		where num in (select study_num
+		from tb_participant
+		where email = #{email} and condition = 2)
 	</select>
 
-	<select id="selectOneStudy" parameterType="int" resultMap="studyMap">
+	<select id="selectOneStudy" parameterType="int"
+		resultMap="studyMap">
 		select *
-		  from tb_study
-		 where num = #{num} 
+		from tb_study
+		where num = #{num}
 	</select>
-	
+
 	<delete id="deleteParticipant" parameterType="Participant">
-		delete 
-  		  from tb_participant
- 		 where email = #{email} and  study_num = #{studyNum}
+		delete
+		from tb_participant
+		where email = #{email} and study_num = #{studyNum}
 	</delete>
-	
+
 	<update id="aprovalParticipant" parameterType="Participant">
-		update tb_participant
-		   set condition = 2
-		 where email = #{email} and study_num = #{studyNum}  
+		update
+		tb_participant
+		set condition = 2
+		where email = #{email} and study_num = #{studyNum}
 	</update>
 
+	<select id="selectScore" parameterType="string"
+		resultType="Score">
+		select score , 
+			   count(*) over(partition by SCORE) as cnt, 
+			   count(*) over() as total, 
+			   round(count(*) over(partition by SCORE) / count(*) over() *100,0) as percent, 
+			   round(avg(SCORE) over(),1) as avg 
+		  from tb_review_user 
+		 where email = #{email} 
+		 order by score
+	</select>
+	
+	<insert id="insertScore" parameterType="Score">
+		insert into 
+		tb_review_user (score, num, email, email_recom
+		) values (#{score}, #{num}, #{email}, #{emailRecom})
+	
+	</insert>
+	
+	<select id="checkScore" parameterType="Score" resultType="int">
+		select count(*)
+		  from tb_review_user
+		 where num = #{num} and email = #{email} and email_recom = #{emailRecom} 
+	</select>
+	
 
 </mapper>

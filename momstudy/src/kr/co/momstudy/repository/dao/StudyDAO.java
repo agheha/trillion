@@ -3,6 +3,7 @@ package kr.co.momstudy.repository.dao;
 import java.util.List;
 
 import kr.co.momstudy.repository.vo.Participant;
+import kr.co.momstudy.repository.vo.Score;
 import kr.co.momstudy.repository.vo.Study;
 
 public interface StudyDAO {
@@ -20,4 +21,10 @@ public interface StudyDAO {
 	void deleteParticipant(Participant pt);
 	
 	void aprovalParticipant(Participant pt);
+
+	List<Score>selectScore(String email);
+	
+	void insertScore(Score score);
+	
+	int checkScore(Score score);
 }

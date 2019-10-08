@@ -14,7 +14,7 @@ public interface UserDAO {
 	// 로그인 - 이메일 비밀번호 확인
 	User selectLogin(User user);
 	// 비밀번호 찾기로 로그인
-	User selectFindLogin(User user);
+	User selectFindLogin(String email);
 	// 회원가입 
 	void insertUser(User user);
 	// 관심분야 등록 

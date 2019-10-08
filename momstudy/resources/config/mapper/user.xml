@@ -46,11 +46,10 @@
 		   and pass = #{pass}
 	</select>
 	<!-- 비밀번호 찾기로 들어온 회원 정보 세션에 올리기위함 -->
-	<select id="selectFindLogin" resultMap="userMap" parameterType="User">
+	<select id="selectFindLogin" resultMap="userMap" parameterType="string">
 		select * 
 		  from tb_user
 		 where email = #{email}
-		   and name = #{name}
 	</select>
 	<!--  비밀번호 수정 -->
 	<update id="updatePass" parameterType="User">
