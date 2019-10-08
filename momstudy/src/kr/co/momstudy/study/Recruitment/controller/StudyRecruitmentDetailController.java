@@ -26,7 +26,7 @@ private StudyRecruitmentDAO dao;
 			
 			int num = Integer.parseInt(req.getParameter("num"));
 			StudyRecruitment str = dao.selectOneStudyRecruitment(num);
-			req.setAttribute("str", str);
+			req.setAttribute("studyRecruitment", str);
 		
 			req.getRequestDispatcher("studyrecruitmentdetail.jsp").forward(req,res);
 		}

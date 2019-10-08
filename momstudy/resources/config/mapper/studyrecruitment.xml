@@ -48,7 +48,7 @@
 			   		</if>
            			<choose>  
 						<when test="filter == 'seeCnt'"> 
-							order by str.see_cnt
+							order by str.see_cnt desc
 						</when>
 						<when test="filter == 'regDate'">
 							order by str.reg_date desc
