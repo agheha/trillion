@@ -18,11 +18,15 @@ public class StudyRecruitment {
 	private int commentGroupCode;
 	private double avr;  // 평점
 	private int pCnt; // 스터디별 인원수
-	private int cnt;
+	private int count; // 총 개수
 	
 	
-	
-	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getpCnt() {
 		return pCnt;
 	}

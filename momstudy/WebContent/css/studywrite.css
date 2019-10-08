@@ -1,0 +1,67 @@
+@charset "EUC-KR";
+.cotents {
+	margin: auto;
+	display: grid;
+	width: 500px;
+	grid-template-columns: 500px;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	min-height: 350px;
+	background: white;
+	border: 2px solid lightgrey;
+	border-radius: 10px;
+}
+
+.sn {
+	border-top: 1px solid rgba(218, 217, 217, 0.644);
+}
+
+input[type=text] {
+	height: 30px;
+	width: 80%;
+	border: 2px solid lightgrey;
+	padding-left: 8px;
+}
+
+select {
+	width: 30%;
+}
+
+.name {
+	text-align: center;
+	height: 50px;
+	position: relative;
+	top: 15px;
+}
+
+.name>span {
+	font-size: 30px;
+}
+
+.inner {
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	align-content: center;
+}
+
+.item {
+	margin-left: 10px;
+	font-size: 20px;
+}
+
+.inbutton {
+	float: right;
+	cursor: pointer;
+	box-sizing: border-box;
+	min-height: 40px;
+	display: inline-block;
+	background-color: #efefef;
+	border: 0;
+	border-radius: 8px;
+	padding: 10px 14px;
+	margin: 15px;
+}
+
+.inbutton:hover {
+	background: lightgrey;
+}
