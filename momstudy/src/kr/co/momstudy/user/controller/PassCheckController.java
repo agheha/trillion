@@ -14,17 +14,16 @@ import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.repository.vo.User;
 
 @WebServlet("/user/passchk.do")
-public class PassCheck extends HttpServlet{
+public class PassCheckController extends HttpServlet{
 	private UserDAO dao;
 	
-	public PassCheck() {
+	public PassCheckController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
 	}
 
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.setContentType("text/html; charset=utf-8");
 		User u = (User)req.getSession().getAttribute("user");
 		User user = new User();
 		user.setEmail(u.getEmail());

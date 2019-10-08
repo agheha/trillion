@@ -8,11 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<link rel="stylesheet" href="./../css/common.css">
-<link rel="stylesheet" href="./../css/header.css">
-<link rel="stylesheet" href="./../css/layout.css">
-<link rel="stylesheet" href="./../css/userinfo.css">
-<link rel="stylesheet" here="./../css/study_layout.css">
+<link rel="stylesheet" href="<c:url value="/css/common.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/layout.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/userinfo.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/study_layout.css"/>">
+
+
 
 <title>계정관리</title>
 <!-- full calendar -->
@@ -22,23 +23,12 @@
 
 </head>
 <body>
-	<header id="header"></header>
+	<header id="header">
+		<%@include file="/jsp/common/header.jsp" %>	
+	</header>
 	
     <!-- The Modal -->
-    <div id="myModal" class="modal">
- 
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>비밀번호를 입력해주세요</p>
-        <br>
-        <label for="passchk">현재 비밀번호</label>                                                               
-        <input type="password" id="passchk" />
-        <button id="btn">확인</button>
-      </div>
- 
-    </div>
-	
+   	<%@include file="/jsp/common/usermodal.jsp" %>	
 
 	<!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
 	<section class="background_wrap">
@@ -54,9 +44,11 @@
 		<div class="left_list">
 			<div>
 				<div class="profile">
-					<img src="./../images/test_img2.jpg" width="200" height="200"
-						alt="testImg">
-					<button></button>
+					<img src="<c:url value="/images/test_img2.jpg"/>" width="200"
+						height="200" alt="testImg">
+				</div>
+				<div>
+					<button>이미지수정</button>
 				</div>
 				<ul>
 					<li><span id="passUpdate">비밀번호 변경</span></li>
@@ -139,9 +131,10 @@
 			<!-- 달력부분 -->
 		</div>
 	</section>
-
+	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script type="text/javascript">
 		// 유저가 선택한 관심지역 추가 
+	
 		let selectCate = [
 			<c:forEach items="${userCate}" var="userCate">
 			<c:out value="${userCate.categoryCode}" />,
@@ -154,6 +147,6 @@
 			</c:forEach>
 		]
 	</script>
-	<script src="<c:url value="/script/user/userinfo.js" />"></script>		
+	<script src="<c:url value="/script/user/userinfo.js" />"></script>
 </body>
 </html>
