@@ -188,6 +188,11 @@
 		  where rnum between #{begin} and #{end}
 	</select>
 	
+	<select id="selectAddress" parameterType="string" resultMap="addressMap">
+		select *
+ 		  from tb_address
+ 		 where address_Detail = #{baddr}
+	</select>
 	
 	
 </mapper>

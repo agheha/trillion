@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -78,33 +78,7 @@
 			</div>
 		</div>
 	</form>
-	<script type="text/javascript">
-		function chknull() {
-			let f = document.myForm;
-
-			if (isempty(f.name, "스터디 이름을 입력해주세요."))
-				return false;
-			if (f.category.selectedIndex === 0) {
-				alert("카테고리를 선택해주세요");
-				return false;
-			}
-			if (f.address1.selectedIndex === 0
-					|| f.address2.selectedIndex === 0) {
-				alert("지역을 선택해주세요");
-				return false;
-			}
-			return true;
-		}
-
-		function isempty(ele, msg) {
-			if (ele.value === "") {
-				alert(msg);
-				return true;
-			}
-			return false;
-
-		}
-	</script>
+	<script src="<c:url value="/script/study/studywriteform.js"/>"></script>
 </body>
 
 </html>
