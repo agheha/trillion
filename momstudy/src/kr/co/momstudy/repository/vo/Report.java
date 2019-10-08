@@ -13,16 +13,16 @@ public class Report {
 	private String email;
 	private Date regDate;
 
-//	조인해서 가져온 결과를 받기위함
-	private String reseaon;
-	public String getReseaon() {
-		return reseaon;
-	}
-	public void setReseaon(String reseaon) {
-		this.reseaon = reseaon;
-	}
+//	각 별 신고수 가져온 결과를 받기위함
+	private int cnt;
+
 	
-	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getNum() {
 		return num;
 	}

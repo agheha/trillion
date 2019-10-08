@@ -9,7 +9,15 @@ public class Study {
 	private int categoryCode;
 	private int addressCode;
 	private int num;
+	//카운트 받을것
+	private int cnt;
 	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public String getName() {
 		return name;
 	}

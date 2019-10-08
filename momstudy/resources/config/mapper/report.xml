@@ -2,10 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="kr.co.momstudy.repository.dao.ReportDAO">
+<mapper namespace="kr.co.momstudy.repository.dao.AdminDAO">
 
-	<resultMap type="Report" id="Repor
-	tMap">
+	<resultMap type="Report" id="AreportMap">
 		<result column="NUM" property="num" />
 		<result column="TYPE" property="type" />
 		<result column="REPORT_TARGET" property="reportTarget" />
@@ -14,9 +13,112 @@
 		<result column="CODE" property="code" />
 		<result column="EMAIL" property="email" />
 		<result column="REG_DATE" property="regDate" />
-		<result column="RESEAON" property="reseaon" />
+		<result column="count" property="cnt" />
 	</resultMap>
 
+	<resultMap type="Study" id="AstudyMap">
+		<result column="name" property="name" />
+		<result column="reg_date" property="regDate" />
+		<result column="email" property="email" />
+		<result column="category_code" property="categoryCode" />
+		<result column="address_code" property="addressCode" />
+		<result column="num" property="num" />
+		<result column="count" property="cnt" />
+	</resultMap>
+
+	<resultMap type="User" id="AuserMap">
+		<result column="email" property="email" />
+		<result column="pass" property="pass" />
+		<result column="name" property="name" />
+		<result column="phone_num" property="phoneNum" />
+		<result column="birth" property="birth" />
+		<result column="status" property="status" />
+		<result column="type" property="type" />
+		<result column="ban_date" property="banDate" />
+		<result column="file_group_code" property="fileGroupCode" />
+		<result column="gender" property="gender" />
+		<result column="part_date" property="partDate" />
+		<result column="count" property="cnt" />
+		<result column="open" property="openCnt" />
+		<result column="join" property="joinCnt" />
+		
+	</resultMap>
+
+	<!-- 유저 정보 뽑아오는데 +신고 횟수 -->
+	<select id="selectUserReport" resultMap="AreportMap">
+		select r.*,p.count
+		from
+		tb_report r inner join
+		(SELECT count(*) count,REPORT_TARGET
+		from
+		tb_report
+		where type = 'user'
+		group by REPORT_TARGET
+		) p
+		on
+		r.REPORT_TARGET = p.REPORT_TARGET
+		where type= 'user';
+	</select>
+
+	<!-- 글/스터디 정보 뽑아 오는 데 + 신고횟수 -->
+	<select id="selectReport" parameterType="String"
+		resultMap="AreportMap">
+		select r.*,p.count
+		from tb_report r inner join
+		(SELECT
+		count(*) count,BOARD_NUM
+		from tb_report
+		where type = #{type}
+		group by
+		BOARD_NUM
+		) p
+		on r.BOARD_NUM = p.BOARD_NUM
+		where type= #{type};
+	</select>
+
+	<!-- 스터디+소속 팀원수 -->
+	<select id="selectStudyPeople" resultMap="AstudyMap">
+		SELECT s.* ,
+		nvl(p.c,0)+1 count
+		FROM TB_STUDY s,
+		( select STUDY_NUM,count(*) c
+		from
+		TB_PARTICIPANT
+		where CONDITION = 2
+		group by STUDY_NUM) p
+		where s.num =
+		p.STUDY_NUM(+);
+	</select>
 
 
+
+	<!-- 유저정보+가입스터디수 +개설 스터디수 -->
+	<select id="selectUserInfo" resultMap="AuserMap">
+		select
+		s.*,nvl(p.c,0) report ,nvl(o.open,0) open ,nvl(j.join,0) join
+		from tb_user s,
+		
+		(SELECT REPORT_TARGET,count(*) c
+		 from tb_report
+		 where type = 'user'
+		 group
+		 by REPORT_TARGET) p,
+		(select EMAIL,count(*) open
+		 from TB_STUDY
+		 group by
+		 EMAIL) o,
+		(SELECT r.EMAIL,count(*) join
+		 FROM TB_PARTICIPANT r
+		 where
+		 CONDITION = 2
+		 group by EMAIL) j
+		 
+		where s.EMAIL = p.REPORT_TARGET(+)
+		and
+		s.EMAIL = o.EMAIL(+)
+		and 
+		s.EMAIL = j.EMAIL(+)
+		;
+	</select>
+	
 </mapper>
