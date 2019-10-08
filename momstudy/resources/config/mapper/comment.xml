@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.momstudy.repository.dao.CommentDAO">
+<resultMap id="commentMap" type="Comment">
+    <result column="email" property="email" />
+    <result column="num" property="num" />
+    <result column="content" property="content" />
+    <result column="reg_date" property="regDate" />
+    <result column="comment_group_code" property="commentGroupCode" />
+    <result column="parent" property="parent" />
+    <result column="comment_group" property="commentGroup" />
+</resultMap>
+
+<!-- 댓글 리스트 -->
+<select id="selectComment" parameterType="int" resultMap="commentMap">
+     <!--  
+      select *
+        from tb_comment
+        where commentGroupCode = #{commentGroupCode}
+        order by num
+      -->
+	select * from tb_comment where comment_group_code=#{num} order by comment_group, num asc
+<!--      select *
+       from tb_comment
+      where comment_group_code = #{num}
+      order by parent asc, num desc -->
+</select>
+
+<!-- 댓글 등록 -->
+<insert id="insertComment" parameterType="Comment">
+  insert into tb_comment (
+  num, comment_group_code, email, content, comment_group
+  ) values (
+  seq_comment_num.nextval, #{commentGroupCode}, #{email}, #{content}, #{commentGroup}
+  )
+</insert>
+
+<!-- 대댓글 등록 -->
+<insert id="insertCommentReply" parameterType="Comment">
+  insert into tb_comment (
+  num, comment_group_code, email, content ,parent, comment_group
+  ) values (
+  seq_comment_num.nextval, #{commentGroupCode}, #{email}, #{content}, #{parent}, #{commentGroup}
+  )
+</insert>
+
+<!-- 댓글 삭제 -->
+<delete id ="deleteComment" parameterType="int">
+  delete
+    from tb_comment
+   where num = #{num}
+</delete>
+
+<!-- 댓글 수정 -->
+<update id="updateComment" parameterType="Comment">
+   update tb_comment
+     set
+    content = #{content}
+    where num = #{num}
+</update>
+
+</mapper>

@@ -17,12 +17,12 @@ import kr.co.momstudy.repository.vo.StudyRecruitment;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.FileUpload;
 
-@WebServlet("/study/recruitmentwrite.do")
+@WebServlet("/study/studyrecruitmentwrite.do")
 public class StudyRecruitmentWriteController extends HttpServlet {
-	private StudyRecruitmentDAO strDao;
+	private StudyRecruitmentDAO dao;
 	
 	public StudyRecruitmentWriteController() {
-		this.strDao = MyAppSqlConfig.getSqlSessionInstance().getMapper(StudyRecruitmentDAO.class);
+		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(StudyRecruitmentDAO.class);
 	}
 	
 	@Override
@@ -39,7 +39,7 @@ public class StudyRecruitmentWriteController extends HttpServlet {
 		str.setContent(request.getParameter("content"));
 		
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = (User)session.getAttribute("user");	
 		str.setEmail(user.getEmail());
 		
 		int categoryCode = Integer.parseInt(request.getParameter("categoryCode"));
@@ -53,8 +53,8 @@ public class StudyRecruitmentWriteController extends HttpServlet {
 		
 		str.setFileGroupCode(fu.getGroupCode());
 		
-		strDao.insertStudyRecruitment(str);
+		dao.insertStudyRecruitment(str);
 		
-		res.sendRedirect(req.getContextPath() + "/recruitment/list.do");
+		res.sendRedirect(req.getContextPath() + "/study/studyrecruitmentlist.do");
 	}
 }

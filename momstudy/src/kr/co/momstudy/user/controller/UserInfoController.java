@@ -26,16 +26,15 @@ public class UserInfoController extends HttpServlet{
 	}	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = (User)req.getSession().getAttribute("user");
 		List<Category> cateList = dao.selectCategory();
 		List<Category> userCate = dao.selectUserCategoryCode(user.getEmail());
 		List<UserArea> userArea = dao.selectUserArea(user.getEmail());
-		List<Address> bigAddr = dao.selectBigAddress();
 		List<Address> smallAddr = dao.selectSmallAddress();
+		List<Address> bigAddr = dao.selectBigAddress();
 		
-		req.setAttribute("smallAddr",smallAddr);
 		req.setAttribute("bigAddr",bigAddr);
+		req.setAttribute("smallAddr",smallAddr);
 		req.setAttribute("userArea", userArea);
 		req.setAttribute("userCate", userCate);
 		req.setAttribute("cateList", cateList);

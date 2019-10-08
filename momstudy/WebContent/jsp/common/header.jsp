@@ -23,7 +23,7 @@
 	</div>
 	<div class="header_bot_wrap">
 		<div>
-			<a href="<c:url value="/user/mypage.do"></c:url>"><span>마이페이지</span></a>
+			<a href='<c:url value="/user/mypage.do" />'><span>마이페이지</span></a>
 		</div>
 		<div>
 			<a href="#">스터디</a>
@@ -32,7 +32,7 @@
 			<a href="./notice_board.html">자유게시판</a>
 		</div>
 		<div>
-			<a href="./review_board.html">후기게시판</a>
+			<a href='<c:url value="/review/list.do" />'>후기게시판</a>
 		</div>
 		<div>
 			<a href="./inquire_board.html">문의하기</a>

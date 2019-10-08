@@ -10,18 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.ReviewBoardDAO;
+import kr.co.momstudy.repository.vo.ReviewBoard;
+import kr.co.momstudy.repository.vo.Study;
 
-@WebServlet("/review/writeForm.do")
-public class ReviewBoardWriteFormController extends HttpServlet {
+@WebServlet("/review/detail.do")
+public class ReviewBoardDetailController extends HttpServlet {
 	
 	private ReviewBoardDAO dao;
-	public ReviewBoardWriteFormController() {
+	public ReviewBoardDetailController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(ReviewBoardDAO.class);
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.setAttribute("study", dao.selectStudy2(Integer.parseInt(req.getParameter("studyNum"))));
-		req.getRequestDispatcher("/jsp/reviewBoard/writeForm.jsp").forward(req, res);
+		ReviewBoard rb = dao.selectOneBoard(Integer.parseInt(req.getParameter("num")));
+		req.setAttribute("rBoard", rb);
+		req.setAttribute("study", dao.selectStudy2(rb.getStudyNum()));
+		req.getRequestDispatcher("/jsp/reviewBoard/detailBoard.jsp").forward(req, res);
 	}
 }

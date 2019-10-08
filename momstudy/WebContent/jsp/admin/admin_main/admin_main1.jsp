@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="include_main_top.jsp"%>
-
+<!-- 조심 -->
 <div id="box-1">
 	<!-- box two content -->
 	<form class="saerch">

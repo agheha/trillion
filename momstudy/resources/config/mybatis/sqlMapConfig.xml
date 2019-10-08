@@ -16,6 +16,7 @@
 		<typeAlias alias="UserCategory" type="kr.co.momstudy.repository.vo.UserCategory" />
 		<typeAlias alias="Category" type="kr.co.momstudy.repository.vo.Category" />
 		<typeAlias alias="Board" type="kr.co.momstudy.repository.vo.Board" />
+		<typeAlias alias="Comment" type="kr.co.momstudy.repository.vo.Comment" />
 		<typeAlias alias="ReviewBoard" type="kr.co.momstudy.repository.vo.ReviewBoard" />
 		<typeAlias alias="Study" type="kr.co.momstudy.repository.vo.Study"/>
 		<typeAlias alias="StudyRecruitment" type="kr.co.momstudy.repository.vo.StudyRecruitment"/>
@@ -47,8 +48,8 @@
 		<mapper resource="config/mapper/board.xml"/>
 		<mapper resource="config/mapper/reviewBoard.xml"/>
 		<mapper resource="config/mapper/study.xml"/>
-		<mapper resource="config/mapper/studyRecruitment.xml"/>
-
+		<mapper resource="config/mapper/studyrecruitment.xml"/>
+		<mapper resource="config/mapper/comment.xml"/>
 	</mappers>
 	
 </configuration>

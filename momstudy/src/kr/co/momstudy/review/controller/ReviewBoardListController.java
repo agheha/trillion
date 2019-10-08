@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.ReviewBoardDAO;
 import kr.co.momstudy.repository.vo.Search;
+import kr.co.momstudy.repository.vo.Study;
+import kr.co.momstudy.util.PageResult;
 
 @WebServlet("/review/list.do")
 public class ReviewBoardListController extends HttpServlet {
@@ -23,22 +25,25 @@ public class ReviewBoardListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		String sPageNo = req.getParameter("PageNo");
+		String sPageNo = req.getParameter("pageNo");
 		int pageNo = 1;
 		if(sPageNo != null) {
 			pageNo = Integer.parseInt(sPageNo);
 		}
 		
-		System.out.println("후기게시판 리스트 출력화면");
+		String filter = "regDate";
+		String type = req.getParameter("type");
+		String keyword = req.getParameter("keyword");
 		
 		Search search = new Search(pageNo);
-		search.setFilter("regDate");
-		search.setType("title");
-		search.setKeyword("");
-		// 전체 리스트 구해와서 파라미터로 공유
-		req.setAttribute("list", dao.selectReviewBoard(search));
+		search.setTypes("제목","글쓴이","내용","스터디명");
+		search.setFilters("일자","별점","조회수");
+		search.setFilter(filter);
+		search.setKeyword(keyword);
+		search.setType(type);
 		
-		// 사용할 화면으로 이동하기
+		req.setAttribute("search", search);
+		req.setAttribute("list", dao.selectReviewBoard(search));
 		req.getRequestDispatcher("/jsp/reviewBoard/reviewBoard.jsp").forward(req, res);
 	}
 }
