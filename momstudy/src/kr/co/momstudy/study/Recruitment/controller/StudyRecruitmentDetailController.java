@@ -25,6 +25,10 @@ private StudyRecruitmentDAO dao;
 		protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 			
 			int num = Integer.parseInt(req.getParameter("num"));
+			
+			// 글번호 넣어주면 조회수 증가
+			dao.updateViewCnt(num);
+			
 			StudyRecruitment str = dao.selectOneStudyRecruitment(num);
 			req.setAttribute("studyRecruitment", str);
 		
