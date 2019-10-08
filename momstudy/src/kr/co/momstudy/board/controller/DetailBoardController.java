@@ -31,7 +31,7 @@ public class DetailBoardController extends HttpServlet {
 		int num = Integer.parseInt(req.getParameter("no"));
 		String type = (req.getParameter("type") != null ? req.getParameter("type") : "");
 		
-		//dao.updateViewCnt(no);
+		dao.updateSeeCnt(num);
 		
 		req.setAttribute("board", dao.selectOneBoard(num));
 		// req.setAttribute("commentGroupCode", commentGroupCode);

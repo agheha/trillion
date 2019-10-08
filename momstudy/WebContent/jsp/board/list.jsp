@@ -50,12 +50,7 @@
                 <div class="vote_title">
                     <p>스터디 게시판</p>
                     <div>
-                        <input type="text" name="voteserach" />
-                        <select name="vote" id="vote">
-                            <option value="1">제목</option>
-                            <option value="2">내용</option>
-                            <option value="3">글쓴이</option>
-                        </select>
+                 
                         <button type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
                     </div>
                 </div>
@@ -65,7 +60,7 @@
                               <h2>게시글이 없습니다.</h2>
                            </div>
                         </c:if>
-                        <c:forEach var="b" items="${list}">s
+                        <c:forEach var="b" items="${list}">
                         <div>
                             <a href="<c:url value="/board/detail.do?no=${b.num}" />">
 	                            <ul>
@@ -73,13 +68,14 @@
 	                                <li>${b.title}</li>
 	                                <li>${b.email}</li>
 	                                <li><fmt:formatDate pattern="yyyy-MM-dd" value="${b.regDate}" /></li>
+	                                <li>${b.seeCnt}</li>
 	                            </ul>
                             </a>
                         </div>
                         </c:forEach>
-                    </div>   
+                    </div>
+                     <%@include file="/jsp/common/pagination.jsp" %>  
                  </div>
-                 <%@include file="/jsp/common/pagination.jsp" %>
         </section>
         <script type="text/javascript">
             $(document).ready(function() {
