@@ -18,12 +18,15 @@
 		<result column="comment_group_code" property="commentGroupCode" />
 		<result column="avr" property="avr" /> 
 		<result column="pcnt" property="pCnt" />
+		<result column="count" property="count" />
 	</resultMap>
 	
 	<!-- 모집글 전체 리스트 -->
 	<select id="selectStudyRecruitment" resultMap="studyRecruitmentMap" parameterType="Search">
 	select * 
-	  from (select rownum as rnum, a.*
+	  from (select rownum as rnum, 
+	               a.*,
+	               count(*) over() as count
 		  	  from (select str.*,
       			           (select round(avg(nvl(score, 0)), 1)
         		       		  from tb_review_study) avr,
@@ -98,7 +101,7 @@
 	<update id="updateViewCnt" parameterType="int">
 		update tb_study_recruitment
 		   set see_cnt = see_scnt + 1
-		 where no = #{no}
+		 where num = #{num}
 	</update>
 	
 	<!-- 모집글 삭제 -->
