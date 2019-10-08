@@ -62,7 +62,12 @@
 		insert into tb_user(email, pass, name, phone_num, birth, gender)
 		values(#{email}, #{pass}, #{name}, #{phoneNum}, #{birth}, #{gender})
 	</insert>
-	
+	<!--  회원탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		delete
+		  from tb_user
+		 where email = #{email}
+	</delete>
 	<!--  관심분야 -->
 	<insert id="insertCategory" parameterType="UserCategory" >
 		insert into tb_user_Category(email, category_code)
