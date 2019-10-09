@@ -23,14 +23,13 @@ select.forEach(selectAreaCode => {
 	})
 })
 
+
 select.forEach((ele) => {
 	ele.addEventListener("click",showText);
 })
 select.forEach((ele) => {
 	ele.addEventListener("click",del);
 })
-
-
 
 function showText(e) {
 	
@@ -40,12 +39,12 @@ function showText(e) {
 		spanEle.innerText =  e.target.getAttribute("sAdd");
 		textArea.append(spanEle);
 		return
-	}
+	} 
 }
 
-function del(e){
+function del(e) {
 	let textArea = document.querySelector("#selArea");
-	if (e.target.checked === false){
+	if (e.target.checked === false ){
 	document.querySelector('#show' + e.target.value).remove();	
 	return 	
 	}

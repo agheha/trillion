@@ -23,7 +23,7 @@ public interface UserDAO {
 	// 관심분야 이름검색
 	List<Category> selectCategory();
 	// 이메일 찾기 
-	User searchEmail(User user);
+	String searchEmail(User user);
 	// 비밀번호 찾기
 	User searchPass(User user);
 	// 회원탈퇴

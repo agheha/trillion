@@ -1,6 +1,7 @@
 package kr.co.momstudy.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -15,8 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
@@ -40,12 +41,12 @@ public class FindPasswordController extends HttpServlet {
 		String subject = "[MOMSTUDY] 비밀번호 찾기 인증코드 안내";
 		u.setName(name);
 		u.setEmail(email);
-		System.out.println(name);
-		System.out.println(email);
+		PrintWriter out = res.getWriter();
 
 		User user = dao.searchPass(u);
+		out.println(new Gson().toJson(user));
+		out.close();
 
-		HttpSession session = req.getSession();
 		if (user != null) {
 			String keyCode = UUID.randomUUID().toString().replace("-", "");
 
@@ -53,7 +54,7 @@ public class FindPasswordController extends HttpServlet {
 			userCode.setName(name);
 			userCode.setEmail(email);
 			userCode.setCertifiedCode(keyCode);
-			session.setAttribute("user", user);
+			req.getSession().setAttribute("user", user);
 
 			String url = "http://" + req.getServerName() + ":" + req.getServerPort() + "/" + req.getContextPath()
 					+ "/user/certified.do?name=" + name  + "&email=" + email ;

@@ -176,7 +176,7 @@
 		function del(e){
 			let textArea = document.querySelector("#selArea");
 			if (e.target.checked === false){
-			document.querySelector('#show' + e.target.value).remove();	
+			document.querySelector('#show' + e.target.value).remove();
 			return 	
 			}
 		}

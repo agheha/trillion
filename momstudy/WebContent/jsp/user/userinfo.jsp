@@ -28,7 +28,7 @@
 	</header>
 	
     <!-- The Modal -->
-   	<%@include file="/jsp/common/usermodal.jsp" %>	
+   		
 
 	<!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
 	<section class="background_wrap">
@@ -40,24 +40,8 @@
  
 	
 	<section id="layout">
-
-		<div class="left_list">
-			<div>
-				<div class="profile">
-					<img src="<c:url value="/images/test_img2.jpg"/>" width="200"
-						height="200" alt="testImg">
-				</div>
-				<div>
-					<button>이미지수정</button>
-				</div>
-				<ul>
-					<li><span id="passUpdate">비밀번호 변경</span></li>
-					<li><span id="userDelete">회원탈퇴</span></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="heightAuto">
+	   	<%@include file="/jsp/common/userleftlist.jsp" %>	
+	   		<div class="heightAuto">
 			<!-- 우측 상당 슬라이드 -->
 			<div class="right_top_cont">
 				<div class="title">기본정보</div>
@@ -96,8 +80,7 @@
 							<div class="category_wrap" id="area">
 								<ul>
 									<c:forEach items="${bigAddr}" var="bigAddr" varStatus="loop">
-										<li><a href="#1" onclick="show(${loop.count})"
-											id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail}
+										<li><a href="#1" onclick="show(${loop.count})" id="baddr${loop.count}" value="addr${loop.count}">${bigAddr.addressDetail}
 												<span> ${bigAddr.count} </span>
 										</a></li>
 									</c:forEach>
@@ -109,8 +92,7 @@
 
 										<ul style="display: none" id="addr${loop.count}" >
 											<c:forEach items="${smallAddr}" var="smallAddr" varStatus="i">
-												<c:if
-													test="${bigAddr.addressDetail eq smallAddr.addressDetail}">
+												<c:if test="${bigAddr.addressDetail eq smallAddr.addressDetail}">
 													<li><input id="add${i.count}" type="checkbox"
 														name="userAddr" sAdd="${smallAddr.addressDetail2}"
 														value="${smallAddr.addressCode}" /> <label
@@ -131,7 +113,6 @@
 			<!-- 달력부분 -->
 		</div>
 	</section>
-	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script type="text/javascript">
 		// 유저가 선택한 관심지역 추가 
 	
@@ -148,5 +129,6 @@
 		]
 	</script>
 	<script src="<c:url value="/script/user/userinfo.js" />"></script>
+	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 </body>
 </html>

@@ -73,14 +73,14 @@
 		insert into tb_user_Category(email, category_code)
 		values(#{email}, #{categoryCode})
 	</insert>
-	
+	<!-- 카테고리 테이터 가져오기 -->
 	<select id="selectCategory" resultMap="categoryMap">
 		select * 
 		  from tb_category
 	</select>
 	<!--  아이디 찾기 -->
-	<select id="searchEmail" resultType="User" parameterType="User">
-		select * 
+	<select id="searchEmail" resultType="String" parameterType="User">
+		select email
 		  from tb_user
 		 where name = #{name}
 		   and phone_num = #{phoneNum}

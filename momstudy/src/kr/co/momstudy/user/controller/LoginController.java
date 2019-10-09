@@ -41,5 +41,6 @@ public class LoginController extends HttpServlet {
 		session.setAttribute("user", user);
 		
 		
+		
 	}
 }
