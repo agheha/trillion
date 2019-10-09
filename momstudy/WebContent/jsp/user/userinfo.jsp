@@ -129,6 +129,5 @@
 		]
 	</script>
 	<script src="<c:url value="/script/user/userinfo.js" />"></script>
-	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 </body>
 </html>
