@@ -223,11 +223,11 @@ tbody input[type=text]{
     float: right;
 }
 
-#golist{
+#listvote{
 	margin-right: 5px;
 }
 
-#listvote{
+#closevote{
 	margin-right: 5px;
 }
 

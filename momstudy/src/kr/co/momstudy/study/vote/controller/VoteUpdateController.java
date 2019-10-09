@@ -68,7 +68,7 @@ public class VoteUpdateController extends HttpServlet{
 		
 		dao.updateVote(nums);
 		
-		resp.sendRedirect("votelist.do");
+		resp.sendRedirect(req.getContextPath() + "/jsp/study/close.jsp");
 		
 		
 	}
