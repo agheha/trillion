@@ -31,6 +31,9 @@
                   
                 } else if (starpoint >= 1){
                   starc.className="active icon-star-half-empty ";
+                }else {
+                	starc.className="icon-star";
+                	
                 }
                 starpoint = starpoint - 2; 
               })

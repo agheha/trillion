@@ -19,9 +19,9 @@
 			<div class="poll-voter">
 			
 				<div class="buttons">
-					<button class="vote-btn" onclick="votesubmit(2)">투표</button>
-					<a href='<c:url value="/study/votelist.do?"/>'><button
-							class="vote-btn" type="button" id="listvote">목록</button></a>
+					<button class="vote-btn" onclick="votesubmit(this)">투표</button>
+					<a href='#'><button
+							class="vote-btn" type="button" id="closevote">닫기</button></a>
 					<c:if test="${user.email eq vote.email}">
 					
 						<a href='<c:url value="/study/deletevote.do?num="/>${vote.num}'><button
@@ -82,7 +82,7 @@
 			str = `<td class="poll-option"><input type="text" name="addAricle" placeholder="항목을 입력해주세요.">
 						<div class="poll-option-bar"></div>
 					
-					<button  class="vote-btn-remove" onclick='votesubmit(1)'>등록</button>
+					<button  class="vote-btn-remove" onclick='votesubmit(this)' type="button">등록</button>
 					<input type="hidden" value="${vote.num}" name="num"/>
 					<button type="button" class="vote-btn-remove"
 						onclick="remove_tr(this)">삭제</button>
@@ -93,6 +93,9 @@
 			tr.innerHTML = str;
 			document.getElementById('aricle').appendChild(tr);
 			document.getElementById('addbutton').removeChild(obj.parentNode);
+			he = document.querySelector("body").offsetHeight;
+			
+			this.resizeTo(530,he+80);
 		}
 
 		function remove_tr(obj) {
@@ -104,19 +107,40 @@
 			var td = document.createElement('td');
 			td.innerHTML = str;
 			document.getElementById('addbutton').appendChild(td)
+			he = document.querySelector("body").offsetHeight;
+			
+			this.resizeTo(530,he+80);
 
 		}
-		function votesubmit(index) {
-
-			if (index == 1) {
+		function votesubmit(obj) {
+			let flag = true;
+			let pEles = document.querySelectorAll(".poll-option > p");
+			if (obj.innerText === '등록') {
+				let value = obj.parentNode.firstChild.value;
+				for(let i = 0; i <pEles.length; i++){					
+					if(pEles[i].innerText === value){
+						alert("중복된 항목입니다.");
+						flag = false;
+						return;
+					} 
+				}
+				
 				document.myform.action = `<c:url value="/study/addaricle.do" />`;
+				myform.submit();
 			}
-			if (index == 2) {
+			if (obj.innerText === '투표') {
 				document.myform.action = `<c:url value="/study/vote.do" />`;
 			}
 		}
 
-
+		function closesvote(){
+			window.opener.location.href="votelist.do"
+			window.close();
+		}
+		
+		let closevotebtn = document.querySelector('#closevote');
+		
+		closevotebtn.addEventListener("click",closesvote);
 
 		window.history.forward();
 
@@ -125,7 +149,10 @@
 			window.history.forward();
 
 		}
-
+		
+		let he = document.querySelector("body").offsetHeight;
+		
+		this.resizeTo(530,he+80);
 	</script>
 
 

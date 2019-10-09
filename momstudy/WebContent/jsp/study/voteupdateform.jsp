@@ -9,13 +9,13 @@
 <link rel="stylesheet" href="<c:url value="/css/vote.css" ></c:url>" />
 </head>
 <body>
-	<form action="<c:url value="/study/voteupdate.do" />" method="post">
+	<form action="<c:url value="/study/voteupdate.do" />" method="post" name="vform">
 		<input type="hidden" value="${vote.num}" name="num"> 
 		<div class="poll-container">
 			<div class="poll-voter">
-				<span class="poll-title"><input type="text" name="title"
+				<span class="poll-title"><input type="text" name="title" id="votetitle"
 					value="${vote.title}"></span>
-				<button class="vote-btn">수정</button>
+				<button class="vote-btn" type="button" id="submitbtn">수정</button>
 				<hr style="border: none; height: 2px; background: grey;">
 				<table class="poll-list">
 					<tbody id="aricle">
@@ -83,30 +83,9 @@
 
 	<script type="text/javascript">
 		var count = ${valist.size()} + 1;
-		function add_tr() {
-			var str = "" 
-			str = `<td class="poll-option"><input type="text" name="aricle`+ count++ +`"placeholder="항목을 입력해주세요.">
-						<div class="poll-option-bar"></div>
-					</td>
-					<td><button type="button" class="vote-btn-remove"
-						onclick="remove_tr(this)">삭제</button>
-					</td>`;
-
-			var tr = document.createElement('tr');
-			tr.className = "vote-row";
-			tr.innerHTML = str;
-			document.getElementById('aricle').appendChild(tr);
-		}
-
-		function remove_tr(obj) {
-			if (document.getElementsByTagName("tr").length > 5) {
-				document.getElementById('aricle').removeChild(
-						obj.parentNode.parentNode);
-			} else {
-				alert("항목은 2개 이상 입력해야합니다.")
-			}
-		}
 	</script>
+	
+		<script src="<c:url value="/script/study/vote.js"/>"></script>
 
 </body>
 </html>

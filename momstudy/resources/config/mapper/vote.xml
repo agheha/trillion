@@ -122,10 +122,10 @@ left outer join (select a.num,
                                 from tb_vote_result
                                where email = #{email}) b            
                           on a.code = b.code
-                       where num = #{num}
-                       order by code) d
+                       where num = #{num}) d
         on d.code = c.code
      where c.num = #{num}
+     order by code
 	</select>
 
 <!-- 투표 결과의 개수를 가져옴 -->
