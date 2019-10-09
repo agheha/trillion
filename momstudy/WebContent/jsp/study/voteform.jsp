@@ -134,7 +134,6 @@
 		}
 
 		function closesvote(){
-			window.opener.location.href="votelist.do"
 			window.close();
 		}
 		
