@@ -74,7 +74,7 @@
 	<!-- 모집글 등록 -->
 	<insert id="insertStudyRecruitment" parameterType="StudyRecruitment">
 		insert into tb_study_recruitment(
-			num, title, content, email, category_code, address_code, study_num, file_group_code, comment_group_code
+			num, title, content, email, category_code, address_code, study_num
 		) values (
             seq_study_recruitment_num.nextval, 
             #{title}, 
@@ -106,5 +106,13 @@
           from tb_study_recruitment
          where num = #{num}
 	</delete>
+	
+	<!-- 스터디모집글을 스터디번호로 가져오기 -->
+	<select id="whetherStudyRecruitment" parameterType="int" resultType="StudyRecruitment">
+		select *
+		  from tb_study_recruitment
+		 where study_num = #{studyNum}
+	</select>
+
 	
 	</mapper>

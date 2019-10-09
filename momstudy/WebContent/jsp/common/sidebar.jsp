@@ -28,7 +28,12 @@
 							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/studymain.do"/>">정보 관리</a></li>
 							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminmember.do"/>">스터디원 관리</a></li>
 							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminaprovalmember.do"/>">스터디 신청자 관리</a></li>
-							<li><div class="space"></div><a class="adminele" go="<c:url value="/study/studymain.do"/>">모집글 관리</a></li>
+							<c:if test="${str != null}">
+								<li><div class="space"></div><a class="adminele" go="<c:url value="/study/studyrecruitmentdetail.do?num=${str.num}"/>">모집글 관리</a></li>
+							</c:if>
+							<c:if test="${str == null}">
+								<li><div class="space"></div><a class="adminele" go="<c:url value="/study/studyrecruitmentwriteform.do"/>">모집글 생성</a></li>
+							</c:if>
 						</ul>
 					</form>
 				</c:if>
