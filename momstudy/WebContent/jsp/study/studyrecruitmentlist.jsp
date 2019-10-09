@@ -89,9 +89,6 @@
 		</div>
 	</div>
 
-
-
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#header").load("header.html");

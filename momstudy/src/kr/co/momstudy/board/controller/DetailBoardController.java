@@ -53,7 +53,7 @@ public class DetailBoardController extends HttpServlet {
 		
 		// 댓글 목록 공유
 		List<Comment> commentList = dao1.selectComment(num);
-		System.out.println("commentList = " + commentList);
+//		System.out.println("commentList = " + commentList);
 		req.setAttribute("commentList", commentList);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/detail.jsp");

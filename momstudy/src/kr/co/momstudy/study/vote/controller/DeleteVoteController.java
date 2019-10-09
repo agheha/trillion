@@ -23,7 +23,7 @@ public class DeleteVoteController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int num = Integer.parseInt(req.getParameter("num"));
 		dao.deleteVote(num);
-		resp.sendRedirect(req.getContextPath() + "/study/votelist.do");
+		resp.sendRedirect(req.getContextPath() + "/jsp/study/close.jsp");
 	}
 
 }

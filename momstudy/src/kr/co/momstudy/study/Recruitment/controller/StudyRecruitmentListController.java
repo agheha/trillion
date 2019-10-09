@@ -51,6 +51,7 @@ public class StudyRecruitmentListController extends HttpServlet{
 		List<StudyRecruitment> list = dao.selectStudyRecruitment(search);
 		
 		if(list.size() != 0) {
+			System.out.println(list.get(0).getCount());
 			count = list.get(0).getCount();
 		}
 		PageResult pr = new PageResult(pageNo, count);
