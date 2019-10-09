@@ -63,10 +63,6 @@
 							</c:forEach>
 						</select> <select name="address2">
 							<option>선택</option>
-							<option>마포구</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
 						</select>
 					</div>
 				</div>

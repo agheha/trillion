@@ -2,6 +2,7 @@ package kr.co.momstudy.study.Recruitment.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.StudyRecruitmentDAO;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
 
-@WebServlet("/study/studyrecruitmentupdate.do")
+@WebServlet("/study/studyrecruitmentupdateform.do")
 public class StudyRecruitmentUpdateFormController extends HttpServlet {
 private StudyRecruitmentDAO dao;
 	
@@ -25,8 +26,11 @@ private StudyRecruitmentDAO dao;
 			int num = Integer.parseInt(req.getParameter("num"));
 			
 			StudyRecruitment str = dao.selectOneStudyRecruitment(num);
+
+			req.setAttribute("str", str);
 			
-			
+			RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentupdateform.jsp");
+			rd.forward(req, res);
 		
 		}
 }
