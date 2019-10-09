@@ -58,7 +58,7 @@
 	        			
 	    stars.forEach(star =>{
 	      let starc = star.lastElementChild;
-	      starc.className="active icon-star";
+	      starc.className="icon-star";
 	    })
 	    
 	    document.querySelector("#inputscore").innerHTML = `<form action="" name="scoreForm">

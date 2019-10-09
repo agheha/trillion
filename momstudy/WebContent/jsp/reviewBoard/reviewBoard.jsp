@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href='<c:url value="/css/common.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/review_board.css" />'>
+	<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 
     <!-- jquery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -32,47 +33,75 @@
         </div>
     </section>
 
-   	<div class="btn_wrap">
-   		<form action="<c:url value="/review/selectStudy.do" />"  method="post">
-   			<button>등록</button>
-   		</form>
-   	</div>
-    <div class="board_cont_wrap">
-       	<c:if test="${empty list}">
-       		<div>게시물이 없습니다.</div>
-       	</c:if>
-       	<c:forEach var="rb" items="${list}">
-	      	<div class="board_cont">
-	      	
-	      		<!-- ------------------------------ -->
-	      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
-		        	<a href='<c:url value="/review/detail.do?num=${rb.studyNum}" /> '>
-	      		<!-- ------------------------------ -->
-		        
-		            <div class="cont_img">
-		            
-		            	<!-- ------------ -->
-		            	<!-- 이미지경로 추후 추가 -->
-		                <img src="./../images/test_img1.jpg" alt="">
-		            	<!-- ------------ -->
-		            	<div>
-							<span>${rb.email}</span>		            	
-			                <span><fmt:formatDate value="${rb.regDate}" pattern="yyyy-MM-dd" /></span>
-		            	</div>
-		            </div>
-		           	<div class="cont_text">
-		                <p>${rb.title}</p>
-		                <span>${rb.content}</span>
-		           	</div>
-		       	</a>
-	      	</div>
-        </c:forEach>
-    </div>
-    <%@include file="/jsp/common/pagination.jsp" %>
+	<section id="layout">
+	
+        <div class="left_list">
+        	<form action="<c:url value="/review/list.do" />"  method="GET" >
+	            <ul>
+	            	<c:forEach var="category" items="${category}">
+		                <li>
+		                	<button name="code" value="${category.categoryCode}" id="cate${category.categoryCode}">
+		                		${category.categoryName}
+		                	</button>
+		                </li>
+	                </c:forEach>
+	            </ul>          
+        	</form>
+        </div>
+	
+	    <div class="board_cont_wrap">
+		   	<div class="btn_wrap">
+		   		<form action="<c:url value="/review/selectStudy.do" />"  method="post">
+		   			<button>등록</button>
+		   		</form>
+		   	</div>
+		   	<div class="cont_wrap">
+		       	<c:if test="${empty list}">
+		       		<div>게시물이 없습니다.</div>
+		       	</c:if>
+		       	<c:forEach var="rb" items="${list}">
+			      	<div class="board_cont">
+			      	
+			      		<!-- ------------------------------ -->
+			      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
+				        	<a href='<c:url value="/review/detail.do?num=${rb.num}" /> '>
+			      		<!-- ------------------------------ -->
+				        
+				            <div class="cont_img">
+				            
+				            	<!-- ------------ -->
+				            	<!-- 이미지경로 추후 추가 -->
+				                <img src="./../images/test_img1.jpg" alt="">
+				            	<!-- ------------ -->
+				            	<div class="img_hover;">
+									<span>${rb.email}</span>		            	
+					                <span><fmt:formatDate value="${rb.regDate}" pattern="yyyy-MM-dd" /></span>
+					                <span>${rb.score}</span>
+					                <span>${rb.seeCnt}</span>
+				            	</div>
+				            </div>
+				           	<div class="cont_text">
+				                <p>${rb.title}</p>
+				                <span>${rb.content}</span>
+				           	</div>
+				       	</a>
+			      	</div>
+		        </c:forEach>
+		   	</div>
+	    	<%@include file="/jsp/common/pagination.jsp" %>
+	    </div>
+	</section>
 
 
     <script type="text/javascript">
-
+    	/* let categoryList = document.querySelectorAll(".catbtn");
+  		var keyword = "";
+    	for (let i = 0; i < categoryList.length; i++) {
+	    	categoryList[i].addEventListener("click", (e) => {
+	    		
+	    	});   		
+    	} */
+    	
     </script>
 </body>
 </html>

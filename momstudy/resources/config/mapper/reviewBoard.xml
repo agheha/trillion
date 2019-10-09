@@ -27,35 +27,35 @@
                               	    inner join tb_study c
                                        on a.study_num = c.num)
 	                        <where>
-                      	    <choose>
-                      	    <when test="type == 'title'">
-                        	  title like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    <when test="type == 'email'">
-                        	  email like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    <when test="type == 'content'">
-                        	  content like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    <when test="type == 'name'">
-                        	  name like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    </choose> 
-                      	    <if test="categoryCode != 0">                      	    
-                      	      category_code = #{categoryCode}
-                      	    </if> 
+	                      	    <choose>
+		                      	    <when test="type == 'title'">
+		                        	  title like '%'||#{keyword}||'%'
+		                      	    </when>
+		                      	    <when test="type == 'email'">
+		                        	  email like '%'||#{keyword}||'%'
+		                      	    </when>
+		                      	    <when test="type == 'content'">
+		                        	  content like '%'||#{keyword}||'%'
+		                      	    </when>
+		                      	    <when test="type == 'name'">
+		                        	  name like '%'||#{keyword}||'%'
+		                      	    </when>
+	                      	    </choose> 
+	                      	    <if test="categoryCode != 0">                      	    
+	                      	      category_code = #{categoryCode}
+	                      	    </if> 
                             </where>
                        	    order by 
                       	    <choose>
-							<when test="filter =='regDate'">
-                      	    reg_date 
-							</when>
-							<when test="filter =='seeCnt'">
-                      	    see_cnt 
-							</when>
-							<when test="filter =='score'">
-                      	    score 
-							</when>
+								<when test="filter =='regDate'">
+	                      	    	reg_date 
+								</when>
+								<when test="filter =='seeCnt'">
+	                      	    	see_cnt 
+								</when>
+								<when test="filter =='score'">
+	                      	    	score 
+								</when>
                       	    </choose>                       	    
                       	    desc
                       	    ) a)
@@ -79,12 +79,6 @@
 	<select id="selectOneBoard" parameterType="int" resultMap="reviewBoardMap">
 		select *
 		from tb_review_study
-		where study_num = #{num}
-	</select>
-	
-	<select id="selectOneBoard2" parameterType="int" resultMap="reviewBoardMap">
-		select *
-		from tb_review_study
 		where num = #{num}
 	</select>
 	
@@ -101,6 +95,21 @@
 		  from tb_review_study 
 		 where num = #{num}
 	</delete>
+	
+	
+	<resultMap type="Category" id="categoryMap">
+		<result column="category_code"  property="categoryCode"/>
+		<result column="category_name"  property="categoryName"/>
+	</resultMap>
+	<select id="categorySelect" resultMap="categoryMap">
+		select * 
+		from tb_category
+	</select>
+	
+	<select id="listCount" resultType="int">
+		select count(*)
+		from tb_review_study
+	</select>
 	
 	
 	
@@ -134,4 +143,7 @@
 		from tb_study
 		where num = #{studyNum}
 	</select>
+	
+	
+	
 </mapper>

@@ -35,17 +35,17 @@
         <!-- 오류를 띄워주는 영역이 추가될 예정 -->
         <section>
             <div class="fieldset">
-                <form action="<c:url value="/user/login.do"/>"method="post">
+                <form name="lForm" action="<c:url value="/user/login.do"/>" method="post">
                     <div>
-                        <input  type="email" id="id" placeholder="이메일" name="email">
-                        <span class="alert_wrap">아이디를 다시 확인해 주세요</span>
+                        <input  type="text" id="id" placeholder="이메일" name="email">
                     </div>
                     <div>
                         <input class="form_login"type="password" id="pass" placeholder="비밀번호" name="pass"> 
-                        <span class="alert_wrap">비밀번호를 다시 확인해 주세요</span>
+                        <span id="msg" class="alert_wrap" style="display:none">아이디와 비밀번호를 다시 확인해 주세요</span>
+                        <span id="blackmsg" class="alert_wrap" style="display:none">정지된 아이디입니다.</span>
                     </div>
                  	<div>
-                        <input class="submit_btn" type="submit" value="로그인" />
+                        <input class="submit_btn" type="button" id="sbtn" value="로그인" />
                  	</div>
                     <div>
                         <a href="findform.do">아이디/비밀번호 찾기</a>
@@ -56,10 +56,7 @@
         </section>
 
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#header").load("header.html");
-            });
-        </script>
+        <script src="<c:url value="/script/user/login.js" />"></script>
+       
     </body>
 </html>
