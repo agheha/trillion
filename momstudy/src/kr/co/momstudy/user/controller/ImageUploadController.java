@@ -12,7 +12,6 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.FileDAO;
 import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.util.FileUpload;
-import sun.security.mscapi.KeyStore.MY;
 
 @WebServlet("/user/myimg.do")
 public class ImageUploadController extends HttpServlet{
