@@ -14,6 +14,11 @@
 <link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
 <link rel="stylesheet" href=`<c:url value="/css/signup_completed.css" />' > 
 
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+
+    
 <title>스터디원 모집</title>
 </head>
 <body>
@@ -42,6 +47,8 @@
 					<span style="width: 54px;">${str.seeCnt}</span>
 				</div>
 			</div>
+			
+			<!-- 이미지가 와야함 -->
 
 			<div class="board_cont">
 				<p>

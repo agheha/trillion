@@ -2,6 +2,7 @@ package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.FileVO;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
 
@@ -28,4 +29,9 @@ public interface StudyRecruitmentDAO {
 	// 스터디번호로 스터디모집글 가져오기
 	StudyRecruitment whetherStudyRecruitment(int studyNum);
 	
+	// 카테고리 리스트 불러오기
+	List<String> categorySelect();
+	
+	// 해당 게시물의 사진 불러오기
+	FileVO selectFile(int studyNum);
 } 

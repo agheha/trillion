@@ -117,5 +117,32 @@
 		 where study_num = #{studyNum}
 	</select>
 
+<!-- ========================================================= -->
+
+	<resultMap type="Category" id="categoryMap">
+		<result column="category_code"  property="categoryCode"/>
+		<result column="category_name"  property="categoryName"/>
+	</resultMap>
+	<select id="categorySelect" resultMap="categoryMap">
+		select * 
+		from tb_category 
+	</select>
+	
+<!-- ========================================================= -->
+	
+	<resultMap type="File" id="fileMap">
+		<result column="no"  property="no"/>
+		<result column="org_name"  property="orgName"/>
+		<result column="system_name"  property="systemName"/>
+		<result column="path"  property="path"/>
+		<result column="file_group_code" property="groupCode"/>		
+	</resultMap>
+	<select id="selectFile" parameterType="int" resultMap="fileMap">
+		select *
+		from tb_review_study r
+		inner join tb_file f
+		on r.file_group_code = f.file_group_code
+		where study_num = ${studyNum}
+	</select>
 	
 	</mapper>
