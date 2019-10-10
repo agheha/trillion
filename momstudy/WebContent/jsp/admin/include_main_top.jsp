@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +11,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
-<link rel="stylesheet" href="../../../css/admin_main.css">
+<link rel="stylesheet" href="./../css/admin_main.css">
+<link rel="stylesheet" href="./../css/admin_study.css">
+<link rel="stylesheet" href="./../css/admin_user.css">
+<link rel="stylesheet" href="./../css/admin_user_detail.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="../../../css/common.css">
-<link rel="stylesheet" href="../../../css/header.css">
+<link rel="stylesheet" href="./../css/common.css">
+<link rel="stylesheet" href="./../css/header.css">
+<link rel="stylesheet" href="./../css/Layer_Pop_up.css">
+<link rel="stylesheet" href="./../css/Layer_Pop_up1.css">
 <title>header</title>
 </head>
 
@@ -69,7 +74,7 @@
 
 				<!--Menu-->
 				<div id="menu">
-					<a href="<c:url value="/jsp/admin/admin_main/admin_main1.jsp"/>"><i
+					<a href="<c:url value="/admin/reportuser.do"/>"><i
 						class="icon">=</i><span>신고된사람</span></a> <a
 						href="<c:url value="/jsp/admin/admin_main/admin_main2.jsp"/>"><i
 						class="icon">=</i><span> 신고된 글</span></a> <a

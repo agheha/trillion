@@ -9,7 +9,7 @@ public class Study {
 	private int categoryCode;
 	private int addressCode;
 	private int num;
-	//카운트 받을것
+	//카운트 받을것(팀원수)
 	private int cnt;
 	
 	public int getCnt() {

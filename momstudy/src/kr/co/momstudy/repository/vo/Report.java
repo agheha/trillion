@@ -12,6 +12,15 @@ public class Report {
 	private int code;
 	private String email;
 	private Date regDate;
+	
+//  신고사유 받은것	
+	private String reseaon;
+	public String getReseaon() {
+		return reseaon;
+	}
+	public void setReseaon(String reseaon) {
+		this.reseaon = reseaon;
+	}
 
 //	각 별 신고수 가져온 결과를 받기위함
 	private int cnt;

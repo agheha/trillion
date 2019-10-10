@@ -24,16 +24,16 @@
 				<th>신고된 횟수</th>
 			</thead>
 			<tbody>
-				<%-- <c:forEach var="box1" items="${list}"> --%>
+				<c:forEach var="report" items="${list}">
 				<tr>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
+					<td>${report.reseaon }</td>
+					<td>${report. }</td>
+					<td>${report. }</td>
+					<td>${report. }</td>
+					<td>${report. }</td>
+					<td>${report. }</td>
 				</tr>
-			<%-- </c:forEach> --%>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>

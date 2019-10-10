@@ -16,23 +16,22 @@
 	<table>
 		<thead>
 			<th>신고사유</th>
-			<th>닉네임</th>
-			<th>아이디</th>
+			<th>이메일</th>
 			<th>신고된 날짜</th>
-			<th>신고한 사람id</th>
+			<th>신고한 사람</th>
 			<th>신고된 횟수</th>
 		</thead>
 		<tbody>
-			<%-- <c:forEach var="box1" items="${list}"> --%>
+			<c:forEach var="report" items="${list}">
 				<tr>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
+					<td>${report.reseaon }</td>
+					<td>${report.reportTarget }</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd"
+							value="${report.regDate}" /></td>
+					<td>${report.email }</td>
+					<td>${report.cnt }</td>
 				</tr>
-			<%-- </c:forEach> --%>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>

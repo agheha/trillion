@@ -11,6 +11,7 @@
 		<result column="BOARD_NUM" property="boardNum" />
 		<result column="CONTENT" property="content" />
 		<result column="CODE" property="code" />
+		<result column="reseaon" property="reseaon" />
 		<result column="EMAIL" property="email" />
 		<result column="REG_DATE" property="regDate" />
 		<result column="count" property="cnt" />
@@ -41,45 +42,147 @@
 		<result column="count" property="cnt" />
 		<result column="open" property="openCnt" />
 		<result column="join" property="joinCnt" />
-		
+
+	</resultMap>
+	<resultMap type="Category" id="AcategoryMap">
+		<result column="CATEGORY_CODE" property="categoryCode" />
+		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="count" property="cnt" />
+
+
 	</resultMap>
 
-	<!-- 유저 정보 뽑아오는데 +신고 횟수 -->
+
+	<!-- 유저신고 정보 뽑아오는데 +신고 횟수+신고사유 -->
 	<select id="selectUserReport" resultMap="AreportMap">
-		select r.*,p.count
+		select
+		r.*,p.count,rr.RESEAON
 		from
-		tb_report r inner join
-		(SELECT count(*) count,REPORT_TARGET
-		from
-		tb_report
+		tb_report r ,
+		(SELECT count(*) count
+		,REPORT_TARGET
+		from tb_report
 		where type = 'user'
-		group by REPORT_TARGET
-		) p
-		on
+		group by REPORT_TARGET)
+		p , TB_REPORT_RESEAON rr
+		where
 		r.REPORT_TARGET = p.REPORT_TARGET
-		where type= 'user';
+		and
+		type= 'user'
+		and
+		r.CODE = rr.CODE
 	</select>
 
-	<!-- 글/스터디 정보 뽑아 오는 데 + 신고횟수 -->
-	<select id="selectReport" parameterType="String"
+	<!-- 1개 유저신고 정보 뽑아오는데 +신고 횟수+신고사유 -->
+	<select id="selectOneUserReport" parameterType="int"
 		resultMap="AreportMap">
-		select r.*,p.count
-		from tb_report r inner join
+		select r.*,p.count,rr.RESEAON
+		from
+		tb_report r ,
+		(SELECT
+		count(*) count
+		,REPORT_TARGET
+		from tb_report
+		where type = 'user'
+		group by
+		REPORT_TARGET)
+		p , TB_REPORT_RESEAON rr
+		where
+		r.REPORT_TARGET =
+		p.REPORT_TARGET
+		and
+		type= 'user'
+		and
+		r.CODE = rr.CODE
+		and
+		num = #{num}
+	</select>
+
+	<!-- 글 정보 뽑아 오는 데 + 신고횟수 +신고사유 -->
+	<select id="selectBoardReport" resultMap="AreportMap">
+		select r.*,p.count,
+		rr.RESEAON
+		from tb_report r ,
+		(SELECT
+		count(*) count,BOARD_NUM
+		from
+		tb_report
+		where type = 'board'
+		group by
+		BOARD_NUM) p , TB_REPORT_RESEAON
+		rr
+		where r.BOARD_NUM = p.BOARD_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		type= 'board'
+	</select>
+
+	<!-- 1개 글 정보 뽑아 오는 데 + 신고횟수 +신고사유 -->
+	<select id="selectOneBoardReport" parameterType="int"
+		resultMap="AreportMap">
+		select r.*,p.count, rr.RESEAON
+		from tb_report r ,
 		(SELECT
 		count(*) count,BOARD_NUM
 		from tb_report
-		where type = #{type}
+		where type = 'board'
 		group by
-		BOARD_NUM
-		) p
-		on r.BOARD_NUM = p.BOARD_NUM
-		where type= #{type};
+		BOARD_NUM) p , TB_REPORT_RESEAON rr
+		where r.BOARD_NUM = p.BOARD_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		type= 'board'
+		and
+		num = #{num}
+	</select>
+
+	<!-- 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유 -->
+	<select id="selectStudyReport" resultMap="AreportMap">
+		select r.*,p.count,
+		rr.RESEAON
+		from tb_report r ,
+		(SELECT
+		count(*) count,BOARD_NUM
+		from
+		tb_report
+		where type = 'study'
+		group by
+		BOARD_NUM) p , TB_REPORT_RESEAON
+		rr
+		where r.BOARD_NUM = p.BOARD_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		type= 'study'
+	</select>
+
+	<!-- 1개 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유 -->
+	<select id="selectOneStudyReport" parameterType="int"
+		resultMap="AreportMap">
+		select r.*,p.count, rr.RESEAON
+		from tb_report r ,
+		(SELECT
+		count(*) count,BOARD_NUM
+		from tb_report
+		where type = 'study'
+		group by
+		BOARD_NUM) p , TB_REPORT_RESEAON rr
+		where r.BOARD_NUM = p.BOARD_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		type= 'study'
+		and
+		num = #{num}
 	</select>
 
 	<!-- 스터디+소속 팀원수 -->
-	<select id="selectStudyPeople" resultMap="AstudyMap">
+	<select id="selectStudy" resultMap="AstudyMap">
 		SELECT s.* ,
-		nvl(p.c,0)+1 count
+		nvl(p.c,0)+1
+		count
 		FROM TB_STUDY s,
 		( select STUDY_NUM,count(*) c
 		from
@@ -90,35 +193,109 @@
 		p.STUDY_NUM(+);
 	</select>
 
+	<!-- 아이디 받아서 그사람이 개설한 스터디 + 팀원 수 -->
+	<select id="selectPeopleOpenStudy" parameterType="String"
+		resultMap="AstudyMap">
+
+		select s.* , count
+		from TB_STUDY s,
+		(select
+		STUDY_NUM,count(*)+1 count
+		from
+		TB_PARTICIPANT
+		where CONDITION = 2
+		group
+		by STUDY_NUM) p
+		where
+		EMAIL = #{email}
+		and
+		s.num = p.STUDY_NUM(+)
+
+	</select>
+
+	<!-- 아이디 받아서 그사람이 가입한 스터디 + 팀원수 -->
+	<select id="selectPeopleJoinStudy" parameterType="String"
+		resultMap="AstudyMap">
+		select s.* , count
+		from TB_STUDY s,
+		(SELECT STUDY_NUM
+		FROM
+		TB_PARTICIPANT r
+		where CONDITION = 2
+		and
+		EMAIL = #{email}) p,
+		(select
+		STUDY_NUM,count(*)+1 count
+		from TB_PARTICIPANT
+		where CONDITION = 2
+		group
+		by STUDY_NUM) c
+		where s.num = p.STUDY_NUM
+		and
+		c.STUDY_NUM = p.STUDY_NUM
+
+	</select>
+
 
 
 	<!-- 유저정보+가입스터디수 +개설 스터디수 -->
 	<select id="selectUserInfo" resultMap="AuserMap">
 		select
-		s.*,nvl(p.c,0) report ,nvl(o.open,0) open ,nvl(j.join,0) join
+		s.*,nvl(p.c,0) count
+		,nvl(o.open,0) open ,nvl(j.join,0) join
 		from tb_user s,
-		
-		(SELECT REPORT_TARGET,count(*) c
-		 from tb_report
-		 where type = 'user'
-		 group
-		 by REPORT_TARGET) p,
+
+		(SELECT
+		REPORT_TARGET,count(*) c
+		from tb_report
+		where type = 'user'
+		group
+		by
+		REPORT_TARGET) p,
 		(select EMAIL,count(*) open
-		 from TB_STUDY
-		 group by
-		 EMAIL) o,
+		from TB_STUDY
+		group by
+		EMAIL) o,
 		(SELECT r.EMAIL,count(*) join
-		 FROM TB_PARTICIPANT r
-		 where
-		 CONDITION = 2
-		 group by EMAIL) j
-		 
+		FROM TB_PARTICIPANT r
+		where
+		CONDITION = 2
+		group by EMAIL) j
+
 		where s.EMAIL = p.REPORT_TARGET(+)
 		and
 		s.EMAIL = o.EMAIL(+)
-		and 
+		and
 		s.EMAIL = j.EMAIL(+)
 		;
 	</select>
-	
+
+	<!-- 총 카테고리 +개설 스터디수 -->
+	<select id="selectCategory" resultMap="AcategoryMap">
+		SELECT c.* ,count
+		FROM
+		TB_CATEGORY c,
+		(SELECT count(*)
+		count,CATEGORY_CODE
+		FROM tb_study
+		group by
+		CATEGORY_CODE) s
+		where
+		c.CATEGORY_CODE = s.CATEGORY_CODE
+	</select>
+
+	<!-- 카테고리 이름 받아서 추가 -->
+	<insert id="insertCategory" parameterType="String">
+		insert into
+		TB_CATEGORY(CATEGORY_CODE,CATEGORY_NAME)
+		values(SEQ_CATEGORY_CODE.nextval,#{categoryName})
+	</insert>
+
+	<!-- 카테고리 번호 받아서 삭제 -->
+	<delete id="deleteCategory" parameterType="int">
+		DELETE
+		from TB_CATEGORY
+		where CATEGORY_CODE = #{categoryCode}
+	</delete>
+
 </mapper>
