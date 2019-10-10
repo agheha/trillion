@@ -129,7 +129,7 @@
 			let inputEle = document.querySelector("#inputEle");
 			inputEle.value = vnum;
 			let f = document.vForm;
-			var gsWin = window.open('about:blank','vote','width=500,height=500,location=no,directories=no,resizable=no');
+			var gsWin = window.open('about:blank','vote','width=500,height=300,left='+lefts+',top='+tops+'')
 			f.action = `<c:url value="/study/voteresult.do"/>`;
 			f.target ="vote";
 		    f.method ="post";

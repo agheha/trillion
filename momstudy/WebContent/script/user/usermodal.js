@@ -31,7 +31,7 @@ btn.addEventListener("click", e => {
 	xhr.send("pass="+pass.value);
 })
 // 회원탈퇴 클릭시 이벤트 발생
-let del = document.querySelector("#userDelete");
-del.addEventListener("click", e => {
+let userdel = document.querySelector("#userDelete");
+userdel.addEventListener("click", e => {
 	location.href = "/momstudy/jsp/user/deleteuser.jsp"
 })

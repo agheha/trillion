@@ -1,4 +1,6 @@
+﻿
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -31,7 +33,9 @@
 					height="200" alt="testImg">
 			</div>
 			<div>
+
 				<form method="post" enctype="multipart/form-data" name="fForm" action="<c:url value="/user/myimg.do?path=user"/>">
+
 					<label id="upload" for="file">이미지수정</label> <input type="file"
 						id="file" name="file" onchange="changeValue(this)"
 						style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;" />
