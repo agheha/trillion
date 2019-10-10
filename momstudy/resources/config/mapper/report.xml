@@ -15,6 +15,8 @@
 		<result column="EMAIL" property="email" />
 		<result column="REG_DATE" property="regDate" />
 		<result column="count" property="cnt" />
+		<result column="BOARD_TYPE" property="boardType" />
+		<result column="STUDY_NUM" property="studyNum" />
 	</resultMap>
 
 	<resultMap type="Study" id="AstudyMap">
@@ -144,18 +146,18 @@
 		rr.RESEAON
 		from tb_report r ,
 		(SELECT
-		count(*) count,BOARD_NUM
+		count(*) count,STUDY_NUM
 		from
 		tb_report
 		where type = 'study'
 		group by
-		BOARD_NUM) p , TB_REPORT_RESEAON
+		STUDY_NUM) p , TB_REPORT_RESEAON
 		rr
-		where r.BOARD_NUM = p.BOARD_NUM
+		where r.STUDY_NUM = p.STUDY_NUM
 		and
 		r.CODE = rr.CODE
 		and
-		type= 'study'
+		type= 'study';
 	</select>
 
 	<!-- 1개 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유 -->
@@ -164,12 +166,12 @@
 		select r.*,p.count, rr.RESEAON
 		from tb_report r ,
 		(SELECT
-		count(*) count,BOARD_NUM
+		count(*) count,STUDY_NUM
 		from tb_report
 		where type = 'study'
 		group by
-		BOARD_NUM) p , TB_REPORT_RESEAON rr
-		where r.BOARD_NUM = p.BOARD_NUM
+		STUDY_NUM) p , TB_REPORT_RESEAON rr
+		where r.STUDY_NUM = p.STUDY_NUM
 		and
 		r.CODE = rr.CODE
 		and
@@ -297,5 +299,15 @@
 		from TB_CATEGORY
 		where CATEGORY_CODE = #{categoryCode}
 	</delete>
+
+	<!-- 각 글 번호/스터디 번호/내용 받아서 신고 -->
+
+	<insert id="insertReport" parameterType="Report">
+		insert into
+		tb_report(num,TYPE,REPORT_TARGET,BOARD_NUM,CONTENT,CODE,EMAIL,
+		BOARD_TYPE,STUDY_NUM)
+		values(SEQ_REPORT_NUM.nextval,#{type},#{reportTarget},#{boardNum},
+		#{content},#{code},#{email},#{boardType},#{studyNum});
+	</insert>
 
 </mapper>

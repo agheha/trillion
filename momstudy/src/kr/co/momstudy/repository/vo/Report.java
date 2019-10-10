@@ -12,6 +12,8 @@ public class Report {
 	private int code;
 	private String email;
 	private Date regDate;
+	private String boardType;
+	private int studyNum;
 	
 //  신고사유 받은것	
 	private String reseaon;
