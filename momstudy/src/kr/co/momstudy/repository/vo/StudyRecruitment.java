@@ -19,8 +19,15 @@ public class StudyRecruitment {
 	private double avr;  // 평점
 	private int pCnt; // 스터디별 인원수
 	private int count; // 총 개수
+	private String studyName; // 스터디 이름
 	
 	
+	public String getStudyName() {
+		return studyName;
+	}
+	public void setStudyName(String studyName) {
+		this.studyName = studyName;
+	}
 	public int getCount() {
 		return count;
 	}

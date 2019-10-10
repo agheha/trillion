@@ -19,6 +19,7 @@
 		<result column="avr" property="avr" /> 
 		<result column="pcnt" property="pCnt" />
 		<result column="count" property="count" />
+		<result column="name" property="studyName" />
 	</resultMap>
 	
 	<!-- 모집글 전체 리스트 -->
@@ -30,7 +31,7 @@
 		  	  from (select str.*,
       			           (select round(avg(nvl(score, 0)), 1)
         		       		  from tb_review_study) avr,
-        		       	    nvl(man, 0) + 1 pcnt
+        		       	    nvl(man, 1) pcnt
     				  from tb_study_recruitment str,
   					       tb_review_study rv,
     					  (select study_num, 
@@ -66,9 +67,11 @@
 	
 	<!-- 모집글 상세 조회 -->
 	<select id="selectOneStudyRecruitment" parameterType="int" resultMap="studyRecruitmentMap">
-   		select *
-  		  from tb_study_recruitment
- 		 where num = #{num}
+   		select str.*, s.name
+  		  from tb_study_recruitment str
+  		 inner join tb_study s
+  		    on str.study_num = s.num
+ 		 where str.num = #{num}
 	</select>
 	
 	<!-- 모집글 등록 -->
