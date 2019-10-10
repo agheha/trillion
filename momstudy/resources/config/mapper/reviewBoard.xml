@@ -14,11 +14,12 @@
 		<result column="email"  property="email"/>
 		<result column="file_group_code"  property="fileGroupCode"/>
 		<result column="comment_group_code"  property="commentGroupCode"/>
+		<result column="cnt" property="cnt" />
 	</resultMap>
 
 	<select id="selectReviewBoard" resultMap="reviewBoardMap">
 		    select *
-              from (select rownum rnum,a.*
+              from (select rownum rnum,a.*, count(*) over() as cnt
 					  from(select *
 				       	     from (select a.*,
                                         c.category_code as category_code,
@@ -26,25 +27,25 @@
                                	     from tb_review_study a
                               	    inner join tb_study c
                                        on a.study_num = c.num)
-	                        <where>
+	                        where 1=1
 	                      	    <choose>
 		                      	    <when test="type == 'title'">
-		                        	  title like '%'||#{keyword}||'%'
+		                        	 and title like '%'||#{keyword}||'%'
 		                      	    </when>
 		                      	    <when test="type == 'email'">
-		                        	  email like '%'||#{keyword}||'%'
+		                        	 and email like '%'||#{keyword}||'%'
 		                      	    </when>
 		                      	    <when test="type == 'content'">
-		                        	  content like '%'||#{keyword}||'%'
+		                        	 and content like '%'||#{keyword}||'%'
 		                      	    </when>
 		                      	    <when test="type == 'name'">
-		                        	  name like '%'||#{keyword}||'%'
+		                        	 and name like '%'||#{keyword}||'%'
 		                      	    </when>
 	                      	    </choose> 
 	                      	    <if test="categoryCode != 0">                      	    
-	                      	      category_code = #{categoryCode}
+	                      	      and category_code = #{categoryCode}
 	                      	    </if> 
-                            </where>
+                            
                        	    order by 
                       	    <choose>
 								<when test="filter =='regDate'">
@@ -64,9 +65,9 @@
 	
 	<insert id="insertReviewBoard" parameterType="ReviewBoard">
 		insert into tb_review_study (
-		    num, title, content, study_num, score, email
+		    num, title, content, study_num, score, email, file_group_code
 		) values (
-		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}
+		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}, #{fileGroupCode}
 		)
 	</insert>
 	
@@ -106,9 +107,19 @@
 		from tb_category
 	</select>
 	
-	<select id="listCount" resultType="int">
-		select count(*)
-		from tb_review_study
+	<resultMap type="File" id="fileMap">
+		<result column="no"  property="no"/>
+		<result column="org_name"  property="orgName"/>
+		<result column="system_name"  property="systemName"/>
+		<result column="path"  property="path"/>
+		<result column="file_group_code" property="groupCode"/>		
+	</resultMap>
+	<select id="selectFile" parameterType="int" resultMap="fileMap">
+		select *
+		from tb_review_study r
+		inner join tb_file f
+		on r.file_group_code = f.file_group_code
+		where study_num = ${studyNum}
 	</select>
 	
 	

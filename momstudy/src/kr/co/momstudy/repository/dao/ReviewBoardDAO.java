@@ -2,6 +2,7 @@ package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.FileVO;
 import kr.co.momstudy.repository.vo.ReviewBoard;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.Study;
@@ -33,6 +34,6 @@ public interface ReviewBoardDAO {
 	// 카테고리 리스트 불러오기
 	List<String> categorySelect();
 	
-	// 후기게시판의 전체 갯수 불러오기
-	int listCount();
+	// 해당 게시물의 사진 불러오기
+	FileVO selectFile(int studyNum);
 }

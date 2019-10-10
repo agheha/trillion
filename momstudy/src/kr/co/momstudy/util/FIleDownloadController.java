@@ -17,7 +17,7 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.FileDAO;
 import kr.co.momstudy.repository.vo.FileVO;
 
-@WebServlet("/file/download.do")
+@WebServlet("/util/download.do")
 public class FIleDownloadController extends HttpServlet{
 	FileDAO dao;
 
@@ -28,9 +28,9 @@ public class FIleDownloadController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		int fno = Integer.parseInt(req.getParameter("fno"));
+		int fgno = Integer.parseInt(req.getParameter("fgno"));
 		
-		FileVO file = dao.selectOneFile(fno);
+		FileVO file = dao.selectOneFile(fgno);
 		
 		
 		String path = file.getPath();
@@ -42,6 +42,7 @@ public class FIleDownloadController extends HttpServlet{
 		
 
 		if(dName == null) {res.setHeader("Content-type", "image/jpg");
+		
 		}
 	
 		else {

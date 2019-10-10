@@ -39,18 +39,6 @@
     </section>
 
     <section id="layout">
-       <!-- jsp 작업 시 incluide로 변경 -->
-       <div>
-           <div class="left_list">
-               <ul>
-                   <!-- 스터디장 화면 다르게 보임 -->
-                   <li><a href="./studymembers.html">멤버</a></li>
-                   <li><a href="./studyvote.html">투표</a></li>
-                   <li><a href="./studyschedule.html">일정</a></li>
-                   <li><a href="./studyboard.html">게시판</a></li>
-               </ul>
-           </div>
-       </div>
 
        <div class="study_right_wrap">
            <div class="board_title">
@@ -60,10 +48,16 @@
                    <span><fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
                </div>
            </div>
+           
+           <div>
+           	   평점: <span>${rBoard.score}</span>
+           </div>
 		
 		<!-- 추후 이미지 -->
            <div class="image_wrap">
-               <img src="./../images/main_bg.jpg" alt="">
+           	   <c:if test="${file.groupCode != null}">
+	               <img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
+           	   </c:if>
            </div>
    
            <div class="board_cont">
@@ -72,16 +66,19 @@
 
            <div class="buttons">
            <c:choose>
-	        <c:when test="${rBoard.email == user.email}">
-		        <button type="button" onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
-                <button type="button" onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
-	        </c:when>
-	        <c:otherwise>
-		        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>
-	        </c:otherwise>
-        </c:choose>
+		        <c:when test="${rBoard.email == user.email}">
+			        <button type="button" onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
+	                <button type="button" onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
+		        </c:when>
+		        <c:otherwise>
+			        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>
+		        </c:otherwise>
+      	   </c:choose>
            </div>
        </div>
+       
+       
+       
 
     </section>
 
