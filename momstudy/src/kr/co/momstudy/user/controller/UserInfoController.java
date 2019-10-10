@@ -32,7 +32,7 @@ public class UserInfoController extends HttpServlet{
 		List<UserArea> userArea = dao.selectUserArea(user.getEmail());
 		List<Address> smallAddr = dao.selectSmallAddress();
 		List<Address> bigAddr = dao.selectBigAddress();
-		
+		System.out.println(user.getFileGroupCode());
 		req.setAttribute("bigAddr",bigAddr);
 		req.setAttribute("smallAddr",smallAddr);
 		req.setAttribute("userArea", userArea);

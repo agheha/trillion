@@ -4,13 +4,15 @@ import java.util.List;
 
 import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
+import kr.co.momstudy.repository.vo.FileVO;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.UserArea;
 import kr.co.momstudy.repository.vo.UserCategory;
 
 public interface UserDAO {
-	
+	// 이메일 중복 체크
+	int emailCheck(String email);
 	// 로그인 - 이메일 비밀번호 확인
 	User selectLogin(User user);
 	// 비밀번호 찾기로 로그인
@@ -19,17 +21,20 @@ public interface UserDAO {
 	void insertUser(User user);
 	// 관심분야 등록 
 	void insertCategory(UserCategory userCate);
-	// 관심지역 등록 
 	// 관심분야 이름검색
 	List<Category> selectCategory();
 	// 이메일 찾기 
 	String searchEmail(User user);
+	// 그룹코드 추가 
+	void updateImgCode(User user);
 	// 비밀번호 찾기
 	User searchPass(User user);
 	// 회원탈퇴
 	void deleteUser(String email);
 	// 유저 카테고리 코드 찾기
 	List<Category> selectUserCategoryCode(String email);
+	// 유저의 이미지 저장된 파일 불러오기
+	FileVO myimgGroupCode(User user);
 	// 현재비밀번호 확인하기
 	int passCheck(User user);
 	// 비밀번호 변경

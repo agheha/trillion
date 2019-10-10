@@ -1,13 +1,13 @@
 let emailMsg = document.querySelector("#emailmsg")
 function findEmail() {
 	let xhr = new XMLHttpRequest();
-	let name = document.querySelector("#iname").value
-	let phnum = document.querySelector("#iphnum").value
+	let iname = document.querySelector("#iname").value
+	let iphnum = document.querySelector("#iphnum").value
 	xhr.onreadystatechange = e => {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				let emaildata = JSON.parse(xhr.responseText);
-				if (emaildata  === null) {
+				if (emaildata === null) {
 					emailMsg.innerHTML = "입력정보를 찾을수 없습니다."
 					emailMsg.style.color="red"
 				} else {
@@ -18,7 +18,7 @@ function findEmail() {
 			}
 		}
 	}
-	xhr.open("GET",`findemail.do?name=${name}&phnum=${phnum}`);
+	xhr.open("GET",`findemail.do?iname=${iname}&iphnum=${iphnum}`);
 	xhr.send();
 }
 document.querySelector("#idbtn").addEventListener("click", findEmail)

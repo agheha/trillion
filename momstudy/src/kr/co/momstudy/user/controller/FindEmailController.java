@@ -26,9 +26,8 @@ public class FindEmailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		User u = new User();
-		u.setName(req.getParameter("name"));
-		System.out.println(PhoneNumformat.phone(req.getParameter("phnum")));
-		u.setPhoneNum(PhoneNumformat.phone(req.getParameter("phnum")));
+		u.setName(req.getParameter("iname"));
+		u.setPhoneNum(PhoneNumformat.phone(req.getParameter("iphnum")));
 		String email = dao.searchEmail(u);
 		PrintWriter out = res.getWriter();
 		out.println(new Gson().toJson(email));
