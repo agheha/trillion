@@ -1,4 +1,4 @@
-package kr.co.momstudy.test.controller;
+package kr.co.momstudy.user.controller;
 
 import java.io.IOException;
 
@@ -10,17 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.FileDAO;
+import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.util.FileUpload;
+import sun.security.mscapi.KeyStore.MY;
 
-@WebServlet("/test/fileupload.do")
-public class FileUploadController extends HttpServlet{
+@WebServlet("/user/myimg.do")
+public class ImageUploadController extends HttpServlet{
 	FileDAO dao;
+	private UserDAO userDao;
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(FileDAO.class);
+		userDao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
 		FileUpload fu = new FileUpload(req, req.getParameter("path"));
 		fu.upload();
-		System.out.println(fu.getGroupCode());
+		
+		req.getRequestDispatcher("/user/userinfo.do").forward(req, res);
 	}
 	
 }
