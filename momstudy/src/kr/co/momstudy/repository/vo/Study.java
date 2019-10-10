@@ -12,12 +12,14 @@ public class Study {
 	//카운트 받을것(팀원수)
 	private int cnt;
 	
+
 	public int getCnt() {
 		return cnt;
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+
 	public String getName() {
 		return name;
 	}

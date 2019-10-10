@@ -14,6 +14,7 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.StudyRecruitmentDAO;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
+import kr.co.momstudy.util.PageResult;
 
 @WebServlet("/study/studyrecruitmentlist.do")
 public class StudyRecruitmentListController extends HttpServlet{
@@ -28,6 +29,7 @@ public class StudyRecruitmentListController extends HttpServlet{
 		
 		String sPageNo = req.getParameter("PageNo");
 		int pageNo = 1;
+		int count = 0;
 		if(sPageNo != null) {
 			pageNo = Integer.parseInt(sPageNo);
 		}
@@ -48,8 +50,14 @@ public class StudyRecruitmentListController extends HttpServlet{
 
 		List<StudyRecruitment> list = dao.selectStudyRecruitment(search);
 		
+		if(list.size() != 0) {
+			System.out.println(list.get(0).getCount());
+			count = list.get(0).getCount();
+		}
+		PageResult pr = new PageResult(pageNo, count);
 		req.setAttribute("list", list);
 		req.setAttribute("search", search);
+		req.setAttribute("pr", pr);
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentlist.jsp");
 		rd.forward(req, res);
 	}

@@ -13,6 +13,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.StudyRecruitmentDAO;
+import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.FileUpload;
@@ -42,13 +43,15 @@ public class StudyRecruitmentWriteController extends HttpServlet {
 		User user = (User)session.getAttribute("user");	
 		str.setEmail(user.getEmail());
 		
-		int categoryCode = Integer.parseInt(request.getParameter("categoryCode"));
+		Study study = (Study)session.getAttribute("study");
+		
+		int categoryCode = study.getCategoryCode();
 		str.setCategoryCode(categoryCode);
 		
-		int addressCode = Integer.parseInt(request.getParameter("addressCode"));
+		int addressCode = study.getAddressCode();
 		str.setAddressCode(addressCode);
 		
-		int studyNum = Integer.parseInt(request.getParameter("studyNum"));
+		int studyNum = study.getNum();
 		str.setStudyNum(studyNum);
 		
 		str.setFileGroupCode(fu.getGroupCode());

@@ -31,7 +31,7 @@ public class CertifiedController extends HttpServlet {
 		if (session == null) {
 			res.sendRedirect(req.getContextPath() + "");
 		}
-		User user = dao.selectFindLogin(u);
+		User user = dao.selectFindLogin(u.getEmail());
 		session.setAttribute("user", user);
 		req.getRequestDispatcher("/jsp/user/updatepass.jsp").forward(req, res);
 	}

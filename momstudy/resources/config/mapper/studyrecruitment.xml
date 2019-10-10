@@ -18,12 +18,15 @@
 		<result column="comment_group_code" property="commentGroupCode" />
 		<result column="avr" property="avr" /> 
 		<result column="pcnt" property="pCnt" />
+		<result column="count" property="count" />
 	</resultMap>
 	
 	<!-- 모집글 전체 리스트 -->
 	<select id="selectStudyRecruitment" resultMap="studyRecruitmentMap" parameterType="Search">
 	select * 
-	  from (select rownum as rnum, a.*
+	  from (select rownum as rnum, 
+	               a.*,
+	               count(*) over() as count
 		  	  from (select str.*,
       			           (select round(avg(nvl(score, 0)), 1)
         		       		  from tb_review_study) avr,
@@ -48,7 +51,7 @@
 			   		</if>
            			<choose>  
 						<when test="filter == 'seeCnt'"> 
-							order by str.see_cnt
+							order by str.see_cnt desc
 						</when>
 						<when test="filter == 'regDate'">
 							order by str.reg_date desc
@@ -63,19 +66,15 @@
 	
 	<!-- 모집글 상세 조회 -->
 	<select id="selectOneStudyRecruitment" parameterType="int" resultMap="studyRecruitmentMap">
-   		select str.*,
-       		   (select avg(nvl(score, 0))
-                  from tb_review_study) average
-          from tb_study_recruitment str
-          left outer join tb_review_study rv
-            on str.study_num = rv.study_num
-         where str.study_num = #{num}
+   		select *
+  		  from tb_study_recruitment
+ 		 where num = #{num}
 	</select>
 	
 	<!-- 모집글 등록 -->
 	<insert id="insertStudyRecruitment" parameterType="StudyRecruitment">
 		insert into tb_study_recruitment(
-			num, title, content, email, category_code, address_code, study_num, file_group_code, comment_group_code
+			num, title, content, email, category_code, address_code, study_num
 		) values (
             seq_study_recruitment_num.nextval, 
             #{title}, 
@@ -97,8 +96,8 @@
 	<!-- 조회수 증가 -->
 	<update id="updateViewCnt" parameterType="int">
 		update tb_study_recruitment
-		   set see_cnt = see_scnt + 1
-		 where no = #{no}
+		   set see_cnt = see_cnt + 1
+		 where num = #{num}
 	</update>
 	
 	<!-- 모집글 삭제 -->
@@ -107,5 +106,13 @@
           from tb_study_recruitment
          where num = #{num}
 	</delete>
+	
+	<!-- 스터디모집글을 스터디번호로 가져오기 -->
+	<select id="whetherStudyRecruitment" parameterType="int" resultType="StudyRecruitment">
+		select *
+		  from tb_study_recruitment
+		 where study_num = #{studyNum}
+	</select>
+
 	
 	</mapper>

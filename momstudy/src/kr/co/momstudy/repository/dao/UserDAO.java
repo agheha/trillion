@@ -14,7 +14,7 @@ public interface UserDAO {
 	// 로그인 - 이메일 비밀번호 확인
 	User selectLogin(User user);
 	// 비밀번호 찾기로 로그인
-	User selectFindLogin(User user);
+	User selectFindLogin(String email);
 	// 회원가입 
 	void insertUser(User user);
 	// 관심분야 등록 
@@ -23,9 +23,11 @@ public interface UserDAO {
 	// 관심분야 이름검색
 	List<Category> selectCategory();
 	// 이메일 찾기 
-	User searchEmail(User user);
+	String searchEmail(User user);
 	// 비밀번호 찾기
 	User searchPass(User user);
+	// 회원탈퇴
+	void deleteUser(String email);
 	// 유저 카테고리 코드 찾기
 	List<Category> selectUserCategoryCode(String email);
 	// 현재비밀번호 확인하기
@@ -48,4 +50,6 @@ public interface UserDAO {
 	List<User> selectUserByStudyNum(Search search);
 	// 스터디에 신청한 유저목록 뽑기
 	List<User> selectUserByStudyNum2(Search search);
+	//스터디등록에 주소 뽑기
+	List<Address> selectAddress(String baddr);
 }

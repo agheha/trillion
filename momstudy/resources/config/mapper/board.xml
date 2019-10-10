@@ -11,15 +11,38 @@
          <result column="study_no" property="studyNo" />
          <result column="type" property="type" />
          <result column="notice" property="notice" />
+         <result column="see_cnt" property="seeCnt" />
          <result column="comment_group_code" property="commentGroupCode" />
 </resultMap>
 
 <!-- 자유게시판  리스트! -->
-<select id="selectBoard" resultMap="boardMap">
+<select id="selectBoard" resultMap="boardMap" parameterType="Search">
+		<!--   
 		select *
 		from tb_free_board
 		order by 
 		type asc, num desc
+		
+		-->
+	select *
+		from (select rownum rnum , a.*,
+		             count(*) over() as cnt
+		        from ( select *
+	                 from tb_free_board
+	               <where>
+	                 <if test="type == 'email'">
+	                    and email like '%'||#{keyword}||'%'
+	                 </if>
+	                 <if test="type == 'title'">
+	                  	and title like '%'||#{keyword}||'%'
+	                 </if>
+	               </where>
+	                 	order by 
+	                 <if test="filter == 'regDate'">
+	                 	     reg_date desc,
+	                  </if>
+	                    	type asc, num desc) a)
+		where rnum between #{begin} and #{end}
 </select>
 	
 <!-- 글 상세 조회 -->
@@ -42,7 +65,13 @@ values (seq_free_board_num.nextval, #{title}, #{content}, #{email})
        content = #{content}
        where num = #{num}  
 </update>
-
+<!-- 글 조회 수 -->
+<update id="updateSeeCnt" parameterType="int">
+ update tb_free_board
+   set
+   see_cnt = see_cnt + 1
+   where num = #{num}
+</update>
 <!-- 글 삭제 -->
 <delete id="deleteBoard" parameterType="int">
    delete
@@ -50,39 +79,5 @@ values (seq_free_board_num.nextval, #{title}, #{content}, #{email})
      where
      num = #{num}
 </delete>
-
- 
-<!-- 댓글 파트 시작 -->
-<!--  
-<resultMap id="commentMap" type="Comment">
-    <result column="email" property="email" />
-    <result column="num" property="num" />
-    <result column="content" property="content" />
-    <result column="regdate" property="regDate" />
-    <result column="comment_group_code" property="commentGroupCode" />
-    <result column="parent" property="parent" />
-</resultMap>
--->
-
-<!-- 댓글 리스트 -->
-<!--  
-<select id="selectComment" parameterType="int" resultMap="commentMap">
-     select *
-       from tb_comment
-      where num = #{num}
-      order by comment_group_code
-</select>
--->
-
-<!-- 댓글 등록 -
-<insert id="insertComment" parameterType="Comment">
-  insert into tb_comment(
-    num, comment_group_code, email, content 
-   ) values (
-   seq_comment_num.nextVal,
-   #{comment_group_code}, #{email}, #{content}
-   ) 
-</insert>   
--->
 
 </mapper>

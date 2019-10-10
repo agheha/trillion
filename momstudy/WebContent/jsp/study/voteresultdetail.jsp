@@ -12,7 +12,7 @@
 		<div class="poll-container">
 			<div class="poll-voter">
 				<span class="poll-title">${content}</span>
-				<a href="<c:url value="/study/votelist.do" />"><button class="vote-btn">목록</button></a>
+				<a href="<c:url value="/study/votelist.do" />"><button class="vote-btn" id="closevote">닫기</button></a>
 				<hr style="border: none; height: 2px; background: grey;">
 				<table class="poll-list">
 					<tbody id=aricle>
@@ -29,45 +29,17 @@
 
 
 	<script type="text/javascript">
-		function add_tr(obj) {
-			var str = "" 
-			str = `<td class="poll-option"><input type="text" name="addAricle" placeholder="항목을 입력해주세요.">
-						<div class="poll-option-bar"></div>
-					
-					<button  class="vote-btn-remove" onclick='votesubmit(1)'>등록</button>
-					<input type="hidden" value="${vote.num}" name="num"/>
-					<button type="button" class="vote-btn-remove"
-						onclick="remove_tr(this)">삭제</button>
-					</td>`;
-
-			var tr = document.createElement('tr');
-			tr.className = "vote-row";
-			tr.innerHTML = str;
-			document.getElementById('aricle').appendChild(tr);
-			document.getElementById('addbutton').removeChild(obj.parentNode);
-
+		function closesvote(){
+			window.close();
 		}
-
-		function remove_tr(obj) {
-				document.getElementById('aricle').removeChild(
-						obj.parentNode.parentNode);
-				var str = "";
-				str = `<td colspan="3"><button type="button" class="vote-btn-add"
-									onclick="add_tr(this)">항목추가</button></td>`;		
-				var td = document.createElement('td');
-				td.innerHTML = str;
-				document.getElementById('addbutton').appendChild(td)	
-
-		}
-		function votesubmit(index){
-			
-		if(index == 1){
-		document.myform.action=`<c:url value="/study/addaricle.do" />`;
-		}
-		if(index == 2){
-			document.myform.action=`<c:url value="/study/vote.do" />`;
-		}
-		}
+		
+		let closevotebtn = document.querySelector('#closevote');
+		
+		closevotebtn.addEventListener("click",closesvote);
+		
+		let he = document.querySelector("body").offsetHeight;
+		
+		this.resizeTo(530,he+80);
 	</script>
 
 

@@ -12,6 +12,21 @@ public class Board {
     private String title;
     private String content;
     private Date regDate;
+    private int seeCnt;
+    
+    public int getSeeCnt() {
+		return seeCnt;
+	}
+	public void setSeeCnt(int seeCnt) {
+		this.seeCnt = seeCnt;
+	}
+	int cnt;
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public Date getRegDate() {
 		return regDate;
 	}

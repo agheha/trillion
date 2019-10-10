@@ -59,7 +59,7 @@ public class VoteWriteController extends HttpServlet{
 				dao.insertVoteAricle(va);
 			}
 		}	
-		resp.sendRedirect("votelist.do");
+		resp.sendRedirect(req.getContextPath() + "/jsp/study/close.jsp");
 		
 	}
 	

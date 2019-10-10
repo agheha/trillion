@@ -11,20 +11,21 @@ public interface StudyRecruitmentDAO {
 	List<StudyRecruitment> selectStudyRecruitment(Search search);
 	
 	// 스터디 모집글 상세 조회
-	StudyRecruitment selectOneStudyRecruitment(int recNum);
+	StudyRecruitment selectOneStudyRecruitment(int strNum);
 	
 	// 스터디 모집글 등록
-	void insertStudyRecruitment(StudyRecruitment rec);
+	void insertStudyRecruitment(StudyRecruitment str);
 	
 	// 스터디 모집글 수정
-	void updateStudyRecruitment(StudyRecruitment rec);
+	void updateStudyRecruitment(StudyRecruitment str);
 	
 	// 조회수 증가
-	void updateViewCnt(int no);
+	void updateViewCnt(int strNum);
 	
 	// 스터디 모집글 삭제
 	void deleteStudyRecruitment(int strNum);
 	
-	
+	// 스터디번호로 스터디모집글 가져오기
+	StudyRecruitment whetherStudyRecruitment(int studyNum);
 	
 } 

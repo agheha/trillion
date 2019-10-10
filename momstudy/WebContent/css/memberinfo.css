@@ -28,12 +28,10 @@ body {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
     margin: auto;
-    padding: 20px;
     border: 1px solid #888;
-    width: 50%;
-    height: 50%;
+    width: 480px;
+    height: 250px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
 }

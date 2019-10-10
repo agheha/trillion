@@ -1,17 +1,20 @@
 .board_cont_wrap {
-    width: 1200px;
+	position: relative;
+	width:820px;
     margin: 0 auto;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 0 50px;
+    padding: 0 15px;
+    border-left: 1px solid #dadada;
 }
-
+.cont_wrap {
+	overflow: hidden;
+}
 .btn_wrap {
 	text-align: right;
-    width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 70px;
+    padding: 0 20px;
 }
 
 .btn_wrap button {
@@ -28,10 +31,10 @@
 }
 
 .board_cont {
-    width: 275px;
+    width: 250px;
     float: left;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
 }
 .board_cont > a {
     display: block;

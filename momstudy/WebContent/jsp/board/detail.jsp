@@ -95,6 +95,10 @@ table, th, td {
 a {
 	color: black
 }
+.top {
+ text-align: right;
+}
+
 </style>
 </head>
 <body>
@@ -118,9 +122,10 @@ a {
 				<p>
 					<c:out value="${board.title}" />
 				</p>
-				<div>
-					<span>${board.email}</span> <span><fmt:formatDate
-							value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
+				<div class ="top">
+					<span>${board.email}</span> 
+					<span><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
+					<span style="width: 54px;">${board.seeCnt}</span>
 				</div>
 			</div>
 

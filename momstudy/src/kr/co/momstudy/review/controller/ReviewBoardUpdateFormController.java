@@ -23,7 +23,7 @@ public class ReviewBoardUpdateFormController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		ReviewBoard rb = dao.selectOneBoard2(Integer.parseInt(req.getParameter("num")));
+		ReviewBoard rb = dao.selectOneBoard(Integer.parseInt(req.getParameter("num")));
 		req.setAttribute("rBoard", rb);
 		req.setAttribute("study", dao.selectStudy2(rb.getStudyNum()));
 		req.getRequestDispatcher("/jsp/reviewBoard/updateForm.jsp").forward(req, res);

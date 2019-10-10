@@ -48,8 +48,7 @@
 
 	<section id="layout">
 
-		<%--사이드바 인클루드 --%>
-		<%@include file="/jsp/common/sidebar.jsp" %>
+		<%@include file="/jsp/common/sidebar.jsp"%>
 
 		<div class="study_right_wrap">
 			<div class="vcvc">
@@ -57,7 +56,7 @@
 					<p>투표 하기</p>
 					<div>
 							<button type="button"
-								onclick="location.href='<c:url value="/study/votewriteform.do"/>'">투표등록 </button> 
+								id="addbtn">투표등록 </button> 
 					</div>
 				</div>
 				<div class="board_list">
@@ -71,7 +70,7 @@
 							<h2>투표가 없습니다</h2>
 						</div>
 					</c:if>
-					<form name="detailForm" action="" method="post">
+					<form name="vForm" action="" method="post">
 						<input type="hidden" value="${vote.num}" name="num" id="inputEle" />
 						<c:forEach var="vote" items="${vlist}">
 							<div>
@@ -111,24 +110,39 @@
 		$(document).ready(function () {
 			$("#header").load("header.html");
 		});
-
+		let lefts = screen.width/2 - 250;
+		let tops = screen.height/2 - 200;
+		console.log(lefts)
+		console.log(tops)
 		function goDetail(vnum) {
 			let inputEle = document.querySelector("#inputEle");
 			inputEle.value = vnum;
-			let f = document.detailForm;
+			let f = document.vForm;
+			var gsWin = window.open('about:blank','vote','width=500,height=300,left='+lefts+',top='+tops+'')
 			f.action = `<c:url value="/study/detailvote.do"/>`;
+		    f.target ="vote";
+		    f.method ="post";
 			f.submit();
 		}
 
 		function goResult(vnum) {
 			let inputEle = document.querySelector("#inputEle");
 			inputEle.value = vnum;
-			let f = document.detailForm;
+			let f = document.vForm;
+			var gsWin = window.open('about:blank','vote','width=500,height=300,left='+lefts+',top='+tops+'')
 			f.action = `<c:url value="/study/voteresult.do"/>`;
+			f.target ="vote";
+		    f.method ="post";
 			f.submit();
 		}
+		
+		function addVote(){
+			var gsWin = window.open('<c:url value="/study/votewriteform.do"/>','vote','width=500,height=300,left='+lefts+',top='+tops+'')
+		}
+		
+		let addbtn = document.querySelector("#addbtn");
+		addbtn.addEventListener("click",addVote);
+	    </script>
 
 
-
-	</script>
 </body>

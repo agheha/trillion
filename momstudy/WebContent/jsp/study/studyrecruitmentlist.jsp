@@ -27,7 +27,11 @@
 	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"
 	src='<c:url value="/script/slick/slick.js" />'></script>
-
+<style>
+	#newstudy{
+		
+	}
+</style>
 </head>
 <body>
 	<header id="header">
@@ -43,8 +47,11 @@
 	</section>
 
 	<div class="board_cont_wrap">
+		<div>
+			<button id="newstd" 
+			        onclick="location.href='<c:url value="/study/studywriteform.do" />'">새로운 스터디 등록하기</button>
+		</div>
 		<div class="slide_wrap">
-
 			<c:if test="${empty list}">
 				<div>
 					<h2>등록된 모집글이 없습니다.</h2>
@@ -53,7 +60,7 @@
 
 			<!--  여기서 이미지는 등록글 작성시 등록한 이미지로 대체해주어야 한다!!! -->
 			<c:forEach var="str" items="${list}">
-				<a href="<c:url value="/study/studyrecruitmentdetail.do?no=${str.num}" />" 
+				<a href="<c:url value="/study/studyrecruitmentdetail.do?num=${str.num}" />" 
 				   class="content_wrap">
 					<div class="imgbg">
 						<div>
@@ -76,19 +83,11 @@
 			</form>
 
 		</div>
-		<div>
-			<input class="submit_btn" type="button" value="더보기" />
-		</div>
-		<div>
-			<button>새로운 스터디 등록하기</button>
-		</div>
+
 		<div>
 		<%@include file="/jsp/common/pagination.jsp"%>
 		</div>
 	</div>
-
-
-
 
 	<script type="text/javascript">
 		$(document).ready(function() {
