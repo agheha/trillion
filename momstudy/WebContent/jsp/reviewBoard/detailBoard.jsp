@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous">
 
     <title>스터디</title>
 
@@ -75,6 +78,112 @@
 		        </c:otherwise>
       	   </c:choose>
            </div>
+           
+           <!-- 댓글 입력칸 -->
+           <div class="commentWrap">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="review">
+							<form method="post" action="<c:url value="/review/commentWrite.do?num=${rBoard.num}"/>" class="commentForm">
+								<div>
+									<textarea id="comment_text" name="content" class="comment"></textarea>
+								</div>
+								<div class="insert1">
+									<button type="submit" class="btn btn-primary">등록</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				
+	            <!-- 댓글 삭제, 수정 -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div id="commentList">
+							<c:if test="${empty comment}">
+								<p>댓글이 존재하지 않습니다.</p>
+							</c:if>
+							
+							
+							<!-- 대댓글 -->
+							<%-- <c:choose>
+							   <c:when test="${comment.parent == 0}">
+							   		<div class="row">
+							   </c:when>
+							   <c:otherwise>
+							   		<div class="comm_reply row" >
+							   </c:otherwise>
+							</c:choose> --%>
+							
+							<!-- parent가 0일시 들여쓰기 (댓글) -->
+							<c:forEach var="comment" items="${comment}">
+								<div class="comm col-sm-12">
+									<span class="comm_id">${comment.email}</span>
+									<span class="comm_reg">
+										<fmt:formatDate pattern="yy-MM-dd HH:mm"
+											value="${comment.regDate}" />
+									</span>
+								</div>
+								
+								<div class="col-sm-12">
+									<c:choose>
+										<c:when test="${type eq 'modify' && comment.num == commentNo}">
+											<form method="post" action="commentupdate.do"
+												class="commentForm">
+												<div>
+													<textarea id="comment_text" name="content" cols="90"
+														class="comment">${comment.content}</textarea>
+												</div>
+												<input type="hidden" name="num" value="${comment.num}" />
+		                                        <input type="hidden" name="commentGroupCode" value="${comment.commentGroupCode}" />		
+		
+												<div class="insert1">
+													<button type="submit" class="btn btn-primary">수정</button>
+												</div>
+											</form>
+										</c:when>
+										<c:otherwise>
+											<div class="comm">
+												<div class="comm_content">${comment.content}</div>
+												<div class="comm_action">
+													<div class="btn-group-sm" role="group"
+														aria-label="Basic example">
+														<button type="button" class="btn btn-secondary"
+															onclick="document.location.href='commentDelete.do?commentGroupCode=${comment.commentGroupCode}&num=${comment.num}'">삭제</button>
+														<button type="button" class="btn btn-secondary"
+															onclick="document.location.href='detail.do?type=modify&commentGroupCode=${comment.commentGroupCode}&no=${board.num}&commentNo=${comment.num}'">수정</button>
+														
+														<c:if test="${comment.parent == 0}">
+															<button type="button" class="btn btn-secondary"
+																onclick="document.location.href='detail.do?type=reply&parentNo=${comment.num}&no=${board.num}'">답변
+															</button>
+														</c:if>
+													</div>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								
+								<c:if test="${type eq 'reply' && comment.num == parentNo}">
+									<div class="commReply">
+										<form method="post" action="detail.do" class="commentForm">
+											<input type="hidden" name="num" value="${board.num}" />
+											<div>
+												<textarea id="comment_text" name="content" cols="90" class="comment"></textarea>
+											</div>
+											<div class="insert1">
+												<button type="submit" class="btn btn-primary">등록</button>
+											</div>
+										</form>
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+			</div>
+			
        </div>
        
        

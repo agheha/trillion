@@ -65,16 +65,16 @@
 	
 	<insert id="insertReviewBoard" parameterType="ReviewBoard">
 		insert into tb_review_study (
-		    num, title, content, study_num, score, email, file_group_code
+		    num, title, content, study_num, score, email, file_group_code, comment_group_code
 		) values (
-		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}, #{fileGroupCode}
+		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}, #{fileGroupCode}, seq_comment_num.nextVal 
 		)
 	</insert>
 	
 	<update id="updateViewCnt" parameterType="int">
 		update tb_review_study 
 		   set see_cnt = see_cnt + 1
-		 where no = #{no}
+		 where num = #{num}
 	</update>
 	
 	<select id="selectOneBoard" parameterType="int" resultMap="reviewBoardMap">
@@ -155,6 +155,50 @@
 		where num = #{studyNum}
 	</select>
 	
+	
+	<!-- ====================================================== -->
+	<!-- ====================================================== -->
+	
+	<resultMap type="Comment" id="commentMap">
+		<result column="email"  property="email"/>
+		<result column="num"  property="num"/>
+		<result column="content"  property="content"/>
+		<result column="reg_date"  property="regDate"/>
+		<result column="comment_group_code"  property="commentGroupCode"/>
+		<result column="parent"  property="parent"/>
+		<result column="comment_group"  property="commentGroup"/>
+	</resultMap>
+	<!-- 댓글 리스트 불러오기 -->
+	<select id="selectComment" parameterType="int" resultMap="commentMap">
+		select * 
+		from tb_comment
+		where comment_group_code = #{commentGroupCode}
+		order by num desc
+	</select>
+
+	<!-- 댓글 등록 -->
+	<insert id="insertComment" parameterType="Comment">
+		insert into tb_comment (
+			email, content, num, comment_group_code
+		) values (
+			#{email}, #{content}, seq_comment_num.nextVal, #{commentGroupCode}
+		)
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="hashmap">
+		delete 
+		from tb_comment
+		where num = #{num}
+		and comment_group_code = #{commentGroupCode}
+	</delete>
+	
+	<!-- commentGroupCode로 글 번호 불러오기 -->
+	<select id="selectOneBoard3" parameterType="int" resultType="int">
+		select * 
+		from tb_review_study
+		where comment_group_code = #{commentGroupCode}
+	</select>
 	
 	
 </mapper>
