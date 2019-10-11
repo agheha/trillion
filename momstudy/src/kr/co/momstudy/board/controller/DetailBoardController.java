@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
-import kr.co.momstudy.repository.dao.CommentDAO;
 import kr.co.momstudy.repository.dao.BoardDAO;
+import kr.co.momstudy.repository.dao.CommentDAO;
 import kr.co.momstudy.repository.vo.Comment;
 
 @WebServlet("/board/detail.do")
@@ -50,7 +50,11 @@ public class DetailBoardController extends HttpServlet {
 			
 			req.setAttribute("parentNo", parentNo);
 		}
+		if(type.equals("reply")) {
+			
+		}
 		
+
 		// 댓글 목록 공유
 		List<Comment> commentList = dao1.selectComment(num);
 //		System.out.println("commentList = " + commentList);

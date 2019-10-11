@@ -35,7 +35,6 @@ public class CommentWriteController extends HttpServlet {
 		
 		
 		// 게시판과 파일 테이블에 저장할 글번호를 조회
-	//	if ()
 		Comment comment = new Comment();
 		comment.setCommentGroupCode(no);
 		comment.setContent(req.getParameter("content"));
@@ -45,7 +44,8 @@ public class CommentWriteController extends HttpServlet {
 
 		// 게시물 저장 처리 부탁..
 		dao.insertComment(comment);
-		
+				
+	
 		//댓글 등록시 다시 상세정보창으로
 		res.sendRedirect("detail.do?no=" + no);
 	}

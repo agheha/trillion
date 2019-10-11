@@ -7,7 +7,7 @@
     border: 1px solid black;
     margin-top: 30px;
 }
-div{
+#main div{
     border-collapse: collapse;
 }
 .content >div{

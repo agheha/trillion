@@ -7,12 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.oreilly.servlet.MultipartRequest;
+import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.BoardDAO;
 import kr.co.momstudy.repository.vo.Board;
+import kr.co.momstudy.repository.vo.Study;
 
 @WebServlet("/board/write.do")
 public class WriteBoardController extends HttpServlet {
@@ -24,15 +24,36 @@ public class WriteBoardController extends HttpServlet {
 	
 	public void service(HttpServletRequest req, HttpServletResponse res) 
 	                      throws ServletException, IOException {
-		
+		 HttpSession session = req.getSession();
+	     Study study = (Study)session.getAttribute("study");
+	     int studyNum = study.getNum();
+	      
 		Board board = new Board(); 
+		
 		board.setTitle(req.getParameter("title"));
 		board.setContent(req.getParameter("content"));
-		board.setEmail("k@k.k");
- 		dao.insertBoard(board);
+		board.setEmail("a@a.a");
+		board.setStudyNo(studyNum);
+		String type = req.getParameter("type");
+		String notice = req.getParameter("notice");
+	   
+		
+		if (notice == null) {
+			board.setNotice(1);
+		} else {
+			board.setNotice(0);	
+		}
+		
+		if (type == null) {
+			board.setType(1);
+			dao.insertBoard(board);
+		} else {
+			board.setType(0);
+			dao.insertBoard2(board);
+		}
 		
 		
 		res.sendRedirect("list.do");
-	}
+   }
 }
 
