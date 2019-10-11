@@ -49,6 +49,11 @@
 			</div>
 			
 			<!-- 이미지가 와야함 -->
+			<div class="image_wrap">
+           	   <c:if test="${file.groupCode != null}">
+	               <img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
+           	   </c:if>
+           </div>
 
 			<div class="board_cont">
 				<p>
@@ -84,7 +89,8 @@
 					<%@include file="/jsp/study/studysignup.jsp"%>
 				</div>
 			</div>
-			
+
 <script src="<c:url value="/script/study/studysignup.js"/>"></script>			
+ 		
 </body>
 </html>

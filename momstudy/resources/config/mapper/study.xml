@@ -31,6 +31,7 @@
 		) values
 		(seq_participant_num.nextval, #{email}, #{condition}, #{studyNum})
 	</insert>
+	
 
 	<!-- 참여한 스터디를 가져옴 -->
 	<select id="selectStudy" parameterType="string"
