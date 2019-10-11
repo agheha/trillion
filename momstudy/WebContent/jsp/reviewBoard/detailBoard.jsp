@@ -68,19 +68,42 @@
            </div>
 
            <div class="buttons">
-           <c:choose>
-		        <c:when test="${rBoard.email == user.email}">
-			        <button type="button" onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
-	                <button type="button" onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
-		        </c:when>
-		        <c:otherwise>
-			        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>
-		        </c:otherwise>
-      	   </c:choose>
+	           <c:choose>
+			        <c:when test="${rBoard.email == user.email}">
+				        <button type="button" onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
+		                <button type="button" onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
+			        </c:when>
+			        <c:otherwise>
+				        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>
+			        </c:otherwise>
+	      	   </c:choose>
            </div>
+
+			<!-- 댓글 영역 -->
+			<div id="comment_Wrap">
+				<div id="commentRegistForm">
+					<form name="crForm" method="post" action="commentWrite.do" onsubmit="return commentRegistAjax()" >
+						
+						<div>테스트용 rBoard.num = ${rBoard.num}</div>
+						<div>테스트옹 user.email = ${user.email}</div>
+						
+						<input type="hidden" name="num" value="${rBoard.num}" />
+						<input type="hidden" name="email" value="${user.email}" />
+						<div>
+							<textarea name="content"></textarea>
+						</div>
+						<div>
+							<button type="submit">등록</button>
+						</div>
+					</form>
+				</div>
+				
+				<div id="commentList"></div>
+			</div>
+			
            
            <!-- 댓글 입력칸 -->
-           <div class="commentWrap">
+           <%-- <div class="commentWrap">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="review">
@@ -94,15 +117,15 @@
 							</form>
 						</div>
 					</div>
-				</div>
+				</div> --%>
 				
 	            <!-- 댓글 삭제, 수정 -->
-				<div class="row">
+				<%-- <div class="row">
 					<div class="col-sm-12">
 						<div id="commentList">
 							<c:if test="${empty comment}">
 								<p>댓글이 존재하지 않습니다.</p>
-							</c:if>
+							</c:if> --%>
 							
 							
 							<!-- 대댓글 -->
@@ -116,7 +139,7 @@
 							</c:choose> --%>
 							
 							<!-- parent가 0일시 들여쓰기 (댓글) -->
-							<c:forEach var="comment" items="${comment}">
+							<%-- <c:forEach var="comment" items="${comment}">
 								<div class="comm col-sm-12">
 									<span class="comm_id">${comment.email}</span>
 									<span class="comm_reg">
@@ -180,22 +203,16 @@
 								</c:if>
 							</c:forEach>
 						</div>
-					</div>
+					</div> 
 				</div>
-			</div>
-			
+			</div>--%>
        </div>
-       
-       
-       
-
     </section>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-        });
-    </script>
+    
+	<script>
+		let num = ${rBoard.num};
+	</script>
+    <script src="<c:url value='/script/review/commentReview.js' />"></script>
 
 </body>
 </html>
