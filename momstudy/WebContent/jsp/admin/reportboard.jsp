@@ -62,9 +62,9 @@
 				<div id="board_title">글 제목</div>
 				<div id="board_type"> 게시판명</div>
 			</div>
-			<div class="b_content">
+			<div class="b_content" id="re_email">
 				<div>신고자</div>
-				<div id="board_email">신고자 이메일</div>
+				<div id="board_email" >신고자 이메일</div>
 			</div>
 			<div class="b_content">
 				<div>신고사유</div>
@@ -73,6 +73,12 @@
 			<div id="b_content">내용</div>
 		</div>
 		<div id="modarlayer" onclick="mclose()"></div>
+	</div>
+</div>
+
+<div id="modal1">
+	<div id="modal_content1">
+	
 	</div>
 </div>
 
@@ -85,6 +91,9 @@
 </section>
 <script type="text/javascript"
 	src="<c:url value='/script/admin/boardAjax.js'/>">
+</script>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax.js'/>">
 </script>
 </body>
 

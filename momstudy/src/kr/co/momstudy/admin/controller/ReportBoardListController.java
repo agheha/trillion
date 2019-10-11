@@ -17,6 +17,8 @@ public class ReportBoardListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		AdminDAO dao =MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 		
+		res.setContentType("text/html;charset=UTF-8");
+		
 		 req.setAttribute("list",  dao.selectBoardReport());
 		 req.getRequestDispatcher("/jsp/admin/reportboard.jsp").forward(req, res);
 	}

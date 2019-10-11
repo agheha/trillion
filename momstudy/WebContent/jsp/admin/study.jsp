@@ -27,7 +27,7 @@
 				<tr>
 					<td>${report.categoryName }</td>
 					<td>${report.name }</td>
-					<td>${report.email }</td>
+					<td onclick="mopen(),userDtailAjax1('${report.email}')">${report.email }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${report.regDate}" /></td>
 					<td>${report.addressDetail} ${report.addressDetail2}</td>
 					<td>${report.cnt}</td>
@@ -35,6 +35,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+</div>
+
+<div id="modal">
+	<div id="modal_content">
+	
+	</div>
 </div>
 
 </div>
@@ -45,6 +51,10 @@
 
 </div>
 </section>
+
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax1.js'/>">
+</script>
 </body>
 
 </html>

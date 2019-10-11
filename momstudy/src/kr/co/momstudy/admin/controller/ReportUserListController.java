@@ -15,10 +15,11 @@ import com.google.gson.Gson;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.AdminDAO;
 import kr.co.momstudy.repository.vo.Report;
+
 @WebServlet("/admin/reportuser.do")
-public class ReportUserListController extends HttpServlet{
+public class ReportUserListController extends HttpServlet {
 	AdminDAO dao;
-	
+
 	public ReportUserListController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 	}
@@ -26,13 +27,14 @@ public class ReportUserListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+		res.setContentType("text/html;charset=UTF-8");
 		String no = req.getParameter("no");
-		
+
 		if (no == null) {
 			List<Report> list = dao.selectUserReport();
 			req.setAttribute("list", list);
 			req.getRequestDispatcher("/jsp/admin/reportuser.jsp").forward(req, res);
-			
+
 		} else {
 			int num = Integer.parseInt(no);
 			Report report = dao.selectOneUserReport(num);
@@ -41,6 +43,6 @@ public class ReportUserListController extends HttpServlet{
 			out.println(new Gson().toJson(report));
 			out.close();
 		}
-		
+
 	}
 }

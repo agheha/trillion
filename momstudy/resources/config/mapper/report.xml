@@ -22,6 +22,8 @@
 		<result column="STUDY_NUM" property="studyNum" />
 		<result column="CATEGORY_NAME" property="categoryName" />
 		<result column="NAME" property="studyTitle" />
+		<!-- 스터디 방장 -->
+		<result column="cap" property="cap" />
 	</resultMap>
 	
 	<resultMap type="AdminCategory" id="AdminCategoryMap">
@@ -110,7 +112,7 @@
 		and
 		r.CODE = rr.CODE
 		and
-		num = #{num}
+		r.num = #{num}
 	</select>
 
 	<!-- 글 정보 뽑아 오는 데 + 신고횟수 +신고사유+글 제목 + 게시판 종류 -->
@@ -165,14 +167,14 @@
 		and
 		type= 'board'
 		and
-		num = #{num}
+		r.num = #{num}
 	</select>
 
 	<!-- 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유+스터디 명 -->
 	<select id="selectStudyReport" resultMap="AreportMap">
 		select
 		ca.CATEGORY_NAME,s.NAME,r.*,p.count,
-		rr.RESEAON
+		rr.RESEAON,s.EMAIL cap
 		from tb_report r ,
 		(SELECT
 		count(*) count,STUDY_NUM
@@ -199,32 +201,32 @@
 	<!-- 1개 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유+스터디 명 -->
 	<select id="selectOneStudyReport" parameterType="int"
 		resultMap="AreportMap">
-		select ca.CATEGORY_NAME,s.NAME,r.*,p.count,
-		rr.RESEAON
-		from
-		tb_report r ,
+		select
+		ca.CATEGORY_NAME,s.NAME,r.*,p.count,
+		rr.RESEAON,s.EMAIL cap
+		from tb_report r ,
 		(SELECT
 		count(*) count,STUDY_NUM
 		from
 		tb_report
-		where type =
-		'study'
+		where type = 'study'
 		group
 		by
 		STUDY_NUM) p , TB_REPORT_RESEAON rr
-		,TB_CATEGORY
-		ca,TB_STUDY s
-		where r.STUDY_NUM = p.STUDY_NUM
+		,TB_CATEGORY ca,TB_STUDY s
+		where
+		r.STUDY_NUM = p.STUDY_NUM
 		and
 		r.CODE = rr.CODE
 		and
-		r.STUDY_TYPE = ca.CATEGORY_CODE
+		r.STUDY_TYPE =
+		ca.CATEGORY_CODE
 		and
 		r.STUDY_NUM = s.NUM
 		and
 		type= 'study'
 		and
-		num = #{num}
+		r.num = #{num}
 	</select>
 
 	<!-- 스터디+소속 팀원수+카테고리 명+주소+주소1 -->

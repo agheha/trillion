@@ -17,6 +17,8 @@ public class ReportStudyListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		AdminDAO dao =MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 		
+		res.setContentType("text/html;charset=UTF-8");
+		
 		 req.setAttribute("list",  dao.selectStudyReport());
 		 req.getRequestDispatcher("/jsp/admin/reportstudy.jsp").forward(req, res);
 	}

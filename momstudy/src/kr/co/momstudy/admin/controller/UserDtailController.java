@@ -23,8 +23,8 @@ public class UserDtailController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		
+		res.setContentType("text/html;charset=UTF-8");
+
 		AdminDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 
 		String email = req.getParameter("email");
@@ -34,7 +34,7 @@ public class UserDtailController extends HttpServlet {
 		List<Study> openStudy = dao.selectPeopleOpenStudy(email);
 
 		List<Study> joinStudy = dao.selectPeopleJoinStudy(email);
-		
+
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("user", user);
 		map.put("openStudy", openStudy);

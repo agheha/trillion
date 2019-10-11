@@ -52,7 +52,7 @@
 
 </div>
 </section>
-<script src="<c:url value="/script/admin_main_allDelete/allChechk.js"/>"></script>
+<script src="<c:url value="/script/admin/allChechk.js"/>"></script>
 </body>
 
 </html>

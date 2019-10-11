@@ -22,7 +22,16 @@ public class Report {
 	private int studyNum;
 	private String categoryName; //스터디 분야
 	private String studyTitle; //스터디 명
-	
+	//스터디 방장 이메일
+	private String cap;
+	public String getCap() {
+		return cap;
+	}
+
+	public void setCap(String cap) {
+		this.cap = cap;
+	}
+
 	public String getBoardTitle() {
 		return boardTitle;
 	}

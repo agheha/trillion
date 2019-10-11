@@ -24,7 +24,7 @@
 		</thead>
 		<tbody>
 			<c:forEach var="report" items="${list}">
-				<tr>
+				<tr onclick="mopen(),studyAjax(${report.num})">
 					<td>${report.reseaon }</td>
 					<td>${report.categoryName }</td>
 					<td>${report.studyTitle }</td>
@@ -38,6 +38,38 @@
 	</table>
 </div>
 
+<div id="modal">
+	<div id="modal_content">
+		<div id="b_main">
+			<div class="b_content">
+				<div>스터디명</div>
+				<div id="s_title">스터디 명</div>
+				<div id="s_type"> 스터디 분야</div>
+			</div>
+			<div class="b_content" id="s_cap">
+				<div>스터디 장</div>
+				<div id="s_cap">스터디 장 아이디</div>
+			</div>
+			<div class="b_content" id="s_email">
+				<div>신고자</div>
+				<div id="s_email">신고자 이메일</div>
+			</div>
+			<div class="b_content">
+				<div>신고사유</div>
+				<div id="con1">신고사유 내용</div>
+			</div>
+			<div id="b_content">내용</div>
+		</div>
+		<div id="modarlayer" onclick="mclose()"></div>
+	</div>
+</div>
+
+<div id="modal1">
+	<div id="modal_content1">
+	
+	</div>
+</div>
+
 </div>
 
 </div>
@@ -46,6 +78,12 @@
 
 </div>
 </section>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/studyAjax.js'/>">
+</script>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax.js'/>">
+</script>
 </body>
 
 </html>

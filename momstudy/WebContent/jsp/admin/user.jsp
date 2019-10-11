@@ -24,7 +24,7 @@
 		</thead>
 		<tbody>
 		<c:forEach var="report" items="${list}">
-				<tr>
+				<tr onclick="mopen(),userDtailAjax1('${report.email}')">
 					<td>${report.name }</td>
 					<td>${report.email }</td>
 					<td>${report.openCnt }</td>
@@ -38,6 +38,13 @@
 	</table>
 </div>
 
+<div id="modal">
+	<div id="modal_content">
+	
+	</div>
+</div>
+
+
 </div>
 
 </div>
@@ -46,6 +53,9 @@
 
 </div>
 </section>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax1.js'/>">
+</script>
 </body>
 
 </html>
