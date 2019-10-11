@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.AdminDAO;
-@WebServlet("/admin/.do")
+@WebServlet("/admin/admincategory.do")
 public class CategoryListController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		AdminDAO dao =MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
+		
+		 req.setAttribute("list",  dao.selectCategory());
+		 req.getRequestDispatcher("/jsp/admin/admincategory.jsp").forward(req, res);
 	}
-
 }

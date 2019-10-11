@@ -3,7 +3,7 @@
 
 <%@ include file="include_main_top.jsp"%>
 
-<div id="box-4">
+<div id="box-5">
 	<!-- box two content -->
 	<form class="saerch">
 		<select name="" id="">
@@ -15,25 +15,24 @@
 	</form>
 	<table>
 		<thead>
-			<th>닉네임</th>
-			<th>아이디</th>
-			<th>개설 스터디 수</th>
-			<th>가입 스터디수</th>
-			<th>최근 로그인</th>
-			<th>가입일</th>
-			<th>신고된 횟수</th>
+			<th>스터디 분야</th>
+			<th>스터디 명</th>
+			<th>방장 아이디</th>
+			<th>개설 날짜</th>
+			<th>지역</th>
+			<th>팀원 수</th>
 		</thead>
 		<tbody>
-			<%-- <c:forEach var="box1" items="${list}"> --%>
+			<c:forEach var="report" items="${list}">
 				<tr>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
-					<td><%-- ${ } --%></td>
+					<td>${report.categoryName }</td>
+					<td>${report.name }</td>
+					<td>${report.email }</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${report.regDate}" /></td>
+					<td>${report.addressDetail} ${report.addressDetail2}</td>
+					<td>${report.cnt}</td>
 				</tr>
-			<%-- </c:forEach> --%>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>

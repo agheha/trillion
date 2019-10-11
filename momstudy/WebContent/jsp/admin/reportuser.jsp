@@ -23,20 +23,33 @@
 		</thead>
 		<tbody>
 			<c:forEach var="report" items="${list}">
-				<tr>
+				<tr onclick="mopen(),userAjax(${report.num})">
 					<td>${report.reseaon }</td>
 					<td>${report.reportTarget }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${report.regDate}" /></td>
-					<td>${report.email }</td>
-					<td>${report.cnt }</td>
+					<td>${report.email}</td>
+					<td>${report.cnt}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 </div>
 
+<div id="modal">
+	<div id="modal_content">
+	
+	</div>
 </div>
+
+<div id="modal1">
+	<div id="modal_content1">
+	
+	</div>
+</div>
+</div>
+
+
 
 </div>
 
@@ -44,6 +57,13 @@
 
 </div>
 </section>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userAjax.js'/>">
+</script>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax.js'/>">
+</script>
+
 </body>
 
 </html>

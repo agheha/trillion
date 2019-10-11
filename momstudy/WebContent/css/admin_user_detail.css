@@ -1,94 +1,81 @@
-body{
-   
+.b1_main>div {
+	box-sizing: border-box;
 }
 
-div {
-    
-    box-sizing: border-box;
-}
-.main {
-    border: 1px solid black;
-    position: relative;
-    width: 750px;
-    height: 1230px;
-    margin: auto;
-    
-}
-#Profile{
-    border: 1px solid black;
-    width: 150px;
-    height: 150px;
-    margin-left: 60px;
-    margin-top: 60px;
-    display: inline-block;
-}
-#Info{
-    position: relative;
-    bottom: 150px;
-    left: 280px;
-    width: 430px;
-    height:500px;
-    
+.b1_main {
+	/* background: white; */
+	border: 1px solid black;
+	position: relative;
+	width: 750px;
+	height: 1230px;
+	margin: auto;
 }
 
-#Function{
-    position: relative;
-    bottom: 470px;
-    margin-left: 60px;
-    width: 150px;
-    height: 300px;
+#b1_Profile {
+	border: 1px solid black;
+	width: 150px;
+	height: 150px;
+	margin-left: 60px;
+	margin-top: 60px;
+	display: inline-block;
 }
 
-#Function>div{
-    text-align: center;
-    height: 270px;
-    margin: 10px 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
-    border: 1px solid black;
-}
-#Function>select,button{
-    box-shadow: 1px 2px 2px  black;
+#b1_Info {
+	transform: translate(57px, 28px);
+	display: inline-block;
+	width: 430px;
+	height: 500px;
 }
 
-#t1,#t2{
-    border: 1px solid black;
-    width: 100px;
-    left: 80%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 2px 2px 2px  black;
+#b1_Function {
+	display: inline-block;
+	transform: translate(0px, -292px);
+	margin-left: 60px;
+	width: 150px;
+	height: 300px;
 }
 
-#table1,#table2{
-   margin: 0 30px 0 30px;
-    /* border: 1px solid black; */
-    width: 680px;
-    height: 250px;
-
-}
-tr,td{
-    width: auto;
-    border: 1px solid black;
-}
-td{
-    width: 20%;
-}
-th{
-    width: 20%;
-    /* border: 1px solid black; */
+#b1_Function>div {
+	text-align: center;
+	height: 270px;
+	margin: 10px 0 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border: 1px solid black;
 }
 
-table,tr,td,th{
-    border: 1px solid black;
-    border-collapse: collapse;
+#b1_Function>select, button {
+	box-shadow: 1px 2px 2px black;
 }
 
-#t1,#table1,#t2,#table2{
-    
-    position: relative;
-    bottom: 450px;
+#b1_t1, #b1_t2 {
+	border: 1px solid black;
+	width: 100px;
+	left: 80%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	box-shadow: 2px 2px 2px black;
+}
+
+#b1_table1, #b1_table2 {
+	margin: 0 30px 0 30px;
+	/* border: 1px solid black; */
+	width: 90%;
+	height: auto;
+}
+
+#b1_table1 tr, td, #b1_table2 tr, td {
+	width: auto;
+	border: 1px solid black;
+}
+
+table, tr, td, th {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#b1_t1, #b1_table1, #b1_t2, #b1_table2 {
+	transform: translate(10px, -264px);
 }

@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+#category {
+	border: 1px solid black;
+	height: 650px;
+	width: 1012px;
+	z-index: 0;
+}
+
+#categorytitle {
+	position: relative;
+	bottom: 19px;
+	z-index: 1;
+	background: white;
+	left: 17px;
+	font-size: 22px;
+	padding: 0 5px 0 5px;
+	font-weight: bold;
+}
+
+.saerch-cat {
+	position: absolute;
+	z-index: 1;
+	width: auto;
+	top: 130px;
+	left: 55%;
+}
+
+#category_table {
+	width: 500px;
+	margin: 20px;
+	z-index: 10;
+}
+
+#categoryName {
+	width: 16px;
+	height: 16px;
+	top: 92px;
+	left: 133px;
+}
+
+#StudyCnt {
+	width: 16px;
+	height: 16px;
+	top: 92px;
+	left: 162px;
+}
+
+#text {
+	top: 125px;
+	right: 22px;
+	width: 220px;
+}
+
+#LcategoryName {
+	border: 3px solid black;
+	background: gainsboro;
+	top: 60px;
+	left: 187px;
+	position: relative;
+	width: 85px;
+	height: 20px;
+}
+
+#LStudyCnt {
+	border: 3px solid black;
+	background: gainsboro;
+	top: 60px;
+	left: 205px;
+	position: relative;
+	width: 85px;
+	height: 20px;
+}
+
+#sbtn {
+	top: 149px;
+	left: 253px;
+	width: 50px;
+}
+
+#categoryadd {
+	top: 219px;
+	left: 650px;
+	z-index: 1;
+	height: 45px;
+}
+
+#cadd {
+	top: 280px;
+	left: 469px;
+	z-index: 1;
+	width: 50px;
+}
+
+.add {
+	top: 170px;
+	left: 18px;
+}
+
+#del2 {
+	position: relative;
+	left: 773px;
+	top: 185px;
+	width: 50px;
+}

@@ -118,13 +118,14 @@ html, body {
 }
 /* box */
 .box-wrap {
-	position: relative;
+	/* position: relative; */
 	min-height: 250px;
 }
 
 .box-wrap table {
 	width: 800px;
 	margin: 20px auto;
+	text-align: center;
 }
 
 .box-wrap table, th, td {
@@ -132,7 +133,7 @@ html, body {
 	border: 1px solid black;
 }
 
-.box-area div div {
+.box-area  div  div {
 	background: #ffffff;
 	padding: 20px;
 	min-height: 250px;

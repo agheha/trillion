@@ -2,6 +2,7 @@ package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.AdminCategory;
 import kr.co.momstudy.repository.vo.Report;
 import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
@@ -37,5 +38,17 @@ public interface AdminDAO {
 	
 //	유저정보+가입스터디수 +개설 스터디수
 	List<User> selectUserInfo();
+	
+//	아이디 받아서 유저정보+가입스터디수 +개설 스터디수
+	User selectOneUserInfo(String email);
+	
+//	정보받아서 신고
+	int insertReport(Report report);
 
+//	총 카테고리 +개설 스터디수
+	List<AdminCategory> selectCategory();
+//	카테고리 이름 받아서 추가
+	int insertCategory(String categoryName);
+//	카테고리 번호 받아서 삭제
+	int deleteCategory(int categoryCode);
 }
