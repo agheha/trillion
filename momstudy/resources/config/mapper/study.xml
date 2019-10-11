@@ -10,6 +10,17 @@
 		<result column="address_code" property="addressCode" />
 		<result column="num" property="num" />
 	</resultMap>
+	<resultMap type="Calenders" id="calenderMap">
+		<result column="num" property="num" />
+		<result column="study_no" property="studyNo" />
+		<result column="content" property="content" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="type" property="type" />
+		<result column="font_color" property="fontColor" />
+		<result column="bar_color" property="barColor" />
+		<result column="email" property="email" />
+	</resultMap>
 
 	<!-- 스터디 등록 -->
 	<insert id="insertStudy" parameterType="Study">
@@ -31,7 +42,6 @@
 		) values
 		(seq_participant_num.nextval, #{email}, #{condition}, #{studyNum})
 	</insert>
-	
 
 	<!-- 참여한 스터디를 가져옴 -->
 	<select id="selectStudy" parameterType="string"
@@ -87,6 +97,28 @@
 		  from tb_review_user
 		 where num = #{num} and email = #{email} and email_recom = #{emailRecom} 
 	</select>
-	
 
+	<select id="selectCalender" parameterType="Calenders" resultMap="calenderMap">
+		select num, study_no, content, to_char(start_date,'yyyymmdd') as start_date, to_char(end_date,'yyyymmdd') as end_date, type, font_color,bar_color  ,title
+  		from TB_CALENER
+ 		where STUDY_NO = #{studyNo} and start_date <![CDATA[<]]> to_date(#{stend},'YYYYMMDD')
+                     		and end_date <![CDATA[>]]> to_date(#{ststart},'YYYYMMDD')
+	</select>
+	
+	<insert id="insertCalender" parameterType="Calenders">
+		insert into tb_calener(num,title,content,Start_date,end_date,type,study_no, bar_color, font_color,email
+		) values (seq_callender_num.nextval,#{title},#{content},to_date(#{startDate},'YYYYMMDD'),to_date(#{endDate},'YYYYMMDD'),#{type},#{studyNo},#{barColor},#{fontColor},#{email})
+	</insert>
+	
+	<select id="selectOneCalender" parameterType="int" resultMap="calenderMap">
+		select email,num, study_no, content, to_char(start_date,'yyyymmdd') as start_date, to_char(end_date,'yyyymmdd') as end_date, type, font_color,bar_color  ,title
+  		from TB_CALENER
+ 		where num = #{num}
+	</select>
+	
+	<delete id="deleteCalender" parameterType="int">
+		delete
+		  from tb_calener
+		 where num = #{num}  
+	</delete>
 </mapper>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href='<c:url value="/css/sidebar.css" />'>
@@ -19,7 +19,7 @@
 				<!-- 스터디장 화면 다르게 보임 -->
 				<li><a href="<c:url value="/study/member.do"/>">멤버</a></li>
 				<li><a href="<c:url value="/study/votelist.do"/>">투표</a></li>
-				<li><a href="./studyschedule.html">일정</a></li>
+				<li><a href="<c:url value="/study/calenderlist.do"/>">">일정</a></li>
 				<li><a href="<c:url value="/board/list.do?studynum=${study.num}"/>">게시판</a></li>
 				<c:if test="${user.email eq study.email}">
 					<li><a id="admin">스터디 관리</a></li>

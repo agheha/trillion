@@ -27,6 +27,7 @@
 		<typeAlias alias="Search" type="kr.co.momstudy.repository.vo.Search" />
 		<typeAlias alias="UserArea" type="kr.co.momstudy.repository.vo.UserArea" />
 		<typeAlias alias="Score" type="kr.co.momstudy.repository.vo.Score" />
+		<typeAlias alias="Calenders" type="kr.co.momstudy.repository.vo.Calenders" />
 	</typeAliases>
 	 
 	
@@ -46,7 +47,6 @@
 		<mapper resource="config/mapper/file.xml"/>
 		<mapper resource="config/mapper/vote.xml"/>
 		<mapper resource="config/mapper/user.xml"/>
-		<mapper resource="config/mapper/calendar.xml"/>
 		<mapper resource="config/mapper/board.xml"/>
 		<mapper resource="config/mapper/reviewBoard.xml"/>
 		<mapper resource="config/mapper/report.xml"/>
