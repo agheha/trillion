@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.co.momstudy.repository.dao.AdminDAO">
+
+	<resultMap type="Report" id="AreportMap">
+		<result column="NUM" property="num" />
+		<result column="TYPE" property="type" />
+		<result column="REPORT_TARGET" property="reportTarget" />
+		<result column="CONTENT" property="content" />
+		<result column="CODE" property="code" />
+		<result column="reseaon" property="reseaon" />
+		<result column="EMAIL" property="email" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="count" property="cnt" />
+		<!-- 글 번호, 제목, 게시판 종류 -->
+		<result column="BOARD_NUM" property="boardNum" />
+		<result column="BOARD_TYPE" property="boardType" />
+		<result column="title" property="boardTitle" />
+		<!-- 스터디 번호, 카테고리, 스터디 명 -->
+		<result column="STUDY_NUM" property="studyNum" />
+		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="NAME" property="studyTitle" />
+	</resultMap>
+	
+	<resultMap type="AdminCategory" id="AdminCategoryMap">
+		<result column="CATEGORY_CODE" property="categoryCode"/>
+		<result column="CATEGORY_NAME" property="categoryName"/>
+		<result column="COUNT" property="cnt"/>
+	</resultMap>
+
+	<resultMap type="Study" id="AstudyMap">
+		<result column="name" property="name" />
+		<result column="reg_date" property="regDate" />
+		<result column="email" property="email" />
+		<result column="category_code" property="categoryCode" />
+		<result column="address_code" property="addressCode" />
+		<result column="ADDRESS_DETAIL" property="addressDetail" />
+		<result column="ADDRESS_DETAIL2" property="addressDetail2" />
+		<result column="num" property="num" />
+		<result column="count" property="cnt" />
+		<result column="CATEGORY_NAME" property="categoryName" />
+	</resultMap>
+
+	<resultMap type="User" id="AuserMap">
+		<result column="email" property="email" />
+		<result column="pass" property="pass" />
+		<result column="name" property="name" />
+		<result column="phone_num" property="phoneNum" />
+		<result column="birth" property="birth" />
+		<result column="status" property="status" />
+		<result column="type" property="type" />
+		<result column="ban_date" property="banDate" />
+		<result column="file_group_code" property="fileGroupCode" />
+		<result column="gender" property="gender" />
+		<result column="count" property="cnt" />
+		<result column="open" property="openCnt" />
+		<result column="join" property="joinCnt" />
+
+	</resultMap>
+	<resultMap type="Category" id="AcategoryMap">
+		<result column="CATEGORY_CODE" property="categoryCode" />
+		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="count" property="cnt" />
+
+
+	</resultMap>
+
+
+	<!-- 유저신고 정보 뽑아오는데 +신고 횟수+신고사유 -->
+	<select id="selectUserReport" resultMap="AreportMap">
+		select
+		r.*,p.count,rr.RESEAON
+		from
+		tb_report r ,
+		(SELECT count(*) count
+		,REPORT_TARGET
+		from tb_report
+		where type = 'user'
+		group by REPORT_TARGET)
+		p , TB_REPORT_RESEAON rr
+		where
+		r.REPORT_TARGET = p.REPORT_TARGET
+		and
+		type= 'user'
+		and
+		r.CODE = rr.CODE
+	</select>
+
+	<!-- 1개 유저신고 정보 뽑아오는데 +신고 횟수+신고사유 -->
+	<select id="selectOneUserReport" parameterType="int"
+		resultMap="AreportMap">
+		select r.*,p.count,rr.RESEAON
+		from
+		tb_report r ,
+		(SELECT
+		count(*) count
+		,REPORT_TARGET
+		from tb_report
+		where type = 'user'
+		group by
+		REPORT_TARGET)
+		p , TB_REPORT_RESEAON rr
+		where
+		r.REPORT_TARGET =
+		p.REPORT_TARGET
+		and
+		type= 'user'
+		and
+		r.CODE = rr.CODE
+		and
+		num = #{num}
+	</select>
+
+	<!-- 글 정보 뽑아 오는 데 + 신고횟수 +신고사유+글 제목 + 게시판 종류 -->
+	<select id="selectBoardReport" resultMap="AreportMap">
+		select
+		r.*,p.count,t.title,rr.RESEAON
+		from
+		tb_report r ,
+		(SELECT
+		count(*) count,BOARD_NUM
+		from
+		tb_report
+		where type = 'board'
+		group by BOARD_NUM) p , TB_REPORT_RESEAON rr,
+		(select 
+		title,num,'free' board_type
+		from
+		TB_FREE_BOARD
+		union all
+		select 
+		title,num,'review'
+		from TB_REVIEW_STUDY
+		union all
+		select 
+		title,num,'recruit'
+		from TB_STUDY_RECRUITMENT) t
+		where r.BOARD_NUM = p.BOARD_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		r.BOARD_NUM = t.num
+		and
+		r.BOARD_TYPE = t.board_type
+		and
+		type= 'board'
+	</select>
+
+	<!-- 1개 글 정보 뽑아 오는 데 + 신고횟수 +신고사유+글 제목 + 게시판 종류 -->
+	<select id="selectOneBoardReport" parameterType="int"
+		resultMap="AreportMap">
+		select r.*,p.count, rr.RESEAON
+		from tb_report r ,
+		(SELECT
+		count(*) count,BOARD_NUM
+		from tb_report
+		where type = 'board'
+		group by
+		BOARD_NUM) p , TB_REPORT_RESEAON rr
+		where r.BOARD_NUM = p.BOARD_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		type= 'board'
+		and
+		num = #{num}
+	</select>
+
+	<!-- 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유+스터디 명 -->
+	<select id="selectStudyReport" resultMap="AreportMap">
+		select
+		ca.CATEGORY_NAME,s.NAME,r.*,p.count,
+		rr.RESEAON
+		from tb_report r ,
+		(SELECT
+		count(*) count,STUDY_NUM
+		from
+		tb_report
+		where type = 'study'
+		group
+		by
+		STUDY_NUM) p , TB_REPORT_RESEAON rr
+		,TB_CATEGORY ca,TB_STUDY s
+		where
+		r.STUDY_NUM = p.STUDY_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		r.STUDY_TYPE =
+		ca.CATEGORY_CODE
+		and
+		r.STUDY_NUM = s.NUM
+		and
+		type= 'study'
+	</select>
+
+	<!-- 1개 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유+스터디 명 -->
+	<select id="selectOneStudyReport" parameterType="int"
+		resultMap="AreportMap">
+		select ca.CATEGORY_NAME,s.NAME,r.*,p.count,
+		rr.RESEAON
+		from
+		tb_report r ,
+		(SELECT
+		count(*) count,STUDY_NUM
+		from
+		tb_report
+		where type =
+		'study'
+		group
+		by
+		STUDY_NUM) p , TB_REPORT_RESEAON rr
+		,TB_CATEGORY
+		ca,TB_STUDY s
+		where r.STUDY_NUM = p.STUDY_NUM
+		and
+		r.CODE = rr.CODE
+		and
+		r.STUDY_TYPE = ca.CATEGORY_CODE
+		and
+		r.STUDY_NUM = s.NUM
+		and
+		type= 'study'
+		and
+		num = #{num}
+	</select>
+
+	<!-- 스터디+소속 팀원수+카테고리 명+주소+주소1 -->
+	<select id="selectStudy" resultMap="AstudyMap">
+	SELECT s.* ,
+		nvl(p.c,0)+1
+		count , ca.CATEGORY_NAME , a.ADDRESS_DETAIL , a.ADDRESS_DETAIL2
+		FROM TB_STUDY s,
+		( select STUDY_NUM,count(*) c
+		from
+		TB_PARTICIPANT
+		where CONDITION = 2
+		group by STUDY_NUM) p , TB_CATEGORY ca , TB_ADDRESS a
+		where s.num = p.STUDY_NUM(+)
+        and
+        s.CATEGORY_CODE = ca.CATEGORY_CODE
+        and
+        s.ADDRESS_CODE = a.ADDRESS_CODE
+	</select>
+
+	<!-- 아이디 받아서 그사람이 개설한 스터디 + 팀원 수 -->
+	<select id="selectPeopleOpenStudy" parameterType="String"
+		resultMap="AstudyMap">
+		
+		select a.ADDRESS_DETAIL,a.ADDRESS_DETAIL2 ,s.* , count,ca.CATEGORY_NAME
+		from TB_STUDY s,
+		(select
+		STUDY_NUM,count(*)+1 count
+		from
+		TB_PARTICIPANT
+		where CONDITION = 2
+		group
+		by STUDY_NUM) p,
+        tb_category ca,
+        TB_ADDRESS a
+		where
+		EMAIL = #{email}
+		and
+		s.num = p.STUDY_NUM(+)
+        and
+        s.CATEGORY_CODE = ca.CATEGORY_CODE
+        and
+        s.ADDRESS_CODE = a.ADDRESS_CODE
+	
+	</select>
+
+	<!-- 아이디 받아서 그사람이 가입한 스터디 + 팀원수 -->
+	<select id="selectPeopleJoinStudy" parameterType="String"
+		resultMap="AstudyMap">
+		select s.* , count
+		from TB_STUDY s,
+		(SELECT STUDY_NUM
+		FROM
+		TB_PARTICIPANT r
+		where CONDITION = 2
+		and
+		EMAIL = #{email}) p,
+		(select
+		STUDY_NUM,count(*)+1 count
+		from TB_PARTICIPANT
+		where CONDITION = 2
+		group
+		by STUDY_NUM) c
+		where s.num = p.STUDY_NUM
+		and
+		c.STUDY_NUM = p.STUDY_NUM
+
+	</select>
+
+
+
+	<!-- 유저정보+가입스터디수 +개설 스터디수 -->
+	<select id="selectUserInfo" resultMap="AuserMap">
+		select
+		s.*,nvl(p.c,0) count
+		,nvl(o.open,0) open ,nvl(j.join,0) join
+		from tb_user s,
+
+		(SELECT
+		REPORT_TARGET,count(*) c
+		from tb_report
+		where type = 'user'
+		group
+		by
+		REPORT_TARGET) p,
+		(select EMAIL,count(*) open
+		from TB_STUDY
+		group by
+		EMAIL) o,
+		(SELECT r.EMAIL,count(*) join
+		FROM TB_PARTICIPANT r
+		where
+		CONDITION = 2
+		group by EMAIL) j
+
+		where s.EMAIL = p.REPORT_TARGET(+)
+		and
+		s.EMAIL = o.EMAIL(+)
+		and
+		s.EMAIL = j.EMAIL(+)
+		
+	</select>
+	<!-- 아이디 받아서 유저정보+가입스터디수 +개설 스터디수 -->
+	<select id="selectOneUserInfo" parameterType="String" resultMap="AuserMap">
+		select
+		s.*,nvl(p.c,0) count
+		,nvl(o.open,0) open ,nvl(j.join,0) join
+		from tb_user s,
+
+		(SELECT
+		REPORT_TARGET,count(*) c
+		from tb_report
+		where type = 'user'
+		group
+		by
+		REPORT_TARGET) p,
+		(select EMAIL,count(*) open
+		from TB_STUDY
+		group by
+		EMAIL) o,
+		(SELECT r.EMAIL,count(*) join
+		FROM TB_PARTICIPANT r
+		where
+		CONDITION = 2
+		group by EMAIL) j
+
+		where s.EMAIL = p.REPORT_TARGET(+)
+		and
+		s.EMAIL = o.EMAIL(+)
+		and
+		s.EMAIL = j.EMAIL(+)
+		and 
+		s.EMAIL = #{email}
+	</select>
+
+	<!-- 총 카테고리 +개설 스터디수 -->
+	<select id="selectCategory" resultMap="AdminCategoryMap">
+		SELECT c.* ,count
+		FROM
+		TB_CATEGORY c,
+		(SELECT count(*)
+		count,CATEGORY_CODE
+		FROM tb_study
+		group by
+		CATEGORY_CODE) s
+		where
+		c.CATEGORY_CODE = s.CATEGORY_CODE
+	</select>
+
+	<!-- 카테고리 이름 받아서 추가 -->
+	<insert id="insertCategory" parameterType="String">
+		insert into
+		TB_CATEGORY(CATEGORY_CODE,CATEGORY_NAME)
+		values(SEQ_CATEGORY_CODE.nextval,#{categoryName})
+	</insert>
+
+	<!-- 카테고리 번호 받아서 삭제 -->
+	<delete id="deleteCategory" parameterType="int">
+		DELETE
+		from TB_CATEGORY
+		where CATEGORY_CODE = #{categoryCode}
+	</delete>
+
+	<!-- 각 글 번호/스터디 번호/내용 받아서 신고 -->
+
+	<insert id="insertReport" parameterType="Report">
+		insert into
+		tb_report(num,TYPE,REPORT_TARGET,BOARD_NUM,CONTENT,CODE,EMAIL,
+		BOARD_TYPE,STUDY_NUM)
+		values(SEQ_REPORT_NUM.nextval,#{type},#{reportTarget},#{boardNum},
+		#{content},#{code},#{email},#{boardType},#{studyNum})
+	</insert>
+
+</mapper>

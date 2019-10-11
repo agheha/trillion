@@ -16,7 +16,21 @@ public class User {
 	private String certifiedCode;
 	private Date partDate;
 	private int cnt;
+	private int openCnt;
+	private int joinCnt;
 	
+	public int getOpenCnt() {
+		return openCnt;
+	}
+	public void setOpenCnt(int openCnt) {
+		this.openCnt = openCnt;
+	}
+	public int getJoinCnt() {
+		return joinCnt;
+	}
+	public void setJoinCnt(int joinCnt) {
+		this.joinCnt = joinCnt;
+	}
 	public int getCnt() {
 		return cnt;
 	}

@@ -8,9 +8,10 @@ email.addEventListener("blur", e => {
 	xhr.onreadystatechange = e => {
 		if(xhr.readyState === 4) {
 			if (xhr.status === 200) {
-				alert(xhr.responseText)
 				if (parseInt(xhr.responseText) === 0) {
-					chkMsgok.style.display="block"
+				    if(e.target.value !== null) {
+				    	chkMsgok.style.display="block"
+				    }
 				} else {
 					chkMsgok.style.display="none"
 					chkMsg.style.display="block"
@@ -23,7 +24,7 @@ email.addEventListener("blur", e => {
 })
 
 function dataChk() {
-	let re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+	let re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 	패스워드가 적합한지 검사할 정규식
 	let re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 	// 이메일이 적합한지 검사할 정규식
 
