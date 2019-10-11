@@ -46,7 +46,8 @@
              <div class="study_right_wrap">
             <form action="write.do" method="post" >
             <div>
-            <input class="notice" type="checkbox" name="notice" />공지사항
+            <input class="type" type="checkbox" name="type" value="0" />공지사항
+            <input class="notice" type="checkbox" name="notice" value="0" /> 상단 고정     
             </div>
             
                 <div>

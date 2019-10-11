@@ -13,7 +13,8 @@ public interface BoardDAO {
 	Board selectOneBoard(int num);
 	// 게시글 등록
 	void insertBoard(Board board);
-	// 게시글 수정
+	void insertBoard2(Board board);
+	// 게시글 수
 	void updateBoard(Board board);
 	// 게시글 조회
 	void updateSeeCnt(int num);

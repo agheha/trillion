@@ -25,7 +25,7 @@ public class CommentWriteController extends HttpServlet {
 	
 	@Override
 	public void doPost(
-			HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("user");

@@ -30,7 +30,6 @@ public class ReviewBoardUpdateController extends HttpServlet {
 		
 		ReviewBoard rb = dao.selectOneBoard(Integer.parseInt(request.getParameter("num")));
 		rb.setNum(rb.getNum());
-		System.out.println(request.getParameter("title"));
 		rb.setTitle(request.getParameter("title"));
 		rb.setContent(request.getParameter("content"));
 		rb.setScore(Integer.parseInt(request.getParameter("score")));

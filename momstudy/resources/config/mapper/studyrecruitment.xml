@@ -19,8 +19,36 @@
 		<result column="avr" property="avr" /> 
 		<result column="pcnt" property="pCnt" />
 		<result column="count" property="count" />
+		<result column="name" property="studyName" />
 	</resultMap>
-	
+	<!-- 최신글 등록 순으로 모집글 추출하기 -->
+	<select id="viewLatestdate" resultMap="studyRecruitmentMap">
+		select *
+		  from tb_study_recruitment
+		 order by reg_date desc
+	</select>
+	<!-- 조회수가 인원 순으로 모집글 추출하기-->
+	<select id="viewUserCnt" resultMap="studyRecruitmentMap" >
+		select r.study_num , 
+			   r.num,
+		       r.title, 
+		       r.content,
+		       r.file_group_code
+		  from tb_study_recruitment r
+		 inner join (select study_num,
+		                    count(study_num) cnt
+		               from TB_PARTICIPANT
+		              group by study_num)p
+		    on r.study_num = p.study_num
+		 order by p.cnt desc
+	</select>
+
+	<!-- 조회수가 높은 순으로 모집글 추출하기-->
+	<select id="viewSeeCnt" resultMap="studyRecruitmentMap">
+		select *
+		  from tb_study_recruitment
+		 order by see_cnt desc
+	</select>
 	<!-- 모집글 전체 리스트 -->
 	<select id="selectStudyRecruitment" resultMap="studyRecruitmentMap" parameterType="Search">
 	select * 
@@ -30,7 +58,7 @@
 		  	  from (select str.*,
       			           (select round(avg(nvl(score, 0)), 1)
         		       		  from tb_review_study) avr,
-        		       	    nvl(man, 0) + 1 pcnt
+        		       	    nvl(man, 1) pcnt
     				  from tb_study_recruitment str,
   					       tb_review_study rv,
     					  (select study_num, 
@@ -66,9 +94,11 @@
 	
 	<!-- 모집글 상세 조회 -->
 	<select id="selectOneStudyRecruitment" parameterType="int" resultMap="studyRecruitmentMap">
-   		select *
-  		  from tb_study_recruitment
- 		 where num = #{num}
+   		select str.*, s.name
+  		  from tb_study_recruitment str
+  		 inner join tb_study s
+  		    on str.study_num = s.num
+ 		 where str.num = #{num}
 	</select>
 	
 	<!-- 모집글 등록 -->
@@ -114,5 +144,32 @@
 		 where study_num = #{studyNum}
 	</select>
 
+<!-- ========================================================= -->
+
+	<resultMap type="Category" id="categoryMap">
+		<result column="category_code"  property="categoryCode"/>
+		<result column="category_name"  property="categoryName"/>
+	</resultMap>
+	<select id="categorySelect" resultMap="categoryMap">
+		select * 
+		from tb_category 
+	</select>
+	
+<!-- ========================================================= -->
+	
+	<resultMap type="File" id="fileMap">
+		<result column="no"  property="no"/>
+		<result column="org_name"  property="orgName"/>
+		<result column="system_name"  property="systemName"/>
+		<result column="path"  property="path"/>
+		<result column="file_group_code" property="groupCode"/>		
+	</resultMap>
+	<select id="selectFile" parameterType="int" resultMap="fileMap">
+		select *
+		from tb_review_study r
+		inner join tb_file f
+		on r.file_group_code = f.file_group_code
+		where study_num = ${studyNum}
+	</select>
 	
 	</mapper>

@@ -9,28 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
-import kr.co.momstudy.repository.vo.User;
-import kr.co.momstudy.util.PhoneNumformat;
 
-@WebServlet("/user/findemail.do")
-public class FindEmailController extends HttpServlet{
+@WebServlet("/user/emailcheck.do")
+public class EmailCheckController extends HttpServlet{
 	private UserDAO dao;
 	
-	public FindEmailController() {
+	public EmailCheckController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		User u = new User();
-		u.setName(req.getParameter("iname"));
-		u.setPhoneNum(PhoneNumformat.phone(req.getParameter("iphnum")));
-		String email = dao.searchEmail(u);
 		PrintWriter out = res.getWriter();
-		out.println(new Gson().toJson(email));
+		int count = dao.emailCheck(req.getParameter("email"));
+		out.println(count);
 		out.close();
 	}
 }

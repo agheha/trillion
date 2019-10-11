@@ -22,7 +22,6 @@ private StudyRecruitmentDAO dao;
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(StudyRecruitmentDAO.class);
 	}
 	
-	
 	@Override
 		protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 			int num = Integer.parseInt(req.getParameter("num"));
@@ -33,6 +32,9 @@ private StudyRecruitmentDAO dao;
 			// 번호에 맞는 게시글 가져온다.
 			StudyRecruitment str = dao.selectOneStudyRecruitment(num);
 			req.setAttribute("str", str);
+			
+			// 파일 꺼내서 공유영역에 올려놓는다.
+			req.setAttribute("file", dao.selectFile(str.getStudyNum()));
 		
 			req.getRequestDispatcher("/jsp/study/studyrecruitmentdetail.jsp").forward(req,res);
 		}

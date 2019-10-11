@@ -11,21 +11,14 @@
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-<link rel="stylesheet"
-	href='<c:url value="/css/studyboard_detail.css" />'>
-<!-- 
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
- -->	
-	
+<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
+<link rel="stylesheet" href=`<c:url value="/css/signup_completed.css" />' > 
+
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+
+    
 <title>스터디원 모집</title>
 </head>
 <body>
@@ -54,6 +47,8 @@
 					<span style="width: 54px;">${str.seeCnt}</span>
 				</div>
 			</div>
+			
+			<!-- 이미지가 와야함 -->
 
 			<div class="board_cont">
 				<p>
@@ -61,6 +56,7 @@
 				</p>
 			</div>
 			
+		   <!-- 비회원일 경우 버튼이 아예 생성되지 않음 -->
            <!-- 수정 삭제 버튼 => 작성자 본인, 관리자 일 때 -->
 			<div class="buttons">
 				<c:if test="${user.email == str.email || user.type == 0}">
@@ -71,13 +67,24 @@
 						<a class="del" href='<c:url value="/study/studyrecruitmentdelete.do?num=${str.num}" />'>삭제</a>
 					</button>
 				</c:if>
-           <!-- 신청하기 버튼 => 스터디원 일 때 -->
-				<c:if test="${user.email != str.email}">
-					<button type="button">
-						<a class="del" href=''>신청하기</a>
+           <!-- 신청하기 버튼 => 스터디원 이고, 로그인이 되어있는 상태에서만 활성화-->
+				<c:if test="${user.email != str.email && not empty user.email}">
+					<button type="button" id="myBtn" >
+						<a id="stdsign" href='#'>신청하기</a>
 					</button>
 				</c:if>
 			</div>
 			<br>
+			
+			<!-- The Modal -->
+			<div id="myModal" class="modal hidden">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<%@include file="/jsp/study/studysignup.jsp"%>
+				</div>
+			</div>
+			
+<script src="<c:url value="/script/study/studysignup.js"/>"></script>			
 </body>
 </html>

@@ -110,7 +110,7 @@ a {
 	<section class="background_wrap">
 		<div class="background">
 			<h1>스터디</h1>
-			<p>--------------</p>
+			<p>준비해라 각오해라</p>
 		</div>
 	</section>
 
@@ -130,9 +130,7 @@ a {
 			</div>
 
 			<div class="board_cont">
-				<p>
-					<c:out value="${board.content}" />
-				</p>
+				<p><c:out value="${board.content}" /></p>
 			</div>
 			
            <!-- 수정 삭제 버튼 -->
@@ -233,7 +231,7 @@ a {
 									<c:if test="${type eq 'reply' && comment.num == parentNo}">
 										<div class="commReply">
 											<form method="post" action="detail.do" class="commentForm">
-												<input type="hidden" name="num" value="${board.num}" />
+												<input type="hidden" name="no" value="${board.num}" />
 												<div>
 													<textarea id="comment_text" name="content" cols="90" class="comment"></textarea>
 												</div>

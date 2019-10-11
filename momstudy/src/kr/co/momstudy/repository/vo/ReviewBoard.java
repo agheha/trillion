@@ -13,6 +13,14 @@ public class ReviewBoard {
 	private String email;
 	private int fileGroupCode;
 	private int commentGroupCode;
+	int cnt;
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	
 	public int getNum() {
 		return num;
