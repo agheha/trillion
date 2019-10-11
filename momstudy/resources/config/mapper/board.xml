@@ -16,7 +16,7 @@
 </resultMap>
 
 <!-- 자유게시판  리스트! -->
-<select id="selectBoard" resultMap="boardMap" parameterType="Search">
+<select id="selectBoard" resultMap="boardMap" parameterType="Search" flushCache="true" useCache="true">
 		<!--   
 		select *
 		from tb_free_board
@@ -30,20 +30,23 @@
 		        from ( select *
 	                 from tb_free_board
 	               <where>
-	                 <if test="type == 'email'">
+	               <choose>
+	                 <when test="type == 'email'">
 	                    and email like '%'||#{keyword}||'%'
-	                 </if>
-	                 <if test="type == 'title'">
+	                 </when>
+	                 <when test="type == 'title'">
 	                  	and title like '%'||#{keyword}||'%'
-	                 </if>
-	               </where>
-	                 	order by 
-	                 <if test="filter == 'regDate'">
+	                 </when>
+	               </choose>           
+	               </where>   
+	                 	  order by notice asc,
+	                  <if test="filter == 'regDate'">
 	                 	     reg_date desc,
 	                  </if>
-	                    	type asc, num desc) a)
+	                  num desc) a)
 		where rnum between #{begin} and #{end}
-</select>
+	</select>
+
 	
 <!-- 글 상세 조회 -->
 <select id="selectOneBoard" parameterType="int" resultMap="boardMap">
@@ -53,9 +56,16 @@
 </select>
 
 <!-- 글 등록  -->
-<insert id="insertBoard" parameterType="Board">
+<!-- 일반게시글 일 경우 -->
+<insert id="insertBoard" parameterType="Board"> <!-- 그룹코드 시퀀스로 네스트발해서 -->
 insert into tb_free_board (num, title, content, email) 
 values (seq_free_board_num.nextval, #{title}, #{content}, #{email})
+</insert>
+
+<!-- 공지사항글 체크 시 -->
+<insert id="insertBoard2" parameterType="Board">
+insert into tb_free_board (num, title, content, email, type, notice)
+values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{type}, #{notice})
 </insert>
 
 <!-- 글 수정 -->

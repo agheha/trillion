@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -28,7 +29,24 @@
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-    </head>
+<style>
+   .red * {
+	color: #fe6872 !important;
+  }
+  .board_list li:nth-child(1) {
+    width: 90px;
+}
+.noticeback {
+	padding: 1px 5px;
+	background: pink;
+	border: solid 1px #a2a2a2;
+	border-radius: 4px;
+}
+
+</style>
+
+</head>
+    
     <body>
         <header id="header">
         <%@include file="/jsp/common/header.jsp" %>
@@ -38,7 +56,7 @@
         <section class="background_wrap">
             <div class="background">
                 <h1>스터디</h1>
-                <p>--------------</p>
+                <p>2019년 10월10일 3시 18분</p>
             </div>
         </section>
 
@@ -60,7 +78,54 @@
                               <h2>게시글이 없습니다.</h2>
                            </div>
                         </c:if>
+                        
                         <c:forEach var="b" items="${list}">
+                     
+                        <c:choose>
+							<c:when test="${b.type == 0 && b.notice == 0}">
+								<div class="red">
+									<a href="<c:url value="/board/detail.do?no=${b.num}" />"  >
+										<ul>
+											<li><span class="noticeback">공지</span></li>
+											<li>${b.title}</li>
+											<li>${b.email}</li>
+											<li><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${b.regDate}" /></li>
+											<li>${b.seeCnt}</li>
+										</ul>
+									</a>
+								</div>
+							</c:when>
+									<c:when test="${b.type == 0}">
+								<div class="red">
+									<a href="<c:url value="/board/detail.do?no=${b.num}" />"  >
+										<ul>
+											<li><span class="noticeback">공지</span></li>
+											<li>${b.title}</li>
+											<li>${b.email}</li>
+											<li><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${b.regDate}" /></li>
+											<li>${b.seeCnt}</li>
+										</ul>
+									</a>
+								</div>
+							</c:when>
+							<c:otherwise>
+							<div>
+								<a href="<c:url value="/board/detail.do?no=${b.num}" />">
+									<ul>
+										<li>${b.num}</li>
+										<li>${b.title}</li>
+										<li>${b.email}</li>
+										<li><fmt:formatDate pattern="yyyy-MM-dd"
+												value="${b.regDate}" /></li>
+										<li>${b.seeCnt}</li>
+									</ul>
+								</a>
+							</div>
+						</c:otherwise>
+                        </c:choose>
+                        <!-- 
                         <div>
                             <a href="<c:url value="/board/detail.do?no=${b.num}" />">
 	                            <ul>
@@ -72,6 +137,8 @@
 	                            </ul>
                             </a>
                         </div>
+                         -->
+             
                         </c:forEach>
                     </div>
                      <%@include file="/jsp/common/pagination.jsp" %>  
