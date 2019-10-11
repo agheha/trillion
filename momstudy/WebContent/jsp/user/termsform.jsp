@@ -65,7 +65,7 @@
 						만 14세 이상입니다. (필수)
 						
 					</label>
-					<span class="alert_wrap">나이제한은 필수로 체크 되어야 할 사항입니다.</span>
+					<span class="alert_wrap" style="float: none;">나이제한은 필수로 체크 되어야 할 사항입니다.</span>
 				</div>
 				<div class="form-item-all">
 					<input class="checkall" type="checkbox" id="chkall" onclick="doCheck()" name="chkAll">
