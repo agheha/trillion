@@ -90,7 +90,7 @@
                 </li>
                 <li>
                     <div>
-                        <a href="study.html">
+                        <a href='<c:url value="/study/studyrecruitmentlist.do" />'>
                             <i class="fas fa-book-reader"></i>
                             	스터디찾기
                         </a>

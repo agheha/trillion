@@ -4,7 +4,7 @@ public class FileVO {
 	private int no;
 	private String path;
 	private String orgName;
-	private String SystemName;
+	private String systemName;
 	private int groupCode;
 	
 	public int getGroupCode() {
@@ -32,10 +32,11 @@ public class FileVO {
 		this.orgName = orgName;
 	}
 	public String getSystemName() {
-		return SystemName;
+		return systemName;
 	}
 	public void setSystemName(String systemName) {
-		SystemName = systemName;
+		this.systemName = systemName;
 	}
+	
 	
 }

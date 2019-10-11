@@ -9,31 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
+import kr.co.momstudy.repository.vo.FileVO;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/user/passchk.do")
-public class PassCheck extends HttpServlet{
+@WebServlet("/user/imgupload.do")
+public class ImageUploadController extends HttpServlet {
 	private UserDAO dao;
-	
-	public PassCheck() {
+	public ImageUploadController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
 	}
 
-
-	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.setContentType("text/html; charset=utf-8");
-		User u = (User)req.getSession().getAttribute("user");
-		User user = new User();
-		user.setEmail(u.getEmail());
-		user.setPass(req.getParameter("pass"));
-		int chk = dao.passCheck(user);
+		res.setContentType("text/html; charset=UTF-8");
+		res.setContentType("image/pjpeg");
 		PrintWriter out = res.getWriter();
-		out.println(chk);
+		User user = (User)req.getSession().getAttribute("user");
+		// 세션 정보를 주고 내 이미지 파일경로와 파일명을 받아옴
+		FileVO f = dao.myimgGroupCode(user);
+		out.println(new Gson().toJson(f));
 		out.close();
 	}
-	
-	
 }

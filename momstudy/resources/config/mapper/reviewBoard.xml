@@ -14,11 +14,12 @@
 		<result column="email"  property="email"/>
 		<result column="file_group_code"  property="fileGroupCode"/>
 		<result column="comment_group_code"  property="commentGroupCode"/>
+		<result column="cnt" property="cnt" />
 	</resultMap>
 
 	<select id="selectReviewBoard" resultMap="reviewBoardMap">
 		    select *
-              from (select rownum rnum,a.*
+              from (select rownum rnum,a.*, count(*) over() as cnt
 					  from(select *
 				       	     from (select a.*,
                                         c.category_code as category_code,
@@ -26,36 +27,36 @@
                                	     from tb_review_study a
                               	    inner join tb_study c
                                        on a.study_num = c.num)
-	                        <where>
-                      	    <choose>
-                      	    <when test="type == 'title'">
-                        	  title like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    <when test="type == 'email'">
-                        	  email like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    <when test="type == 'content'">
-                        	  content like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    <when test="type == 'name'">
-                        	  name like '%'||#{keyword}||'%'
-                      	    </when>
-                      	    </choose> 
-                      	    <if test="categoryCode != 0">                      	    
-                      	      category_code = #{categoryCode}
-                      	    </if> 
-                            </where>
+	                        where 1=1
+	                      	    <choose>
+		                      	    <when test="type == 'title'">
+		                        	 and title like '%'||#{keyword}||'%'
+		                      	    </when>
+		                      	    <when test="type == 'email'">
+		                        	 and email like '%'||#{keyword}||'%'
+		                      	    </when>
+		                      	    <when test="type == 'content'">
+		                        	 and content like '%'||#{keyword}||'%'
+		                      	    </when>
+		                      	    <when test="type == 'name'">
+		                        	 and name like '%'||#{keyword}||'%'
+		                      	    </when>
+	                      	    </choose> 
+	                      	    <if test="categoryCode != 0">                      	    
+	                      	      and category_code = #{categoryCode}
+	                      	    </if> 
+                            
                        	    order by 
                       	    <choose>
-							<when test="filter =='regDate'">
-                      	    reg_date 
-							</when>
-							<when test="filter =='seeCnt'">
-                      	    see_cnt 
-							</when>
-							<when test="filter =='score'">
-                      	    score 
-							</when>
+								<when test="filter =='regDate'">
+	                      	    	reg_date 
+								</when>
+								<when test="filter =='seeCnt'">
+	                      	    	see_cnt 
+								</when>
+								<when test="filter =='score'">
+	                      	    	score 
+								</when>
                       	    </choose>                       	    
                       	    desc
                       	    ) a)
@@ -64,25 +65,19 @@
 	
 	<insert id="insertReviewBoard" parameterType="ReviewBoard">
 		insert into tb_review_study (
-		    num, title, content, study_num, score, email
+		    num, title, content, study_num, score, email, file_group_code, comment_group_code
 		) values (
-		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}
+		    seq_review_study_num.nextVal, #{title}, #{content}, #{studyNum}, #{score}, #{email}, #{fileGroupCode}, seq_comment_num.nextVal 
 		)
 	</insert>
 	
 	<update id="updateViewCnt" parameterType="int">
 		update tb_review_study 
 		   set see_cnt = see_cnt + 1
-		 where no = #{no}
+		 where num = #{num}
 	</update>
 	
 	<select id="selectOneBoard" parameterType="int" resultMap="reviewBoardMap">
-		select *
-		from tb_review_study
-		where study_num = #{num}
-	</select>
-	
-	<select id="selectOneBoard2" parameterType="int" resultMap="reviewBoardMap">
 		select *
 		from tb_review_study
 		where num = #{num}
@@ -101,6 +96,31 @@
 		  from tb_review_study 
 		 where num = #{num}
 	</delete>
+	
+	
+	<resultMap type="Category" id="categoryMap">
+		<result column="category_code"  property="categoryCode"/>
+		<result column="category_name"  property="categoryName"/>
+	</resultMap>
+	<select id="categorySelect" resultMap="categoryMap">
+		select * 
+		from tb_category
+	</select>
+	
+	<resultMap type="File" id="fileMap">
+		<result column="no"  property="no"/>
+		<result column="org_name"  property="orgName"/>
+		<result column="system_name"  property="systemName"/>
+		<result column="path"  property="path"/>
+		<result column="file_group_code" property="groupCode"/>		
+	</resultMap>
+	<select id="selectFile" parameterType="int" resultMap="fileMap">
+		select *
+		from tb_review_study r
+		inner join tb_file f
+		on r.file_group_code = f.file_group_code
+		where study_num = ${studyNum}
+	</select>
 	
 	
 	
@@ -134,4 +154,51 @@
 		from tb_study
 		where num = #{studyNum}
 	</select>
+	
+	
+	<!-- ====================================================== -->
+	<!-- ====================================================== -->
+	
+	<resultMap type="Comment" id="commentMap">
+		<result column="email"  property="email"/>
+		<result column="num"  property="num"/>
+		<result column="content"  property="content"/>
+		<result column="reg_date"  property="regDate"/>
+		<result column="comment_group_code"  property="commentGroupCode"/>
+		<result column="parent"  property="parent"/>
+		<result column="comment_group"  property="commentGroup"/>
+	</resultMap>
+	<!-- 댓글 리스트 불러오기 -->
+	<select id="selectComment" parameterType="int" resultMap="commentMap">
+		select * 
+		from tb_comment
+		where comment_group_code = #{commentGroupCode}
+		order by num desc
+	</select>
+
+	<!-- 댓글 등록 -->
+	<insert id="insertComment" parameterType="Comment">
+		insert into tb_comment (
+			email, content, num, comment_group_code
+		) values (
+			#{email}, #{content}, seq_comment_num.nextVal, #{commentGroupCode}
+		)
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="hashmap">
+		delete 
+		from tb_comment
+		where num = #{num}
+		and comment_group_code = #{commentGroupCode}
+	</delete>
+	
+	<!-- commentGroupCode로 글 번호 불러오기 -->
+	<select id="selectOneBoard3" parameterType="int" resultType="int">
+		select * 
+		from tb_review_study
+		where comment_group_code = #{commentGroupCode}
+	</select>
+	
+	
 </mapper>

@@ -1,12 +1,15 @@
 package kr.co.momstudy.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
@@ -22,15 +25,12 @@ public class FindEmailController extends HttpServlet{
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String  result = "succese";
 		User u = new User();
-		u.setName(req.getParameter("name"));
-		u.setPhoneNum(PhoneNumformat.phone(req.getParameter("phnum")));
-		User user = dao.searchEmail(u);
-		if (user == null) {
-			result = "fail";
-		}
-		req.setAttribute("user", user);
-		req.getRequestDispatcher("/jsp/user/findform.jsp").forward(req, res);
+		u.setName(req.getParameter("iname"));
+		u.setPhoneNum(PhoneNumformat.phone(req.getParameter("iphnum")));
+		String email = dao.searchEmail(u);
+		PrintWriter out = res.getWriter();
+		out.println(new Gson().toJson(email));
+		out.close();
 	}
 }

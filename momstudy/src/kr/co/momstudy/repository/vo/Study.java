@@ -10,6 +10,7 @@ public class Study {
 	private int addressCode;
 	private int num;
 	
+	
 	public String getName() {
 		return name;
 	}

@@ -31,6 +31,9 @@
                   
                 } else if (starpoint >= 1){
                   starc.className="active icon-star-half-empty ";
+                }else {
+                	starc.className="icon-star";
+                	
                 }
                 starpoint = starpoint - 2; 
               })
@@ -58,7 +61,7 @@
 	        			
 	    stars.forEach(star =>{
 	      let starc = star.lastElementChild;
-	      starc.className="active icon-star";
+	      starc.className="icon-star";
 	    })
 	    
 	    document.querySelector("#inputscore").innerHTML = `<form action="" name="scoreForm">

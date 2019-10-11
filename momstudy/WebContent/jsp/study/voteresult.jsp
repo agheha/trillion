@@ -17,7 +17,7 @@
 				<button class="vote-btn">재투표</button><input type="hidden" value="${vote.num}" name="num">
 				</form>
 				</c:if>			
-				<a href="<c:url value="/study/votelist.do" />"><button class="vote-btn" id="golist" type="button">목록</button></a>
+				<a href="#"><button class="vote-btn" id="closevote" type="button">닫기</button></a>
 			</div>
 				<span class="poll-title">${vote.title}</span>
 				<hr style="border: none; height: 2px; background: grey;">
@@ -77,6 +77,19 @@
 						obj.parentNode.parentNode);
 
 		}
+		
+		function closesvote(){
+			window.close();
+		}
+		
+		let closevotebtn = document.querySelector('#closevote');
+		
+		closevotebtn.addEventListener("click",closesvote);
+		
+let he = document.querySelector("body").offsetHeight;
+		
+		this.resizeTo(530,he+90);
+		
 	</script>
 
 

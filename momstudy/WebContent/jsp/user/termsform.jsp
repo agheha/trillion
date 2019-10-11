@@ -69,7 +69,7 @@
 				</div>
 				<div class="form-item-all">
 					<input class="checkall" type="checkbox" id="chkall" onclick="doCheck()" name="chkAll">
-					<label for="chkAll"> 전체동의하기 </label>
+					<label for="chkall"> 전체동의하기 </label>
 				</div>
 				<div class="form-item-btn">
 					<button class="submit_btn">다음</button>
@@ -83,6 +83,7 @@
 		$(document).ready(function() {
 			$("#header").load("header.html");
 		});
+		
 	</script>
 </body>
 </html>

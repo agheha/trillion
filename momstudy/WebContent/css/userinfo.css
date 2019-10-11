@@ -7,6 +7,7 @@
 .profile {
 	position: relative;
 	margin-bottom: 10px !important;
+	background-image: url(/WebContent/images/user_basic_img.png);
 }
 .profile > button {
 	position: absolute;

@@ -38,6 +38,19 @@
 		<result column="category_code" property="categoryCode"/>
 	</resultMap>
 	
+	<resultMap id="fileMap" type="File">
+		<result column="no" property="no" />
+		<result column="path" property="path" />
+		<result column="org_name" property="orgName" />
+		<result column="system_name" property="systemName" />
+	</resultMap>
+	
+	<!-- 이메일 중복 체크 -->
+	<select id="emailCheck" resultType="int" parameterType="String">
+		select count(*) 
+		  from tb_user
+		 where email = #{email}
+	</select>
 	<!-- 	로그인 -->
 	<select id="selectLogin" resultMap="userMap" parameterType="User">
 		select * 
@@ -62,20 +75,25 @@
 		insert into tb_user(email, pass, name, phone_num, birth, gender)
 		values(#{email}, #{pass}, #{name}, #{phoneNum}, #{birth}, #{gender})
 	</insert>
-	
+	<!--  회원탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		delete
+		  from tb_user
+		 where email = #{email}
+	</delete>
 	<!--  관심분야 -->
 	<insert id="insertCategory" parameterType="UserCategory" >
 		insert into tb_user_Category(email, category_code)
 		values(#{email}, #{categoryCode})
 	</insert>
-	
+	<!-- 카테고리 테이터 가져오기 -->
 	<select id="selectCategory" resultMap="categoryMap">
 		select * 
 		  from tb_category
 	</select>
 	<!--  아이디 찾기 -->
-	<select id="searchEmail" resultType="User" parameterType="User">
-		select * 
+	<select id="searchEmail" resultType="String" parameterType="User">
+		select email
 		  from tb_user
 		 where name = #{name}
 		   and phone_num = #{phoneNum}
@@ -105,14 +123,27 @@
 		  from tb_user_address
 		 where email = #{email}
 	</delete>	
-	
+	<!-- 내이미지 수정 시 그룹코드 등록 -->
+	<update id="updateImgCode" parameterType="User">
+		update tb_user
+		   set file_group_code = #{fileGroupCode}
+		 where email = #{email}
+	</update>
 	<!-- 주소의 대분류를 가져옴  -->
 	<select id="selectBigAddress" resultMap="addressMap">
 		select count(*) count, address_detail
  		  from tb_address
 		 group by address_detail
 	</select>	
-	
+	<!-- 내 이미지 가져오기 경로와 이름 가져오기  -->
+	<select id="myimgGroupCode" parameterType="User" resultType="File">
+		select f.path path, f.SYSTEM_NAME systemName
+		  from tb_file f 
+		 inner join tb_user u
+ 		    on f.file_group_code = u.file_group_code
+ 		 where u.file_group_code = #{fileGroupCode}
+ 		   and u.email = #{email}
+	</select>
 	<!-- 주소의 코드와 소분류를 가져옴  -->
 	<select id="selectSmallAddress" resultMap="addressMap" >
 		select *
@@ -188,6 +219,11 @@
 		  where rnum between #{begin} and #{end}
 	</select>
 	
+	<select id="selectAddress" parameterType="string" resultMap="addressMap">
+		select *
+ 		  from tb_address
+ 		 where address_Detail = #{baddr}
+	</select>
 	
 	
 </mapper>

@@ -18,7 +18,7 @@ public class FileUploadController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(FileDAO.class);
-		FileUpload fu = new FileUpload(req, "test");
+		FileUpload fu = new FileUpload(req, req.getParameter("path"));
 		fu.upload();
 		System.out.println(fu.getGroupCode());
 	}

@@ -25,7 +25,7 @@
 	<select id="selectOneFile" resultMap="fileMap" parameterType="int">
 		select *
 		from tb_file
-		where no = #{no}
+		where file_group_code = #{file_group_code}
 	</select>
 
 	<insert id="insertFile" parameterType="File">

@@ -1,6 +1,7 @@
 package kr.co.momstudy.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
@@ -24,17 +27,19 @@ public class LoginController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		User u = new User();
 		u.setEmail(req.getParameter("email"));
+		
+		System.out.println(req.getParameter("email"));
+		
 		u.setPass(req.getParameter("pass"));
 		User user = dao.selectLogin(u);
-		
-		if (user == null) {
-			res.sendRedirect("loginform.do");
-			return;
-		}
+		System.out.println(user);
+		PrintWriter out = res.getWriter();
+		out.println(new Gson().toJson(user));
+		out.close();
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("user", user);
-		res.sendRedirect(req.getContextPath() + "/main.do");
+		
 		
 		
 	}

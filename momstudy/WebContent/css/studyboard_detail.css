@@ -30,7 +30,7 @@
 .board_cont {
     box-sizing: border-box;
     width: 100%;
-    min-height: 300px;
+    min-height: 150px;
     padding: 30px 30px;
     margin-bottom: 20px;
     border-bottom: 1px solid #dadada;
@@ -49,4 +49,10 @@
 }
 .image_wrap > img {
     max-width: 100%;
+}
+
+
+.study_right_wrap {
+	border-left: none !important;
+	width: 100% !important;
 }

@@ -44,7 +44,7 @@ public class StudyWriteController extends HttpServlet{
 		
 		dao.insertParticipant(pt);
 		
-		resp.sendRedirect("votelist.do");
+		resp.sendRedirect(req.getContextPath() +"/user/mypage.do");
 		
 	}
 	
