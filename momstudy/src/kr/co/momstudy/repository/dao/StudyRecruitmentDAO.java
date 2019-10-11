@@ -7,7 +7,13 @@ import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
 
 public interface StudyRecruitmentDAO {
-	
+	// 조회수가 많은 순으로 스터디 가져오기
+	List<StudyRecruitment> viewSeeCnt();
+	// 최신날짜순으로 스터디 가져오기
+	List<StudyRecruitment> viewLatestdate();
+	// 멤버가 많은 순으로 스터디 가져오기
+	List<StudyRecruitment> viewUserCnt();
+	// 
 	// 스터디 모집글 리스트 전체 조회
 	List<StudyRecruitment> selectStudyRecruitment(Search search);
 	
