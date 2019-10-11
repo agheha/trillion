@@ -20,7 +20,7 @@
 				<li><a href="<c:url value="/study/member.do"/>">멤버</a></li>
 				<li><a href="<c:url value="/study/votelist.do"/>">투표</a></li>
 				<li><a href="./studyschedule.html">일정</a></li>
-				<li><a href="<c:url value="/board/votelist.do"/>">게시판</a></li>
+				<li><a href="<c:url value="/board/list.do?studynum=${study.num}"/>">게시판</a></li>
 				<c:if test="${user.email eq study.email}">
 					<li><a id="admin">스터디 관리</a></li>
 					<form name="adminForm" action="" method="post">

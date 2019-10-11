@@ -24,13 +24,6 @@ public class UpdateFormBoardController extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// 게시물 상세 정보 조회하기
-		/*
-		int no = Integer.parseInt(req.getParameter("no"));
-		Board board = dao.selectOneBoard(no);
-		req.setAttribute("board", board);
-		RequestDispatcher rd = req.getRequestDispatcher("updateform.jsp");
-		rd.forward(req, res);
-		*/
 		
 		req.setAttribute("board", dao.selectOneBoard(Integer.parseInt(req.getParameter("num"))));
 		
