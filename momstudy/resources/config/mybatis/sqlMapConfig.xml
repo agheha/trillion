@@ -8,7 +8,6 @@
 	<typeAliases>
 		<typeAlias alias="File" type="kr.co.momstudy.repository.vo.FileVO" />
 		<typeAlias alias="Vote" type="kr.co.momstudy.repository.vo.Vote" />
-		<typeAlias alias="Calendar" type="kr.co.momstudy.repository.vo.Calendar" />
 		<typeAlias alias="VoteAricle" type="kr.co.momstudy.repository.vo.VoteAricle" />
 		<typeAlias alias="VoteResult" type="kr.co.momstudy.repository.vo.VoteResult" />
 		<typeAlias alias="VoteCnt" type="kr.co.momstudy.repository.vo.VoteCnt" />
