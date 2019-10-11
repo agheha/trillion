@@ -71,7 +71,7 @@
 				            
 				            	<!-- ------------ -->
 				            	<!-- 이미지경로 추후 추가 -->
-				                <img src="./../images/test_img1.jpg" alt="">
+				                <img src="<c:url value="/util/download.do?fgno=${rb.fileGroupCode}" />" alt="">
 				            	<!-- ------------ -->
 				            	<div class="img_hover;">
 									<span>${rb.email}</span>		            	
