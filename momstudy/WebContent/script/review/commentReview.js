@@ -1,3 +1,9 @@
+// 현재 로그인 한 유저 이메일 정보 넘어오는지 테스트
+alert(user.value);
+// 댓글 작성한 유저의 이메일 정보가 넘어오는지 테스트
+alert(writer.value);
+// 두개 넘어오면 이걸로 여기서 확인해서 댓글을 뿌려줄때 수정, 삭제버튼 생기도록 기능 추가해야됨.
+
 // 댓글 목록 가져오는 Ajax
 function commentListAjax() {
 	let xhr = new XMLHttpRequest();

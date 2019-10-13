@@ -121,7 +121,7 @@
     color: #fff;
     cursor: pointer;
 }
-.right_wrap {
+.right_wrap {	
     box-sizing: border-box;
     padding: 0 30px;
 }
@@ -130,3 +130,13 @@
     box-sizing: border-box;
     border-left: 2px solid #dadada;
 } */
+
+.contenttitle{
+	font-size: 1.5em;
+}
+.contenthr{
+	height: 2px;
+    border: 0px;
+    background: lightgray;
+    margin-bottom: 30px;
+}

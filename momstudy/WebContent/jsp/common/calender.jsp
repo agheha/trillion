@@ -76,11 +76,26 @@
             <div class="day">1</div>
             <div class="day">1</div>
             <div class="day">1</div>
-            <section  class="schedule ones onesone"></section>
-            <section  class="schedule twos twosone"></section>
-            <section  class="schedule threes threesone"></section>
         </div>
     </div>
+    <div class="ctmenu">
+        <div class="ctcontent" id="createSd"><i class="far fa-calendar-plus"></i> 일정 등록</div>
+    </div>
+    <div class="sdmenu">
+        <div class="sdcontent" id="deleteSd"><i class="far fa-calendar-times"></i> 일정 삭제</div>
+        <div class="sdcontent" id="modifySd"><i class="far fa-calendar-alt"></i> 일정 수정</div>
+    </div>
+    	<!-- The Modal -->
+	<div id="myModalForCreate" class="modal">
+		<!-- Modal content -->
+			<%@include file="/jsp/study/calenderwriteform.jsp"%>
+	</div>
+	
+ 	<div id="myModalForDetail" class="modal">
+		<!-- Modal content -->
+ 			<%@include file="/jsp/study/calenderdetail.jsp"%> 
+	</div> 
+
     <script src="<c:url value="/script/study/calender.js"/>"></script>
 </body>
 

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="now" value="<%=new java.util.Date()%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +60,13 @@
 								type="checkbox"> <label for="checkbox-3"
 								class="checkbox-custom-label">항목추가</label></td>
 						</tr>
+						<tr>
+							<td colspan="2">
+								<span id="limitspan">마감날짜</span>
+								<input id="limitdate" name="limitDate" type="date" min="<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>" name="limitDate">
+							</td>
+						</tr>
+						
 					</tfoot>
 				</table>
 			</div>

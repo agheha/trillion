@@ -13,7 +13,14 @@ public class Vote {
 	Date limitDate;
 	String email;
 	int cnt;
+	int numbering;
 	
+	public int getNumbering() {
+		return numbering;
+	}
+	public void setNumbering(int numbering) {
+		this.numbering = numbering;
+	}
 	public int getCnt() {
 		return cnt;
 	}

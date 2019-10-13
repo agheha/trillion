@@ -10,9 +10,7 @@
 
 <link rel="stylesheet" href='<c:url value="/css/common.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/study.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/circle.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>	
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 
 <link rel="stylesheet"
@@ -59,82 +57,12 @@
 		<%@include file="/jsp/common/sidebar.jsp"%>
 
 		<div class="study_right_wrap">
-			<div class="top_grid">
-
-				<div class="study_main_cont d_day">
-					<p>목표까지</p>
-					<div>
-						<h2>D - 30 day</h2>
-					</div>
-				</div>
-
-				<div class="study_main_cont circle">
-					<!-- 출석률 Animate UI -->
-					<!-- 퍼센트가 변할 때마다 클래스명과 span 내부의 값을 바꾼다. -->
-					<p>이번 달 나의 출석률</p>
-					<div>
-						<div class="clearfix">
-							<div class="c100 p56 orange">
-								<span>56%</span>
-								<div class="slice">
-									<div class="bar"></div>
-									<div class="fill"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- // 출석률 Animate UI -->
-				<div class="study_main_cont check">
-					<p>출석 현황</p>
-					<div></div>
-				</div>
-			</div>
-
-
-
-			<div class="bottom_grid">
-
-				<div class="study_main_cont notice">
-					<p>공지사항</p>
-					<div>
-						<ul>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-							<li><a href="#">TESTTESTTESTST</a></li>
-
-						</ul>
-					</div>
-				</div>
-
-				<div class="study_main_cont calender">
-					<p>Calender</p>
-					<div id='calendar'></div>
-				</div>
-			</div>
-
+			<p class="contenttitle">스터디 일정</p>
+			<hr class="contenthr"/>
+			<%@include file="/jsp/common/calender.jsp"%>
 		</div>
 	</section>
 
 
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', function() {
-			var calendarEl = document.getElementById('calendar');
-
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				plugins : [ 'dayGrid' ]
-			});
-
-			calendar.render();
-		});
-	</script>
 </body>
 </html>

@@ -38,10 +38,11 @@
 }
 .form-item-all {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 40px auto 20px;
     text-align: center;
 }
 form > .form-item-checkbox {
+    overflow: hidden;
     padding: 20px 0 0 70px;
 }
 .submit_btn {
@@ -49,4 +50,12 @@ form > .form-item-checkbox {
 }
 .box > p {
     font-size: 13px;
+}
+
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+.alert_wrap {
+    margin-top: 8px;
 }
