@@ -28,14 +28,22 @@ public class StudyCheckScoreController  extends HttpServlet{
 		resp.setCharacterEncoding("utf-8");
 		User user = (User)req.getSession().getAttribute("user");
 		Study study = (Study)req.getSession().getAttribute("study");
+		String Recomemail = user.getEmail(); 
 		
 		Score score = new Score();
-		score.setEmail(req.getParameter("email"));
-		score.setEmailRecom(user.getEmail());
+		String email = req.getParameter("email");
+		score.setEmail(email);
+		score.setEmailRecom(Recomemail);
 		score.setNum(study.getNum());
+
 
 		int result = dao.checkScore(score);
 		PrintWriter out = resp.getWriter();
+		
+		if(email.equals(Recomemail)) {
+			out.println("다른 스터디원에게 별점을 주세요.");
+			return;
+		}
 		
 		if(result == 1) out.println("평가하셨습니다.");
 		out.close();

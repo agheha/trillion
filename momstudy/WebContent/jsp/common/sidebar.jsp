@@ -8,8 +8,7 @@
 	</div>
 	<div class="left_list">
 		<div>
-			<form name="myForm" action="<c:url value="/study/studymain.do"/>"
-				method="post">
+			<form name="goForm" action="<c:url value="/study/studymain.do"/>" method="post">
 				<p>
 					<a href="#" onclick="goMain();">${study.name}</a>
 				</p>
@@ -19,7 +18,6 @@
 				<!-- 스터디장 화면 다르게 보임 -->
 				<li><a href="<c:url value="/study/member.do"/>">멤버</a></li>
 				<li><a href="<c:url value="/study/votelist.do"/>">투표</a></li>
-				<li><a href="<c:url value="/study/calenderlist.do"/>">">일정</a></li>
 				<li><a href="<c:url value="/board/list.do?studynum=${study.num}"/>">게시판</a></li>
 				<c:if test="${user.email eq study.email}">
 					<li><a id="admin">스터디 관리</a></li>
@@ -58,8 +56,9 @@
 	})
 	
 	console.log(bAdmin);
+	
 	function goMain(){
-		let f = document.myForm;
+		let f = document.goForm;
 		f.submit();
 	}
 	

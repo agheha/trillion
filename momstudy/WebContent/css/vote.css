@@ -230,5 +230,14 @@ tbody input[type=text]{
 #closevote{
 	margin-right: 5px;
 }
+#limitspan{
+	margin-right: 80px;
+	font-size: 18px;
+}
+#limitdate{
+	width: 260px;
+	font-size: 14px;
+}
+
 
 

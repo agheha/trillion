@@ -1,8 +1,6 @@
 
 .vote_title {
     box-sizing: border-box;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #333;
     overflow: hidden;
 }
 .vote_title > p {
@@ -54,7 +52,11 @@
 }
 .board_list {
     width: 100%;
-    box-sizing: border-box;
+    background: rgba(253, 250, 250, 0.472);
+    text-align: center;
+    margin: 10px auto;
+    border-collapse: collapse;
+    border-top: 3px solid rgb(251, 174, 51);
 }
 .board_list > div {
     width: 100%;
@@ -69,23 +71,18 @@
 .board_list a:hover {
     background-color: #dadada44
 }
-.board_list ul {
-    width: 100%;
-    height: 100%;
-    display: table;
-}
+
 .board_list li {
     display: table-cell;
     vertical-align: middle;
-    text-align: center;
     padding: 0 15px;
 }
 .board_list li:nth-child(1) {
     width: 60px;
 }
 .board_list li:nth-child(2) {
-    min-width: 397px;
-    max-width: 397px;
+	width: 220px;
+
     position:relative;
     text-align: left;
     text-overflow: ellipsis;
@@ -100,10 +97,24 @@
     width: 150px;
     max-width: 150px;
 }
-.vcvc{
-    height: 550px;
-}
 .study_right_wrap{
 	height: 650px;
 	width: 100%;
 }
+
+.board_list ul {
+    width: 100%;
+    display: table;
+    height: 40px;
+    padding: 8px;
+}
+
+
+#types {
+   	text-align: center;
+    background: #f1eecd;
+    height: 40px;
+    padding: 8px;
+    font-weight: bold;
+}
+
