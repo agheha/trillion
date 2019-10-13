@@ -33,12 +33,14 @@
 	               </choose>           
 	                 	  order by notice asc,
 	                  <if test="filter == 'regDate'">
-	                 	     reg_date desc,
+	                 	    reg_date desc,
+	                  </if>
+	                  <if test="filter == 'seeCnt'">
+	                   see_cnt desc,
 	                  </if>
 	                  num desc) a)
 		where  rnum between #{begin} and #{end} 
 	</select>
-	
 	
 <!-- 글 상세 조회 -->
 <select id="selectOneBoard" parameterType="int" resultMap="boardMap">

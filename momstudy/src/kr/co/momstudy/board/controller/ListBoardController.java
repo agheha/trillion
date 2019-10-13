@@ -44,7 +44,7 @@ public class ListBoardController extends HttpServlet {
       
       
       search.setTypes("제목", "글쓴이");
-      search.setFilter("일자");
+      search.setFilters("일자", "조회수");
       search.setFilter(filter);
       search.setKeyword(keyword);
       search.setType(type);
