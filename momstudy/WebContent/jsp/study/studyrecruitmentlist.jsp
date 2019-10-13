@@ -44,6 +44,19 @@
 			<h1>스터디</h1>
 			<p>--------------</p>
 		</div>
+		<div class="left_list">
+        	<form action="<c:url value="/study/studyrecruitmentlist.do" />"  method="GET" >
+	            <ul>
+	            	<c:forEach var="category" items="${category}">
+		                <li>
+		                	<button name="code" value="${category.categoryCode}" id="cate${category.categoryCode}">
+		                		${category.categoryName}
+		                	</button>
+		                </li>
+	                </c:forEach>
+	            </ul>          
+        	</form>
+        </div>
 	</section>
 
 	<div class="board_cont_wrap">
@@ -64,13 +77,11 @@
 				   class="content_wrap">
 					<div class="imgbg">
 						<div>
-							<img src="<%=request.getContextPath()%>/images/test_img1.jpg"
-								alt="">
+							<img src="<c:url value="/util/download.do?fgno=${str.fileGroupCode}" />" alt="">
 						</div>
 					</div>
 					<div class="thumbnail">
-						<img src="<%=request.getContextPath()%>/images/test_img1.jpg"
-							alt="">
+						<img src="<c:url value="/util/download.do?fgno=${str.fileGroupCode}" />" alt="">
 					</div>
 					<div class="study_cont">
 						<p>${str.title}</p>

@@ -21,3 +21,5 @@ window.onclick = (e) => {
 btn.addEventListener("click", (e) => {
 	modal.classList.toggle('hidden');
 });
+
+

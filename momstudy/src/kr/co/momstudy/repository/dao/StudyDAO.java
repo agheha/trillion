@@ -6,6 +6,7 @@ import kr.co.momstudy.repository.vo.Calenders;
 import kr.co.momstudy.repository.vo.Participant;
 import kr.co.momstudy.repository.vo.Score;
 import kr.co.momstudy.repository.vo.Study;
+import kr.co.momstudy.repository.vo.User;
 
 public interface StudyDAO {
 	
@@ -36,4 +37,7 @@ public interface StudyDAO {
 	Calenders selectOneCalender(int num);
 	
 	void deleteCalender(int num);
+	
+	// 스터디에 신청한 적이 있나 확인
+	int CheckParticipation(User user);
 }

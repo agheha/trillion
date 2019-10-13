@@ -21,6 +21,13 @@
 		<result column="bar_color" property="barColor" />
 		<result column="email" property="email" />
 	</resultMap>
+	<resultMap type="Participant" id="participantMap">
+		<result column="num" property="num" />
+		<result column="studyNum" property="studyNum"/>
+		<result column="email" property="email" />
+		<result column="part_date" property="partDate"/>
+		<result column="condition" property="condition"/>
+	</resultMap>
 
 	<!-- 스터디 등록 -->
 	<insert id="insertStudy" parameterType="Study">
@@ -121,4 +128,12 @@
 		  from tb_calener
 		 where num = #{num}  
 	</delete>
+	
+	<!-- 스터디에 신청한 적 있나 확인 -->
+	<select id="CheckParticipation" parameterType="Participant" resultType="int">
+		select count(*)
+		  from tb_participant
+		 where study_num = #{studyNum}
+		   and email = #{email}
+	</select>
 </mapper>

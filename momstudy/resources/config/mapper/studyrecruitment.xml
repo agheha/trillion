@@ -56,18 +56,20 @@
 	               a.*,
 	               count(*) over() as count
 		  	  from (select str.*,
-      			           (select round(avg(nvl(score, 0)), 1)
-        		       		  from tb_review_study) avr,
-        		       	    nvl(man, 1) pcnt
-    				  from tb_study_recruitment str,
-  					       tb_review_study rv,
-    					  (select study_num, 
-    					          count(*) man
-                             from TB_PARTICIPANT
-                            where condition = 2
-                            group by study_num) c
-    			      where c.STUDY_NUM(+) = str.STUDY_NUM
-                        and str.study_num = rv.study_num(+)
+                           nvl(r.avr, 0) avr,
+                     	   nvl(man, 1) pcnt
+ 					  from tb_study_recruitment str,
+       					   (select study_num,
+               					   avg(score) avr
+         					  from tb_review_study
+        			         group by study_num) r,
+        				   (select study_num,
+                				   count(*) man
+          				 	  from tb_participant
+          			         where condition = 2
+          				     group by study_num) p            
+  					 where str.study_num = r.study_num(+)
+   					   and str.study_num = p.study_num(+)
            			<if test="type == 'email'">
 			   	    	and str.email like '%' || #{keyword} || '%'
 			   		</if>
@@ -104,11 +106,12 @@
 	<!-- 모집글 등록 -->
 	<insert id="insertStudyRecruitment" parameterType="StudyRecruitment">
 		insert into tb_study_recruitment(
-			num, title, content, email, category_code, address_code, study_num
+			num, title, content, email, file_group_code, category_code, address_code, study_num
 		) values (
             seq_study_recruitment_num.nextval, 
             #{title}, 
             #{content}, #{email}, 
+            #{fileGroupCode},
             #{categoryCode}, 
             #{addressCode}, 
             #{studyNum} 

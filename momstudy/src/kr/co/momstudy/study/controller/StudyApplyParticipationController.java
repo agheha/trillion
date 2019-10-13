@@ -30,16 +30,22 @@ public class StudyApplyParticipationController extends HttpServlet{
 		
 		// 로그인 되어있는 유저 가져와서 참여자 객체에 세팅
 		User user = (User)session.getAttribute("user");
+
 		
-		Participant part = new Participant();
-		part.setEmail(user.getEmail());
+		// 스터디에 참여한적이 있나 확인한다.
+		int check = dao.CheckParticipation(user);
 		
-		part.setStudyNum(Integer.parseInt(req.getParameter("studynum")));
-		
-		part.setCondition(1);
-		
-		// 참여자로 넣어 준다.
-		dao.insertParticipant(part);
+		if (check == 0) {
+			Participant part = new Participant();
+			part.setEmail(user.getEmail());
+			
+			part.setStudyNum(Integer.parseInt(req.getParameter("studynum")));
+			
+			part.setCondition(1);
+			
+			// 참여자로 넣어 준다.
+			dao.insertParticipant(part);
+		}
 		
 		
 		res.sendRedirect(req.getContextPath() + "/study/studyrecruitmentlist.do");

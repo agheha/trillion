@@ -79,6 +79,11 @@
 					</button>
 				</c:if>
 			</div>
+			<div class="buttons">
+				<button type="button" id="golist"><a href='<c:url value="/study/studyrecruitmentlist.do"/>'>목록으로</a></button>
+			</div>
+		</div>
+		
 			<br>
 			
 			<!-- The Modal -->
