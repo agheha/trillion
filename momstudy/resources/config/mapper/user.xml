@@ -45,6 +45,27 @@
 		<result column="system_name" property="systemName" />
 	</resultMap>
 	
+	<resultMap id="participantMap" type="Participant">
+		<result column="num" property="num" />
+		<result column="study_num" property="studyNum" />
+		<result column="email" property="email" />
+		<result column="part_Date" property="partDate" />
+		<result column="condition" property="condition" />
+	</resultMap>
+	<!-- 유저가 신청한 스터디 이름과 정보  -->
+	<select id="selectParticipant" parameterType="String" resultMap="participantMap">
+		 select p.num num,
+				s.email email, 
+				p.part_date partDate, 
+				p.condition condition, 
+				p.study_num studyNum, 
+				s.name name
+		   from tb_participant p
+	      inner join tb_study s
+			 on p.study_num = s.num
+			and condition = 1
+			and p.email = #{email} 
+	</select>
 	<!-- 이메일 중복 체크 -->
 	<select id="emailCheck" resultType="int" parameterType="String">
 		select count(*) 
