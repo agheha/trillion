@@ -51,7 +51,6 @@
 		<%@include file="/jsp/common/sidebar.jsp"%>
 
 		<div class="study_right_wrap">
-			<div class="vcvc">
 				<div class="vote_title">
 					<p>투표 하기</p>
 					<div>
@@ -60,9 +59,11 @@
 					</div>
 				</div>
 				<div class="board_list">
-					<ul>
+					<ul id="types">
 						<li>번호</li>
 						<li>제목</li>
+						<li>상태</li>
+						<li>작성날짜</li>
 						<li>마감날짜</li>
 					</ul>
 					<c:if test="${empty vlist}">
@@ -77,8 +78,12 @@
 								<c:if test="${vote.type eq 2}">
 									<a href="#" onclick="goResult(${vote.num});">
 										<ul>
-											<li>${vote.num}</li>
-											<li>${vote.title}<span>(마감된 투표입니다.)</span></li>
+											<li>${vote.numbering}</li>
+											<li>${vote.title}</li>
+											<li>마감</li>
+											<li>
+												<fmt:formatDate value="${vote.regDate}" pattern="yyyy-MM-dd" />
+											</li>
 											<li>
 												<fmt:formatDate value="${vote.limitDate}" pattern="yyyy-MM-dd" />
 											</li>
@@ -88,8 +93,12 @@
 								<c:if test="${vote.type eq 1}">
 									<a href="#" onclick="goDetail(${vote.num});">
 										<ul>
-											<li>${vote.num}</li>
+											<li>${vote.numbering}</li>
 											<li>${vote.title}</li>
+											<li>진행중</li>
+											<li>
+												<fmt:formatDate value="${vote.regDate}" pattern="yyyy-MM-dd" />
+											</li>
 											<li>
 												<fmt:formatDate value="${vote.limitDate}" pattern="yyyy-MM-dd" />
 											</li>
@@ -100,7 +109,7 @@
 						</c:forEach>
 					</form>
 				</div>
-			</div>
+
 			<%@include file="/jsp/common/pagination.jsp" %>
 		</div>
 

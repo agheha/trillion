@@ -1,6 +1,8 @@
 package kr.co.momstudy.study.vote.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -38,7 +40,8 @@ public class VoteWriteController extends HttpServlet{
 		if(("on".equalsIgnoreCase(req.getParameter("duplication")))) duplication = 1;
 		if("on".equalsIgnoreCase(req.getParameter("anonumous"))) anonumous = 1;
 		if("on".equalsIgnoreCase(req.getParameter("addaricle"))) addaricle = 1;
-		
+		String limitDate = req.getParameter("limitDate");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Vote vote = new Vote();
 		vote.setAnonumous(anonumous);
 		vote.setAriclePlus(addaricle);
@@ -46,6 +49,12 @@ public class VoteWriteController extends HttpServlet{
 		vote.setTitle(title);
 		vote.setStudyNo(studyNum);
 		vote.setEmail(user.getEmail());
+		
+		try {
+			vote.setLimitDate(sdf.parse(limitDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		dao.insertVote(vote);
 		int voteNum = vote.getNum();

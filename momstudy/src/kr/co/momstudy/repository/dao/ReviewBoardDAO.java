@@ -47,8 +47,12 @@ public interface ReviewBoardDAO {
 	// 댓글 리스트를 뿌려줌
 	List<Comment> selectComment(int commentGroupCode);
 	
+	/*
+	 * void deleteComment(@Param("num") int num, @Param("commentGroupCode") int
+	 * commentGroupCode);
+	 */
 	// 댓글 삭제
-	void deleteComment(@Param("num") int num, @Param("commentGroupCode") int commentGroupCode);
+	void deleteComment(int num);
 	
 	int selectOneBoard3(int commentGroupCode);
 }

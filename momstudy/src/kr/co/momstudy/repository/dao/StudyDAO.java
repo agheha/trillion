@@ -2,6 +2,7 @@ package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.Calenders;
 import kr.co.momstudy.repository.vo.Participant;
 import kr.co.momstudy.repository.vo.Score;
 import kr.co.momstudy.repository.vo.Study;
@@ -27,4 +28,12 @@ public interface StudyDAO {
 	void insertScore(Score score);
 	
 	int checkScore(Score score);
+	
+	void insertCalender(Calenders c);
+	
+	List<Calenders> selectCalender(Calenders calender);
+	
+	Calenders selectOneCalender(int num);
+	
+	void deleteCalender(int num);
 }

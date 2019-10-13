@@ -7,10 +7,40 @@ public class Study {
 	private Date regDate;
 	private String email;
 	private int categoryCode;
-	private int addressCode;
+	private String categoryName;
 	private int num;
+	// 주소 
+	private int addressCode;
+	private String addressDetail;
+	private String addressDetail2;
+	//카운트 받을것(팀원수)
+	private int cnt;
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+	public String getAddressDetail2() {
+		return addressDetail2;
+	}
+	public void setAddressDetail2(String addressDetail2) {
+		this.addressDetail2 = addressDetail2;
+	}
 	
-	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
 	public String getName() {
 		return name;
 	}

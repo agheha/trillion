@@ -17,19 +17,12 @@
 
 <!-- 자유게시판  리스트! -->
 <select id="selectBoard" resultMap="boardMap" parameterType="Search" flushCache="true" useCache="true">
-		<!--   
-		select *
-		from tb_free_board
-		order by 
-		type asc, num desc
-		
-		-->
 	select *
 		from (select rownum rnum , a.*,
 		             count(*) over() as cnt
 		        from ( select *
-	                 from tb_free_board
-	               <where>
+	                 from tb_free_board	               
+	               where study_no = #{studyNum} 
 	               <choose>
 	                 <when test="type == 'email'">
 	                    and email like '%'||#{keyword}||'%'
@@ -38,15 +31,16 @@
 	                  	and title like '%'||#{keyword}||'%'
 	                 </when>
 	               </choose>           
-	               </where>   
 	                 	  order by notice asc,
 	                  <if test="filter == 'regDate'">
-	                 	     reg_date desc,
+	                 	    reg_date desc,
+	                  </if>
+	                  <if test="filter == 'seeCnt'">
+	                   see_cnt desc,
 	                  </if>
 	                  num desc) a)
-		where rnum between #{begin} and #{end}
+		where  rnum between #{begin} and #{end} 
 	</select>
-
 	
 <!-- 글 상세 조회 -->
 <select id="selectOneBoard" parameterType="int" resultMap="boardMap">
@@ -57,15 +51,15 @@
 
 <!-- 글 등록  -->
 <!-- 일반게시글 일 경우 -->
-<insert id="insertBoard" parameterType="Board"> <!-- 그룹코드 시퀀스로 네스트발해서 -->
-insert into tb_free_board (num, title, content, email) 
-values (seq_free_board_num.nextval, #{title}, #{content}, #{email})
+<insert id="insertBoard" parameterType="Board">
+insert into tb_free_board (num, title, content, email, study_no, comment_group_code) 
+values (seq_free_board_num.nextval, #{title}, #{content}, #{email}, #{studyNo}, seq_comment_num.nextval)
 </insert>
 
 <!-- 공지사항글 체크 시 -->
 <insert id="insertBoard2" parameterType="Board">
-insert into tb_free_board (num, title, content, email, type, notice)
-values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{type}, #{notice})
+insert into tb_free_board (num, title, content, email, type, notice , study_no, comment_group_code)
+values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{type}, #{notice}, #{studyNo}, seq_comment_num.nextVal )
 </insert>
 
 <!-- 글 수정 -->

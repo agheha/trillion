@@ -58,10 +58,10 @@
 		<div class="study_right_wrap">
 			<div class="contents">
 				<form action="studydeletemember.do" method="post" name="banform">
-				<h3 class="stm_title">스터디원 목록</h3>
-				<div class="smt_buttons">
-					<button class="stm_button">강퇴</button>
-				</div>
+					<h3 class="stm_title">스터디원 목록</h3>
+					<div class="smt_buttons">
+						<button class="stm_button">강퇴</button>
+					</div>
 					<table class="study_member">
 						<thead>
 							<tr>
@@ -91,8 +91,16 @@
 									<td>${oneUser.gender}</td>
 									<td><fmt:formatDate value="${oneUser.partDate}"
 											pattern="yyyy-MM-dd" /></td>
-									<td><input type="checkbox" name="ban${i.index}"
-										value="${oneUser.email}" /></td>
+									<c:choose>
+										<c:when test="${user.email eq oneUser.email}">
+											<td></td>
+										</c:when>
+										<c:otherwise>
+											<td><input type="checkbox" name="ban${i.index}"
+												value="${oneUser.email}" /></td>
+										</c:otherwise>
+									</c:choose>
+
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -118,5 +126,5 @@
 
 	</div>
 
-<script src="<c:url value="/script/study/adminstudymembers.js"/>"></script>
+	<script src="<c:url value="/script/study/adminstudymembers.js"/>"></script>
 </body>

@@ -27,7 +27,6 @@ public class StudyWriteFormController extends HttpServlet{
 		List<Address> bigAList = udao.selectBigAddress();
 		req.setAttribute("cList", cList);
 		req.setAttribute("bigAList", bigAList);
-		System.out.println(bigAList.size());
 		RequestDispatcher rd =  req.getRequestDispatcher("/jsp/study/studywriteform.jsp");
 		rd.forward(req, resp);
 	}

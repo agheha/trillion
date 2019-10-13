@@ -149,7 +149,7 @@ a {
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="review">
-							<form method="post" action="commentWrite.do" class="commentForm">
+							<form name="create" method="post" action="commentWrite.do" class="commentForm" onsubmit="return check()">
 								<input type="hidden" name="num" value="${board.num}" />
 								<div>
 									<textarea id="comment_text" name="content" cols="90"
@@ -251,7 +251,7 @@ a {
 	</section>
 
 
-	<script type="text/javascript">
+	<script type="text/javascript" src="<c:url value="/script/board/detailboard.js" />">
 		$(document).ready(function() {
 			$("#header").load("header.html");
 		});
