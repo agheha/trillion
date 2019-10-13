@@ -74,7 +74,7 @@
 			</li>
 			<li>
 				<div>
-					<a href="notice_board.html"> <i
+					<a href='<c:url value="/boardfree/freelist.do" />'> <i
 						class="fas fa-chalkboard-teacher"></i> 자유게시판
 					</a>
 				</div>

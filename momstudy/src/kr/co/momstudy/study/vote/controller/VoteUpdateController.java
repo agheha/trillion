@@ -1,6 +1,8 @@
 package kr.co.momstudy.study.vote.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 import java.util.HashMap;
 
@@ -28,7 +30,6 @@ public class VoteUpdateController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int num = Integer.parseInt(req.getParameter("num"));
 		dao.deleteVote(num);
-		
 		User user = (User)req.getSession().getAttribute("user");
 		Study study = (Study)req.getSession().getAttribute("study");
 		
@@ -49,6 +50,16 @@ public class VoteUpdateController extends HttpServlet{
 		vote.setDuplication(duplication);
 		vote.setTitle(title);
 		vote.setStudyNo(study.getNum());
+		
+		String limitDate = req.getParameter("limitDate");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			vote.setLimitDate(sdf.parse(limitDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		dao.insertVote(vote);
 		int voteNum = vote.getNum();
 		

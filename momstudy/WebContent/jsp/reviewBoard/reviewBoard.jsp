@@ -26,6 +26,14 @@
 	</header>
  
     <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+		<%--
+
+		<jsp:include page="<%pageName%>" flush="false">
+			<jsp:param name="name" value="<%=name%>" />
+			<jsp:param name="pageName" value="<%=pageName%>"/>
+		</jsp:include>
+
+		--%>
     <section class="background_wrap">
         <div class="background">
             <h1>후기게시판</h1>
@@ -61,18 +69,9 @@
 		       	</c:if>
 		       	<c:forEach var="rb" items="${list}">
 			      	<div class="board_cont">
-			      	
-			      		<!-- ------------------------------ -->
-			      		<!-- 스터디 파일이 생기면 추후에 경로만 변경해주면 됨 -->
 				        	<a href='<c:url value="/review/detail.do?num=${rb.num}" /> '>
-			      		<!-- ------------------------------ -->
-				        
 				            <div class="cont_img">
-				            
-				            	<!-- ------------ -->
-				            	<!-- 이미지경로 추후 추가 -->
-				                <img src="<c:url value="/util/download.do?fgno=${rb.fileGroupCode}" />" alt="">
-				            	<!-- ------------ -->
+                                <img src="<c:url value="/util/download.do?fgno=${rb.fileGroupCode}" />" alt="">
 				            	<div class="img_hover;">
 									<span>${rb.email}</span>		            	
 					                <span><fmt:formatDate value="${rb.regDate}" pattern="yyyy-MM-dd" /></span>
@@ -93,15 +92,6 @@
 	</section>
 
 
-    <script type="text/javascript">
-    	/* let categoryList = document.querySelectorAll(".catbtn");
-  		var keyword = "";
-    	for (let i = 0; i < categoryList.length; i++) {
-	    	categoryList[i].addEventListener("click", (e) => {
-	    		
-	    	});   		
-    	} */
-    	
-    </script>
+    <script type="text/javascript"></script>
 </body>
 </html>

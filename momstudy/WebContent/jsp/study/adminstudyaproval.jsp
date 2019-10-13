@@ -78,7 +78,7 @@
 							<td colspan="6"><h3>신청자가 없습니다.</h3></td>
 						</c:if>
 							<c:forEach items="${ulist}" var="oneUser" varStatus="i">
-								<tr class="tr_row">
+								<tr email="${oneUser.email}" name="${oneUser.name}" class="tr_row">
 									<c:choose>
 										<c:when test="${user.email eq oneUser.email}">
 											<td class="study_leader"><span><i
@@ -112,11 +112,7 @@
 
 		<!-- Modal content -->
 		<div class="modal-content">
-			<span class="close">&times;</span>
-			<p>회원 사진</p>
-			<p>이메일</p>
-			<p>평점</p>
-			<p>가입목록</p>
+			<%@include file="/jsp/study/usercard.jsp"%>
 		</div>
 
 	</div>

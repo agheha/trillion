@@ -19,6 +19,7 @@
 		
 		function dchk(){
 			let inputs = document.querySelectorAll("input[type='text']");
+			let limitdate = document.querySelector("#limitdate");
 			for(let i = 1; i < inputs.length; i++){
 				for(let j = i + 1; j < inputs.length; j++){
 					if(inputs[i].value === inputs[j].value){
@@ -31,6 +32,7 @@
 
 			let titleEle = document.querySelector("#votetitle");
 			if(isempty(titleEle,"제목을 입력해주세요.")) return; 
+			if(isempty(limitdate ,"마감날짜를 입력해주세요.")) return; 
 			
 			document.vform.submit();
 			

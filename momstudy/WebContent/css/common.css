@@ -35,53 +35,62 @@ html, body {
     background-color: #333;
 }
 
+/* button이 2개 이상일 경우 div로 .buttons 클래스 추가 */
 .buttons {
     display: inline-block;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 30px;
 }
-.buttons > button {
-    width: 85px;
-    padding: 3px 0;
+.buttons button {
+    min-width: 85px;
+    padding: 3px 8px;
     border: none;
     background-color: #fff;
     color: #333;
     cursor: pointer;
     border: 1px solid #333;
     border-radius: 4px;
+    margin: 0 5px;
 }
-.buttons > button:hover {
+.buttons button:hover {
     border: 1px solid transparent;
     background-color: #333;
     color: #fff;
 }
-.buttons > button:first-child {
-    margin-right: 15px;
-}
-
-.more_btn {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    box-sizing:border-box;
+/* 일반 버튼 */
+.oneBtn {
+    width: 85px;
     padding: 3px 0;
-    margin: 30px 0;
-    font-size: 14px;
-    text-align: center;
-    border: 1px solid #333;
-    background-color: transparent;
+    background-color: #fff;
     color: #333;
-    border-radius: 3px;
-    cursor: pointer
+    cursor: pointer;
+    border: 1px solid #333;
+    border-radius: 4px;
 }
-.more_btn:hover {
+.oneBtn:hover {
+    border: 1px solid transparent;
     background-color: #333;
     color: #fff;
-    border: 1px solid #333;
 }
+
+.close {
+    border: none;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 28px;
+    font-weight: 900;
+    color: #333;
+    cursor: pointer;
+    float:right;
+}
+.modal p {
+    padding: 8px 0 15px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 18px;
+}
+
+/* ajax 경고문구 */
 .alert_wrap {
     float: right;
     color: red;

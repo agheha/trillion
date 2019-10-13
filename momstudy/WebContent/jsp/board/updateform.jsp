@@ -44,7 +44,7 @@
             <%@include file="/jsp/common/sidebar.jsp" %>
             
              <div class="study_right_wrap">
-            <form action="update.do" method="post" enctype="multipart/form-data">
+            <form name="create" action="update.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
             <input type="hidden" name="no" value="${board.num}" />                
                 <div>
                     <p>제목</p>
@@ -52,11 +52,7 @@
                      value='<c:out value="${board.title}" />' />
                     <p>내용</p>
                     <textarea name="content" id=""><c:out value="${board.content}" /></textarea>
-                    <p>파일</p>
-                    <div class="upload">
-                        <label for="ex_file">파일 업로드</label>
-                        <input id="ex_file" type="file" name="attach" multiple />
-                    </div>
+              
                 </div>
                 <div class="buttons">
                     <button class="submit_btn" type="submit">수정</button>
@@ -67,7 +63,7 @@
             </section>
        
 
-        <script type="text/javascript">
+        <script type="text/javascript"  src="<c:url value="/script/board/updateboard.js" />">
             $(document).ready(function() {
                 $("#header").load("header.html");
             });
