@@ -26,6 +26,14 @@
 	</header>
  
     <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+		<%--
+
+		<jsp:include page="<%pageName%>" flush="false">
+			<jsp:param name="name" value="<%=name%>" />
+			<jsp:param name="pageName" value="<%=pageName%>"/>
+		</jsp:include>
+
+		--%>
     <section class="background_wrap">
         <div class="background">
             <h1>후기게시판</h1>
