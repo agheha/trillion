@@ -70,21 +70,6 @@
 			<%@include file="/jsp/user/deleteagree.jsp"%>
 		</div>
 	</div>
-	<script>
-		let button = document.querySelector("#chkbtn");
-		button.addEventListener = e => {
-			modal.style.display="block";
-		}
-		function agree() {
-		let divEle =  document.querySelector("#content");
-			divEle.innerHTML = "<div id='que'>맘스터디 탈퇴가 완료되었습니다</div>"
-			+ "<br><div id='comp'>이용해 주셔서 감사합니다<div>"
-			setTimeout(() => {
-				location.href="/momstudy/user/main.do"
-			}, 2000);
-		}
-	</script>
-	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script src="<c:url value="/script/user/deleteuser.js" />"></script>
 </body>
 </html>
