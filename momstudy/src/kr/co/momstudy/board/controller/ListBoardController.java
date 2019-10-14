@@ -28,7 +28,6 @@ public class ListBoardController extends HttpServlet {
       HttpSession session = req.getSession();
       Study study = (Study)session.getAttribute("study");
       int studyNum = study.getNum();
-      System.out.println("찍혔냐?" + studyNum);
            
       String bPageNo = req.getParameter("pageNo");
       int pageNo = 1;

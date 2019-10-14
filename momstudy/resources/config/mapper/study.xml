@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.momstudy.repository.dao.StudyDAO">
@@ -136,5 +136,17 @@
 		 where study_num = #{studyNum}
 		   and email = #{email}
 	</select>
-	
+
+	<update id="updateCalender" parameterType="Calenders">
+		update TB_CALENER   
+		   set content = #{content},
+		       start_date = to_date(#{startDate},'YYYYMMDD'),
+		       end_date = to_date(#{endDate},'YYYYMMDD'),
+		       type = #{type}, 
+		       font_color = #{fontColor},
+		       bar_color = #{barColor},
+		       title = #{title}
+ 		 where num = #{num}
+	</update>
+
 </mapper>

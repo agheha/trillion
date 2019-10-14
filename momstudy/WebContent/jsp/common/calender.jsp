@@ -97,6 +97,7 @@
 	</div> 
 
     <script src="<c:url value="/script/study/calender.js"/>"></script>
+    <script src="<c:url value="/script/study/calenderupdate.js"/>"></script>
 </body>
 
 </html>

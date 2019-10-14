@@ -27,6 +27,8 @@ public class UpdateFormBoardController extends HttpServlet {
 		
 		req.setAttribute("board", dao.selectOneBoard(Integer.parseInt(req.getParameter("num"))));
 		
+		System.out.println(Integer.parseInt(req.getParameter("num")));
+		
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/updateform.jsp");
 		rd.forward(req, res);
 	}

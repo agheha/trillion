@@ -4,16 +4,17 @@ let resultstart = document.querySelector("#resultstart");
 let resultend = document.querySelector("#resultend");
 let resulttype = document.querySelector("#resulttype");
 let closeDetailBtn = document.querySelector("#closeDetailBtn");
-
+let resultEmail = document.querySelector("#resultEmail")
 
 closeDetailBtn.addEventListener("click",closeModalForDetail);
-
+//결과페이지 데이터조회
 function selectResult(num){
 	xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = ()=>{
 		if(xhr.readyState === 4){
 			if(xhr.status === 200){
 				let cal = JSON.parse(xhr.responseText);
+				resultEmail.innerText = cal.email;
 				resultTitle.innerText = cal.title;
 				resultContent.innerText = cal.content;
 				resultstart.innerText = cal.startDate;
@@ -42,3 +43,6 @@ function closeModalForDetail(){
 	var modal = document.getElementById("myModalForDetail");
 	modal.style.display = "none";
 }
+
+
+

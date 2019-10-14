@@ -47,7 +47,7 @@
             <form name="create" action="write.do" method="post" onsubmit="return check()" >
             <div>
             <input class="type" type="checkbox" name="type" value="0"  onclick=" checkDisable(this.form)" />공지사항
-            <input class="notice" type="checkbox" name="notice" value="0" /> 상단 고정     
+            <input class="notice" type="checkbox" name="notice" value="0" disabled /> 상단 고정     
             </div>
             
                 <div>

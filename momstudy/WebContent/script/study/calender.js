@@ -33,9 +33,11 @@ let row = document.querySelectorAll(`.day:nth-child(n + ${i*7 - 6}):nth-child(-n
 
 prevbtn.addEventListener("click",prev);
 nextbtn.addEventListener("click",next);
-submitbtn.addEventListener("click",sendSd);
+submitbtn.addEventListener("click",()=>{
+	sendSd(1)
+});
 
-//우클릭이벤트
+// 우클릭이벤트
 document.querySelector(".bigcal").addEventListener('contextmenu', function(e) {
 	if(e.target.className === "schedule") {
 		sdEle = e.target;
@@ -44,7 +46,26 @@ document.querySelector(".bigcal").addEventListener('contextmenu', function(e) {
 		sdmenu.classList.add("rightclick");
 		sdmenu.style.top = e.pageY + "px";	
 		sdmenu.style.left = e.pageX + "px";
-		deleteSd.addEventListener("click",deleteCalender);
+		deleteSd.onclick = deleteCalender;
+		//수정창 띄우기
+		modifySd.onclick = ()=>{
+			sdmenu.classList.remove("rightclick");
+			promise1().then((result)=>{
+				console.log(result)
+				if(result === '1'){
+					submitbtn.style.display = "none";
+					let msubmitbtn = document.querySelector("#msubmitbtn")
+					msubmitbtn.style.display ="block";
+					msubmitbtn.addEventListener('click',()=>{
+						sendSd(2);
+					});
+					selectResultForUpdate();
+					onClickModalforCreate(e);	
+				}else{
+					alert("작성자만 수정할 수 있습니다.")
+				}
+			})
+		}
 		e.preventDefault();		
 	}else{
 		sdmenu.classList.remove("rightclick");
@@ -55,15 +76,19 @@ document.querySelector(".bigcal").addEventListener('contextmenu', function(e) {
 		e.preventDefault();		
 	}
 })
-//우클릭이벤트 우클릭후 다른곳 좌클릭
+// 우클릭이벤트 우클릭후 다른곳 좌클릭
 document.querySelector(".bigcal").addEventListener('click', function(e) {
 	ctmenu.classList.remove("rightclick");
 	sdmenu.classList.remove("rightclick");
 })
+// 등록창 띄우기
+createSd.addEventListener("click",()=>{
+	document.querySelector("#msubmitbtn").style.display ="none";
+	submitbtn.style.display = "block";
+	onClickModalforCreate();	
+});
 
-createSd.addEventListener("click",onClickModalforCreate);
-
-
+// 화면 갱신
 function loading(month,year){
 	removeSd();
   	let xhr = new XMLHttpRequest();
@@ -84,7 +109,7 @@ function loading(month,year){
 			let srow, scol, erow, ecol;
 			let location = new Array;
 			obj.list.forEach(cal=>{
-				//시작과 끝을 넘어갈 때 정해줌
+				// 시작과 끝을 넘어갈 때 정해줌
 				if(cal.startDate < mindateVal) {
 					gridArea = mindate.style.gridArea.substr(0,5).replace("/","").replace(" ","").split(" ")
 					srow = gridArea[0];
@@ -97,7 +122,7 @@ function loading(month,year){
 					ecol = gridArea[1];
 				}
 				
-				//그게 아니면 시작과 끝을 돌면서 시작과 끝을 정함
+				// 그게 아니면 시작과 끝을 돌면서 시작과 끝을 정함
 				days.forEach((day,i) => {
 					let dayDateVal = day.getAttribute("dates");
 					
@@ -114,22 +139,22 @@ function loading(month,year){
 					}
 				});
 				
-				//속성 설정
+				// 속성 설정
 				let backgroundCode = cal.barColor;
 				let fontCode = cal.fontColor;
 				let sdlist = new Array;
 				let oritop = 22;
 				
-				//다 정했으면 컬럼과 로우를 가지고 세션을 만들고 세션의 속성에 넣어줌
+				// 다 정했으면 컬럼과 로우를 가지고 세션을 만들고 세션의 속성에 넣어줌
 				for(let i = parseInt(srow); i <= erow; i++){
 					let temptop = 22;
-					//초기값 설정
+					// 초기값 설정
 					let setscol = 1;
 					let setecol = 8;
-					//자리 지정
+					// 자리 지정
 					if( i === parseInt(srow)) setscol = parseInt(scol);
 					if( i === parseInt(erow)) setecol = parseInt(ecol) + 1;
-					//요소 생성 및 속성 지정
+					// 요소 생성 및 속성 지정
 					let sd = document.createElement("section");
 					sd.style.gridArea = `${i} / ${setscol} / auto / ${setecol}`;
 					sd.style.background = backgroundCode;
@@ -142,7 +167,7 @@ function loading(month,year){
 						selectResult(e.target.getAttribute("num"));
 						onClickModalforDetail();
 					});
-					//높이 구하기
+					// 높이 구하기
 					location.forEach((ele)=>{
 						let prevScol = ele.setscol;
 						let prevEcol = ele.setEcol;
@@ -153,11 +178,11 @@ function loading(month,year){
 					})
 					if(oritop < temptop) oritop = temptop;
 
-					//위치값 저장
+					// 위치값 저장
 					location.push({i,setscol,setecol});
 				}
 
-				//높이값을 설정하면서 만약 3개가 넘어가면 행의 크기 늘림
+				// 높이값을 설정하면서 만약 3개가 넘어가면 행의 크기 늘림
 				sdlist.forEach((ele)=>{
 					daysEle.append(ele);
 					let i = ele.style.gridArea.substr(0,1);
@@ -185,7 +210,7 @@ function loading(month,year){
   	xhr.open("GET",`/momstudy/study/calender.do?year=${year}&month=${month}`,true);
   	xhr.send();
 }
-
+// 전달로 갱신
 function prev(){
 	let month = parseInt(monthEle.innerText);
 	let year = parseInt(yearEle.innerText);
@@ -200,7 +225,7 @@ function prev(){
 	}
 	loading(month, year);
 }
-
+// 다음달로 갱신
 function next(){
 	let month = parseInt(monthEle.innerText);
 	let year = parseInt(yearEle.innerText);
@@ -215,7 +240,7 @@ function next(){
 	}
 	loading(month, year);
 }
-
+// 첫 로딩
 function first(){
 	let month = parseInt(monthEle.innerText);
 	let year = parseInt(yearEle.innerText);
@@ -224,8 +249,18 @@ function first(){
 
 first();
 
-function sendSd(){
+// 데이터 보내기
+function sendSd(type){
 	if(nullchk() === false) return;
+	let action;
+	let num = "";
+	if(type === 1){
+		action = 'insertschedual.do';
+	} else {
+		action = 'updateschedual.do';
+		num = sdEle.getAttribute("num");
+	}
+	
 	let startdateVal = startdate.value; 
 	let limitdateVal = limitdate.value;
 	let caltitleVal  = caltitle.value;
@@ -244,24 +279,25 @@ function sendSd(){
 				limitdate.value = null;     
 				caltitle.value = null;      
 				calcontent.value = null;  
-				barcolor.value = null;  
-				fontcolor.value = null;
+				barcolor.value = '#000000';
+				fontcolor.value = '#000000';
 				first();
 			}
 		}
 	}
-	xhr.open("POST",`/momstudy/study/insertschedual.do`,true);
+	xhr.open("POST",`/momstudy/study/${action}`,true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-	xhr.send(`start=${startdateVal}&end=${limitdateVal}&title=${caltitleVal}&content=${calcontentVal}&caltype=${caltype}&barcolor=${barcolorVal}&fontcolor=${fontcolorVal}`);
+	xhr.send(`start=${startdateVal}&end=${limitdateVal}&title=${caltitleVal}&content=${calcontentVal}&caltype=${caltype}&barcolor=${barcolorVal}&fontcolor=${fontcolorVal}&num=${num}`);
 }
 
+// 스케쥴 초기화
 function removeSd(){
 	let sds = document.querySelectorAll(".schedule");
 	sds.forEach((ele)=>{
 		ele.remove();
 	})
 }
-
+// 스케쥴 삭제
 function deleteCalender(){
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = ()=>{
@@ -283,6 +319,23 @@ function deleteCalender(){
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 	xhr.send("num="+sdEle.getAttribute("num"));
 }
+let promise1 = function(){
+	return new Promise(function (resolve, reject){
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = ()=>{
+				if(xhr.readyState === 4){
+					if(xhr.status === 200){
+						resolve(xhr.responseText.trim());
+					}
+				}
+			}
+			xhr.open("POST",`/momstudy/study/checkschedule.do`,true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+			xhr.send("num="+sdEle.getAttribute("num"));
+		
+	})
+}
+
 
 
 
