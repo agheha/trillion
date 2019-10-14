@@ -1,213 +1,156 @@
-.profile {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto;
-    overflow:  hidden;
+.mypageContent{
+	width: 1200px;
+    height: 850px;
+    background: blue;
+    margin: auto;
+    margin-bottom: 50px;
 }
-.profile > img {
+
+.user{
+    height: 350px;
+    background: red;
+}
+
+.usercontent{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
+    height: 85%;
 }
-.icons {
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    padding: 0 30px;
+
+.studylist{	
+height: 500px;
+    background: yellow;
 }
-.icons > div {
-    position: relative;
-    height: 67px;
-    box-sizing: border-box;
-    padding: 10px 0;
-    border-bottom: 2px solid #dadada;
+
+.bigtext{
+	font-size: 30px;
+	font-weight: bold;
+	height:15%;
 }
-.icons > div > a {
-    position: relative;
-    width: 50%;
-    display: block;
-    box-sizing: border-box;
-    padding: 0 35px 0 0;
+
+.userinfo{
+    background: rosybrown;
     float: left;
-    text-align: right;
-    color: #333;
-    font-size: 30px;
+    width: 80%;
+    position: relative;
+    left: 70px;
 }
-.icons .alarm {
-    display: none;
-    position: absolute;
-    top: -30px;
-    left: 230px;
-    border: 1px solid #333;
-    background-color: #fff;
-    min-width: 150px;
-    min-height: 150px;
-    max-height: 350px;
-    border-radius: 4px;
-    z-index: 1;
-}
-.icons .alarm:before {
-    display: block;
-    position: absolute;
-    content: "";
-    top: 40px;
-    left: -20px;
-    width: 37px;
-    height: 38px;
-    background-color: #fff;
-    transform: rotate(45deg);
-    border-bottom: 1px solid #333;
-    border-left: 1px solid #333;
-    border-bottom-left-radius: 4px;
-} 
-.icons .alarm > li {
+
+.userscore{
+    background: teal;
+    float: left;
     width: 100%;
-    max-width: 200px;
-    height: 35px;
-    line-height: 35px;
+    position: relative;
+    left: 70px;
 }
-.icons .alarm > li > a {
+
+.studycontent{
+	height: 80%;
+    width: 90%;
+    background: royalblue;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.userpic{
+     height: 70%;
+    width: 40%;
+    background: #000;
+    position: relative;
+    top: 35px;
+    left: 40px;
+    float: left;
+}
+.btns{
+    height: 80%;
+    width: 40%;
+    position: relative;
+    top: 30px;
+    left: 110px;
+    background: #fff;
+    float: left;
+}
+.scorecontent{
+    width: 300px;
+    height: 70%;
+    background: #fff;
+    position: relative;
+    left: 70px;
+    top: 10px;
+}
+
+.btn{
+	height: 25%;
+    width: 90%;
+    background: lightgray;
+    margin-top: 11px;
+    border-radius: 20px;
+    line-height: 60px;
+    text-align: center;
     font-size: 15px;
-    width: 100%;
-    height: 100%;
-    display: block;
-    padding-left: 15px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-weight: bold
 }
-.icons a:last-child {
-    text-align: left;
-    padding: 0 0 0 35px;
+.btn:hover{
+	background: rgb(54, 54, 54);
+	color: #fff;
+	cursor: pointer;
 }
-.icons a:hover {
-    color: #dd333d
-}
-.left_list > div {
-    width: 100%;
-    padding: 0 30px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-.left_list p {
-    border-bottom: 2px solid #dadada;
-    box-sizing: border-box;
-    padding-bottom: 15px;
-    text-align: center;
-}
-.left_list ul {
-    width: 100%;
-}
-.left_list li {
-    display: block;
-    width: 100%;
-    height: 35px;
-    line-height: 35px;
-}
-.left_list li > a {
-    box-sizing: border-box;
-    padding: 0 15px;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-.left_list li:hover > a {
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-}
-
-
-.right_top_cont > p {
-    box-sizing: border-box;
-    padding:0 0 15px 45px;
-    font-size: 18px;
-}
-
-.slide_wrap {
-    box-sizing: border-box;
-    padding: 0 30px;
-}
-.content_wrap {
+.ment{
+    height: 15%;
     position: relative;
-    width: 250px;
+    left: 85px;
+    font-weight: bold;
+    top: 25px;
+    font-size: 22px;
+}
+.studycard{
+	width: 230px;
+    height: 80%;
+    background: #000;
+    margin: 20px;
+    z-index: 2;
     float: left;
-    box-sizing: border-box;
-    padding: 0 8px;
-}
-.content_wrap > div {
     position: relative;
-    width: 100%;
-    height: 100%;
-    border: 1px solid transparent;
-    box-sizing: border-box;
 }
-.content_wrap > div:hover {
-    border: 1px solid #333;
-}
-.content_wrap > div:hover > span > img {
-    transform: scale(1.1);
-}
-.content_wrap > div > span {
-    display: block;
-    width: 100%;
-    height: 170px;
+.forslide{
+	height: 100%;
     overflow: hidden;
-}
-.content_wrap > div > span > img {
-    width: 100%;
-    transition: 0.3s;
-}
-.content_wrap > div > p {
+    width: 10000px;
     position: relative;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 8px;
-    background-color: #333;
-    color: #fff;
-    height: 35px;
-    line-height: 35px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+}
+#bigstudytitle{
+	line-height: 80px;	
+}
+.studypic{
+	width: 100%;
+	height: 230px;
 }
 
-/* 달력부분 */
-.right_bottom_cont {
-    box-sizing: border-box;
-    padding:30px;
+.studytitle{
+	background: #fff;
+	width: 100%;
+	height: 90px;
+	font-size: 25px;
+	text-align: center;
+	line-height: 90px;
 }
-.right_bottom_cont > p {
-    box-sizing: border-box;
-    padding:25px 0 0 15px;
-    font-size: 18px;
+.icons{
+	height: 80%;
+	width: 60px;
+	float: left;
+	position: relative;
+    top: 100px;
+    font-size: 90px;
 }
-.right_bottom_cont th {
-    text-align: center;
-}
-.cal_top{
-    box-sizing:border-box;
-    padding-bottom: 5px;
-    text-align: center;
-    font-size: 18px;
-}
-.cal{
-    text-align: center; 
-}
-table.calendar{
-    border: 1px solid #333;
-    display: inline-table;
-    text-align: left;
-}
-table.calendar td{
-    vertical-align: top;
-    border: 1px solid #dadada;
-    width: 250px;
+.icons:nth-child(2){
+	left: 5px;
 }
 
-#calendar > .fc-toolbar.fc-header-toolbar {
-    margin-bottom: 15px;
+i:hover{
+	color: rgb(184, 184, 184);
+	cursor: pointer;
 }
-.fc-toolbar > .fc-left > h2 {
-    font-size: 18px;
-}
-.fc-prev-button.fc-button.fc-button-primary:first-child {
-    margin-right: 5px;
-}
+
