@@ -72,3 +72,86 @@
 .textAreaWrap {
 	display: none;
 }
+#commentRegistForm > form {
+    display: table;
+    width: 100%;
+}
+#commentRegistForm > form > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+#commentRegistForm > form > div:nth-child(3) {
+    max-width:1135px;
+}
+#commentRegistForm > form > div textarea {
+    position: relative;
+    top: 3px;
+    width: 1135px;
+    resize: none;
+    height: 120px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding:10px;
+}
+#commentRegistForm > form > div button {
+    width: 60px;
+    height: 120px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 4px;
+}
+#commentRegistForm > form > div button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+#commentList {
+    box-sizing: border-box;
+    padding: 30px 0 30px 10px;
+}
+#commentList > div {
+    margin-bottom: 15px;
+    border-left: 8px solid #333;
+    padding-left: 20px;
+    border-radius: 3px;
+}
+.commentInfo {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    line-height: 27px;
+    padding-top: 8px;
+}
+.commentInfo > span {
+    margin-right: 15px;
+}
+.commentInfo > div {
+    float: right;
+}
+.commentInfo > div > button {
+    padding: 3px 15px;
+    border: none;
+}
+.commentWrap {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.textAreaWrap {
+    margin: 8px 0 3px 0;
+}
+.cmtContent {
+    width: calc(100% - 65px);
+    height: 80px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    padding: 10px;
+    resize: none;
+}
+.cmtBtn {
+    width: 60px;
+    height: 80px;
+    border-radius: 4px;
+    float: right;
+}
