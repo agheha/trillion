@@ -114,7 +114,7 @@
 							<div>
 								<a href="<c:url value="/board/detail.do?no=${b.num}" />">
 									<ul>
-										<li>${b.num}</li>
+										<li>${b.numbering}</li>
 										<li>${b.title}</li>
 										<li>${b.email}</li>
 										<li><fmt:formatDate pattern="yyyy-MM-dd"
@@ -125,19 +125,7 @@
 							</div>
 						</c:otherwise>
                         </c:choose>
-                        <!-- 
-                        <div>
-                            <a href="<c:url value="/board/detail.do?no=${b.num}" />">
-	                            <ul>
-	                                <li>${b.num}</li>
-	                                <li>${b.title}</li>
-	                                <li>${b.email}</li>
-	                                <li><fmt:formatDate pattern="yyyy-MM-dd" value="${b.regDate}" /></li>
-	                                <li>${b.seeCnt}</li>
-	                            </ul>
-                            </a>
-                        </div>
-                         -->
+                      
              
                         </c:forEach>
                     </div>

@@ -44,8 +44,12 @@
             <%@include file="/jsp/common/sidebar.jsp" %>
             
              <div class="study_right_wrap">
-            <form name="create" action="update.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
-            <input type="hidden" name="no" value="${board.num}" />                
+            <form name="create" action='<c:url value="/board/update.do?num=${board.num}" />' enctype="multipart/form-data" onsubmit="return check()">
+            <input type="hidden" name="num" value="${board.num}" />  
+            <div>
+            <input class="type" type="checkbox" name="type" value="0"  onclick=" checkDisable(this.form)" />공지사항
+            <input class="notice" type="checkbox" name="notice" value="0" disabled/> 상단 고정
+            </div>           
                 <div>
                     <p>제목</p>
                     <input type="text" name="title" 

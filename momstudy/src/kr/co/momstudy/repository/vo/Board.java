@@ -13,8 +13,15 @@ public class Board {
     private String content;
     private Date regDate;
     private int seeCnt;
+    int numbering;
     
-    public int getSeeCnt() {
+    public int getNumbering() {
+		return numbering;
+	}
+	public void setNumbering(int numbering) {
+		this.numbering = numbering;
+	}
+	public int getSeeCnt() {
 		return seeCnt;
 	}
 	public void setSeeCnt(int seeCnt) {
