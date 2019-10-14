@@ -49,9 +49,16 @@
 		<result column="num" property="num" />
 		<result column="study_num" property="studyNum" />
 		<result column="email" property="email" />
-		<result column="part_Date" property="partDate" />
+		<result column="partDate" property="partDate" />
 		<result column="condition" property="condition" />
 	</resultMap>
+	<!--  유저가 선택한 스터디 신청철회 -->
+	<delete id="deleteParticipant" parameterType="Participant">
+		delete
+		  from tb_participant
+		 where email = #{email}
+		   and num = #{num}
+	</delete>
 	<!-- 유저가 신청한 스터디 이름과 정보  -->
 	<select id="selectParticipant" parameterType="String" resultMap="participantMap">
 		 select p.num num,

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href='<c:url value="/css/sidebar.css" />'>
 <style>
 #upload {
 	display: block;
@@ -61,7 +62,7 @@
 						<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminmember.do"/>">스터디 신청 철회</a></li>
 						<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminaprovalmember.do"/>">스터디 탈퇴 </a></li>
 					</ul>
-					</form>
+				</form>
 			</ul>
 		</div>
 	</div>
