@@ -14,11 +14,11 @@ let fontcolor = document.querySelector("#fontcolor");
 			var modal = document.getElementById("myModalForCreate");
 			modal.style.display = "none";
 		}
-		
+		//종료일자 유효성
 		function ld(){
-		let sdValue = startdate.value;
-		if(limitdate.value === false || limitdate.value < sdValue) limitdate.value = sdValue;
-		limitdate.setAttribute("min",sdValue);	
+			let sdValue = startdate.value;
+			if(limitdate.value === false || limitdate.value < sdValue) limitdate.value = sdValue;
+			limitdate.setAttribute("min",sdValue);	
 		}
 		
 		function nullchk(){
@@ -39,7 +39,7 @@ let fontcolor = document.querySelector("#fontcolor");
 		
 		function onClickModalforCreate(e) {
 			var modal = document.getElementById("myModalForCreate");
-
+			
 			window.onclick = function(event) {
 				if (event.target == modal) {
 					modal.style.display = "none";

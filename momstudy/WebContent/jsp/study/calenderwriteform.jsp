@@ -97,6 +97,7 @@
 			<div class="sn">
 				<button class="inbutton" type="button" id="closeCreatebtn">취소</button>
 				<button class="inbutton" id="submitbtn" type="button">만들기</button>
+				<button class="inbutton" id="msubmitbtn" type="button">수정</button>
 			</div>
 		</div>
 	</form>

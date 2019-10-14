@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.StudyRecruitmentDAO;
+import kr.co.momstudy.repository.dao.UserDAO;
+import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
 import kr.co.momstudy.util.PageResult;
@@ -19,16 +21,23 @@ import kr.co.momstudy.util.PageResult;
 @WebServlet("/study/studyrecruitmentlist.do")
 public class StudyRecruitmentListController extends HttpServlet{
 	private StudyRecruitmentDAO dao;
+	private UserDAO uDao;
 	
 	public StudyRecruitmentListController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(StudyRecruitmentDAO.class);
+		this.uDao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// 카테고리 가져와서 공유영역에 올려줌
-		List<String> category = dao.categorySelect();
-		req.setAttribute("category", category);
+		List<String> cList = dao.categorySelect();
+		req.setAttribute("cList", cList);
+		
+		// 스터디 등록을 위한 주소도 공유영역에 올려준다.
+		List<Address> bigAList = uDao.selectBigAddress();
+		req.setAttribute("bigAList", bigAList);
+		
 		
 		String sPageNo = req.getParameter("PageNo");
 		int pageNo = 1;

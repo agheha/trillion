@@ -79,6 +79,9 @@
 			   		<if test="type == 'content'">
 			   	   		and str.content like '%' || #{keyword} || '%'
 			   		</if>
+			   		<if test="categoryCode != 0">                      	    
+	                    and category_code = #{categoryCode}
+	                </if> 
            			<choose>  
 						<when test="filter == 'seeCnt'"> 
 							order by str.see_cnt desc

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href='<c:url value="/css/common.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_nlogin.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/recruitmentlist.css" />'>
 
 <!-- slide plugin -->
 <link rel="stylesheet" type="text/css"
@@ -42,7 +43,7 @@
 		<div class="left_list">
         	<form action="<c:url value="/study/studyrecruitmentlist.do" />"  method="GET" >
 	            <ul>
-	            	<c:forEach var="category" items="${category}">
+	            	<c:forEach var="category" items="${cList}">
 		                <li>
 		                	<button name="code" value="${category.categoryCode}" id="cate${category.categoryCode}">
 		                		${category.categoryName}
@@ -56,8 +57,7 @@
 
 	<div class="board_cont_wrap">
 		<div>
-			<button id="myBtn"
-			        onclick="location.href='<c:url value="/study/studywriteform.do" />'">새로운 스터디 등록하기</button>
+			<button id="myBtn" type="button">새로운 스터디 등록하기</button>
 		</div>
 		<div class="slide_wrap">
 			<c:if test="${empty list}">
@@ -97,15 +97,15 @@
 	
 	
 	<!-- The Modal 스터디 등록부분-->
-	<div id="myModal" class="modal hidden" style="display: none">
+	<div id="myModal" class="modal hidden">
+
 		<!-- Modal content -->
 		<div class="modal-content">
 			<%@include file="/jsp/study/studywriteform.jsp"%>
 		</div>
 	</div>
 	
-	<script src="<c:url value="/script/study/studysignup.js"/>"></script>
-		
+	<script src="<c:url value="/script/study/studysignup.js"/>"></script>	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#header").load("header.html");
