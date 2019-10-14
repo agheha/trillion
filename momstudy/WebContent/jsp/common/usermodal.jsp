@@ -3,19 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="<c:url value="/css/usermodal.css"/>">
 
-<div id="myModal" class="modal">
+<div id="mymodal" class="modal">
 
 	<!-- Modal content -->
 	<div class="modal-content">
+		<span>현재 비밀번호를 입력하세요</span>
 		<span class="close">x</span>
-		<p>비밀번호를 입력해주세요</p>
 		<div>
-			<label for="passchk">현재 비밀번호</label> 
-			<input type="password" id="passchk" />
-		<div>
-		<div>
-			<button id="btn" class="oneBtn">확인</button>
+			<label for="passchk">현재 비밀번호</label> <input type="password"
+				id="passchk" />
 		</div>
-	</div>
+		<div>
+			<button id="upbtn" class="oneBtn">확인</button>
+		</div>
 
+	</div>
 </div>
