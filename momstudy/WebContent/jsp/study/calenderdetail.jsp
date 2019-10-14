@@ -36,6 +36,16 @@
 			<div class="sn">
 				<div class="dinner">
 					<div>
+						<span class="item">작성자</span>
+					</div>
+					<div>
+						<span id="resultEmail">오늘의 일정</span>
+					</div>
+				</div>
+			</div>
+			<div class="sn">
+				<div class="dinner">
+					<div>
 						<span class="item">내용</span>
 					</div>
 					<div>
