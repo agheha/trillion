@@ -29,6 +29,9 @@
 
 <body>
 
+  <header id="header">
+    		<%@include file="/jsp/common/header.jsp"%>
+    </header>
 
 	<section class="section2">
 		<div id="content">

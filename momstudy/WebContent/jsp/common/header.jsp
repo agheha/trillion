@@ -24,7 +24,16 @@
 	</div>
 	<div class="header_bot_wrap">
 		<div>
-			<a href='<c:url value="/user/mypage.do" />'><span>마이페이지</span></a>
+			<c:if test="${user.type == 2 }">
+				<a href="<c:url value="/admin/reportuser.do"/>"> <i
+					class="fas fa-address-card"></i> 관리자페이지
+				</a>
+			</c:if>
+			<c:if test="${user.type == 1 }">
+				<a href="<c:url value="/user/mypage.do"/>"> <i
+					class="fas fa-address-card"></i> 마이페이지
+				</a>
+			</c:if>
 		</div>
 		<div>
 			<a href='<c:url value="/study/studyrecruitmentlist.do" />'>스터디</a>

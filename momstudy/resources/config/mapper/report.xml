@@ -221,19 +221,43 @@
 	<!-- 1개 글 정보 뽑아 오는 데 + 신고횟수 +신고사유+글 제목 + 게시판 종류 -->
 	<select id="selectOneBoardReport" parameterType="int"
 		resultMap="AreportMap">
-		select r.*,p.rpcount, rr.RESEAON
-		from tb_report r ,
+		    		select
+		r.*,p.rpcount,t.title,rr.RESEAON
+		from
+		tb_report r ,
 		(SELECT
-		count(*) rpcount,BOARD_NUM
-		from tb_report
+		count(*)
+		rpcount,BOARD_NUM
+		from
+		tb_report
 		where type = 'board'
 		group by
-		BOARD_NUM) p , TB_REPORT_RESEAON rr
-		where r.BOARD_NUM = p.BOARD_NUM
+		BOARD_NUM)
+		p , TB_REPORT_RESEAON rr,
+		(select
+		title,num,'free' board_type
+		from
+		TB_FREE_BOARD
+		union all
+		select
+		title,num,'review'
+		from TB_REVIEW_STUDY
+		union all
+		select
+		title,num,'recruit'
+		from TB_STUDY_RECRUITMENT) t
+		where
+		r.BOARD_NUM = p.BOARD_NUM
 		and
-		r.CODE = rr.CODE
+		r.CODE =
+		rr.CODE
 		and
-		type= 'board'
+		r.BOARD_NUM = t.num
+		and
+		r.BOARD_TYPE = t.board_type
+		and
+		type=
+		'board'
 		and
 		r.num = #{num}
 	</select>
@@ -437,7 +461,8 @@
 		by STUDY_NUM) c
 		where s.num = p.STUDY_NUM
 		and
-		c.STUDY_NUM = p.STUDY_NUM
+		c.STUDY_NUM =
+		p.STUDY_NUM
 
 	</select>
 
@@ -490,9 +515,9 @@
 			and s.email like '%'||#{keyword}||'%'
 		</if>
 		<if test="filter == 'rpcount'">
-		order by
+			order by
 			rpcount
-		desc
+			desc
 		</if>
 		) a)
 		where rnum between #{begin} and #{end}
@@ -503,29 +528,34 @@
 		resultMap="AuserMap">
 		select
 		s.*,nvl(p.c,0) rpcount
-		,nvl(o.open,0) open ,nvl(j.join,0)
+		,nvl(o.open,0) open
+		,nvl(j.join,0)
 		join
 		from tb_user s,
 
 		(SELECT
 		REPORT_TARGET,count(*) c
-		from tb_report
+		from
+		tb_report
 		where
 		type = 'user'
 		group
 		by
 		REPORT_TARGET) p,
-		(select EMAIL,count(*) open
+		(select
+		EMAIL,count(*) open
 		from
 		TB_STUDY
 		group by
 		EMAIL) o,
-		(SELECT r.EMAIL,count(*) join
+		(SELECT
+		r.EMAIL,count(*) join
 		FROM
 		TB_PARTICIPANT r
 		where
 		CONDITION = 2
-		group by EMAIL) j
+		group by
+		EMAIL) j
 
 		where s.EMAIL =
 		p.REPORT_TARGET(+)
@@ -539,16 +569,19 @@
 
 	<!-- 총 카테고리 +개설 스터디수 -->
 	<select id="selectCategory" resultMap="AdminCategoryMap">
-	SELECT c.* ,nvl(count,0) studycnt
+		SELECT c.* ,nvl(count,0)
+		studycnt
 		FROM
 		TB_CATEGORY c,
 		(SELECT count(*)
 		count,CATEGORY_CODE
-		FROM tb_study
+		FROM
+		tb_study
 		group by
 		CATEGORY_CODE) s
 		where
-		c.CATEGORY_CODE = s.CATEGORY_CODE(+)
+		c.CATEGORY_CODE =
+		s.CATEGORY_CODE(+)
 	</select>
 
 	<!-- 카테고리 이름 받아서 추가 -->
@@ -578,10 +611,11 @@
 	<!-- 아이디 받아서 밴기간 설정 -->
 
 	<update id="updateBanDate" parameterType="user">
-		 update tb_user
-   		  set ban_Date = SYSDATE + ${ban}
-   		  ,STATUS = 2
-    	where email=#{email}
+		update tb_user
+		set
+		ban_Date = SYSDATE + ${ban}
+		,STATUS = 2
+		where email=#{email}
 	</update>
 
 </mapper>

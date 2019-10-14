@@ -35,7 +35,7 @@
 						</c:when>
 					</c:choose>
 
-					<td>${report.boardTitle }${report.num}</td>
+					<td>${report.boardTitle }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${report.regDate}" /></td>
 					<td>${report.email }</td>
@@ -51,7 +51,7 @@
 		<div id="b_main">
 			<div class="b_content">
 				<div>글</div>
-				<div id="board_title" onclick="location.href=''">글 제목</div>
+				<div id="board_title" >글 제목</div>
 				<div id="board_type"> 게시판명</div>
 			</div>
 			<div class="b_content" id="re_email">
