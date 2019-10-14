@@ -15,7 +15,6 @@ function login() {
                
                 if (list === null){
                     msg.style.display = "block";
-                  console.log(list.type);
                   return;
                 }
                 else if (parseInt(list) === 0) {
@@ -23,11 +22,7 @@ function login() {
                     blackmsg.style.display = "block";
                     return;
                  
-                } /*else if(parseInt(list.type) === 2) {
-                
-                	location.href = "/momstudy/admin/reportuser.do"
-                	return;
-                }*/
+                } 
                 else {
                 
                 	location.href = "/momstudy/main.do"

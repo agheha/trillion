@@ -65,7 +65,7 @@
 						class="fas fa-address-card"></i> 관리자페이지
 					</a>
 				</c:if>
-				<c:if test="${user.type == 1 }">
+				<c:if test="${user.type == 1 || user.type == null }">
 					<a href="<c:url value="/user/mypage.do"/>"> <i
 						class="fas fa-address-card"></i> 마이페이지
 					</a>

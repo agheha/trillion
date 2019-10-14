@@ -66,7 +66,7 @@
            <div class="board_cont">
                ${rBoard.content}
                
-	     	   <form>
+	     	   <form action="" method="post" name="rpform">
 					<button>신고하기</button>
 	      	   </form>
            </div>
