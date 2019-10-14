@@ -110,7 +110,6 @@
 		$(document).ready(function() {
 			$("#header").load("header.html");
 			$(".board_cont").mouseover("")
-
 			$('.slide_wrap').slick({
 				slidesToShow : 3,
 				slidesToScroll : 1,

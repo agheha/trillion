@@ -35,8 +35,10 @@
 	</section>
 
 	<section id="layout">
-
 		<div class="study_right_wrap">
+		<div>
+			<button type="button" id="report">신고하기</button>
+		</div>
 			<div class="board_title">
 				<p>
 					<c:out value="${str.title}" />

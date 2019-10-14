@@ -199,5 +199,16 @@
 		where comment_group_code = #{commentGroupCode}
 	</select>
 	
+	<select id="selectOneComment" parameterType="int" resultMap="commentMap">
+		select *
+		from tb_comment
+		where num = #{num}
+	</select>
+	
+	<update id="updateComment" parameterType="Comment">
+		update tb_comment 
+		   set content = #{content}
+		 where num = #{num}
+	</update>
 	
 </mapper>
