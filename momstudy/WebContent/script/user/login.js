@@ -12,16 +12,26 @@ function login() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 let list = JSON.parse(xhr.responseText);
-                console.log(list);
+               
                 if (list === null){
                     msg.style.display = "block";
-                  
+                  console.log(list.type);
+                  return;
                 }
-                else if (parseInt(list.status) === 2) {
+                else if (parseInt(list) === 0) {
+                
                     blackmsg.style.display = "block";
+                    return;
                  
-                } else {
+                } else if(parseInt(list.type) === 2) {
+                
+                	location.href = "/momstudy/admin/reportuser.do"
+                	return;
+                }
+                else {
+                
                 	location.href = "/momstudy/main.do"
+                	return;
                 }
                 email="";
                 pass="";

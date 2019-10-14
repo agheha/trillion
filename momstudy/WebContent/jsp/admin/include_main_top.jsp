@@ -20,7 +20,6 @@
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="./../css/common.css">
-<link rel="stylesheet" href="./../css/header.css">
 <link rel="stylesheet" href="./../css/Layer_Pop_up.css">
 <link rel="stylesheet" href="./../css/Layer_Pop_up1.css">
 <script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
@@ -30,47 +29,10 @@
 
 <body>
 
-	<header>
-		<div class="header_top_wrap">
-			<div>
-				<a href="#">All About Study</a>
-			</div>
-			<div>
-				<ul>
-					<li><a href="#">로그인</a></li>
-					<li>/</li>
-					<li><a href="#">회원가입</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="header_bot_wrap">
-			<div>
-				<a href="#">마이페이지</a>
-			</div>
-			<div>
-				<a href="#">스터디</a>
-			</div>
-			<div>
-				<a href="#">자유게시판</a>
-			</div>
-			<div>
-				<a href="#">후기게시판</a>
-			</div>
-			<div>
-				<a href="#">문의하기</a>
-			</div>
-		</div>
-	</header>
-
-	<section class="background_wrap">
-		<div class="background">
-			<h1>All About Study</h1>
-			<p>관리자페이지 입니다.</p>
-		</div>
-	</section>
 
 	<section class="section2">
 		<div id="content">
+		
 			<div id="responsive-admin-menu">
 
 				<div id="logo"></div>

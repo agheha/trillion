@@ -27,36 +27,32 @@ function make1(list) {
 
         <div id="b1_Profile" ></div>
         <div id="b1_Info">
-            <div>ID : ${info.email}(정지 30일)</div>
+            <div>ID : ${info.email} (<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${info.banDate}" />)까지</div>
             <div>이름 : ${info.name}</div>
-            <div>생일 : ${info.birth}</div>
+            <div>생일 : <fmt:formatDate pattern="yyyy-MM-dd"
+							value="${info.birth}" /></div>
             <div>성별 : ${info.gender}</div>
             <div>연락처 : ${info.phoneNum}</div>
             <div>개설 스터디 수 : ${info.openCnt}</div>
             <div>가입 스터디 수: ${info.joinCnt}</div>
-            <div>신고된 횟수 : ${info.cnt}</div>
+            <div>신고된 횟수 : ${info.rpcount}</div>
         </div>
         <br>
         <div id="b1_Function">회원정지
             <div>
                 <div>
-                    <form action="">
-                        <select name="stop" id="stop1">
-                            <option value="">정지기간</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="30">30</option>
-                        </select>
+                    <form action="ban.do">
+                       <input type="number" name="banDate" min="1" max="30" step="1">
+                       <input type="hidden" name="email" value="${info.email}">
+                            <button>정지</button>
                     </form>
                 </div>
 
                 <div>
-                    <button>회원탈퇴</button>
+                    <button onclick="location.href='/momstudy/admin/admindeleteuser.do?email=${info.email}'">회원탈퇴</button>
                 </div>
 
-                <div>
-                    <button>쪽지 보내기</button>
-                </div>
             </div>
 
         </div>
@@ -82,7 +78,7 @@ function make1(list) {
 		<td>${Study.name}</td>
 		<td>${Study.addressDetail} ${Study.addressDetail2}</td>
          <td>${Study.regDate}</td>
-		<td>${Study.cnt}</td>
+		<td>${Study.member}</td>
         </tr>
 	`;
 	}
@@ -112,7 +108,7 @@ function make1(list) {
 			<td>${Study.name}</td>
 			<td>${Study.email}</td>
 			<td>${Study.regDate}</td>
-			<td>${Study.cnt}</td>
+			<td>${Study.member}</td>
 			</tr>
 			`;
 	}

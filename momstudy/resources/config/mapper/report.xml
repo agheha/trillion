@@ -13,7 +13,7 @@
 		<result column="reseaon" property="reseaon" />
 		<result column="EMAIL" property="email" />
 		<result column="REG_DATE" property="regDate" />
-		<result column="count" property="cnt" />
+		<result column="rpcount" property="rpcnt" />
 		<!-- 글 번호, 제목, 게시판 종류 -->
 		<result column="BOARD_NUM" property="boardNum" />
 		<result column="BOARD_TYPE" property="boardType" />
@@ -24,12 +24,16 @@
 		<result column="NAME" property="studyTitle" />
 		<!-- 스터디 방장 -->
 		<result column="cap" property="cap" />
+		<!-- 페이징 (총 개시물갯수) -->
+		<result column="cnt" property="cnt" />
+
+
 	</resultMap>
-	
+
 	<resultMap type="AdminCategory" id="AdminCategoryMap">
-		<result column="CATEGORY_CODE" property="categoryCode"/>
-		<result column="CATEGORY_NAME" property="categoryName"/>
-		<result column="COUNT" property="cnt"/>
+		<result column="CATEGORY_CODE" property="categoryCode" />
+		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="COUNT" property="cnt" />
 	</resultMap>
 
 	<resultMap type="Study" id="AstudyMap">
@@ -41,7 +45,8 @@
 		<result column="ADDRESS_DETAIL" property="addressDetail" />
 		<result column="ADDRESS_DETAIL2" property="addressDetail2" />
 		<result column="num" property="num" />
-		<result column="count" property="cnt" />
+		<result column="cnt" property="cnt" />
+		<result column="member" property="member" />
 		<result column="CATEGORY_NAME" property="categoryName" />
 	</resultMap>
 
@@ -56,7 +61,8 @@
 		<result column="ban_date" property="banDate" />
 		<result column="file_group_code" property="fileGroupCode" />
 		<result column="gender" property="gender" />
-		<result column="count" property="cnt" />
+		<result column="cnt" property="cnt" />
+		<result column="rpcount" property="rpcount" />
 		<result column="open" property="openCnt" />
 		<result column="join" property="joinCnt" />
 
@@ -71,37 +77,67 @@
 
 
 	<!-- 유저신고 정보 뽑아오는데 +신고 횟수+신고사유 -->
-	<select id="selectUserReport" resultMap="AreportMap">
+	<select id="selectUserReport" parameterType="Search"
+		resultMap="AreportMap">
+		select *
+		from (select rownum rnum,
+		a.*,
+		count(*) over() as cnt
+		from(
+
 		select
-		r.*,p.count,rr.RESEAON
+		r.*,p.rpcount,rr.RESEAON
 		from
 		tb_report r ,
-		(SELECT count(*) count
+		(SELECT count(*)
+		rpcount
 		,REPORT_TARGET
 		from tb_report
 		where type = 'user'
-		group by REPORT_TARGET)
+		group by
+		REPORT_TARGET)
 		p , TB_REPORT_RESEAON rr
 		where
-		r.REPORT_TARGET = p.REPORT_TARGET
+		r.REPORT_TARGET =
+		p.REPORT_TARGET
 		and
 		type= 'user'
 		and
 		r.CODE = rr.CODE
+
+		<if test="type == 'reportTarget'">
+			and r.REPORT_TARGET like '%'||#{keyword}||'%'
+		</if>
+		<if test="type == 'reseaon'">
+			and reseaon like '%'||#{keyword}||'%'
+		</if>
+		order by
+		<if test="filter == 'regDate'">
+			r.reg_date
+		</if>
+		<if test="filter == 'reseaon'">
+			rr.RESEAON
+		</if>
+		<if test="filter == 'rpcount'">
+			p.rpcount
+		</if>
+		desc) a)
+		where rnum between #{begin} and #{end}
 	</select>
 
 	<!-- 1개 유저신고 정보 뽑아오는데 +신고 횟수+신고사유 -->
 	<select id="selectOneUserReport" parameterType="int"
 		resultMap="AreportMap">
-		select r.*,p.count,rr.RESEAON
+		select r.*,p.rpcount,rr.RESEAON
 		from
 		tb_report r ,
 		(SELECT
-		count(*) count
+		count(*) rpcount
 		,REPORT_TARGET
 		from tb_report
 		where type = 'user'
-		group by
+		group
+		by
 		REPORT_TARGET)
 		p , TB_REPORT_RESEAON rr
 		where
@@ -116,47 +152,79 @@
 	</select>
 
 	<!-- 글 정보 뽑아 오는 데 + 신고횟수 +신고사유+글 제목 + 게시판 종류 -->
-	<select id="selectBoardReport" resultMap="AreportMap">
+	<select id="selectBoardReport" parameterType="Search"
+		resultMap="AreportMap">
+		select *
+		from (select rownum rnum,
+		a.*,
+		count(*) over() as cnt
+		from(
+
 		select
-		r.*,p.count,t.title,rr.RESEAON
+		r.*,p.rpcount,t.title,rr.RESEAON
 		from
 		tb_report r ,
 		(SELECT
-		count(*) count,BOARD_NUM
+		count(*)
+		rpcount,BOARD_NUM
 		from
 		tb_report
 		where type = 'board'
-		group by BOARD_NUM) p , TB_REPORT_RESEAON rr,
-		(select 
+		group by
+		BOARD_NUM)
+		p , TB_REPORT_RESEAON rr,
+		(select
 		title,num,'free' board_type
 		from
 		TB_FREE_BOARD
 		union all
-		select 
+		select
 		title,num,'review'
 		from TB_REVIEW_STUDY
 		union all
-		select 
+		select
 		title,num,'recruit'
 		from TB_STUDY_RECRUITMENT) t
-		where r.BOARD_NUM = p.BOARD_NUM
+		where
+		r.BOARD_NUM = p.BOARD_NUM
 		and
-		r.CODE = rr.CODE
+		r.CODE =
+		rr.CODE
 		and
 		r.BOARD_NUM = t.num
 		and
 		r.BOARD_TYPE = t.board_type
 		and
-		type= 'board'
+		type=
+		'board'
+
+		<if test="type == 'email'">
+			and email like '%'||#{keyword}||'%'
+		</if>
+		<if test="type == 'title'">
+			and title like '%'||#{keyword}||'%'
+		</if>
+		order by
+		<if test="filter == 'regDate'">
+			r.reg_date
+		</if>
+		<if test="filter == 'reseaon'">
+			rr.RESEAON
+		</if>
+		<if test="filter == 'rpcount'">
+			p.rpcount
+		</if>
+		desc) a)
+		where rnum between #{begin} and #{end}
 	</select>
 
 	<!-- 1개 글 정보 뽑아 오는 데 + 신고횟수 +신고사유+글 제목 + 게시판 종류 -->
 	<select id="selectOneBoardReport" parameterType="int"
 		resultMap="AreportMap">
-		select r.*,p.count, rr.RESEAON
+		select r.*,p.rpcount, rr.RESEAON
 		from tb_report r ,
 		(SELECT
-		count(*) count,BOARD_NUM
+		count(*) rpcount,BOARD_NUM
 		from tb_report
 		where type = 'board'
 		group by
@@ -171,24 +239,36 @@
 	</select>
 
 	<!-- 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유+스터디 명 -->
-	<select id="selectStudyReport" resultMap="AreportMap">
+	<select id="selectStudyReport" parameterType="Search"
+		resultMap="AreportMap">
+
+		select *
+		from (select rownum rnum,
+		a.*,
+		count(*) over() as cnt
+		from(
+
 		select
-		ca.CATEGORY_NAME,s.NAME,r.*,p.count,
+		ca.CATEGORY_NAME,s.NAME,r.*,p.rpcount,
 		rr.RESEAON,s.EMAIL cap
-		from tb_report r ,
+		from
+		tb_report r ,
 		(SELECT
-		count(*) count,STUDY_NUM
+		count(*) rpcount , STUDY_NUM
 		from
 		tb_report
-		where type = 'study'
+		where
+		type = 'study'
 		group
 		by
 		STUDY_NUM) p , TB_REPORT_RESEAON rr
-		,TB_CATEGORY ca,TB_STUDY s
+		,TB_CATEGORY
+		ca,TB_STUDY s
 		where
 		r.STUDY_NUM = p.STUDY_NUM
 		and
-		r.CODE = rr.CODE
+		r.CODE =
+		rr.CODE
 		and
 		r.STUDY_TYPE =
 		ca.CATEGORY_CODE
@@ -196,26 +276,50 @@
 		r.STUDY_NUM = s.NUM
 		and
 		type= 'study'
+
+		<if test="type == 'email'">
+			and email like '%'||#{keyword}||'%'
+		</if>
+		<if test="type == 'name'">
+			and NAME like '%'||#{keyword}||'%'
+		</if>
+		order by
+		<if test="filter == 'regDate'">
+			r.reg_date
+		</if>
+		<if test="filter == 'reseaon'">
+			rr.RESEAON
+		</if>
+		<if test="filter == 'rpcount'">
+			p.rpcount
+		</if>
+		desc
+		) a)
+		where rnum between #{begin} and #{end}
+
 	</select>
 
 	<!-- 1개 스터디신고 정보 뽑아 오는 데 + 신고횟수 +신고사유+스터디 명 -->
 	<select id="selectOneStudyReport" parameterType="int"
 		resultMap="AreportMap">
 		select
-		ca.CATEGORY_NAME,s.NAME,r.*,p.count,
+		ca.CATEGORY_NAME,s.NAME,r.*,p.rpcount,
 		rr.RESEAON,s.EMAIL cap
 		from tb_report r ,
 		(SELECT
-		count(*) count,STUDY_NUM
+		count(*)
+		rpcount,STUDY_NUM
 		from
 		tb_report
 		where type = 'study'
 		group
 		by
-		STUDY_NUM) p , TB_REPORT_RESEAON rr
+		STUDY_NUM) p
+		, TB_REPORT_RESEAON rr
 		,TB_CATEGORY ca,TB_STUDY s
 		where
-		r.STUDY_NUM = p.STUDY_NUM
+		r.STUDY_NUM =
+		p.STUDY_NUM
 		and
 		r.CODE = rr.CODE
 		and
@@ -230,53 +334,94 @@
 	</select>
 
 	<!-- 스터디+소속 팀원수+카테고리 명+주소+주소1 -->
-	<select id="selectStudy" resultMap="AstudyMap">
-	SELECT s.* ,
+	<select id="selectStudy" parameterType="Search"
+		resultMap="AstudyMap">
+		select *
+		from (select rownum rnum,
+		a.*,
+		count(*) over() as cnt
+		from(
+
+		SELECT s.* ,
 		nvl(p.c,0)+1
-		count , ca.CATEGORY_NAME , a.ADDRESS_DETAIL , a.ADDRESS_DETAIL2
+		member , ca.CATEGORY_NAME , a.ADDRESS_DETAIL ,
+		a.ADDRESS_DETAIL2
 		FROM TB_STUDY s,
 		( select STUDY_NUM,count(*) c
 		from
 		TB_PARTICIPANT
 		where CONDITION = 2
-		group by STUDY_NUM) p , TB_CATEGORY ca , TB_ADDRESS a
+		group by STUDY_NUM) p , TB_CATEGORY
+		ca , TB_ADDRESS a
 		where s.num = p.STUDY_NUM(+)
-        and
-        s.CATEGORY_CODE = ca.CATEGORY_CODE
-        and
-        s.ADDRESS_CODE = a.ADDRESS_CODE
+		and
+		s.CATEGORY_CODE =
+		ca.CATEGORY_CODE
+		and
+		s.ADDRESS_CODE = a.ADDRESS_CODE
+
+		<if test="type == 'email'">
+			and email like '%'||#{keyword}||'%'
+		</if>
+		<if test="type == 'name'">
+			and name like '%'||#{keyword}||'%'
+		</if>
+		<if test="type == 'addressDetail'">
+			and address_Detail like '%'||#{keyword}||'%'
+		</if>
+		<if test="type == 'addressDetail2'">
+			and address_Detail2 like '%'||#{keyword}||'%'
+		</if>
+		order by
+		<if test="filter == 'regDate'">
+			reg_date
+		</if>
+		<if test="filter == 'categoryName'">
+			category_Name
+		</if>
+		<if test="filter == 'member'">
+			member
+		</if>
+		desc) a)
+		where rnum between #{begin} and #{end}
 	</select>
 
 	<!-- 아이디 받아서 그사람이 개설한 스터디 + 팀원 수 -->
 	<select id="selectPeopleOpenStudy" parameterType="String"
 		resultMap="AstudyMap">
-		
-		select a.ADDRESS_DETAIL,a.ADDRESS_DETAIL2 ,s.* , count,ca.CATEGORY_NAME
-		from TB_STUDY s,
+
+		select a.ADDRESS_DETAIL,a.ADDRESS_DETAIL2 ,s.* ,
+		member,ca.CATEGORY_NAME
+		from
+		TB_STUDY s,
 		(select
-		STUDY_NUM,count(*)+1 count
+		STUDY_NUM,count(*)+1
+		member
 		from
 		TB_PARTICIPANT
-		where CONDITION = 2
+		where
+		CONDITION = 2
 		group
 		by STUDY_NUM) p,
-        tb_category ca,
-        TB_ADDRESS a
+		tb_category ca,
+		TB_ADDRESS a
 		where
 		EMAIL = #{email}
 		and
-		s.num = p.STUDY_NUM(+)
-        and
-        s.CATEGORY_CODE = ca.CATEGORY_CODE
-        and
-        s.ADDRESS_CODE = a.ADDRESS_CODE
-	
+		s.num =
+		p.STUDY_NUM(+)
+		and
+		s.CATEGORY_CODE = ca.CATEGORY_CODE
+		and
+		s.ADDRESS_CODE =
+		a.ADDRESS_CODE
+
 	</select>
 
 	<!-- 아이디 받아서 그사람이 가입한 스터디 + 팀원수 -->
 	<select id="selectPeopleJoinStudy" parameterType="String"
 		resultMap="AstudyMap">
-		select s.* , count
+		select s.* , member
 		from TB_STUDY s,
 		(SELECT STUDY_NUM
 		FROM
@@ -285,7 +430,7 @@
 		and
 		EMAIL = #{email}) p,
 		(select
-		STUDY_NUM,count(*)+1 count
+		STUDY_NUM,count(*)+1 member
 		from TB_PARTICIPANT
 		where CONDITION = 2
 		group
@@ -299,72 +444,102 @@
 
 
 	<!-- 유저정보+가입스터디수 +개설 스터디수 -->
-	<select id="selectUserInfo" resultMap="AuserMap">
+	<select id="selectUserInfo" parameterType="Search"
+		resultMap="AuserMap">
+		select *
+		from (select rownum rnum,
+		a.*,
+		count(*) over() as cnt
+		from(
+
 		select
-		s.*,nvl(p.c,0) count
+		s.*,nvl(p.c,0) rpcount
 		,nvl(o.open,0) open ,nvl(j.join,0) join
-		from tb_user s,
+		from
+		tb_user s,
 
 		(SELECT
 		REPORT_TARGET,count(*) c
 		from tb_report
-		where type = 'user'
+		where type
+		=
+		'user'
 		group
 		by
 		REPORT_TARGET) p,
 		(select EMAIL,count(*) open
-		from TB_STUDY
+		from
+		TB_STUDY
 		group by
 		EMAIL) o,
 		(SELECT r.EMAIL,count(*) join
-		FROM TB_PARTICIPANT r
+		FROM
+		TB_PARTICIPANT r
 		where
 		CONDITION = 2
 		group by EMAIL) j
 
-		where s.EMAIL = p.REPORT_TARGET(+)
+		where s.EMAIL =
+		p.REPORT_TARGET(+)
 		and
 		s.EMAIL = o.EMAIL(+)
 		and
 		s.EMAIL = j.EMAIL(+)
-		
+
+		<if test="type == 'email'">
+			and s.email like '%'||#{keyword}||'%'
+		</if>
+		<if test="filter == 'rpcount'">
+		order by
+			rpcount
+		desc
+		</if>
+		) a)
+		where rnum between #{begin} and #{end}
+
 	</select>
 	<!-- 아이디 받아서 유저정보+가입스터디수 +개설 스터디수 -->
-	<select id="selectOneUserInfo" parameterType="String" resultMap="AuserMap">
+	<select id="selectOneUserInfo" parameterType="String"
+		resultMap="AuserMap">
 		select
-		s.*,nvl(p.c,0) count
-		,nvl(o.open,0) open ,nvl(j.join,0) join
+		s.*,nvl(p.c,0) rpcount
+		,nvl(o.open,0) open ,nvl(j.join,0)
+		join
 		from tb_user s,
 
 		(SELECT
 		REPORT_TARGET,count(*) c
 		from tb_report
-		where type = 'user'
+		where
+		type = 'user'
 		group
 		by
 		REPORT_TARGET) p,
 		(select EMAIL,count(*) open
-		from TB_STUDY
+		from
+		TB_STUDY
 		group by
 		EMAIL) o,
 		(SELECT r.EMAIL,count(*) join
-		FROM TB_PARTICIPANT r
+		FROM
+		TB_PARTICIPANT r
 		where
 		CONDITION = 2
 		group by EMAIL) j
 
-		where s.EMAIL = p.REPORT_TARGET(+)
+		where s.EMAIL =
+		p.REPORT_TARGET(+)
 		and
 		s.EMAIL = o.EMAIL(+)
 		and
 		s.EMAIL = j.EMAIL(+)
-		and 
+		and
 		s.EMAIL = #{email}
 	</select>
 
 	<!-- 총 카테고리 +개설 스터디수 -->
 	<select id="selectCategory" resultMap="AdminCategoryMap">
-		SELECT c.* ,count
+	SELECT c.* ,nvl(count,0) studycnt
 		FROM
 		TB_CATEGORY c,
 		(SELECT count(*)
@@ -373,7 +548,7 @@
 		group by
 		CATEGORY_CODE) s
 		where
-		c.CATEGORY_CODE = s.CATEGORY_CODE
+		c.CATEGORY_CODE = s.CATEGORY_CODE(+)
 	</select>
 
 	<!-- 카테고리 이름 받아서 추가 -->
@@ -399,5 +574,14 @@
 		values(SEQ_REPORT_NUM.nextval,#{type},#{reportTarget},#{boardNum},
 		#{content},#{code},#{email},#{boardType},#{studyNum})
 	</insert>
+
+	<!-- 아이디 받아서 밴기간 설정 -->
+
+	<update id="updateBanDate" parameterType="user">
+		 update tb_user
+   		  set ban_Date = SYSDATE + ${ban}
+   		  ,STATUS = 2
+    	where email=#{email}
+	</update>
 
 </mapper>

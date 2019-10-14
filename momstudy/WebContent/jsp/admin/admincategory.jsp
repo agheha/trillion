@@ -5,19 +5,12 @@
 
 <div id="box-7">
 	<!-- box two content -->
-	<form class="saerch-cat">
-		<label for="categoryName" id="LcategoryName">카테고리 명</label>
-		 	<input type="radio" name="ser" id="categoryName"> 
-		 	<label for="StudyCnt" id="LStudyCnt">스터디수</label> 
-			<input type="radio" name="ser" id="StudyCnt">
-			<input id="text" type="text" name="" placeholder="saerch">
-		<button id="sbtn">검색</button>
-	</form>
-	<form action="" name="" class="add">
-		<input type="text" name="" id="categoryadd">
+	
+	<form action="categoryinsert.do" name="catform" class="add">
+		<input type="text" name="categoryName" id="categoryadd">
 		<button id="cadd">등록</button>
 	</form>
-	<form action="" name="mform">
+	<form action="categorydelete.do" name="mform">
 
 		<span id="categorytitle">카테고리</span>
 
@@ -33,14 +26,14 @@
 					<c:forEach var="list" items="${list }">
 						<tr>
 							<td>${list.categoryName }</td>
-							<td>${list.cnt }</td>
-							<td class="delete"><input type="checkbox" name="dleNo"
+							<td>${list.studycnt }</td>
+							<td class="delete"><input type="checkbox" name="categoryCode"
 								value="${list.categoryCode }"></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<button type="button" id="del2">삭제</button>
+			<button id="del2">삭제</button>
 	</form>
 </div>
 

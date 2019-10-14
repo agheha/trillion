@@ -5,14 +5,6 @@
 
 <div id="box-5">
 	<!-- box two content -->
-	<form class="saerch">
-		<select name="" id="">
-			<option value="">회원명</option>
-			<option value="">?1</option>
-			<option value="">?2</option>
-		</select> <input type="text" name="" placeholder="saerch">
-		<button>검색</button>
-	</form>
 	<table>
 		<thead>
 			<th>스터디 분야</th>
@@ -30,7 +22,7 @@
 					<td onclick="mopen(),userDtailAjax1('${report.email}')">${report.email }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${report.regDate}" /></td>
 					<td>${report.addressDetail} ${report.addressDetail2}</td>
-					<td>${report.cnt}</td>
+					<td>${report.member}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -42,7 +34,7 @@
 	
 	</div>
 </div>
-
+<%@include file="/jsp/common/pagination.jsp" %>
 </div>
 
 </div>

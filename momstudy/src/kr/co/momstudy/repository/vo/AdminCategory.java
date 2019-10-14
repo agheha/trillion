@@ -4,7 +4,7 @@ public class AdminCategory {
 
 	private int categoryCode;
 	private String categoryName;
-	private int cnt;
+	private int studycnt;
 	
 	
 	public int getCategoryCode() {
@@ -19,10 +19,11 @@ public class AdminCategory {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	public int getCnt() {
-		return cnt;
+	public int getStudycnt() {
+		return studycnt;
 	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
+	public void setStudycnt(int studycnt) {
+		this.studycnt = studycnt;
 	}
+
 }

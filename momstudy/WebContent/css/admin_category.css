@@ -18,13 +18,13 @@
 	font-weight: bold;
 }
 
-.saerch-cat {
+/* .saerch-cat {
 	position: absolute;
 	z-index: 1;
 	width: auto;
     top: 535px;
     left: 1066px;
-}
+} */
 
 #category_table {
 	width: 500px;
@@ -93,13 +93,15 @@
 }
 
 .add {
-	top: 170px;
+	top: 140px;
 	left: 18px;
 }
 
 #del2 {
-	position: relative;
+    position: absolute;
     left: 792px;
-    top: 171px;
-	width: 50px;
+    top: 384px;
+    width: 50px;
+    height: 27px;
+    z-index: 1;
 }
