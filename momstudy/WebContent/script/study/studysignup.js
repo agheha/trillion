@@ -3,7 +3,7 @@ var modal = document.getElementById('myModal');
 
 var btn = document.getElementById("myBtn");
 
-var span = document.getElementsByClassName("close")[0];     
+var span = document.getElementsByClassName("closer")[0];     
 
 btn.onclick = () => {
     modal.style.display = "block";

@@ -8,7 +8,15 @@ public class Participant {
 	private String email;
 	private Date partDate;
 	private int condition;
+	private String name;
 	
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getStudyNum() {
 		return studyNum;
 	}
