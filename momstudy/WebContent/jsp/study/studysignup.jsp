@@ -9,7 +9,7 @@
 		<div id="que">스터디에 가입하시겠습니까?</div>
 		<br/>
 		<button type="button" id="signup" onclick=sign(${str.studyNum})>가입</button>
-		<button class="close">취소</button>
+		<button class="closer">취소</button>
     </div>
 
     <script>

@@ -74,9 +74,12 @@
 				</c:if>
            <!-- 신청하기 버튼 => 스터디원 이고, 로그인이 되어있는 상태에서만 활성화-->
 				<c:if test="${user.email != str.email && not empty user.email}">
+				<!-- 참여한 적이 없는 사람만 활성화 -->
+				<c:if test="${p_flag}">
 					<button type="button" id="myBtn" >
 						<a id="stdsign" href='#'>신청하기</a>
 					</button>
+				</c:if>
 				</c:if>
 			</div>
 			<div class="buttons">
