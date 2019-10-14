@@ -169,7 +169,7 @@
 	</resultMap>
 	<select id="selectFile" parameterType="int" resultMap="fileMap">
 		select *
-		from tb_review_study r
+		from tb_study_recruitment r
 		inner join tb_file f
 		on r.file_group_code = f.file_group_code
 		where study_num = ${studyNum}

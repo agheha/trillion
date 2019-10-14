@@ -27,11 +27,6 @@
 	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"
 	src='<c:url value="/script/slick/slick.js" />'></script>
-<style>
-	#newstudy{
-		
-	}
-</style>
 </head>
 <body>
 	<header id="header">
@@ -61,7 +56,7 @@
 
 	<div class="board_cont_wrap">
 		<div>
-			<button id="newstd" 
+			<button id="myBtn"
 			        onclick="location.href='<c:url value="/study/studywriteform.do" />'">새로운 스터디 등록하기</button>
 		</div>
 		<div class="slide_wrap">
@@ -99,7 +94,18 @@
 		<%@include file="/jsp/common/pagination.jsp"%>
 		</div>
 	</div>
-
+	
+	
+	<!-- The Modal 스터디 등록부분-->
+	<div id="myModal" class="modal hidden" style="display: none">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<%@include file="/jsp/study/studywriteform.jsp"%>
+		</div>
+	</div>
+	
+	<script src="<c:url value="/script/study/studysignup.js"/>"></script>
+		
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#header").load("header.html");
