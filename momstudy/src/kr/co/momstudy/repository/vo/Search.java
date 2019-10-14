@@ -25,6 +25,9 @@ public class Search extends Page{
 	private String filter;
 	private List<String[]> types;
 	private List<String[]> filters;
+	private Address[] address;
+	
+	
 	
 	public List<String[]> getTypes() {
 		return types;
