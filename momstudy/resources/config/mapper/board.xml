@@ -60,13 +60,13 @@
 <insert id="insertBoard" parameterType="Board">
 
 insert into tb_free_board (num, title, content, email, study_no, comment_group_code) 
-values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{studyNo}, seq_comment_num.nextval)
+values (seq_free_board_num.nextval, #{title}, #{content}, #{email}, #{studyNo}, seq_comment_num.nextval)
 </insert>
 
 <!-- 공지사항글 체크 시 -->
 <insert id="insertBoard2" parameterType="Board">
 insert into tb_free_board (num, title, content, email, type, notice , study_no, comment_group_code)
-values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{type}, #{notice}, #{studyNo}, seq_comment_num.nextVal )
+values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{type}, #{notice}, #{studyNo}, seq_comment_num.nextval)
 </insert>
 
 <!-- 글 수정 -->
@@ -76,6 +76,17 @@ values (seq_boardtype_no.nextval, #{title}, #{content}, #{email}, #{type}, #{not
        content = #{content}
        where num = #{num}  
 </update>
+<!-- 글. 공지 교체 -->
+<update id="updateBoard2" parameterType="Board">
+ update tb_free_board
+    set title = #{title},
+       content = #{content},
+       type = #{type},
+       notice = #{notice}
+       where num = #{num}  
+</update>
+
+
 <!-- 글 조회 수 -->
 <update id="updateSeeCnt" parameterType="int">
  update tb_free_board

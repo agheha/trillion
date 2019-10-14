@@ -1,4 +1,4 @@
-package kr.co.momstudy.board.controller;
+package kr.co.momstudy.boardfree.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,34 +17,32 @@ import com.oreilly.servlet.MultipartRequest;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.BoardDAO;
 import kr.co.momstudy.repository.vo.Board;
-import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.MomstudyFileRenamePolicy;
 
-@WebServlet("/board/update.do")
-public class UpdateBoardController extends HttpServlet {
+@WebServlet("/boardfree/freeupdate.do")
+public class UpdateBoardFreeController extends HttpServlet {
 	
 	private BoardDAO dao;
 	
-	public UpdateBoardController() {
+	public UpdateBoardFreeController() {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(BoardDAO.class);
 	}
 	
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+	
+		
 		HttpSession session = req.getSession();
-		Study study = (Study)session.getAttribute("study");
 		User user = (User)req.getSession().getAttribute("user");
-		int studyNum = study.getNum();
 		int boardNum = Integer.parseInt(req.getParameter("num"));
-
+		
 		// 파라미터 정보를 읽어 데이터베이스에 저장하기
 		Board board = dao.selectOneBoard(boardNum);
 		board.setTitle(req.getParameter("title"));
 		board.setContent(req.getParameter("content"));
 		board.setEmail(user.getEmail());
-		board.setStudyNo(studyNum);
 		
 		String type = req.getParameter("type");
 		String notice = req.getParameter("notice");
@@ -73,8 +71,9 @@ public class UpdateBoardController extends HttpServlet {
 		}
 		
 		dao.updateBoard(board);
-        
-		res.sendRedirect("list.do");
+		
+		      
+		res.sendRedirect("freelist.do");
 	}
 }
 

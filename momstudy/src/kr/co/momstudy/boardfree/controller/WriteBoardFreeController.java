@@ -1,4 +1,4 @@
-package kr.co.momstudy.board.controller;
+package kr.co.momstudy.boardfree.controller;
 
 import java.io.IOException;
 
@@ -15,28 +15,24 @@ import kr.co.momstudy.repository.vo.Board;
 import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/board/write.do")
-public class WriteBoardController extends HttpServlet {
+@WebServlet("/boardfree/freewrite.do")
+public class WriteBoardFreeController extends HttpServlet {
 	private BoardDAO dao;
 	
-	public WriteBoardController() {
+	public WriteBoardFreeController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(BoardDAO.class);
 	}
 	
 	public void service(HttpServletRequest req, HttpServletResponse res) 
 	                      throws ServletException, IOException {
-		 HttpSession session = req.getSession();
-	     Study study = (Study)session.getAttribute("study");
-	     User user = (User)req.getSession().getAttribute("user");
-	     int studyNum = study.getNum();
-	      
-		Board board = new Board(); 
+		HttpSession session = req.getSession();
+		User user = (User)req.getSession().getAttribute("user");
 		
+		Board board = new Board(); 
 		board.setTitle(req.getParameter("title"));
 		board.setContent(req.getParameter("content"));
 		board.setEmail(user.getEmail());
-		board.setStudyNo(studyNum);
-		
+
 		String type = req.getParameter("type");
 		String notice = req.getParameter("notice");
 	   
@@ -55,7 +51,8 @@ public class WriteBoardController extends HttpServlet {
 			dao.insertBoard2(board);
 		}
 		
-		res.sendRedirect("list.do");
+		
+		res.sendRedirect("freelist.do");
    }
 }
 

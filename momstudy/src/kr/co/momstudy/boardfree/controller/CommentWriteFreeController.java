@@ -1,4 +1,4 @@
-package kr.co.momstudy.board.controller;
+package kr.co.momstudy.boardfree.controller;
 
 import java.io.IOException;
 
@@ -14,12 +14,12 @@ import kr.co.momstudy.repository.dao.CommentDAO;
 import kr.co.momstudy.repository.vo.Comment;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/board/commentWrite.do")
-public class CommentWriteController extends HttpServlet {
+@WebServlet("/boardfree/freecommentWrite.do")
+public class CommentWriteFreeController extends HttpServlet {
 
 	private CommentDAO dao;
 	
-	public CommentWriteController() {
+	public CommentWriteFreeController() {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(CommentDAO.class);
 	}
 	
@@ -31,6 +31,8 @@ public class CommentWriteController extends HttpServlet {
 		User user = (User)session.getAttribute("user");
 		
 		int no = Integer.parseInt(req.getParameter("num"));
+		
+		
 		
 		// 게시판과 파일 테이블에 저장할 글번호를 조회
 		Comment comment = new Comment();
@@ -44,7 +46,7 @@ public class CommentWriteController extends HttpServlet {
 				
 	
 		//댓글 등록시 다시 상세정보창으로
-		res.sendRedirect("detail.do?no=" + no);
+		res.sendRedirect("freedetail.do?no=" + no);
 	}
 }
 
