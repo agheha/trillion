@@ -136,4 +136,5 @@
 		 where study_num = #{studyNum}
 		   and email = #{email}
 	</select>
+	
 </mapper>

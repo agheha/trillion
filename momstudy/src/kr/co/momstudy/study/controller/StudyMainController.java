@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.StudyDAO;
@@ -34,8 +35,9 @@ public class StudyMainController extends HttpServlet{
 		// 스터디 모집글 유무
 		StudyRecruitment str = strDao.whetherStudyRecruitment(studyNum);
 		if (str != null) {
-			req.setAttribute("str", str);
-		}
+			HttpSession session = req.getSession();
+			session.setAttribute("str", str);
+			;}
 		
 		req.getSession().setAttribute("study", study);
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studymain.jsp");
