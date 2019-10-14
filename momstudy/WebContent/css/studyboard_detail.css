@@ -68,3 +68,7 @@
     border-radius: 4px;
     margin: 0 5px;
 }
+
+.textAreaWrap {
+	display: none;
+}

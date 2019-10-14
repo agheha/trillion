@@ -1,9 +1,3 @@
-// 현재 로그인 한 유저 이메일 정보 넘어오는지 테스트
-alert(user.value);
-// 댓글 작성한 유저의 이메일 정보가 넘어오는지 테스트
-alert(writer.value);
-// 두개 넘어오면 이걸로 여기서 확인해서 댓글을 뿌려줄때 수정, 삭제버튼 생기도록 기능 추가해야됨.
-
 // 댓글 목록 가져오는 Ajax
 function commentListAjax() {
 	let xhr = new XMLHttpRequest();
@@ -11,6 +5,27 @@ function commentListAjax() {
 		if(xhr.readyState === 4) {
 			if(xhr.status === 200) {
 				makeCommentList(JSON.parse(xhr.responseText));
+				
+				let cmtUpBtn = document.querySelectorAll(".cmtUpBtn");
+				
+				for (let i = 0; i < cmtUpBtn.length; i++) {
+					cmtUpBtn[i].addEventListener("click", (e) => {
+						let commentWrap = document.querySelectorAll(".commentWrap");
+						let textAreaWrap = document.querySelectorAll(".textAreaWrap");
+						
+						if (commentWrap[i].style.display == "block") {
+							commentWrap[i].style.display = "none";
+							textAreaWrap[i].style.display = "block";
+							
+						} else {
+							
+							commentWrap[i].style.display = "block";
+							textAreaWrap[i].style.display = "none";
+						}
+						
+					})
+				}
+
 			}
 		}
 	}
@@ -21,12 +36,14 @@ commentListAjax();
 
 // 댓글 뿌려주는 html 영역
 function makeCommentList(list) {
+	let user = document.getElementById("user");
 	let commentList = document.getElementById("commentList");
 	let html = "<div>";
+	let cnt = 0;
 	for (let i = 0; i < list.length; i++) {
 		let comment = list[i];
 		
-		if (`${comment.commentGroup}` == 1) {
+		if (`${comment.email}` == user.value) {
 			html += `
 			<div>
 				<div>
@@ -34,13 +51,20 @@ function makeCommentList(list) {
 					<span>${comment.regDate}</span>
 					댓글 번호 : ${comment.num}
 					<div>
-						<button type="button">수정</button>				
+						<button type="button" class="cmtUpBtn" index="${cnt++}">수정</button>				
 						<button type="button" onclick="commentDeleteAjax(${comment.num}, ${comment.commentGroupCode})">삭제</button>
-						<button type="button">답글</button>
 					</div>
 				</div>
-				<div>
+				<div class="commentWrap" id="commentWrap${cnt}">
 					${comment.content}
+				</div>
+				<div class="textAreaWrap" id="textAreaWrap${cnt}">
+					
+					<form name="cmtForm" method="post" action="commentUpdate.do" >
+						<textarea class="cmtContent" index="${cnt}">${comment.content}</textarea>
+						<button class="cmtBtn" type="button" onclick="commentUpdateAjax(${comment.num}, ${comment.commentGroupCode})">등록</button>
+					</form>
+					
 				</div>
 			</div>
 			`;
@@ -51,9 +75,6 @@ function makeCommentList(list) {
 				<div>
 					<span>${comment.email}</span>
 					<span>${comment.regDate}</span>		
-					<div>
-						<button type="button">답글</button>
-					</div>
 				</div>
 				<div>
 					${comment.content}
@@ -67,6 +88,30 @@ function makeCommentList(list) {
 	html += "</div>";
 	commentList.innerHTML = html;
 }
+
+//댓글 수정
+function commentUpdateAjax(commentNum, commentGroupCode) {
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = (e) => {
+		if(xhr.readyState === 4) {
+			if(xhr.status === 200) {
+				makeCommentList(JSON.parse(xhr.responseText));
+			}
+		}
+	}
+	xhr.open("POST", "commentUpdate.do", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	
+	let values = document.querySelectorAll(".cmtContent");
+	let cmtBtn = document.querySelectorAll(".cmtBtn");
+
+	for (let i = 0; i < values.length; i++) {
+		cmtBtn[i].addEventListener("click", (e) => {
+			xhr.send(`commentNum=${commentNum}&commentGroupCode=${commentGroupCode}&content=${values[i].value}`);
+		})
+	}
+}
+
 
 
 // 댓글 삭제

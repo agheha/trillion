@@ -65,7 +65,12 @@
    
            <div class="board_cont">
                ${rBoard.content}
+               
+	     	   <form>
+					<button>신고하기</button>
+	      	   </form>
            </div>
+
 
            <div class="buttons">
 	           <c:choose>
@@ -88,7 +93,7 @@
 						<div>테스트옹 user.email = ${user.email}</div>
 						
 						<input type="hidden" name="num" value="${rBoard.num}" />
-						<input type="hidden" name="email" value="${user.email}" />
+						<input id="user" type="hidden" name="email" value="${user.email}" />
 						<div>
 							<textarea name="content"></textarea>
 						</div>
@@ -105,9 +110,7 @@
     </section>
     
 	<script>
-		let num = ${rBoard.num};
-		let user = ${user.email};
-		let writer = ${rBoard.writer};
+		let num = ${rBoard.num}
 	</script>
     <script src="<c:url value='/script/review/commentReview.js' />"></script>
 
