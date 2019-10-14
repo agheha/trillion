@@ -11,6 +11,7 @@
 <link rel="stylesheet" href='<c:url value="/css/common.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_nlogin.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/recruitmentlist.css" />'>
 
 <!-- slide plugin -->
 <link rel="stylesheet" type="text/css"
@@ -27,11 +28,6 @@
 	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"
 	src='<c:url value="/script/slick/slick.js" />'></script>
-<style>
-	#newstudy{
-		
-	}
-</style>
 </head>
 <body>
 	<header id="header">
@@ -44,12 +40,24 @@
 			<h1>스터디</h1>
 			<p>--------------</p>
 		</div>
+		<div class="left_list">
+        	<form action="<c:url value="/study/studyrecruitmentlist.do" />"  method="GET" >
+	            <ul>
+	            	<c:forEach var="category" items="${cList}">
+		                <li>
+		                	<button name="code" value="${category.categoryCode}" id="cate${category.categoryCode}">
+		                		${category.categoryName}
+		                	</button>
+		                </li>
+	                </c:forEach>
+	            </ul>          
+        	</form>
+        </div>
 	</section>
 
 	<div class="board_cont_wrap">
 		<div>
-			<button id="newstd" 
-			        onclick="location.href='<c:url value="/study/studywriteform.do" />'">새로운 스터디 등록하기</button>
+			<button id="myBtn" type="button">새로운 스터디 등록하기</button>
 		</div>
 		<div class="slide_wrap">
 			<c:if test="${empty list}">
@@ -64,13 +72,11 @@
 				   class="content_wrap">
 					<div class="imgbg">
 						<div>
-							<img src="<%=request.getContextPath()%>/images/test_img1.jpg"
-								alt="">
+							<img src="<c:url value="/util/download.do?fgno=${str.fileGroupCode}" />" alt="">
 						</div>
 					</div>
 					<div class="thumbnail">
-						<img src="<%=request.getContextPath()%>/images/test_img1.jpg"
-							alt="">
+						<img src="<c:url value="/util/download.do?fgno=${str.fileGroupCode}" />" alt="">
 					</div>
 					<div class="study_cont">
 						<p>${str.title}</p>
@@ -88,7 +94,18 @@
 		<%@include file="/jsp/common/pagination.jsp"%>
 		</div>
 	</div>
+	
+	
+	<!-- The Modal 스터디 등록부분-->
+	<div id="myModal" class="modal hidden">
 
+		<!-- Modal content -->
+		<div class="modal-content">
+			<%@include file="/jsp/study/studywriteform.jsp"%>
+		</div>
+	</div>
+	
+	<script src="<c:url value="/script/study/studysignup.js"/>"></script>	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#header").load("header.html");

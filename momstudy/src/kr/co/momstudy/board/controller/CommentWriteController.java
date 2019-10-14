@@ -32,15 +32,12 @@ public class CommentWriteController extends HttpServlet {
 		
 		int no = Integer.parseInt(req.getParameter("num"));
 		
-		
-		
 		// 게시판과 파일 테이블에 저장할 글번호를 조회
 		Comment comment = new Comment();
 		comment.setCommentGroupCode(no);
 		comment.setContent(req.getParameter("content"));
 	//	comment.setCommentGroup(req.getParameter(""));
-//		comment.setEmail(user.getEmail());
-		comment.setEmail("a@a.a");
+		comment.setEmail(user.getEmail());
 
 		// 게시물 저장 처리 부탁..
 		dao.insertComment(comment);

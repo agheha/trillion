@@ -78,7 +78,7 @@
     line-height: 25px;
     font-size: 14px;
     letter-spacing: -0.3px;
-    -webkit-line-clamp:3; 
+    -webkit-line-clamp:2; 
     -webkit-box-orient:vertical;
     text-overflow: ellipsis;
     overflow: hidden;

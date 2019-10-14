@@ -5,12 +5,15 @@ import java.util.List;
 import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.Category;
 import kr.co.momstudy.repository.vo.FileVO;
+import kr.co.momstudy.repository.vo.Participant;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.repository.vo.UserArea;
 import kr.co.momstudy.repository.vo.UserCategory;
 
 public interface UserDAO {
+	// 스터디 신청중이 스터디 리스트
+	List<Participant> selectParticipant(String email);
 	// 이메일 중복 체크
 	int emailCheck(String email);
 	// 로그인 - 이메일 비밀번호 확인

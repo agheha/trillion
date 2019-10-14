@@ -28,7 +28,6 @@ public class ListBoardController extends HttpServlet {
       HttpSession session = req.getSession();
       Study study = (Study)session.getAttribute("study");
       int studyNum = study.getNum();
-      System.out.println("찍혔냐?" + studyNum);
            
       String bPageNo = req.getParameter("pageNo");
       int pageNo = 1;
@@ -44,7 +43,7 @@ public class ListBoardController extends HttpServlet {
       
       
       search.setTypes("제목", "글쓴이");
-      search.setFilter("일자");
+      search.setFilters("일자", "조회수");
       search.setFilter(filter);
       search.setKeyword(keyword);
       search.setType(type);

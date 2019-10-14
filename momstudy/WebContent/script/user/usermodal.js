@@ -30,8 +30,3 @@ btn.addEventListener("click", e => {
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("pass="+pass.value);
 })
-// 회원탈퇴 클릭시 이벤트 발생
-let userdel = document.querySelector("#userDelete");
-userdel.addEventListener("click", e => {
-	location.href = "/momstudy/jsp/user/deleteuser.jsp"
-})

@@ -16,6 +16,7 @@ public interface BoardDAO {
 	void insertBoard2(Board board);
 	// 게시글 수
 	void updateBoard(Board board);
+	void updateBoard2(Board board);
 	// 게시글 조회
 	void updateSeeCnt(int num);
 	// 게시글 삭제

@@ -121,7 +121,7 @@ section.background_wrap {
     margin-bottom: 116px;
 
     /* 각페이지마다 background가 바뀌어야 하는 처리 필요 */
-    background-image: url("./../images/bg_image01.jpg");
+    background-image: url("./../images/bg_image01.png");
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;

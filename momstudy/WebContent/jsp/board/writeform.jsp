@@ -44,10 +44,10 @@
           <%@include file="/jsp/common/sidebar.jsp" %>
           
              <div class="study_right_wrap">
-            <form action="write.do" method="post" >
+            <form name="create" action="write.do" method="post" onsubmit="return check()" >
             <div>
-            <input class="type" type="checkbox" name="type" value="0" />공지사항
-            <input class="notice" type="checkbox" name="notice" value="0" /> 상단 고정     
+            <input class="type" type="checkbox" name="type" value="0"  onclick=" checkDisable(this.form)" />공지사항
+            <input class="notice" type="checkbox" name="notice" value="0" disabled /> 상단 고정     
             </div>
             
                 <div>
@@ -55,8 +55,6 @@
                     <input type="text" name="title" />
                     <p>내용</p>
                     <textarea name="content" id=""></textarea>
-                
-                
                 </div>
                 <div class="buttons">
                     <button class="submit_btn" type="submit">등록</button>
@@ -67,7 +65,7 @@
             </section>
        
 
-        <script type="text/javascript">
+        <script type="text/javascript"  src="<c:url value="/script/board/writeboard.js" />">
             $(document).ready(function() {
                 $("#header").load("header.html");
             });
@@ -76,6 +74,8 @@
                 obj.style.height = "1px";
                 obj.style.height = (12+obj.scrollHeight)+"px";
             }
+            
+            
         </script>
     </body>
 </html>

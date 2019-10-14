@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.momstudy.repository.dao.StudyDAO">
@@ -20,6 +20,13 @@
 		<result column="font_color" property="fontColor" />
 		<result column="bar_color" property="barColor" />
 		<result column="email" property="email" />
+	</resultMap>
+	<resultMap type="Participant" id="participantMap">
+		<result column="num" property="num" />
+		<result column="studyNum" property="studyNum"/>
+		<result column="email" property="email" />
+		<result column="part_date" property="partDate"/>
+		<result column="condition" property="condition"/>
 	</resultMap>
 
 	<!-- 스터디 등록 -->
@@ -121,4 +128,25 @@
 		  from tb_calener
 		 where num = #{num}  
 	</delete>
+	
+	<!-- 스터디에 신청한 적 있나 확인 -->
+	<select id="CheckParticipation" parameterType="Participant" resultType="int">
+		select count(*)
+		  from tb_participant
+		 where study_num = #{studyNum}
+		   and email = #{email}
+	</select>
+
+	<update id="updateCalender" parameterType="Calenders">
+		update TB_CALENER   
+		   set content = #{content},
+		       start_date = to_date(#{startDate},'YYYYMMDD'),
+		       end_date = to_date(#{endDate},'YYYYMMDD'),
+		       type = #{type}, 
+		       font_color = #{fontColor},
+		       bar_color = #{barColor},
+		       title = #{title}
+ 		 where num = #{num}
+	</update>
+
 </mapper>

@@ -48,10 +48,9 @@ button {
     outline: none;
     border: none;
     letter-spacing: 1px;
-    padding-left: 15px;
     cursor: pointer;
 }
-.signup, .close {
+.signup, .closer {
     padding: 1px;
 }
 

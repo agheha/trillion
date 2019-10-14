@@ -25,22 +25,17 @@ public class StudyApplyParticipationController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		HttpSession session = req.getSession();
-		
-		// 로그인 되어있는 유저 가져와서 참여자 객체에 세팅
-		User user = (User)session.getAttribute("user");
-		
-		Participant part = new Participant();
-		part.setEmail(user.getEmail());
-		
-		part.setStudyNum(Integer.parseInt(req.getParameter("studynum")));
-		
-		part.setCondition(1);
-		
-		// 참여자로 넣어 준다.
-		dao.insertParticipant(part);
-		
+			HttpSession session = req.getSession();
+			User user = (User)session.getAttribute("user");
+			
+			Participant part = new Participant();
+			part.setEmail(user.getEmail());
+			part.setStudyNum(Integer.parseInt(req.getParameter("studynum")));
+			
+			part.setCondition(1);
+			
+			// 참여자로 넣어 준다.
+			dao.insertParticipant(part);
 		
 		res.sendRedirect(req.getContextPath() + "/study/studyrecruitmentlist.do");
 	}

@@ -68,7 +68,7 @@
 				</div>
 			</div>
 			<div class="sn">
-				<button class="inbutton">취소</button>
+				<button class="inbutton closer" type="button">취소</button>
 				<button class="inbutton">만들기</button>
 
 			</div>

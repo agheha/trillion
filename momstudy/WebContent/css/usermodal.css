@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* The Modal (background) */
 .modal {
-	display: none; /* Hidden by default */
+	/* display: none; Hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
 	left: 0;
@@ -16,17 +16,24 @@
 /* Modal Content/Box */
 .modal-content {
 	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
+	position: absolute;
+	padding: 15px;
 	border: 1px solid #888;
-	width: 50%; /* Could be more or less, depending on screen size */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 4px;
 }
 /* The Close Button */
 .close {
-	color: #aaa;
 	float: right;
-	font-size: 28px;
-	font-weight: bold;
+}
+.modal > div > label { 
+	margin-right: 5px;
+}
+.modal > div > div {
+	margin-top: 25px;
+	text-align: center;
 }
 
 .close:hover, .close:focus {

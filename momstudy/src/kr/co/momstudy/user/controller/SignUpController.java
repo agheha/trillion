@@ -34,6 +34,12 @@ public class SignUpController extends HttpServlet{
 		phoneNum = PhoneNumformat.phone(phoneNum);
 		String birDate = req.getParameter("year") +"-"+ req.getParameter("month") +"-"+ req.getParameter("date");
 		String gender = req.getParameter("gender");
+		if (gender.equals("man")) {
+			gender = "남";
+		}
+		if (gender.equals("woman")) {
+			gender = "여";
+		}
 		String[] category = req.getParameterValues("category");
 		String[] userAddr = req.getParameterValues("userAddr");
 		

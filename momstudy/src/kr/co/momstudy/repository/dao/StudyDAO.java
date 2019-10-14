@@ -1,4 +1,4 @@
-package kr.co.momstudy.repository.dao;
+﻿package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
@@ -36,4 +36,9 @@ public interface StudyDAO {
 	Calenders selectOneCalender(int num);
 	
 	void deleteCalender(int num);
+	
+	// 스터디에 신청한 적이 있나 확인
+	int CheckParticipation(Participant part);
+	
+	void updateCalender(Calenders calender);
 }
