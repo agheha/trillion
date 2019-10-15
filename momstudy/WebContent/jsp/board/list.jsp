@@ -68,11 +68,18 @@
                 <div class="vote_title">
                     <p>스터디 게시판</p>
                     <div>
-                 
                         <button type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
                     </div>
                 </div>
                 <div class="board_list">
+					<ul id="types">
+						<li>번호</li>
+						<li>제목</li>
+						<li>이메일</li>
+						<li>날짜</li>
+						<li>조회수</li>
+					</ul>
+                
                         <c:if test="${empty list}">
                            <div>
                               <h2>게시글이 없습니다.</h2>

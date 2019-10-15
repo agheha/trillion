@@ -32,6 +32,9 @@ public class ListBoardFreeController extends HttpServlet {
     	  pageNo = Integer.parseInt(bPageNo);
       }
       String filter = "regDate";
+      if (req.getParameter("filter") != null) {
+    	  filter = req.getParameter("filter");
+      }
       String type = req.getParameter("type");
       String keyword = req.getParameter("keyword");
       

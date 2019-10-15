@@ -15,17 +15,12 @@
 
 <!-- 댓글 리스트 -->
 <select id="selectComment" parameterType="int" resultMap="commentMap">
-     <!--  
-      select *
-        from tb_comment
-        where commentGroupCode = #{commentGroupCode}
-        order by num
-      -->
-	select * from tb_comment where comment_group_code=#{num} order by comment_group, num asc
-<!--      select *
-       from tb_comment
-      where comment_group_code = #{num}
-      order by parent asc, num desc -->
+
+	select * 
+	from tb_comment 
+	where comment_group_code=#{num} 
+	order by comment_group, num asc
+
 </select>
 
 <!-- 댓글 등록 -->
@@ -56,8 +51,7 @@
 <!-- 댓글 수정 -->
 <update id="updateComment" parameterType="Comment">
    update tb_comment
-     set
-    content = #{content}
+     set content = #{content}
     where num = #{num}
 </update>
 

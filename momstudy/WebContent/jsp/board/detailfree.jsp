@@ -97,6 +97,9 @@ a {
 .top {
  text-align: right;
 }
+.report {
+ text-align: right;
+}
 
 </style>
 </head>
@@ -138,6 +141,13 @@ a {
 				<button type="button">
 					<a class="del" href='freedelete.do?num=${board.num}'>삭제</a>
 				</button>
+				<button type="button">
+				  <a class="del" href='freelist.do'>목록</a>
+				</button>
+				<button type="button">
+				 <a class="report" href="">신고하기</a>
+				</button>
+				
 			</div>
 			<br>
 			

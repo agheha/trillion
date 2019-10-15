@@ -25,18 +25,13 @@ public class CommentUpdateController extends HttpServlet {
 	}
 	public void doPost(
 			HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		 req.setCharacterEncoding("utf-8");
-		 HttpSession session = req.getSession();
-	   //  Study study = (Study)session.getAttribute("study");
-	     User user = (User)req.getSession().getAttribute("user");
-	     //int studyNum = study.getNum();
-			
+		req.setCharacterEncoding("utf-8");
+	    User user = (User)req.getSession().getAttribute("user");
+	     
 		Comment comment = new Comment();
 		comment.setContent(req.getParameter("content"));
 		comment.setNum(Integer.parseInt(req.getParameter("num")));
-		comment.setEmail(user.getEmail());
-		//comment.setStudyNo(studyNum);
-		
+		comment.setEmail(user.getEmail());	
 		dao.updateComment(comment);
 		
 		res.sendRedirect("detail.do?no=" + Integer.parseInt(req.getParameter("commentGroupCode")));

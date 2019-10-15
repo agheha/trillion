@@ -67,10 +67,6 @@
         </form>
     </section>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-        });
-    </script>
+    <script src="<c:url value='/script/review/checkReview.js' />"></script>
 </body>
 </html>

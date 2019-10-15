@@ -40,7 +40,7 @@
 							</a>
 						</c:when>
 						<c:otherwise>
-							<p class="main_title_cont">${user.name}님환영합니다.</p>
+							<p class="main_title_cont">${user.name}님 환영합니다</p>
 							<a href="<c:url value="/user/logout.do"/>">
 								<p class="main_title_cont">로그아웃</p>
 							</a>

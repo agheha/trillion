@@ -9,6 +9,7 @@
 		<result column="category_code" property="categoryCode" />
 		<result column="address_code" property="addressCode" />
 		<result column="num" property="num" />
+		<result column="file_group_code" property="fileGroupCode" />
 	</resultMap>
 	<resultMap type="Calenders" id="calenderMap">
 		<result column="num" property="num" />
@@ -53,11 +54,14 @@
 	<!-- 참여한 스터디를 가져옴 -->
 	<select id="selectStudy" parameterType="string"
 		resultMap="studyMap">
-		select *
-		from tb_study
-		where num in (select study_num
-		from tb_participant
-		where email = #{email} and condition = 2)
+		select a.*,
+       	   nvl(b.FILE_GROUP_CODE,0) as file_group_code
+  		  from tb_study a
+    left outer join tb_study_recruitment b
+     		on a.num = b.num
+ 		 where a.num in (select study_num
+                  		   from tb_participant 
+                 		  where email = #{email} and condition = 2)    			    
 	</select>
 
 	<select id="selectOneStudy" parameterType="int"

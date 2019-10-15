@@ -41,7 +41,7 @@
         <form action="<c:url value="/review/write.do" />" method="post" enctype="multipart/form-data">
             <div>
             	<p>스터디명</p>
-            	<div>${study.name}</div>
+            	<div class="studyName">${study.name}</div>
             	<input type="hidden" name="studyNum" value="${study.num}"/>
             	
                 <p>제목</p>
@@ -67,10 +67,6 @@
         </form>
     </section>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-        });
-    </script>
+     <script src="<c:url value='/script/review/checkReview.js' />"></script>
 </body>
 </html>

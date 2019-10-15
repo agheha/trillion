@@ -21,14 +21,7 @@
 </head>
 <body>
 
-	<!-- The Modal -->
-	<div id="myModal" class="modal hidden">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<%@include file="/jsp/user/deleteagree.jsp"%>
-		</div>
-	</div>
+	
 	
 	<header id="header">
 		<%@include file="/jsp/common/header.jsp"%>
@@ -52,7 +45,6 @@
 			<!-- 우측 상당 슬라이드 -->
 			<div class="right_top_cont">
 				<div class="title" style="font-size: 20px; font-weight: bold;">스터가 가입정보</div>
-				<form name="pForm" action="<c:url value="/user/delparticipant.do"/>"onsubmit="return check()">
 					<table class="rwd-table">
 						<tr>
 							<th>스터디</th>
@@ -77,8 +69,7 @@
 							<td>가입중</td>
 							<td>
 								<div>
-									<input name="cancell" id="cancell${i.count}" type="checkbox" value="${parlist.num}"/>
-									<label for="cancell${i.count}">선택</label>
+									<button name="cancell" type="button" value="${parlist.num}">탈퇴</button>
 								</div>
 							</td>
 						</tr>
@@ -86,32 +77,17 @@
 						</c:otherwise>
 						</c:choose>
 					</table>
-					<button>확인</button>
 				</form>
 			</div>
 		</div>
 	</section>
-	<script>
-		function check() {
-			let divEle =  document.querySelector("#content");
-    		
-			let cancells = document.querySelectorAll("input[name='cancell']");
-			let cnt = 0;
-			cancells.forEach(ele => {
-				if (ele.checked === true) cnt++
-			})
-			if (cnt === 0) {
-				divEle.innerHTML = "<div id='que'>선택된 스터디 정보를 찾을수 없습니다.</div>"
-				modal.style.dispaly = "block"
-				setTimeout(() => {
-					location.href="/momstudy/user/studydeleteform.do"
-				}, 1000);			
-				return false;
-			} else {
-				modal.style.display="block";
-				return false;
-			}
-		}
-	</script>
+	<!-- The Modal -->
+	<div id="myModal" class="modal hidden">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<%@include file="/jsp/user/deleteagree.jsp"%>
+		</div>
+	</div>
 </body>
 </html>

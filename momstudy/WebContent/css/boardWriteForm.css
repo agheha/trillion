@@ -9,6 +9,7 @@
     width: 100%;
     margin-bottom: 18px;
     border: 1px solid #dadada;
+    padding: 5px;
 }
 #layout > form > div > textarea {
     width: 100%;
@@ -18,6 +19,11 @@
     overflow:visible;
     margin-bottom: 18px;
     border: 1px solid #dadada;
+    padding: 5px;
+}
+#layout > form > div > select {
+    width: 85px;
+    padding: 3px 0;
 }
 #layout > form > div.buttons {
     width: unset;
@@ -29,7 +35,14 @@
 .upload {
     width: auto;
 }
-.upload label { 
+.upload label {
+	  display: none;
+}
+.studyName {
+	margin-bottom: 15px;
+}
+
+/* .upload label { 
     display: inline-block; 
     padding: 6px 15px; 
     color: #999; 
@@ -51,3 +64,4 @@
     clip:rect(0,0,0,0); 
     border: 0; 
 }
+ */

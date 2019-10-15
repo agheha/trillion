@@ -52,7 +52,14 @@
 		<result column="part_Date" property="partDate" />
 		<result column="condition" property="condition" />
 	</resultMap>
-	<!-- ㅅ -->
+	<!-- 스터디 탈퇴 -->
+	<delete id="deleteStudy" parameterType="Participant">
+		delete 
+		  from tb_participant
+		 where email = #{email}
+		   and num = #{num} 
+	</delete>
+	<!-- 신청대기중인 내역 삭제 -->
 	<delete id="deleteParticipant" parameterType="Participant">
 		delete 
 		  from tb_participant
@@ -72,6 +79,7 @@
 			 on p.study_num = s.num
 			and condition = 1
 			and p.email = #{email} 
+			
 	</select>
 	<!-- 유저가 등록되어있는 스터디 정보 -->
 	<select id="selectMyStudy" parameterType="String" resultMap="participantMap">
@@ -86,6 +94,7 @@
 			 on p.study_num = s.num
 			and condition = 2
 			and p.email = #{email} 
+			and s.email != #{email}
 	</select>
 	<!-- 이메일 중복 체크 -->
 	<select id="emailCheck" resultType="int" parameterType="String">
