@@ -68,7 +68,7 @@
                 <div class="vote_title">
                     <p>스터디 게시판</p>
                     <div>
-                        <button type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
+                        <button class="oneBtn" type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
                     </div>
                 </div>
                 <div class="board_list">

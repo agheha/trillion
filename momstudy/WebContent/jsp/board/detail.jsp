@@ -217,16 +217,16 @@ a {
 													<div class="comm_action">
 														<div class="btn-group-sm" role="group"
 															aria-label="Basic example">
-															<button type="button" class="btn btn-secondary"
+														     <button type="button" class="btn btn-secondary"
 																onclick="document.location.href='commentdelete.do?commentGroupCode=${comment.commentGroupCode}&num=${comment.num}'">삭제</button>
 															<button type="button" class="btn btn-secondary"
 																onclick="document.location.href='detail.do?type=modify&commentGroupCode=${comment.commentGroupCode}&no=${board.num}&commentNo=${comment.num}'">수정</button>
 															
-															<c:if test="${comment.parent == 0}">
+														<!-- 	<c:if test="${comment.parent == 0}">
 																<button type="button" class="btn btn-secondary"
 																	onclick="document.location.href='detail.do?type=reply&parentNo=${comment.num}&no=${board.num}'">답변
 																</button>
-															</c:if>
+															</c:if> -->
 														</div>
 													</div>
 												</div>
