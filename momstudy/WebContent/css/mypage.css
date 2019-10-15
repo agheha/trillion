@@ -1,5 +1,5 @@
+.mypageContent{
     height: 650px;
-    background: blue;
     margin: auto;
     margin-bottom: 50px;
     transform: scale( 0.8 );
@@ -9,7 +9,6 @@
 
 .user{
     height: 350px;
-    background: red;
 }
 
 .usercontent{
@@ -22,7 +21,6 @@
 
 .studylist{	
 height: 500px;
-    background: yellow;
 }
 
 .bigtext{
@@ -32,7 +30,6 @@ height: 500px;
 }
 
 .userinfo{
-    background: rosybrown;
     float: left;
     width: 80%;
     position: relative;
@@ -40,7 +37,6 @@ height: 500px;
 }
 
 .userscore{
-    background: teal;
     float: left;
     width: 100%;
     position: relative;
@@ -50,18 +46,17 @@ height: 500px;
 .studycontent{
 	height: 80%;
     width: 90%;
-    background: royalblue;
+    min-width: 320px;
     overflow: hidden;
     position: relative;
     float: left;
 }
 
 .userpic{
-     height: 70%;
-    width: 40%;
-    background: #000;
+	height: 220px;
+    width: 220px;
     position: relative;
-    top: 35px;
+    top: 30px;
     left: 40px;
     float: left;
 }
@@ -71,17 +66,15 @@ height: 500px;
     position: relative;
     top: 30px;
     left: 110px;
-    background: #fff;
     float: left;
 }
 .scorecontent{
     width: 300px;
     height: 70%;
-    background: #fff;
     position: relative;
     left: 70px;
-    top: 10px;
-    transform: scale( 1.4 );
+    top: 30px;
+    transform: scale( 1.6 );
 }
 
 .btn{
@@ -92,7 +85,7 @@ height: 500px;
     border-radius: 20px;
     line-height: 60px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold
 }
 .btn:hover{
@@ -103,10 +96,10 @@ height: 500px;
 .ment{
     height: 15%;
     position: relative;
-    left: 85px;
+    left: 45px;
     font-weight: bold;
-    top: 25px;
-    font-size: 22px;
+    top: 35px;
+    font-size: 27px;
 }
 .studycard{
 	width: 230px;
@@ -115,24 +108,33 @@ height: 500px;
     margin: 20px;
     z-index: 2;
     float: left;
-    position: relative;
+	position: relative;
+	transition: 0.5s;
 }
+
+.studycard:hover{
+	cursor: pointer;
+	transform: scale(1.1);
+	box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.2);
+}
+
 .forslide{
 	height: 100%;
     overflow: hidden;
     width: 10000px;
     position: relative;
+    transition: 0.5s;
 }
 #bigstudytitle{
 	line-height: 80px;	
 }
 .studypic{
-	width: 100%;
+	width: 230px;
 	height: 230px;
 }
 
 .studytitle{
-	background: #fff;
+	background: #ccc;
 	width: 100%;
 	height: 90px;
 	font-size: 25px;
@@ -156,3 +158,12 @@ i:hover{
 	cursor: pointer;
 }
 
+#userimg{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.studyimg{
+	max-width: 100%;
+	max-height: 100%;
+}

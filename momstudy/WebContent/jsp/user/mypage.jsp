@@ -50,7 +50,9 @@
 				<div class="bigtext">내 정보</div>
 				<div class="usercontent">
 					<div class="userinfo">
-						<div class="userpic"></div>
+						<div class="userpic">
+							<img id="userimg" src="<c:url value="/util/download.do?fgno=${user.fileGroupCode}" />" alt="">
+						</div>
 						<div class="btns">
 							<div class="btn">사용자 정보 수정</div>
 							<div class="btn">신청한 스터디</div>
@@ -65,53 +67,38 @@
 					</div>
 				</div>
 			</div>
+			<hr/>
 			<div class="studylist">
 				<div class="bigtext" id="bigstudytitle">스터디 목록</div>
 				<div class="icons">
-					<i class="fas fa-chevron-left"></i>
+					<i class="fas fa-chevron-left" id="prevBtn"></i>
 				</div>
+				<form name="sForm" action="<c:url value="/study/studymain.do" />" method="post">
+				<input type="hidden" value="" name="num" id="numput">
 				<div class="studycontent">
 					<div class="forslide">
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
-						<div class="studycard">
-							<div class="studypic"></div>
-							<div class="studytitle">스터디제목</div>
-						</div>
+					<c:forEach items="${slist}" var="study">
+						<div num="${study.num}" class="studycard">
+							<div class="studypic">
+								<img class="studyimg" src="<c:url value="/util/download.do?fgno=${study.fileGroupCode}" />" alt="">
+							</div>
+							<div class="studytitle">${study.name}</div>
+						</div>					
+					</c:forEach>						
 					</div>
 				</div>
+				</form>
 				<div class="icons">
-					<i class="fas fa-chevron-right"></i>
+					<i class="fas fa-chevron-right" id="nextBtn"></i>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<script>
-		loading(`${user.email}`);
+		let email = '${user.email}';
 	</script>
+	<script src="<c:url value='/script/user/mypage.js'/>"></script>
 </body>
 </html>
 
