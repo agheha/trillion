@@ -24,14 +24,45 @@ public class ReportController extends HttpServlet {
 	
 		Report report = new Report();
 		
-		report.setType(req.getParameter("type"));
-		report.setBoardType(req.getParameter("boardType"));
-		report.setReportTarget( req.getParameter("reportTarget"));
-		report.setBoardNum(Integer.parseInt(req.getParameter("boardNum")));
-		report.setStudyNum(Integer.parseInt(req.getParameter("studyNum")));
-		report.setContent(req.getParameter("content"));
-		report.setCode(Integer.parseInt(req.getParameter("code")));
-		report.setEmail(req.getParameter("email"));
+		String categoryCode = req.getParameter("categoryCode");
+		String type = req.getParameter("type");
+		String reportTarget = req.getParameter("reportTarget");
+		String boardNum = req.getParameter("boardNum");
+		String content = req.getParameter("content");
+		String code = req.getParameter("code");
+		String email = req.getParameter("email");
+		String boardType = req.getParameter("boardType");
+		String studyNum = req.getParameter("studyNum");
+		
+		System.out.println(boardNum);
+		if(categoryCode != null) {
+			report.setCategoryCode(categoryCode);
+		}
+		if(type != null) {
+			report.setType(type);
+		}
+		if(reportTarget != null) {
+			report.setReportTarget(reportTarget);
+		}
+		if(boardNum != null) {
+			report.setBoardNum(Integer.parseInt(boardNum));
+		}
+		if(content != null) {
+			report.setContent(content);
+		}
+		if(code != null) {
+			report.setCode(Integer.parseInt(code));
+		}
+		if(email != null) {
+			report.setEmail(email);
+		}
+		if(boardType != null) {
+			report.setBoardType(boardType);
+		}
+		if(studyNum != null) {
+			report.setStudyNum(Integer.parseInt(studyNum));
+		}
+		
 		
 		int p = dao.insertReport(report);
 			

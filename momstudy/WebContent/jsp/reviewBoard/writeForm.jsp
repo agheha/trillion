@@ -38,17 +38,18 @@
     </section>
 
     <section id="layout">
-        <form action="<c:url value="/review/write.do" />" method="post" enctype="multipart/form-data">
+        <form action="<c:url value="/review/write.do" />" method="post" enctype="multipart/form-data" onsubmit="return dataChk()">
             <div>
             	<p>스터디명</p>
             	<div class="studyName">${study.name}</div>
             	<input type="hidden" name="studyNum" value="${study.num}"/>
             	
                 <p>제목</p>
-                <input type="text" name="title" />
+                <input type="text" id="title" name="title" />
                 
                 <p>내용</p>
-                <textarea name="content"></textarea>
+                <textarea id="content" name="content"></textarea>
+                
                 <p>평가</p>
                 <select id="score" name="score">
                 	<c:forEach var="score" begin="1" end="10">
@@ -67,6 +68,6 @@
         </form>
     </section>
 
-     <script src="<c:url value='/script/review/checkReview.js' />"></script>
+    <script src="<c:url value='/script/review/reviewBoard.js' />"></script>
 </body>
 </html>

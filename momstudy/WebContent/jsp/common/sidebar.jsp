@@ -1,7 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="<c:url value="/css/sidebar.css"/>">
 <div>
 	<div class="profile">
 		<img src="<c:url value="/images/test_img2.jpg" />" alt="testImg">

@@ -7,6 +7,7 @@
 }
 
 .board_title {
+	position: relative;
     overflow: hidden;
     width: 100%;
     border-bottom: 3px solid #333;
@@ -15,14 +16,15 @@
     font-size: 18px;
     font-weight: 900;
     float:left;
-    padding: 0 30px 15px;
+    padding: 0 15px 15px;
 }
 
-.board_title > div {
-    float: right;
-    padding-bottom: 15px;
+.boardInfo {
+	float:right;
+	margin: 5px 5px 0 0;
+	overflow: hidden;
 }
-.board_title > div > span {
+.boardInfo > span {
     display: block;
     float: left;
     margin-left: 25px;
@@ -33,7 +35,7 @@
     box-sizing: border-box;
     width: 100%;
     min-height: 150px;
-    padding: 30px 30px;
+    padding: 15px 30px;
     margin-bottom: 20px;
     border-bottom: 1px solid #dadada;
 }
@@ -53,7 +55,7 @@
 .image_wrap {
     box-sizing: border-box;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 50px;
     text-align: center;
 }
 .image_wrap > img {

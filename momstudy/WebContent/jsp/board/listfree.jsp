@@ -56,23 +56,22 @@
         <section class="background_wrap">
             <div class="background">
                 <h1>자유게시판</h1>
-                <p>2019년 10월11일 11시 04분</p>
+                <p>2019년 10월11일 11시 12분</p>
             </div>
         </section>
 
         <section id="layout">
            
-            <div class="study_right_wrap">
+            <div class="study_right_wrap" style="width: 100%; border-left: none;">
                 <div class="vote_title">
-                    <p>자유 게시판</p>
                     <div>
-                        <button type="button" onclick="location.href='<c:url value="/boardfree/freewriteform.do"/>'">글등록</button>
+                        <button type="button" class="oneBtn" onclick="location.href='<c:url value="/boardfree/freewriteform.do"/>'">글등록</button>
                     </div>
                 </div>
                 	<div class="board_list">
 					<ul id="types">
 						<li>번호</li>
-						<li>제목</li>
+						<li style="text-align: center">제목</li>
 						<li>이메일</li>
 						<li>날짜</li>
 						<li>조회수</li>
@@ -80,7 +79,7 @@
                 <!--  <div class="board_list"> -->
                          <c:if test="${empty list}">
                            <div>
-                              <h2>게시글이 없습니다.</h2>
+                              <h2 class="emptyCont">게시글이 없습니다.</h2>
                            </div>
                         </c:if>
                         <c:forEach var="b" items="${list}">

@@ -43,4 +43,6 @@ public interface StudyDAO {
 	void updateCalender(Calenders calender);
 	
 	Study selectStudyInfo(int num);
+	
+	void updateStudyLeader(Study study);
 }
