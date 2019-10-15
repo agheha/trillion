@@ -14,6 +14,7 @@
     <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
     <link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
     <link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
+    <link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -23,7 +24,8 @@
 		crossorigin="anonymous">
 
     <title>스터디</title>
-
+    <!-- 팝업 js -->
+<script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
     <!-- jquery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -45,7 +47,7 @@
 
        <div class="study_right_wrap">
            <div class="board_title">
-               <p>${rBoard.title}</p>
+               <p>${rBoard.title}  ${study.categoryCode}</p>
                <div>
                    <span>${rBoard.email}</span>
                    <span><fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
@@ -67,7 +69,13 @@
                ${rBoard.content}
                
 	     	   <form action="" method="post" name="rpform">
-					<button>신고하기</button>
+	     	   	<input type="hidden" name="categoryCode" value="${study.categoryCode}">
+	     	   	<input type="hidden" name="" value="${study.categoryCode}">
+	     	   	<input type="hidden" name="" value="${study.categoryCode}">
+	     	   	<input type="hidden" name="" value="${study.categoryCode}">
+	     	   	<input type="hidden" name="" value="${study.categoryCode}">
+	     	   	<input type="hidden" name="" value="${study.categoryCode}">
+					<button onclick="mopen()">신고하기</button>
 	      	   </form>
            </div>
 
@@ -107,6 +115,13 @@
 
 			</div>
        </div>
+       
+ <div id="modal">
+	<div id="modal_content">
+	<!-- 상세신고 ui -->
+	<div id="modarlayer" onclick="mclose()"></div>
+	</div>
+</div>
     </section>
     
 	<script>
