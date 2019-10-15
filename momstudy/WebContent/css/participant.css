@@ -12,6 +12,7 @@
 }
 .rwd-table td {
   display: block;
+  
 }
 .rwd-table td:first-child {
   padding-top: 0.5em;

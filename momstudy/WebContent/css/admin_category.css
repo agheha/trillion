@@ -18,13 +18,13 @@
 	font-weight: bold;
 }
 
-.saerch-cat {
+/* .saerch-cat {
 	position: absolute;
 	z-index: 1;
 	width: auto;
-	top: 130px;
-	left: 55%;
-}
+    top: 535px;
+    left: 1066px;
+} */
 
 #category_table {
 	width: 500px;
@@ -35,29 +35,29 @@
 #categoryName {
 	width: 16px;
 	height: 16px;
-	top: 92px;
-	left: 133px;
+/* 	top: 92px;
+	left: 133px; */
 }
 
 #StudyCnt {
 	width: 16px;
 	height: 16px;
-	top: 92px;
-	left: 162px;
+/* 	top: 92px;
+	left: 162px; */
 }
 
 #text {
-	top: 125px;
-	right: 22px;
+    top: 90px;
+    right: 212px;
 	width: 220px;
 }
 
 #LcategoryName {
 	border: 3px solid black;
 	background: gainsboro;
-	top: 60px;
+	/* top: 60px;
 	left: 187px;
-	position: relative;
+	position: relative; */
 	width: 85px;
 	height: 20px;
 }
@@ -65,16 +65,16 @@
 #LStudyCnt {
 	border: 3px solid black;
 	background: gainsboro;
-	top: 60px;
+	/* top: 60px;
 	left: 205px;
-	position: relative;
+	position: relative; */
 	width: 85px;
 	height: 20px;
 }
 
 #sbtn {
-	top: 149px;
-	left: 253px;
+    top: 112px;
+    left: 65px;
 	width: 50px;
 }
 
@@ -93,13 +93,15 @@
 }
 
 .add {
-	top: 170px;
+	top: 140px;
 	left: 18px;
 }
 
 #del2 {
-	position: relative;
-	left: 773px;
-	top: 185px;
-	width: 50px;
+    position: absolute;
+    left: 792px;
+    top: 384px;
+    width: 50px;
+    height: 27px;
+    z-index: 1;
 }

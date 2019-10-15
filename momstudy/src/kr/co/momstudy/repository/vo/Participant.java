@@ -2,6 +2,8 @@ package kr.co.momstudy.repository.vo;
 
 import java.util.Date;
 
+import com.google.gson.JsonElement;
+
 public class Participant {
 	private int num;
 	private int studyNum;
@@ -10,7 +12,6 @@ public class Participant {
 	private int condition;
 	private String name;
 	
-
 	public String getName() {
 		return name;
 	}

@@ -12,6 +12,12 @@ import kr.co.momstudy.repository.vo.UserArea;
 import kr.co.momstudy.repository.vo.UserCategory;
 
 public interface UserDAO {
+	// 스터디 탈퇴하기
+	void deleteStudy(Participant participant);
+	// 내 등록되어있는 스터디 보기
+	List<Participant> selectMyStudy(String email);
+	// 스터디 신청철회
+	void deleteParticipant(Participant participant);
 	// 스터디 신청중이 스터디 리스트
 	List<Participant> selectParticipant(String email);
 	// 이메일 중복 체크

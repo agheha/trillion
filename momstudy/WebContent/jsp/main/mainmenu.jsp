@@ -40,7 +40,7 @@
 							</a>
 						</c:when>
 						<c:otherwise>
-							<p class="main_title_cont">${user.name}님환영합니다.</p>
+							<p class="main_title_cont">${user.name}님 환영합니다</p>
 							<a href="<c:url value="/user/logout.do"/>">
 								<p class="main_title_cont">로그아웃</p>
 							</a>
@@ -60,9 +60,16 @@
 			<li></li>
 			<li>
 				<div>
+				<c:if test="${user.type == 2 }">
+					<a href="<c:url value="/admin/reportuser.do"/>"> <i
+						class="fas fa-address-card"></i> 관리자페이지
+					</a>
+				</c:if>
+				<c:if test="${user.type == 1 || user.type == null }">
 					<a href="<c:url value="/user/mypage.do"/>"> <i
 						class="fas fa-address-card"></i> 마이페이지
 					</a>
+				</c:if>
 				</div>
 			</li>
 			<li>

@@ -1,4 +1,4 @@
-package kr.co.momstudy.repository.vo;
+﻿package kr.co.momstudy.repository.vo;
 
 import java.util.Date;
 
@@ -14,6 +14,22 @@ public class Study {
 	private String addressDetail;
 	private String addressDetail2;
 	//카운트 받을것(팀원수)
+	private int member;
+	private int fileGroupCode;
+
+	public int getFileGroupCode() {
+		return fileGroupCode;
+	}
+	public void setFileGroupCode(int fileGroupCode) {
+		this.fileGroupCode = fileGroupCode;
+	}
+	public int getMember() {
+		return member;
+	}
+	public void setMember(int member) {
+		this.member = member;
+	}
+	
 	private int cnt;
 	public String getAddressDetail() {
 		return addressDetail;

@@ -19,6 +19,24 @@ public class User {
 	private int openCnt;
 	private int joinCnt;
 	
+	// 신고 횟수
+	private int rpcount;
+	// 밴 날짜 설정 할때 추가 일(더블로 설정하면 초단위 까지 가능)
+	private int ban;
+	
+	
+	public int getBan() {
+		return ban;
+	}
+	public void setBan(int ban) {
+		this.ban = ban;
+	}
+	public int getRpcount() {
+		return rpcount;
+	}
+	public void setRpcount(int rpcount) {
+		this.rpcount = rpcount;
+	}
 	public int getOpenCnt() {
 		return openCnt;
 	}

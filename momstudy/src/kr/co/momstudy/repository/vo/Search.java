@@ -25,6 +25,9 @@ public class Search extends Page{
 	private String filter;
 	private List<String[]> types;
 	private List<String[]> filters;
+	private Address[] address;
+	
+	
 	
 	public List<String[]> getTypes() {
 		return types;
@@ -74,7 +77,7 @@ public class Search extends Page{
 		List<String[]> list = new ArrayList<>();
 		for(String filter : strings) {			
 			switch (filter) {
-			case "일자":
+			case "일자": case "개설날짜":
 				list.add(new String [] {"regDate",filter});
 				break;
 			case "조회수":
@@ -85,6 +88,18 @@ public class Search extends Page{
 				break;
 			case "신청일":
 				list.add(new String [] {"partDate",filter});
+				break;
+			case "신고사유":
+				list.add(new String [] {"reseaon",filter});
+				break;
+			case "신고된 횟수":
+				list.add(new String [] {"rpcount",filter});
+				break;
+			case "스터디 분야":
+				list.add(new String [] {"categoryName",filter});
+				break;
+			case "팀원수":
+				list.add(new String [] {"member",filter});
 				break;
 			}
 		}
@@ -108,6 +123,18 @@ public class Search extends Page{
 				break;
 			case "스터디이름":
 				list.add(new String [] {"name",type});
+				break;
+			case "신고사유":
+				list.add(new String [] {"reseaon",type});
+				break;
+			case "신고된 사람":
+				list.add(new String [] {"reportTarget",type});
+				break;
+			case "시/도":
+				list.add(new String [] {"addressDetail",type});
+				break;
+			case "구/군/시":
+				list.add(new String [] {"addressDetail2",type});
 				break;
 			}
 		}
