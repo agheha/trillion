@@ -12,20 +12,17 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.AdminDAO;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/admin/ban.do")
-public class UserBanController extends HttpServlet{
+@WebServlet("/admin/banrelease.do")
+public class UserBanReleaseController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		AdminDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 		
 	 User user = new User();
-	 user.setBan(Integer.parseInt(req.getParameter("banDate")));
 	 user.setEmail(req.getParameter("email"));
-
 	
-	
-	dao.updateBanDate(user);
+	dao.updateBanRelease(user);
 
 	resp.sendRedirect(req.getContextPath() + "/admin/reportuser.do");
 	}

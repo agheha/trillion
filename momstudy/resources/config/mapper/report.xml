@@ -21,6 +21,7 @@
 		<!-- 스터디 번호, 카테고리, 스터디 명 -->
 		<result column="STUDY_NUM" property="studyNum" />
 		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="CATEGORY_CODE" property="categoryCode" />
 		<result column="NAME" property="studyTitle" />
 		<!-- 스터디 방장 -->
 		<result column="cap" property="cap" />
@@ -602,8 +603,8 @@
 		insert into
 		tb_report(num,CATEGORY_CODE,TYPE,REPORT_TARGET,BOARD_NUM,CONTENT,CODE,EMAIL,
 		BOARD_TYPE,STUDY_NUM)
-		values(SEQ_REPORT_NUM.nextval,#{categoryCode},#{type},#{reportTarget},#{boardNum},
-		#{content},#{code},#{email},#{boardType},#{studyNum})
+		values(SEQ_REPORT_NUM.nextval,#{categoryCode,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{reportTarget,jdbcType=VARCHAR},#{boardNum,jdbcType=VARCHAR},
+		#{content,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{boardType,jdbcType=VARCHAR},#{studyNum,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- 아이디 받아서 밴기간 설정 -->
@@ -613,6 +614,16 @@
 		set
 		ban_Date = SYSDATE + ${ban}
 		,STATUS = 2
+		where email=#{email}
+	</update>
+	
+	<!-- 밴 헤제 -->
+	
+	<update id="updateBanRelease" parameterType="user">
+		update tb_user
+		set
+		ban_Date = null
+		,STATUS = 1
 		where email=#{email}
 	</update>
 
