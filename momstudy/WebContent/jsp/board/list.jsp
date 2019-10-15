@@ -66,7 +66,6 @@
          
             <div class="study_right_wrap">
                 <div class="vote_title">
-                    <p>스터디 게시판</p>
                     <div>
                         <button class="oneBtn" type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
                     </div>
@@ -82,7 +81,7 @@
                 
                         <c:if test="${empty list}">
                            <div>
-                              <h2>게시글이 없습니다.</h2>
+                              <h2 class="emptyCont">게시글이 없습니다.</h2>
                            </div>
                         </c:if>
                         

@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-         <link rel="stylesheet" href='<c:url value="/css/common.css" /> '>
+        <link rel="stylesheet" href='<c:url value="/css/common.css" /> '>
         <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
         <link rel="stylesheet" href='<c:url value="/css/boardWriteForm.css" /> '>
         <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
@@ -39,28 +39,29 @@
             </div>
         </section>
         
-           <section id="layout">
-          
-             <div class="study_right_wrap">
+        <section id="layout">
             <form name="create" action="freewrite.do" method="post" onsubmit="return check()">
-            <div>
-            <input class="type" type="checkbox" name="type" value="0" onclick=" checkDisable(this.form)" />공지사항
-            <input class="notice" type="checkbox" name="notice" value="0"  disabled/> 상단 고정     
-            </div>
-            
-                <div>
-                    <p>제목</p>
-                    <input type="text" name="title" />
-                    <p>내용</p>
-                    <textarea name="content" id=""></textarea>    
-                </div>
-                <div class="buttons">
-                    <button class="submit_btn" type="submit">등록</button>
-                </div>
-                
+	            	<div class="checked">
+	            		<div>
+				            <input id="type" class="type" type="checkbox" name="type" value="0" onclick=" checkDisable(this.form)" />	            			
+	            			<label for="type">공지사항</label>
+	            		</div>
+	            		<div>
+				            <input id="notice" class="notice" type="checkbox" name="notice" value="0"  disabled/>   
+	            			<label for="notice">상단고정</label>
+	            		</div>
+		            </div>
+	                <div>
+	                    <p>제목</p>
+	                    <input type="text" name="title" />
+	                    <p>내용</p>
+	                    <textarea name="content" id=""></textarea>    
+	                </div>
+	                <div class="buttons">
+	                    <button class="submit_btn" type="submit">등록</button>
+	                </div>
             </form>
-            </div>
-            </section>
+         </section>
        
 
         <script type="text/javascript"  src="<c:url value="/script/board/writeboard.js" />">

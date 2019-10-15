@@ -25,10 +25,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+
 
 <!-- jquery -->
 <script type="text/javascript"
@@ -55,15 +52,19 @@
 		<div class="study_right_wrap">
 			<div class="board_title">
 				<p><c:out value="${board.title}" /></p>
-				<div>
-					<span>${board.email}</span> 
-					<span><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
-					<span style="width: 54px;">${board.seeCnt}</span>
-				</div>
+			</div>
+			<div class="boardInfo">
+				<span>작성자 : ${board.email}</span> 
+				<span>작성일 : <fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
+				<span>조회수 : ${board.seeCnt}</span>
 			</div>
 
-			<div class="board_cont">
-				<p><c:out value="${board.content}" /></p>
+			<div class="board_cont" style="padding-top: 50px;">
+				${board.content}
+				<button class="alertBtn">
+					<i class="fas fa-user-slash"></i>
+					신고하기
+				</button>
 			</div>
 				
 			  <div class="buttons">
@@ -77,14 +78,6 @@
 			        </c:otherwise>
 	      	   </c:choose>
            </div>
-			
-				  <form action="" method="post" name="rpform">
-					<button class="alertBtn">
-						<i class="fas fa-user-slash"></i>
-						신고하기
-					</button>
-	      	   </form>
-			<br>
 			
 			   <!--  댓글 -->
 		 	<div id="comment_Wrap">

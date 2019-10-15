@@ -117,20 +117,22 @@ a {
 	<section id="layout">
 		<%@include file="/jsp/common/sidebar.jsp"%>
 
-		<div class="study_right_wrap">
+		<div class="study_right_wrap" style="width: 820px !important; border-left: 3px solid #dadada !important;">
 			<div class="board_title">
-				<p>
-					<c:out value="${board.title}" />
-				</p>
-				<div class ="top">
-					<span>${board.email}</span> 
-					<span><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
-					<span style="width: 54px;">${board.seeCnt}</span>
-				</div>
+				<p><c:out value="${board.title}" /></p>
+			</div>
+			<div class="boardInfo">
+				<span>${board.email}</span> 
+				<span><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
+				<span>${board.seeCnt}</span>
 			</div>
 
 			<div class="board_cont">
-				<p><c:out value="${board.content}" /></p>
+				${board.content}"
+				<button class="alertBtn">
+					<i class="fas fa-user-slash"></i>
+					신고하기
+				</button>
 			</div>
 			
            <!-- 수정 삭제 버튼 -->
