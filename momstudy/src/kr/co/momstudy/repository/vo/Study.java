@@ -14,6 +14,15 @@ public class Study {
 	private String addressDetail;
 	private String addressDetail2;
 	//카운트 받을것(팀원수)
+	private int member;
+	
+	public int getMember() {
+		return member;
+	}
+	public void setMember(int member) {
+		this.member = member;
+	}
+	
 	private int cnt;
 	public String getAddressDetail() {
 		return addressDetail;

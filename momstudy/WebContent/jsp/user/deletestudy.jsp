@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +16,13 @@
 
 <title>계정관리</title>
 <!-- full calendar -->
-
+	
+	
 </head>
 <body>
+
+	
+	
 	<header id="header">
 		<%@include file="/jsp/common/header.jsp"%>
 	</header>
@@ -40,20 +44,19 @@
 		<div class="heightAuto">
 			<!-- 우측 상당 슬라이드 -->
 			<div class="right_top_cont">
-				<div class="title" style="font-size: 20px; font-weight: bold;">스터디 신청내역</div>
-				<form name="pForm" action="<c:url value="/user/delparticipant.do"/>"onsubmit="return check()">
+				<div class="title" style="font-size: 20px; font-weight: bold;">스터가 가입정보</div>
 					<table class="rwd-table">
 						<tr>
 							<th>스터디</th>
-							<th>이메일</th>
-							<th>신청일</th>
-							<th>진행상태</th>
-							<th>철회</th>
+							<th>스터디장</th>
+							<th>개설일</th>
+							<th>상태</th>
+							<th>탈퇴</th>
 						</tr>
 						<c:choose>
 						<c:when test="${empty parlist}">
 							<tr>
-							<td colspan="5" style="text-align: center">신청중인 스터디가 존재하지 않습니다</td>
+							<td colspan="5" style="text-align: center">등록된 스터디가 존재하지 않습니다</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -63,11 +66,10 @@
 							<td>${parlist.email}</td>
 							<td><fmt:formatDate value="${parlist.partDate}"
 									pattern="yyyy-MM-dd" /></td>
-							<td>신청중</td>
+							<td>가입중</td>
 							<td>
 								<div>
-									<input name="cancell" id="cancell${i.count}" type="checkbox" value="${parlist.num}"/>
-									<label for="cancell${i.count}">선택</label>
+									<button name="cancell" type="button" value="${parlist.num}">탈퇴</button>
 								</div>
 							</td>
 						</tr>
@@ -75,25 +77,17 @@
 						</c:otherwise>
 						</c:choose>
 					</table>
-					<button>확인</button>
 				</form>
 			</div>
 		</div>
 	</section>
-	<script>
-		function check() {
-			let cancells = document.querySelectorAll("input[name='cancell']");
-			let cnt = 0;
-			cancells.forEach(e => {
-				if (e.checked === true) cnt++
-			})
-			if (cnt === 0) {
-				alert("선택된 스터디가 없습니다.")
-			} else {
-				alert("스터디가 철회되었습니다")
-				document.pForm.submit();
-			}
-		}
-	</script>
+	<!-- The Modal -->
+	<div id="myModal" class="modal hidden">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<%@include file="/jsp/user/deleteagree.jsp"%>
+		</div>
+	</div>
 </body>
 </html>

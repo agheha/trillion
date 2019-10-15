@@ -5,14 +5,6 @@
 
 <div id="box-4">
 	<!-- box two content -->
-	<form class="saerch">
-		<select name="" id="">
-			<option value="">회원명</option>
-			<option value="">?1</option>
-			<option value="">?2</option>
-		</select> <input type="text" name="" placeholder="saerch">
-		<button>검색</button>
-	</form>
 	<table>
 		<thead>
 			<th>이름</th>
@@ -24,19 +16,32 @@
 		</thead>
 		<tbody>
 		<c:forEach var="report" items="${list}">
-				<tr>
+				<tr onclick="mopen(),userDtailAjax1('${report.email}')">
 					<td>${report.name }</td>
 					<td>${report.email }</td>
 					<td>${report.openCnt }</td>
 					<td>${report.joinCnt}</td>
+					<c:if test="${report.banDate eq null}">
+					<td>없음</td>
+					</c:if>
+					<c:if test="${report.banDate ne null}">
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
-							value="" /></td>
-					<td>${report.cnt}</td>
+							value="${report.banDate}" /></td>
+					</c:if>
+					<td>${report.rpcount}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 </div>
+
+<div id="modal">
+	<div id="modal_content">
+	
+	</div>
+</div>
+
+<%@include file="/jsp/common/pagination.jsp" %>
 
 </div>
 
@@ -46,6 +51,9 @@
 
 </div>
 </section>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax1.js'/>">
+</script>
 </body>
 
 </html>

@@ -1,10 +1,10 @@
-function userDtailAjax(email) {
+function userDtailAjax1(email) {
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState == 4) {
 			if (xhr.status == 200) {
 				let list = JSON.parse(xhr.responseText);
-				
+				console.log(list)
 				make1(list);
 			}
 		}
@@ -15,15 +15,11 @@ function userDtailAjax(email) {
 
 function make1(list) {
 
-	let popUp = document.getElementById("modal_content1");
-	let birth = document.getElementById("birth");
-	let einfo = document.getElementById("einfo");
-	
+	let popUp = document.getElementById("modal_content");
+
 	let info = list.user;
 	let openStudy =list.openStudy;
 	let joinStudy =list.joinStudy;
-	
-	
 	
 	let html = 
 		`
@@ -31,9 +27,10 @@ function make1(list) {
 
         <div id="b1_Profile" ></div>
         <div id="b1_Info">
-            <div id="einfo">ID : ${info.email}</div>
+            <div>ID : ${info.email} (<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${info.banDate}" />)까지</div>
             <div>이름 : ${info.name}</div>
-            <div id="birth">생일 : <fmt:formatDate pattern="yyyy-MM-dd"
+            <div>생일 : <fmt:formatDate pattern="yyyy-MM-dd"
 							value="${info.birth}" /></div>
             <div>성별 : ${info.gender}</div>
             <div>연락처 : ${info.phoneNum}</div>
@@ -46,8 +43,8 @@ function make1(list) {
             <div>
                 <div>
                     <form action="ban.do">
-                     <input type="number" name="banDate" min="1" max="30" step="1">
-                     <input type="hidden" name="email" value="${info.email}">
+                       <input type="number" name="banDate" min="1" max="30" step="1">
+                       <input type="hidden" name="email" value="${info.email}">
                             <button>정지</button>
                     </form>
                 </div>
@@ -119,13 +116,10 @@ function make1(list) {
 	    </tbody>
         </table>
 		</div>
-		 <div id="modarlayer1" onclick="mclose(),mclose1()"></div>
+		 <div id="modarlayer" onclick="mclose()"></div>
 	`;
-		
+
 	console.log(html);
 	popUp.innerHTML = html;
-	
-	einfo.innerHTMl +=  `(<fmt:formatDate pattern="yyyy-MM-dd"
-		value="${info.banDate}" />)까지`
 
 }

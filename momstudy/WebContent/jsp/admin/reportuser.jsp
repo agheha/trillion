@@ -5,14 +5,6 @@
 <!-- 조심 -->
 <div id="box-1">
 	<!-- box two content -->
-	<form class="saerch">
-		<select name="" id="">
-			<option value="">회원명</option>
-			<option value="">?1</option>
-			<option value="">?2</option>
-		</select> <input type="text" name="" placeholder="saerch">
-		<button>검색</button>
-	</form>
 	<table>
 		<thead>
 			<th>신고사유</th>
@@ -29,7 +21,7 @@
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${report.regDate}" /></td>
 					<td>${report.email}</td>
-					<td>${report.cnt}</td>
+					<td>${report.rpcnt}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -47,9 +39,8 @@
 	
 	</div>
 </div>
+<%@include file="/jsp/common/pagination.jsp" %>
 </div>
-
-
 
 </div>
 

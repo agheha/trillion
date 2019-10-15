@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href='<c:url value="/css/sidebar.css" />'>
 </head>
 <style>
 #upload {
@@ -58,8 +59,7 @@
 				<form name="adminForm" action="" method="post">
 					<ul class="admin">
 						<li><div class="space"></div><a class="adminele" go="<c:url value="/user/participant.do"/>">스터디 신청 내역</a></li>
-						<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminmember.do"/>">스터디 신청 철회</a></li>
-						<li><div class="space"></div><a class="adminele" go="<c:url value="/study/adminaprovalmember.do"/>">스터디 탈퇴 </a></li>
+						<li><div class="space"></div><a class="adminele" go="<c:url value="/user/studydeleteform.do"/>">스터디 탈퇴 </a></li>
 					</ul>
 					</form>
 			</ul>
@@ -67,7 +67,6 @@
 	</div>
 	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script src="<c:url value="/script/user/userimg.js" />"></script>
-	<script src="<c:url value="/script/user/imgupdate.js" />"></script>
 	<script>
 		let bAdmin = document.querySelector("#admin");
 		let admin = document.querySelector(".admin");

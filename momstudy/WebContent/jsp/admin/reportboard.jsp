@@ -5,14 +5,6 @@
 
 <div id="box-2">
 	<!-- box two content -->
-	<form class="saerch">
-		<select name="" id="">
-			<option value="">회원명</option>
-			<option value="">?1</option>
-			<option value="">?2</option>
-		</select> <input type="text" name="" placeholder="saerch">
-		<button>검색</button>
-	</form>
 	<table>
 		<thead>
 			<th>신고사유</th>
@@ -43,11 +35,11 @@
 						</c:when>
 					</c:choose>
 
-					<td>${report.boardTitle }${report.num}</td>
+					<td>${report.boardTitle }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${report.regDate}" /></td>
 					<td>${report.email }</td>
-					<td>${report.cnt }</td>
+					<td>${report.rpcnt }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -59,12 +51,12 @@
 		<div id="b_main">
 			<div class="b_content">
 				<div>글</div>
-				<div id="board_title">글 제목</div>
+				<div id="board_title" >글 제목</div>
 				<div id="board_type"> 게시판명</div>
 			</div>
-			<div class="b_content">
+			<div class="b_content" id="re_email">
 				<div>신고자</div>
-				<div id="board_email">신고자 이메일</div>
+				<div id="board_email" >신고자 이메일</div>
 			</div>
 			<div class="b_content">
 				<div>신고사유</div>
@@ -76,6 +68,12 @@
 	</div>
 </div>
 
+<div id="modal1">
+	<div id="modal_content1">
+	
+	</div>
+</div>
+<%@include file="/jsp/common/pagination.jsp" %>
 
 </div>
 
@@ -85,6 +83,9 @@
 </section>
 <script type="text/javascript"
 	src="<c:url value='/script/admin/boardAjax.js'/>">
+</script>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/userDtailAjax.js'/>">
 </script>
 </body>
 

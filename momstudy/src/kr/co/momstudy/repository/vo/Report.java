@@ -6,23 +6,45 @@ public class Report {
 
 	private int num;
 	private String type;
-	private String reportTarget; //신고당한사람
+	private String reportTarget; // 신고당한사람
 	private String content;
-	private String email; //신고자
+	private String email; // 신고자
 	private Date regDate;
 	// 글
 	private int boardNum;
-	private String boardType; //게시판 종류
-	private String boardTitle; //게시판 제목
-	
+	private String boardType; // 게시판 종류
+	private String boardTitle; // 게시판 제목
+
 	// 신고사유
-	private int code; //신고사유 번호
-	private String reseaon; //신고사유 내용
-	//스터디
+	private int code; // 신고사유 번호
+	private String reseaon; // 신고사유 내용
+	// 스터디
 	private int studyNum;
-	private String categoryName; //스터디 분야
-	private String studyTitle; //스터디 명
+	private String categoryName; // 스터디 분야
+	private String studyTitle; // 스터디 명
+	// 스터디 방장 이메일
+	private String cap;
+	//	각 별 신고수 가져온 결과를 받기위함
+	private int rpcnt;
+	// 총 개시물 갯수(페이징 처리하는데 필요)
+	private int cnt;
 	
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+	public String getCap() {
+		return cap;
+	}
+
+	public void setCap(String cap) {
+		this.cap = cap;
+	}
+
 	public String getBoardTitle() {
 		return boardTitle;
 	}
@@ -39,7 +61,6 @@ public class Report {
 		this.studyTitle = studyTitle;
 	}
 
-
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -47,7 +68,6 @@ public class Report {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
 
 	public String getBoardType() {
 		return boardType;
@@ -73,15 +93,12 @@ public class Report {
 		this.reseaon = reseaon;
 	}
 
-//	각 별 신고수 가져온 결과를 받기위함
-	private int cnt;
-
-	public int getCnt() {
-		return cnt;
+	public int getRpcnt() {
+		return rpcnt;
 	}
 
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
+	public void setRpcnt(int rpcnt) {
+		this.rpcnt = rpcnt;
 	}
 
 	public int getNum() {

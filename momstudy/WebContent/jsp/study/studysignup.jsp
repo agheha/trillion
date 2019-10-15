@@ -18,3 +18,4 @@
     		location.href = "applyforparticipation.do?studynum=" + no;
     	}
     </script>
+    <script src="<c:url value="/script/study/studysignup.js"/>"></s	cript>		

@@ -55,4 +55,10 @@ public interface ReviewBoardDAO {
 	void deleteComment(int num);
 	
 	int selectOneBoard3(int commentGroupCode);
+
+	// 댓글번호로 댓글 찾아옴
+	Comment selectOneComment(int num);
+	
+	// 댓글 업데이트
+	void updateComment(Comment comment);
 }

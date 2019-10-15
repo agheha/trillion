@@ -28,17 +28,19 @@ public class LoginController extends HttpServlet {
 		User u = new User();
 		u.setEmail(req.getParameter("email"));
 		
-		System.out.println(req.getParameter("email"));
 		
 		u.setPass(req.getParameter("pass"));
 		User user = dao.selectLogin(u);
-		System.out.println(user);
 		PrintWriter out = res.getWriter();
-		out.println(new Gson().toJson(user));
+		if(user.getStatus() == 2) {
+			out.println(0);
+		} else {
+			out.println(new Gson().toJson(user));
+			HttpSession session = req.getSession();
+			session.setAttribute("user", user);
+		}
 		out.close();
 		
-		HttpSession session = req.getSession();
-		session.setAttribute("user", user);
 		
 		
 		
