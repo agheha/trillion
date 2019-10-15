@@ -61,6 +61,7 @@
 					<h3 class="stm_title">스터디원 목록</h3>
 					<div class="smt_buttons">
 						<button class="stm_button">강퇴</button>
+						<button class="leader_button" type="button">스터디 위임</button>
 					</div>
 					<table class="study_member">
 						<thead>
