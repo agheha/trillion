@@ -18,9 +18,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-		crossorigin="anonymous">
 
     <title>스터디</title>
 
@@ -47,13 +44,10 @@
            <div class="board_title">
                <p>${rBoard.title}</p>
                <div>
-                   <span>${rBoard.email}</span>
-                   <span><fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
+                   <span>작성자 : ${rBoard.email}</span>
+                   <span>작성일 : <fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
+               	   <span>평점: ${rBoard.score}</span>
                </div>
-           </div>
-           
-           <div>
-           	   평점: <span>${rBoard.score}</span>
            </div>
 		
 		<!-- 추후 이미지 -->
@@ -66,8 +60,11 @@
            <div class="board_cont">
                ${rBoard.content}
                
-	     	   <form action="" method="post" name="rpform">
-					<button>신고하기</button>
+               <form action="" method="post" name="rpform">
+					<button class="alertBtn">
+						<i class="fas fa-user-slash"></i>
+						신고하기
+					</button>
 	      	   </form>
            </div>
 
@@ -88,10 +85,6 @@
 			<div id="comment_Wrap">
 				<div id="commentRegistForm">
 					<form name="crForm" method="post" action="commentWrite.do" onsubmit="return commentRegistAjax()" >
-						
-						<div>테스트용 rBoard.num = ${rBoard.num}</div>
-						<div>테스트옹 user.email = ${user.email}</div>
-						
 						<input type="hidden" name="num" value="${rBoard.num}" />
 						<input id="user" type="hidden" name="email" value="${user.email}" />
 						<div>

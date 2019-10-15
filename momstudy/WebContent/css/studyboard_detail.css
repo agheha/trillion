@@ -20,14 +20,16 @@
 
 .board_title > div {
     float: right;
+    padding-bottom: 15px;
 }
 .board_title > div > span {
     display: block;
     float: left;
-    width: 120px;
+    margin-left: 25px;
 }
 
 .board_cont {
+	position: relative;
     box-sizing: border-box;
     width: 100%;
     min-height: 150px;
@@ -35,6 +37,12 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #dadada;
 }
+.board_cont > form {
+	position: absolute;
+    right: 0;
+    bottom: 15px;
+}
+
 .del {
 	color: black;
 	text-decoration: unset
@@ -46,9 +54,10 @@
     box-sizing: border-box;
     width: 100%;
     padding-top: 15px;
+    text-align: center;
 }
 .image_wrap > img {
-    max-width: 100%;
+    max-width: 450px;
 }
 
 
@@ -81,12 +90,12 @@
     vertical-align: middle;
 }
 #commentRegistForm > form > div:nth-child(3) {
-    max-width:1135px;
+    max-width: 975px;
 }
 #commentRegistForm > form > div textarea {
     position: relative;
     top: 3px;
-    width: 1135px;
+    width: 975px;
     resize: none;
     height: 120px;
     border: 1px solid #dadada;
@@ -100,6 +109,8 @@
     line-height: 60px;
     text-align: center;
     border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #dadada;
 }
 #commentRegistForm > form > div button:hover {
     background-color: #333;
@@ -110,7 +121,7 @@
     box-sizing: border-box;
     padding: 30px 0 30px 10px;
 }
-#commentList > div {
+#commentList > div > div {
     margin-bottom: 15px;
     border-left: 8px solid #333;
     padding-left: 20px;
@@ -132,11 +143,17 @@
 .commentInfo > div > button {
     padding: 3px 15px;
     border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+.commentInfo > div > button:hover {
+	color: #dd333d;
 }
 .commentWrap {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+   	word-break: break-word;
 }
 .textAreaWrap {
     margin: 8px 0 3px 0;
@@ -154,4 +171,13 @@
     height: 80px;
     border-radius: 4px;
     float: right;
+    background-color: #fff;
+    border: 1px solid #dadada
+}
+.cmtBtn:hover {
+	background-color: #333;
+	color: #fff;
+}
+#comment_Wrap {
+	margin-top: 40px;
 }

@@ -14,10 +14,8 @@
 	<link rel="stylesheet" href='<c:url value="/css/review_board.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 
-    <!-- jquery -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<title>후기게시판</title>
 </head>
 <body>
@@ -59,13 +57,46 @@
 	
 	    <div class="board_cont_wrap">
 		   	<div class="btn_wrap">
-		   		<form action="<c:url value="/review/selectStudy.do" />"  method="post">
-		   			<button>등록</button>
-		   		</form>
+	   			<button type="button" id="onModal">등록</button>
 		   	</div>
+		   	
+		   	
+		   	<!-- 모달창 -->
+		   	<div id="content" class="modal">
+		   		<div>
+					<form action="<c:url value="/review/writeForm.do" />" method="post">
+						<button type="button" id="close" class="close">
+							<i class="fas fa-times"></i>
+						</button>
+						<p>등록하실 스터디를 선택하세요.</p>
+						<c:if test="${empty slist}">
+				       		<div>작성하실 스터디가 없습니다.</div>
+				       	</c:if>
+				       	<c:forEach var="rb" items="${slist}" >
+					      	<div class="board_cont">
+								<input type="checkbox" class="checkbox" name="studyNum" value="${rb.num}" />
+								<span>${rb.name}</span>
+					      	</div>
+				        </c:forEach>
+				        <div class="mbtn_wrap">
+					        <c:choose>
+						        <c:when test="${empty slist}">
+							        <button type="button" id="close">취소</button>	        
+						        </c:when>
+						        <c:otherwise>
+							        <button type="submit">선택</button>
+						        </c:otherwise>
+					        </c:choose>
+			        	</div>
+					</form>
+		   		</div>
+			</div>
+		   	
+		   	
+		   	
 		   	<div class="cont_wrap">
 		       	<c:if test="${empty list}">
-		       		<div>게시물이 없습니다.</div>
+		       		<div class="emptyCont">게시물이 없습니다.</div>
 		       	</c:if>
 		       	<c:forEach var="rb" items="${list}">
 			      	<div class="board_cont">
@@ -92,6 +123,6 @@
 	</section>
 
 
-    <script type="text/javascript"></script>
+    <script src="<c:url value='/script/review/reviewBoard.js' />"></script>
 </body>
 </html>

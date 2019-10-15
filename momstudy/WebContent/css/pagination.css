@@ -1,6 +1,7 @@
 .totalContent{
 	width: 100%;
-	background: rgb(243, 243, 243);	
+	background: #fff;	
+	margin: 15px 0;
 }
 .pageContent {
 	width: max-content;
@@ -18,19 +19,23 @@
 }
 
 .check {
-	background: white;
-	border: 1px solid  rgb(243, 243, 243);	
-	color: rgb(245, 181, 63);
+	background: #333;
+	color: #fff
 }
 
 .lis {
-	    box-sizing: border-box;
+    box-sizing: border-box;
     float: left;
-    height: 40px;
-    width: 40px;
-    line-height: 26px;
-        text-align: center;
-    border: 5px solid  rgb(243, 243, 243);	
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-decoration: none;
+}
+.lis:hover {
+	text-decoration: under-line;
 }
 
 .prev, .next {
@@ -57,23 +62,32 @@
 	  text-decoration: underline;
 	  cursor: pointer;
 }
-
-
-.searchContent > form > input, .searchContent > form > select, .searchContent > form > div {
+.searchContent > form > select {
+	width: 100px;
 	height: 30px;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+.searchContent > form > div {
+	display: inline-block;
+}
+.searchContent > form > div > input {
+	width: 250px;
+	height: 30px;
+	box-sizing: border-box;
+	padding: 5px;
+	margin-right: 8px;
+	border-radius: 3px;
+	border: 1px solid rgb(169, 169, 169);
 }
 
-.searchContent > form > div {
-	float: right;
-    width: 60px;
-    text-align: center;
-    line-height: 30px;
-	font-size: 13px;
-	position: relative;
-	top: 5px;	
-	background: rgb(44, 44, 44);
-    color: white;
-}
-.line{
-	border-top: 1px solid rgb(223, 223, 223);
+.searchContent > form > div > div {
+	position: absolute;
+    top: 11px;
+    right: 20px;
+    background-image: url(./../images/icon_search.png);
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    cursor: pointer;
 }
