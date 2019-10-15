@@ -115,7 +115,8 @@ height: 500px;
 .studycard:hover{
 	cursor: pointer;
 	transform: scale(1.1);
-	box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px;
+    border-radius: 2px;
 }
 
 .forslide{

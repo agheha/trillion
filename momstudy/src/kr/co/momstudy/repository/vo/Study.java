@@ -16,7 +16,32 @@ public class Study {
 	//카운트 받을것(팀원수)
 	private int member;
 	private int fileGroupCode;
+	private String address;
+	private String category;
+	private int chk;
+	
+	public int getChk() {
+		return chk;
+	}
+	public void setChk(int chk) {
+		this.chk = chk;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
+	
+
+	
 	public int getFileGroupCode() {
 		return fileGroupCode;
 	}

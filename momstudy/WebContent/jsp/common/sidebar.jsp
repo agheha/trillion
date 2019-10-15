@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="<c:url value="/css/sidebar.css"/>">
 <div>
 	<div class="profile">
 		<img src="<c:url value="/images/test_img2.jpg" />" alt="testImg">
@@ -15,6 +16,7 @@
 			</form>
 			<ul>
 				<!-- 스터디장 화면 다르게 보임 -->
+				<li><a href="<c:url value="/study/studyinfo.do"/>">스터디 정보</a></li>
 				<li><a href="<c:url value="/study/member.do"/>">멤버</a></li>
 				<li><a href="<c:url value="/study/votelist.do"/>">투표</a></li>
 				<li><a href="<c:url value="/board/list.do?studynum=${study.num}"/>">게시판</a></li>

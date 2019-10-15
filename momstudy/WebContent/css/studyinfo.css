@@ -1,0 +1,25 @@
+.infocontent{
+	border-top: 1px solid lightgray;
+    width: 600px;
+	margin: auto;
+}
+.iname{
+	height: 80px;
+    background: rgb(240, 240, 240);
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: lightgray;
+}
+.ivalue{
+    height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+.item{
+	display: grid;
+    height: max-content;
+    grid-template-rows: 1fr;
+    grid-template-columns: 120px 1fr;
+    border-bottom: 1px solid lightgray;
+}
