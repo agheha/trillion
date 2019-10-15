@@ -47,10 +47,8 @@
 }
 .cont_img {
     width: 100%;
-    height: 170px;
+    height: 155px;
     overflow: hidden;
-    background-image: url("./../images/main_bg.jpg");
-    background-size: cover;
 }
 .cont_img img {
     width: 100%;
@@ -62,8 +60,9 @@
 .cont_text {
     box-sizing: border-box;
     width: 100%;
-    height: 120px;
+    height: 135px;
     padding: 10px 15px;
+    border-top: 1px solid #dadada;
 }
 .cont_text > p {
     font-weight: 900;
@@ -75,14 +74,15 @@
 
 .cont_text > span {
     display:-webkit-box; 
-    line-height: 25px;
+    line-height: 20px;
     font-size: 14px;
     letter-spacing: -0.3px;
-    -webkit-line-clamp:2; 
+    -webkit-line-clamp:3; 
     -webkit-box-orient:vertical;
     text-overflow: ellipsis;
     overflow: hidden;
     overflow-wrap: break-word;
+    height: 60px;
 }
 input.submit_btn {
     height: 30px;
@@ -179,4 +179,12 @@ input.submit_btn:hover {
 }
 .buttons {
     margin-bottom: 10px;
+}
+.boardInfo {
+	font-size: 12px;
+    box-sizing: border-box;
+    padding-top: 12px;
+}
+.boardInfo > div > span:nth-child(2) {
+	float:right;
 }

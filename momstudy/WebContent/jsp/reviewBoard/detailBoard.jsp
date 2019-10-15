@@ -52,25 +52,27 @@ opacity: 1;
        <div class="study_right_wrap">
            <div class="board_title">
                <p>${rBoard.title}  ${study.categoryCode}</p>
-               <div>
-                   <span>작성자 : ${rBoard.email}</span>
-                   <span>작성일 : <fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
-               	   <span>평점: ${rBoard.score}</span>
-               </div>
-           </div>
-		
+			   </div>
+		   <div class="boardInfo">
+				<span>작성자 : ${rBoard.email}</span>
+				<span>작성일 : <fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
+				<span>평점 : ${rBoard.score}</span>
+				<span>조회수  : ${rBoard.seeCnt} </span>
+			</div>
+
 		<!-- 추후 이미지 -->
            <div class="image_wrap">
-           	   <c:if test="${file.groupCode != null}">
-	               <img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
-           	   </c:if>
+           		<c:if test="${file.groupCode != null}">
+	            	<img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
+           		</c:if>
            </div>
    
            <div class="board_cont">
-               ${rBoard.content}
-               
-					<button type="button" onclick="mopen()">신고하기</button>
-
+               	${rBoard.content}
+				<button class="alertBtn" type="button" onclick="mopen()">
+					<i class="fas fa-comment-slash"></i>
+					신고하기
+				</button>
            </div>
 
 
