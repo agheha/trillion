@@ -141,6 +141,12 @@ a {
 				<button type="button">
 					<a class="del" href='delete.do?num=${board.num}'>삭제</a>
 				</button>
+				<button type="button">
+				  <a class="del" href='list.do'>목록</a>
+				</button>
+				<button type="button">
+				 <a class="report" href="">신고하기</a>
+				</button>
 			</div>
 			<br>
 			

@@ -66,19 +66,24 @@
                 <div class="vote_title">
                     <p>자유 게시판</p>
                     <div>
-                 
                         <button type="button" onclick="location.href='<c:url value="/boardfree/freewriteform.do"/>'">글등록</button>
                     </div>
                 </div>
-                <div class="board_list">
-                        <c:if test="${empty list}">
+                	<div class="board_list">
+					<ul id="types">
+						<li>번호</li>
+						<li>제목</li>
+						<li>이메일</li>
+						<li>날짜</li>
+						<li>조회수</li>
+					</ul>
+                <!--  <div class="board_list"> -->
+                         <c:if test="${empty list}">
                            <div>
                               <h2>게시글이 없습니다.</h2>
                            </div>
                         </c:if>
-                        
                         <c:forEach var="b" items="${list}">
-                     
                         <c:choose>
 							<c:when test="${b.type == 0 && b.notice == 0}">
 								<div class="red">
@@ -123,20 +128,6 @@
 							</div>
 						</c:otherwise>
                         </c:choose>
-                        <!-- 
-                        <div>
-                            <a href="<c:url value="/board/detail.do?no=${b.num}" />">
-	                            <ul>
-	                                <li>${b.num}</li>
-	                                <li>${b.title}</li>
-	                                <li>${b.email}</li>
-	                                <li><fmt:formatDate pattern="yyyy-MM-dd" value="${b.regDate}" /></li>
-	                                <li>${b.seeCnt}</li>
-	                            </ul>
-                            </a>
-                        </div>
-                         -->
-             
                         </c:forEach>
                     </div>
                      <%@include file="/jsp/common/pagination.jsp" %>  
