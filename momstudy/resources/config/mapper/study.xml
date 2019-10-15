@@ -55,13 +55,14 @@
 	<select id="selectStudy" parameterType="string"
 		resultMap="studyMap">
 		select a.*,
-       	   nvl(b.FILE_GROUP_CODE,0) as file_group_code
+       		   nvl(b.FILE_GROUP_CODE,0) as file_group_code
   		  from tb_study a
     left outer join tb_study_recruitment b
-     		on a.num = b.num
- 		 where a.num in (select study_num
-                  		   from tb_participant 
-                 		  where email = #{email} and condition = 2)    			    
+    	    on a.num = b.num
+ 		 inner join tb_participant c
+    		on c.study_num = a.num
+ 		 where c.CONDITION = 2 and c.email = #{email}
+  		 order by c.PART_DATE			    
 	</select>
 
 	<select id="selectOneStudy" parameterType="int"
@@ -153,4 +154,28 @@
  		 where num = #{num}
 	</update>
 
+	<select id="selectStudyInfo" parameterType="int" resultType="Study" >
+			select a.name,
+			       a.email,
+			       b.category_name as category,
+			       c.address_detail || ' ' || address_detail2 as address,
+			       d.cnt as member,
+			       a.reg_date as regDate,
+			       nvl(e.chk,0) as chk 
+			  from tb_study a
+			 inner join tb_category b
+			    on a.category_code = b.category_code
+			 inner join tb_address c
+			    on a.address_code = c.address_code
+			 inner join (select distinct study_num,
+			                    count(*) over() as cnt
+			               from tb_participant
+			              where study_num = #{num}) d
+			    on a.num = d.study_num
+			 left outer join (select count(*) over() as chk,
+			                    study_num
+			               from tb_study_recruitment
+			               where study_num = #{num}) e
+			    on a.num = e.study_num
+	</select>
 </mapper>

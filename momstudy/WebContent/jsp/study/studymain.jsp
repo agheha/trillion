@@ -20,23 +20,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
-<!-- full calendar -->
-<link rel="stylesheet" type="text/css"
-	href='<c:url value="/script/core/main.css" />' />
-<link rel="stylesheet" type="text/css"
-	href='<c:url value="/script/daygrid/main.css" />' />
-<script type="text/javascript"
-	src='<c:url value="/script/core/main.js" />'></script>
-<script type="text/javascript"
-	src='<c:url value="/script/daygrid/main.js" />'></script>
-
 <title>스터디</title>
-
-<!-- jquery -->
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 </head>
 <body>

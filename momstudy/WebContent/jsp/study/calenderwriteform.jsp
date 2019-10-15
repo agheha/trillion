@@ -24,7 +24,7 @@
 <body>
 	<form name="myForm" action="studywrite.do" method="post"
 		onsubmit="return chknull();">
-		<div class="wcotents">
+		<div class="ccotents">
 			<div class="name">
 				<span>일정 등록</span>
 			</div>
