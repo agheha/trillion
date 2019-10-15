@@ -27,24 +27,24 @@
 				</c:if>
 			</form>
 		</div>
-		<div class="line"></div>
 		<div class="searchContent">
 		<form name="sForm" action="#" method="post" >
-				 <select name="filter" id="filter">
-				 		<c:forEach var="filter" items="${search.filters}">
-						<option value="${filter[0]}">${filter[1]}</option>
-				 		</c:forEach>
+			 <select name="filter" id="filter">
+			 		<c:forEach var="filter" items="${search.filters}">
+					<option value="${filter[0]}">${filter[1]}</option>
+			 		</c:forEach>
 				</select>
 		
 				<select name="type">
-						<c:forEach var="type" items="${search.types}">
-						<option value="${type[0]}">${type[1]}</option>
-				 		</c:forEach>		
-
+					<c:forEach var="type" items="${search.types}">
+					<option value="${type[0]}">${type[1]}</option>
+			 		</c:forEach>		
 				</select>
-
-				<input type="text" name="keyword" />
-				<div class="divbt" id="searchbtn">검색</div>
+				
+				<div>
+					<input type="text" name="keyword" />
+					<div class="divbt" id="searchbtn"></div>				
+				</div>
 		</form>
 		</div>
 	</div>

@@ -81,8 +81,7 @@
     width: 60px;
 }
 .board_list li:nth-child(2) {
-	width: 220px;
-
+	width: auto;
     position:relative;
     text-align: left;
     text-overflow: ellipsis;
@@ -96,6 +95,10 @@
 .board_list li:nth-child(4) {
     width: 150px;
     max-width: 150px;
+}
+.board_list li:nth-child(5) {
+	width: 80px;
+    max-width: 80px;
 }
 .study_right_wrap{
 	height: 650px;
@@ -116,5 +119,9 @@
     height: 40px;
     padding: 8px;
     font-weight: bold;
+}
+.study_right_wrap {
+	width: 100% !important;
+	border-left: none !important;
 }
 

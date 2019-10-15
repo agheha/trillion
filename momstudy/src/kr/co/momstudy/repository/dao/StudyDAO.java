@@ -41,4 +41,6 @@ public interface StudyDAO {
 	int CheckParticipation(Participant part);
 	
 	void updateCalender(Calenders calender);
+	
+	Study selectStudyInfo(int num);
 }

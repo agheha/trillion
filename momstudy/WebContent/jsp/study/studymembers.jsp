@@ -72,7 +72,7 @@
 						<c:forEach items="${ulist}" var="oneUser">
 							<tr  email="${oneUser.email}" name="${oneUser.name}" class="tr_row">
 								<c:choose>
-									<c:when test="${user.email eq oneUser.email}">
+									<c:when test="${study.email eq oneUser.email}">
 										<td class="study_leader"><span><i
 												class="fas fa-crown"></i></span>${oneUser.email}</td>
 									</c:when>

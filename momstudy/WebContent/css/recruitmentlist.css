@@ -1,7 +1,7 @@
 .modal{
     display: none; 
     position: fixed; 
-    z-index: 1; 
+    z-index: 5; 
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -13,8 +13,10 @@
 }
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid #888;
     width: 510px;   
     border-radius: 15px;                        

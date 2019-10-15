@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/admin_reportform.css">
+</head>
+
+<body>
+
+    <div id="b_main">
+        <h2 id="rptitle">신고하기</h2>
+        <hr/>
+        <div id="rpemail_wrap">
+            <div class="rpemail">신고자</div>
+            <div class="rpemail">실제신고자 이메일</div>
+        </div>
+
+        <h3>신고사유 선택</h3>
+        <div>
+            <form action="" method="post" name="rpform">
+                <input type="radio" name="code" value="1" id="rpc1" class="rpcode"/>
+                <label for="rpc1">욕설/비하</label>
+                <br />
+                <input type="radio" name="code" value="2" id="rpc2" class="rpcode"/>
+                <label for="rpc2">음란성</label>
+                <br />
+                <input type="radio" name="code" value="3" id="rpc3" class="rpcode"/>
+                <label for="rpc3">게시글/댓글 도배</label>
+                <br />
+                <input type="radio" name="code" value="4" id="rpc4" class="rpcode"/>
+                <label for="rpc4">홍보성 콘텐츠</label>
+                <br />
+                <input type="radio" name="code" value="5" id="rpc5" class="rpcode"/>
+                <label for="rpc5">타인의 개인정보 유포</label>
+                <br />
+                <input type="radio" name="code" value="6" id="rpc6" class="rpcode"/>
+                <label for="rpc6">허위사실 유포</label>
+                <br />
+                <input type="radio" name="code" value="7" id="rpc7" class="rpcode"/>
+                <label for="rpc7">명예회손 관련</label>
+                <br />
+                <input type="radio" name="code" value="8" id="rpc8" class="rpcode"/>
+                <label for="rpc8">기타</label>
+                <br />
+                <div id="rpcontent">
+                    <textarea placeholder="내용을 입력하세요."></textarea>
+                </div>
+                <div id="rpbtn">
+                    <button id="btn">신고하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

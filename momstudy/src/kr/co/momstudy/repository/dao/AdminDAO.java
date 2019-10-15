@@ -54,4 +54,6 @@ public interface AdminDAO {
 	int deleteCategory(int categoryCode);
 //	아이디 받아서 밴기간 설정
 	int updateBanDate(User user);
+//	아이디 받아서 밴해제 설정
+	int updateBanRelease(User user);
 }

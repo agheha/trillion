@@ -1,0 +1,32 @@
+
+    #b_main {
+        width: 800px;
+    }
+    #rpemail_wrap {
+        margin-top: 20px;
+        border: 1px solid gray;
+    }
+    #rpemail_wrap div:nth-child(2){
+        border-left: 1px solid gray;
+    }
+    .rpemail{
+        text-align: center;
+        display: inline-block;
+        font-size: 18px;
+        padding: 5px;
+    }
+    #rpbtn {
+      text-align: right;
+    }
+    #rpbtn > #btn{
+
+      margin: 2%;
+    }
+    #rpcontent >textarea{
+        width: 90%;
+        height: 200px;
+        margin: 2%;
+    }
+    .rpcode{
+        margin: 9px;
+    }

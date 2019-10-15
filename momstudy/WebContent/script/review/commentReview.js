@@ -46,7 +46,7 @@ function makeCommentList(list) {
 		if (`${comment.email}` == user.value) {
 			html += `
 			<div>
-				< div class="commentInfo">
+				<div class="commentInfo">
 					<span>작성자 : ${comment.email}</span>
 					<span>작성일 : ${comment.regDate}</span>
 					댓글 번호 : ${comment.num}
@@ -76,7 +76,7 @@ function makeCommentList(list) {
 					<span>작성자 : ${comment.email}</span>
 					<span>작성일 : ${comment.regDate}</span>		
 				</div>
-				< div class = "commentWrap">
+				<div class = "commentWrap">
 					${comment.content}
 				</div>
 			</div>

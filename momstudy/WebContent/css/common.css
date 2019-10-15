@@ -60,8 +60,7 @@ html, body {
 }
 /* 일반 버튼 */
 .oneBtn {
-    width: 85px;
-    padding: 3px 0;
+    padding: 3px 20px;
     background-color: #fff;
     color: #333;
     cursor: pointer;
@@ -73,16 +72,38 @@ html, body {
     background-color: #333;
     color: #fff;
 }
+.alertBtn {
+	position: absolute;
+	right: 0;
+	bottom: 15px;
+	border: none;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+.alertBtn:hover {
+	color: red;
+}
 
 .close {
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    font-weight: 900;
     border: none;
     padding: 0 5px;
     z-index: 1;
-    font-size: 28px;
-    font-weight: 900;
     color: #333;
     cursor: pointer;
-    float:right;
+    background-color: transparent;
+}
+.close > i {
+	position: absolute;
+    top: 4px;
+    left: 5px;	
 }
 .modal p {
     padding: 8px 0 15px;
@@ -100,4 +121,16 @@ html, body {
     color: red;
     font-size: 13px;
     margin-left: 5px;
+}
+
+/* 게시물이 없을 경우 */
+.emptyCont {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 320px 0 50px 0;
+    background-image: url(./../images/empty-result.png);
+	background-position: center top;
+    background-repeat: no-repeat;
+    font-size: 18px;
 }
