@@ -54,9 +54,9 @@
 							<img id="userimg" src="<c:url value="/util/download.do?fgno=${user.fileGroupCode}" />" alt="">
 						</div>
 						<div class="btns">
-							<div class="btn">사용자 정보 수정</div>
-							<div class="btn">신청한 스터디</div>
-							<div class="btn">가입한 스터디</div>
+							<div class="btn" id="userinfo">사용자 정보 수정</div>
+							<div class="btn" id="participant">신청한 스터디</div>
+							<div class="btn" id="myparticipant">가입한 스터디</div>
 						</div>
 					</div>
 					<div class="userscore">
@@ -97,6 +97,10 @@
 
 	<script>
 		let email = '${user.email}';
+		let userinfo = document.querySelector("#userinfo");
+		userinfo.addEventListener("click", e =>{
+			location.href ="/momstudy/user/userinfo.do"
+		})
 	</script>
 	<script src="<c:url value='/script/user/mypage.js'/>"></script>
 </body>

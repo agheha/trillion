@@ -95,8 +95,8 @@
 			</li>
 			<li>
 				<div>
-					<a href="inquire_board.html"> <i class="fas fa-question"></i>
-						문의하기
+					<a href="<c:url value="/question/questionform.do"/>"> <i
+						class="fas fa-object-group"></i> 후기게시판
 					</a>
 				</div>
 			</li>

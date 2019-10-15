@@ -27,22 +27,24 @@ public class LoginController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		User u = new User();
 		u.setEmail(req.getParameter("email"));
-		
-		
 		u.setPass(req.getParameter("pass"));
 		User user = dao.selectLogin(u);
+		System.out.println(user);
 		PrintWriter out = res.getWriter();
-		if(user.getStatus() == 2) {
-			out.println(0);
+		if (user != null) {
+			if(user.getStatus() == 2 ) {
+				out.println(new Gson().toJson(user));
+				out.close();
+				return;
+			} else {
+				HttpSession session = req.getSession();
+				session.setAttribute("user", user);
+				out.println(new Gson().toJson(user));
+				out.close();
+			}
 		} else {
 			out.println(new Gson().toJson(user));
-			HttpSession session = req.getSession();
-			session.setAttribute("user", user);
+			out.close();
 		}
-		out.close();
-		
-		
-		
-		
 	}
 }

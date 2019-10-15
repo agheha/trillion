@@ -45,7 +45,7 @@ public class FIleDownloadController extends HttpServlet{
 		
 		}
 	
-		else {
+		else {	
 			res.setHeader("Content-type", "application/octet-stream");
 			dName = new String(dName.getBytes("utf-8"), "8859_1");
 			res.setHeader("Content-Disposition", "attchment;filename=" + dName);

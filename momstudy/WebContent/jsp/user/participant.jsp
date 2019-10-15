@@ -45,7 +45,7 @@
 					<table class="rwd-table">
 						<tr>
 							<th>스터디</th>
-							<th>이메일</th>
+							<th>스터디장</th>
 							<th>신청일</th>
 							<th>진행상태</th>
 							<th>철회</th>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.momstudy.repository.dao.QuestionDAO">
+	<resultMap id="questionMap" type="Question">
+		<result column="num" property="num" />
+		<result column="email" property="email" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="condition" property="condition" />
+		<result column="comment_group_code" property="commentGroupCode" />
+	</resultMap>
+	<!-- 선택된 글 상세보기 -->
+	<select id="selectOneQuestion" resultMap="questionMap" parameterType="int">
+		select *
+		  from tb_question_board
+		 where num = #{num}
+	</select>
+	<!-- 내가 문의한 글 목록보기 -->
+	<select id="selectQuestion" resultMap="questionMap" parameterType="Search">
+		select *
+		  from (select rownum rnum,
+		               a.*,
+		               count(*) over() as cnt
+				from tb_question_board a)
+		where rnum between #{begin} and #{end}
+		   and email = #{email} 
+		 order by reg_date desc
+	</select>
+	<!--  문의글 추가  -->
+	<insert id="questionWrite" parameterType="Question">
+		insert into tb_question_board(num, email, title, content) 
+		values (seq_question_board_num.nextval, #{email}, #{title}, #{content})
+	</insert>
+</mapper>

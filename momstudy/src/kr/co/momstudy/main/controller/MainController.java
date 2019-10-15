@@ -26,8 +26,8 @@ public class MainController extends HttpServlet{
 		List<StudyRecruitment> viewUserCnt = dao.viewUserCnt();
 		List<StudyRecruitment> viewLatestdate = dao.viewLatestdate();
 		req.setAttribute("viewcnt", viewCnt);
-		req.setAttribute("viewusercnt", viewUserCnt);
+		req.setAttribute("viewusercnt", viewUserCnt);	
 		req.setAttribute("viewlatestdate", viewLatestdate);
-		req.getRequestDispatcher("/jsp/main.jsp").forward(req, res);
+		req.getRequestDispatcher("/jsp/main/main.jsp").forward(req, res);
 	}
 }
