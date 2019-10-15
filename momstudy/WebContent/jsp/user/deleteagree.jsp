@@ -17,4 +17,5 @@
 	}
 	</script>
     <script src="<c:url value="/script/user/deletestudy.js"/>"></script>	
-    <script src="<c:url value="/script/study/studysignup.js"/>"></script>		
+    <script src="<c:url value="/script/study/studysignup.js"/>"></script>	
+    	
