@@ -130,7 +130,9 @@ height: 500px;
 }
 .studypic{
 	width: 230px;
-	height: 230px;
+    height: 230px;
+    overflow: hidden;
+    background: rgb(99, 99, 99)
 }
 
 .studytitle{
@@ -164,6 +166,6 @@ i:hover{
 }
 
 .studyimg{
-	max-width: 100%;
-	max-height: 100%;
+	width: 100%;
+	max-height: auto;
 }
