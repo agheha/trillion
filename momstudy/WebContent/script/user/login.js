@@ -6,28 +6,23 @@ function login() {
 	let pass = document.querySelector("#pass").value;
     let xhr = new XMLHttpRequest();
     let f = document.lForm
-    msg.style.display = "none";
-    blackmsg.style.display = "none"
+    msg.style.opacity = 0;
+    blackmsg.style.opacity = 0;
     xhr.onreadystatechange = e => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 let list = JSON.parse(xhr.responseText);
-               
-                if (list === null){
-                    msg.style.display = "block";
-                  return;
+                if (list == null){
+                    msg.style.opacity = 1;
+                    return false
                 }
-                else if (parseInt(list) === 0) {
-                
-                    blackmsg.style.display = "block";
-                    return;
-                 
+                else if (parseInt(list.status) === 2) {
+                    blackmsg.style.opacity = 1;
+                    return false
                 } 
                 else {
-                
                 	location.href = "/momstudy/main.do"
-                	return;
-                }
+                }	
                 email="";
                 pass="";
             }

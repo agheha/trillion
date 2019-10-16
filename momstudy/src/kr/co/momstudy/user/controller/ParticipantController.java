@@ -27,7 +27,6 @@ public class ParticipantController extends HttpServlet {
 		User user = (User)req.getSession().getAttribute("user");
 		
 		List<Participant> parList = dao.selectParticipant(user.getEmail());
-		
 		req.setAttribute("parlist", parList);
 		req.getRequestDispatcher("/jsp/user/participant.jsp").forward(req, res);
 	}

@@ -121,20 +121,22 @@ a {
 	<section id="layout">
 		<%@include file="/jsp/common/sidebar.jsp"%>
 
-		<div class="study_right_wrap">
+		<div class="study_right_wrap" style="width: 820px !important; border-left: 3px solid #dadada !important;">
 			<div class="board_title">
-				<p>
-					<c:out value="${board.title}" />
-				</p>
-				<div class ="top">
-					<span>${board.email}</span> 
-					<span><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
-					<span style="width: 54px;">${board.seeCnt}</span>
-				</div>
+				<p><c:out value="${board.title}" /></p>
+			</div>
+			<div class="boardInfo">
+				<span>${board.email}</span> 
+				<span><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
+				<span>${board.seeCnt}</span>
 			</div>
 
 			<div class="board_cont">
-				<p><c:out value="${board.content}" /></p>
+				${board.content}"
+				<button class="alertBtn">
+					<i class="fas fa-user-slash"></i>
+					신고하기
+				</button>
 			</div>
 			
            <!-- 수정 삭제 버튼 -->
@@ -219,16 +221,16 @@ a {
 													<div class="comm_action">
 														<div class="btn-group-sm" role="group"
 															aria-label="Basic example">
-															<button type="button" class="btn btn-secondary"
+														     <button type="button" class="btn btn-secondary"
 																onclick="document.location.href='commentdelete.do?commentGroupCode=${comment.commentGroupCode}&num=${comment.num}'">삭제</button>
 															<button type="button" class="btn btn-secondary"
 																onclick="document.location.href='detail.do?type=modify&commentGroupCode=${comment.commentGroupCode}&no=${board.num}&commentNo=${comment.num}'">수정</button>
 															
-															<c:if test="${comment.parent == 0}">
+														<!-- 	<c:if test="${comment.parent == 0}">
 																<button type="button" class="btn btn-secondary"
 																	onclick="document.location.href='detail.do?type=reply&parentNo=${comment.num}&no=${board.num}'">답변
 																</button>
-															</c:if>
+															</c:if> -->
 														</div>
 													</div>
 												</div>

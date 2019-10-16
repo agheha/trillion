@@ -41,8 +41,8 @@
                     </div>
                     <div>
                         <input class="form_login"type="password" id="pass" placeholder="비밀번호" name="pass"> 
-                        <span id="msg" class="alert_wrap" style="display:none">아이디와 비밀번호를 다시 확인해 주세요</span>
-                        <span id="blackmsg" class="alert_wrap" style="display:none">정지된 아이디입니다.</span>
+                        <span id="msg" class="alert_wrap" style="opacity:0;">아이디와 비밀번호를 다시 확인해 주세요</span>
+                        <span id="blackmsg" class="alert_wrap" style="opacity:0;">정지된 아이디입니다.</span>
                     </div>
                  	<div>
                         <input class="submit_btn" type="button" id="sbtn" value="로그인" />

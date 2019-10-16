@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="<c:url value="/css/header.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/sidebar.css"/>">
 <div class="header">
 	<div class="header_top_wrap">
 		<div>
@@ -41,7 +42,7 @@
 			<a href='<c:url value="/review/list.do" />'>후기게시판</a>
 		</div>
 		<div>
-			<a href="./inquire_board.html">문의하기</a>
+			<a href="<c:url value="/question/questionform.do" />">문의하기</a>
 		</div>
 	</div>
 </div>

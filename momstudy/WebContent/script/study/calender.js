@@ -51,7 +51,6 @@ document.querySelector(".bigcal").addEventListener('contextmenu', function(e) {
 		modifySd.onclick = ()=>{
 			sdmenu.classList.remove("rightclick");
 			promise1().then((result)=>{
-				console.log(result)
 				if(result === '1'){
 					submitbtn.style.display = "none";
 					let msubmitbtn = document.querySelector("#msubmitbtn")
@@ -107,9 +106,9 @@ function loading(month,year){
 			maxdateVal = maxdate.getAttribute("dates");
 			let gridArea;
 			let srow, scol, erow, ecol;
-			let location = new Array;
+			let locations = new Array;
 			obj.list.forEach(cal=>{
-				// 시작과 끝을 넘어갈 때 정해줌
+				// 시작과 끝이 달력을 넘어갈 때 정해줌
 				if(cal.startDate < mindateVal) {
 					gridArea = mindate.style.gridArea.substr(0,5).replace("/","").replace(" ","").split(" ")
 					srow = gridArea[0];
@@ -143,17 +142,18 @@ function loading(month,year){
 				let backgroundCode = cal.barColor;
 				let fontCode = cal.fontColor;
 				let sdlist = new Array;
-				let oritop = 22;
-				
+				let location = new Array;
+				let layers = new Array;
 				// 다 정했으면 컬럼과 로우를 가지고 세션을 만들고 세션의 속성에 넣어줌
 				for(let i = parseInt(srow); i <= erow; i++){
-					let temptop = 22;
+					let thisrow = i;
 					// 초기값 설정
 					let setscol = 1;
 					let setecol = 8;
 					// 자리 지정
 					if( i === parseInt(srow)) setscol = parseInt(scol);
 					if( i === parseInt(erow)) setecol = parseInt(ecol) + 1;
+
 					// 요소 생성 및 속성 지정
 					let sd = document.createElement("section");
 					sd.style.gridArea = `${i} / ${setscol} / auto / ${setecol}`;
@@ -167,30 +167,55 @@ function loading(month,year){
 						selectResult(e.target.getAttribute("num"));
 						onClickModalforDetail();
 					});
-					// 높이 구하기
-					location.forEach((ele)=>{
-						let prevScol = ele.setscol;
-						let prevEcol = ele.setEcol;
-						let prevRow = ele.i;
-						if(prevRow === i && !(setscol > prevEcol || setecol < prevScol)){
-							temptop = temptop + 22; 
-						}
-					})
-					if(oritop < temptop) oritop = temptop;
 
+					// 높이 구하기
+					// 각 섹션의 위치 정보가 담긴 객체가 담긴 하나의 작업에 대한 위치 정보인 locations에 각 섹션의 위치와 높이를 꺼내서
+					// 같은 행이면 그 섹션의 레이어를 중복검사 하고 레이어 배열에 넣는다.
+
+					for(let i = 0; i < locations.length; i++){
+						locations[i][0].forEach((ele)=>{
+							let prevScol = ele.setscol;
+							let prevEcol = ele.setecol;
+							let prevRow = ele.thisrow;
+							if(prevRow === thisrow && !(setscol >= prevEcol || setecol <= prevScol)){
+								console.log(layers.includes(locations[i][1]));
+								if(layers.includes(locations[i][1]) === false){
+									layers.push(locations[i][1]);
+								}
+							}
+						})
+					}
 					// 위치값 저장
-					location.push({i,setscol,setecol});
+					location.push({thisrow,setscol,setecol});
 				}
 
-				// 높이값을 설정하면서 만약 3개가 넘어가면 행의 크기 늘림
+				//레이어 배열의 길이가 0이면 중복된 레이어가 없으므로 정렬을 하지 않는다.
+				if(layers.length > 0){
+					layers.sort(function(a, b) {
+						return a - b;
+					});
+				}
+				
+				//기본 레이어를 1로 설정한다
+				let layer = 1;
+
+				//레이어 배열을 반복하면서 기본 레이어와 비교 빈자리를 찾는다. 빈 자리가 없을 시엔 레이어의 값이 최대값 보다 1 증가한다. 
+				layers.forEach((ele)=>{
+					if(layer === ele) layer++;
+				})
+
+				locations.push([location,layer]);
+
+
+				// 높이값을 설정하면서 만약 레이어가 3개가 초과하면 행의 높이를 늘린다
 				sdlist.forEach((ele)=>{
 					daysEle.append(ele);
 					let i = ele.style.gridArea.substr(0,1);
-					ele.style.top = oritop + "px";
+					ele.style.top = layer * 22 + "px";
 
-					if(oritop > 66){
+					if(layer * 22 > 66 && daysPx[i-1] < (layer + 1) * 22){
 						let gtr = "";
-						daysPx[i-1] = oritop + 22;
+						daysPx[i-1] = (layer + 1) * 22;
 						for(let i = 0; i < daysPx.length; i++){
 							gtr += daysPx[i] + "px" + " "; 
 						}
@@ -296,6 +321,7 @@ function removeSd(){
 	sds.forEach((ele)=>{
 		ele.remove();
 	})
+	daysEle.style.gridTemplateRows = `88px 88px 88px 88px 88px 88px`;
 }
 // 스케쥴 삭제
 function deleteCalender(){
@@ -306,8 +332,8 @@ function deleteCalender(){
 				console.log(typeof(xhr.responseText));
 				if(xhr.responseText.trim() === '1'){
 					alert("삭제되었습니다.");
-					first();
 					sdmenu.classList.remove("rightclick");
+					first();
 				}else{					
 					alert("작성자만 삭제할 수 있습니다.");
 					sdmenu.classList.remove("rightclick");
@@ -319,6 +345,7 @@ function deleteCalender(){
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 	xhr.send("num="+sdEle.getAttribute("num"));
 }
+
 let promise1 = function(){
 	return new Promise(function (resolve, reject){
 			let xhr = new XMLHttpRequest();

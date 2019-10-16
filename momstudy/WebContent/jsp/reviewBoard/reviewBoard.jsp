@@ -64,7 +64,7 @@
 		   	<!-- 모달창 -->
 		   	<div id="content" class="modal">
 		   		<div>
-					<form action="<c:url value="/review/writeForm.do" />" method="post">
+					<form action="<c:url value="/review/writeForm.do" />" method="post" onsubmit="return studyChk()">
 						<button type="button" id="close" class="close">
 							<i class="fas fa-times"></i>
 						</button>
@@ -101,18 +101,32 @@
 		       	<c:forEach var="rb" items="${list}">
 			      	<div class="board_cont">
 				        	<a href='<c:url value="/review/detail.do?num=${rb.num}" /> '>
+				        	
 				            <div class="cont_img">
-                                <img src="<c:url value="/util/download.do?fgno=${rb.fileGroupCode}" />" alt="">
-				            	<div class="img_hover;">
-									<span>${rb.email}</span>		            	
-					                <span><fmt:formatDate value="${rb.regDate}" pattern="yyyy-MM-dd" /></span>
-					                <span>${rb.score}</span>
-					                <span>${rb.seeCnt}</span>
-				            	</div>
+				            	<c:choose>
+				            		<c:when test="${empty rb.fileGroupCode}">
+				            			<img src="<c:url value="/images/main_bg.jpg" />" alt="">
+				            		</c:when>
+				            		<c:otherwise>
+		                             	<img src="<c:url value="/util/download.do?fgno=${rb.fileGroupCode}" />" alt="">
+				            		</c:otherwise>
+				            	</c:choose>
 				            </div>
 				           	<div class="cont_text">
 				                <p>${rb.title}</p>
 				                <span>${rb.content}</span>
+				                <div class="boardInfo">
+				                	<%-- <div>
+										<span>작성자 : ${rb.email}</span>		            	
+				                	</div> --%>
+									<%-- <div>
+						                <span>작성일 : <fmt:formatDate value="${rb.regDate}" pattern="yyyy-MM-dd" /></span>				                	
+				                	</div> --%>
+				                	<div>			                	
+						                <span>조회수 : ${rb.seeCnt}</span>
+						                <span>평점 : ${rb.score}</span>
+				                	</div>
+				            	</div>
 				           	</div>
 				       	</a>
 			      	</div>

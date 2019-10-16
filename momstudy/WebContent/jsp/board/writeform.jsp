@@ -39,17 +39,20 @@
             </div>
         </section>
         
-           <section id="layout">
+        <section id="layout">
                             <!-- 스터디장 화면 다르게 보임 -->
-          <%@include file="/jsp/common/sidebar.jsp" %>
-          
-             <div class="study_right_wrap">
-            <form name="create" action="write.do" method="post" onsubmit="return check()" >
-            <div>
-            <input class="type" type="checkbox" name="type" value="0"  onclick=" checkDisable(this.form)" />공지사항
-            <input class="notice" type="checkbox" name="notice" value="0" disabled /> 상단 고정     
-            </div>
-            
+          	<%@include file="/jsp/common/sidebar.jsp" %>
+            <form class="form" name="create" action="write.do" method="post" onsubmit="return check()" >
+           		<div class="checked">
+           			<div>
+			            <input id="type" class="type" type="checkbox" name="type" value="0" onclick=" checkDisable(this.form)" />
+           				<label for="type">공지사항</label>
+           			</div>
+           			<div>
+			            <input id="notice" class="notice" type="checkbox" name="notice" value="0" disabled />
+           				<label for="notice">상단고정</label>
+           			</div>
+	            </div>
                 <div>
                     <p>제목</p>
                     <input type="text" name="title" />
@@ -59,10 +62,8 @@
                 <div class="buttons">
                     <button class="submit_btn" type="submit">등록</button>
                 </div>
-                
             </form>
-            </div>
-            </section>
+         </section>
        
 
         <script type="text/javascript"  src="<c:url value="/script/board/writeboard.js" />">

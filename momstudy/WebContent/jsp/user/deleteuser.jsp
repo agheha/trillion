@@ -63,13 +63,7 @@
 			<!-- 달력부분 -->
 		</div>
 	</section>
-	<div id="myModal" class="modal hidden">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<%@include file="/jsp/user/deleteagree.jsp"%>
-		</div>
-	</div>
+	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script src="<c:url value="/script/user/deleteuser.js" />"></script>
 </body>
 </html>

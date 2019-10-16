@@ -14,7 +14,6 @@ textarea, th, ul, a {
 }
 
 html, body {
-    height: 100%;
     min-width: 1200px;
 }
 
@@ -22,12 +21,11 @@ html, body {
 .submit_btn {
     display:block;
     width : 300px;
-    height: 52px;
+    height: 35px;
     color: #fff;
     background-color: #4d4d4d;
     border: none;
     border-radius: 3px;
-    line-height: 50px;
     text-align: center;
     cursor: pointer;
 }
@@ -60,8 +58,7 @@ html, body {
 }
 /* 일반 버튼 */
 .oneBtn {
-    width: 85px;
-    padding: 3px 0;
+    padding: 3px 20px;
     background-color: #fff;
     color: #333;
     cursor: pointer;
@@ -74,6 +71,9 @@ html, body {
     color: #fff;
 }
 .alertBtn {
+	position: absolute;
+	right: 0;
+	bottom: 15px;
 	border: none;
     background-color: #fff;
     cursor: pointer;
@@ -128,7 +128,8 @@ html, body {
     text-align: center;
     padding: 320px 0 50px 0;
     background-image: url(./../images/empty-result.png);
-	background-position: center top;
+	background-position: center;
     background-repeat: no-repeat;
     font-size: 18px;
+  	background-size: 250px;
 }

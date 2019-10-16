@@ -45,57 +45,54 @@
 		<%@include file="/jsp/common/header.jsp"%>
 	</header>
 
-	<!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
-	<section class="background_wrap">
-		<div class="background">
-			<h1>스터디</h1>
-			<p>--------------</p>
-		</div>
-	</section>
+    <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+    <section class="background_wrap">
+        <div class="background">
+            <h1>스터디</h1>
+            <p>--------------</p>
+        </div>
+    </section>
 
-	<section id="layout">
+    <section id="layout">
 
-		<div class="study_right_wrap">
-			<div class="board_title">
-				<p>${rBoard.title}${study.categoryCode}</p>
-				<div>
-					<span>작성자 : ${rBoard.email}</span> <span>작성일 : <fmt:formatDate
-							value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span> <span>평점:
-						${rBoard.score}</span>
-				</div>
+       <div class="study_right_wrap">
+           <div class="board_title">
+               <p>${rBoard.title}  ${study.categoryCode}</p>
+			   </div>
+		   <div class="boardInfo">
+				<span>작성자 : ${rBoard.email}</span>
+				<span>작성일 : <fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
+				<span>평점 : ${rBoard.score}</span>
+				<span>조회수  : ${rBoard.seeCnt} </span>
 			</div>
 
-			<!-- 추후 이미지 -->
-			<div class="image_wrap">
-				<c:if test="${file.groupCode != null}">
-					<img
-						src="<c:url value="/util/download.do?fgno=${file.groupCode}" />" />
-				</c:if>
-			</div>
+		<!-- 추후 이미지 -->
+           <div class="image_wrap">
+           		<c:if test="${file.groupCode != null}">
+	            	<img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
+           		</c:if>
+           </div>
+   
+           <div class="board_cont">
+               	${rBoard.content}
+				<button class="alertBtn" type="button" onclick="mopen()">
+					<i class="fas fa-comment-slash"></i>
+					신고하기
+				</button>
+           </div>
 
-			<div class="board_cont">
-				${rBoard.content}
 
-				<button type="button" onclick="mopen()">신고하기</button>
-
-			</div>
-
-
-			<div class="buttons">
-				<c:choose>
-					<c:when test="${rBoard.email == user.email}">
-						<button type="button"
-							onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
-						<button type="button"
-							onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
-					</c:when>
-					<c:otherwise>
-						<button type="button"
-							onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로
-							이동</button>
-					</c:otherwise>
-				</c:choose>
-			</div>
+           <div class="buttons">
+	           <c:choose>
+			        <c:when test="${rBoard.email == user.email}">
+				        <button type="button" onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
+		                <button type="button" onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
+			        </c:when>
+			        <c:otherwise>
+				        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>
+			        </c:otherwise>
+	      	   </c:choose>
+           </div>
 
 			<!-- 댓글 영역 -->
 			<div id="comment_Wrap">

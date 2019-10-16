@@ -115,6 +115,8 @@
   		from TB_CALENER
  		where STUDY_NO = #{studyNo} and start_date <![CDATA[<]]> to_date(#{stend},'YYYYMMDD')
                      		and end_date <![CDATA[>]]> to_date(#{ststart},'YYYYMMDD')
+        order by end_date - start_date desc
+                     		
 	</select>
 	
 	<insert id="insertCalender" parameterType="Calenders">
@@ -178,4 +180,19 @@
 			               where study_num = #{num}) e
 			    on a.num = e.study_num
 	</select>
+	
+	<update id="updateStudyLeader" parameterType="Study">
+		update tb_study
+		   set email = #{email}
+		 where num = #{num}  
+	</update>
+	
+	<update id="updateStudy" parameterType="Study">
+		update tb_study
+		   set name = #{name},
+		   	   category_code = #{categoryCode},
+		   	   address_code = #{addressCode}
+		 where num = #{num}  
+	</update>
+	
 </mapper>

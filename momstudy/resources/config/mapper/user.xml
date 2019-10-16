@@ -49,7 +49,7 @@
 		<result column="num" property="num" />
 		<result column="study_num" property="studyNum" />
 		<result column="email" property="email" />
-		<result column="part_Date" property="partDate" />
+		<result column="partDate" property="partDate" />
 		<result column="condition" property="condition" />
 	</resultMap>
 	<!-- 스터디 탈퇴 -->
@@ -59,9 +59,9 @@
 		 where email = #{email}
 		   and num = #{num} 
 	</delete>
-	<!-- 신청대기중인 내역 삭제 -->
+	<!--  유저가 선택한 스터디 신청철회 -->
 	<delete id="deleteParticipant" parameterType="Participant">
-		delete 
+		delete
 		  from tb_participant
 		 where email = #{email}
 		   and num = #{num}
@@ -70,7 +70,7 @@
 	<select id="selectParticipant" parameterType="String" resultMap="participantMap">
 		 select p.num num,
 				s.email email, 
-				p.part_date part_Date, 
+				p.part_date partDate, 
 				p.condition condition, 
 				p.study_num studyNum, 
 				s.name name
@@ -85,7 +85,7 @@
 	<select id="selectMyStudy" parameterType="String" resultMap="participantMap">
 		 select p.num num,
 				s.email email, 
-				s.reg_date part_Date, 
+				s.reg_date partDate, 
 				p.condition condition, 
 				p.study_num study_num, 
 				s.name name
