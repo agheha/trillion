@@ -183,3 +183,64 @@
 #comment_Wrap {
 	margin-top: 40px;
 }
+
+table {
+	width: 80%
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.commentForm {
+	display: flex;
+	flex-direction: row;
+}
+
+.comment {
+	height: 100%;
+}
+
+.insert1 {
+	float: none;
+	margin-left: auto;
+}
+
+.review {
+	margin-bottom: 25px;
+}
+
+.comm {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
+
+.comm_id {
+   margin-right: 10px;
+}
+
+.comm_content {
+	margin-right: auto;
+}
+
+.comm_reg {
+	margin-right: auto;
+}
+
+.comm_action {
+	
+}
+.comm_reply {
+   margin-left: 30px;
+}
+a {
+	color: black
+}
+.top {
+ text-align: right;
+}
+.prshow {
+    opacity: 1;
+}

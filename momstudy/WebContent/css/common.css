@@ -133,3 +133,16 @@ html, body {
     font-size: 18px;
   	background-size: 250px;
 }
+
+.studyboardlayout {
+	width: 820px !important;
+    border-left: 3px solid #dadada !important;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    float: left;
+}
+
+.studyboardfreelayout {
+	width: 100% !important;
+	border-left: none !important;
+}

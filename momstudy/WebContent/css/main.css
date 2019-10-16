@@ -242,4 +242,7 @@ section.main_bot {
     padding-left: 15px;
     color: #fff;
     font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
