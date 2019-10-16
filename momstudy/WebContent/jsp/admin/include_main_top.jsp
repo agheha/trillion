@@ -51,7 +51,11 @@
 						href="<c:url value="/admin/user.do"/>"><i
 						class="icon">=</i><span>회원</span></a> <a
 						href="<c:url value="/admin/study.do"/>"><i
-						class="icon">=</i><span>스터디</span></a> <a
+						class="icon">=</i><span>스터디</span></a> 
+						<a
+						href="<c:url value="/admin/admininquiry.do"/>"><i
+						class="icon">=</i><span>문의</span></a>
+						<a
 						href="<c:url value="/admin/admincategory.do"/>"><i
 						class="icon">=</i><span>카테고리</span></a>
 

@@ -106,3 +106,5 @@ function reportAjax() {
 
     xhr.send(`categoryCode=${categoryCodeVal}&type=${typeVal}&reportTarget=${reportTargetVal}&boardNum=${boardNumVal}&content=${contentVal}&code=${codeVal}&email=${emailVal}&boardType=${boardTypeVal}&studyNum=${studyNumVal}`);
 }
+
+document.querySelector("").add

@@ -126,6 +126,9 @@ public class Search extends Page{
 			case "팀원수":
 				list.add(new String [] {"member",filter});
 				break;
+			case "답변 상태":
+				list.add(new String [] {"Qcondition",filter});
+				break;
 			}
 		}
 		

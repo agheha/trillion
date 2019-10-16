@@ -1,0 +1,43 @@
+  #Qemail{
+        border: 1px solid gainsboro;
+        display: inline-block;
+        width: 800px;
+        height: 50px;
+        line-height: 40px;
+    }
+    #Qemail div{
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+    }
+    #Qemail div:nth-child(2){
+        text-align: center;
+        border-left: 1px solid gainsboro;
+        width: 80%;
+    }
+  
+    #Qtitle{
+        border: 1px solid gainsboro;
+        display: inline-block;
+        width: 800px;
+        height: 50px;
+        line-height: 40px;
+        margin-top: 20px;
+    }
+    #Qtitle div{
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+    }
+    #Qtitle div:nth-child(2){
+        text-align: center;
+        border-left: 1px solid gainsboro;
+        width: 80%;
+    }
+    #Qtext{
+        border: 1px solid gainsboro;
+        width: 800px;
+        height: 400px;
+        margin-top: 20px;
+        overflow: auto;
+    }

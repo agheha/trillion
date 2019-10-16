@@ -70,7 +70,8 @@
 					</thead>
 					<tbody class="stdmem_td">
 						<c:forEach items="${ulist}" var="oneUser">
-							<tr  email="${oneUser.email}" name="${oneUser.name}" class="tr_row">
+							<tr email="${oneUser.email}" name="${oneUser.name}"
+								class="tr_row">
 								<c:choose>
 									<c:when test="${study.email eq oneUser.email}">
 										<td class="study_leader"><span><i
@@ -108,5 +109,5 @@
 
 
 
-<script src="<c:url value="/script/study/studymembers.js"/>"></script>
+	<script src="<c:url value="/script/study/studymembers.js"/>"></script>
 </body>
