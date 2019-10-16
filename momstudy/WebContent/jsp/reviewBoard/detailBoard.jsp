@@ -13,8 +13,7 @@
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-<link rel="stylesheet"
-	href='<c:url value="/css/studyboard_detail.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
 <!-- PR신고 -->
 <link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
 <link rel="stylesheet"
@@ -170,10 +169,8 @@
 		src="<c:url value='/script/admin/reportAjax.js'/>"></script>
 
 	<script>
-		let num = $
-		{
-			rBoard.num
-		}
+		let num = ${rBoard.num}
+		let email = '${user.email}'
 	</script>
 	<script src="<c:url value='/script/review/commentReview.js' />"></script>
 
