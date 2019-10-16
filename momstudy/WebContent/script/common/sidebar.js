@@ -55,7 +55,7 @@ function insertInfo(){
 				let f = document.querySelector("#studyWriteForm");
 				document.querySelector("#sname").innerText = "스터디 수정";
 				f.name.value = obj[0].name;
-				
+				f.num.value = obj[0].num;
 				let categoryOpt = `<option>선택</option>`;
 				obj[1].forEach((ele)=>{
 					categoryOpt += `<option value=${ele.categoryCode}>${ele.categoryName}</option>`;
@@ -92,6 +92,8 @@ function updateStudy(){
 			if(xhr.status === 200){
 				clsStudyMd();
 				alert("수정되었습니다.")
+				f.action = 'studymain.do';
+				f.submit();
 			}
 		}
 	}
