@@ -151,7 +151,7 @@
 .commentInfo > div > button:hover {
 	color: #dd333d;
 }
-.commentWrap {
+.commentWrap, .commentWrapUp {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;

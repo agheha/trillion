@@ -28,10 +28,11 @@
     <!-- jquery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <style>
+    
+ <style>
 .show{
-opacity: 1;
-}
+		opacity: 1;
+	}
 </style>
 </head>
 <body>
@@ -167,6 +168,7 @@ opacity: 1;
     
 	<script>
 		let num = ${rBoard.num}
+		let email = '${user.email}'
 	</script>
     <script src="<c:url value='/script/review/commentReview.js' />"></script>
 
