@@ -18,7 +18,7 @@
 	select * 
 	from tb_comment 
 	where comment_group_code = #{commentGroupCode} 
-	order by num asc
+	order by num desc
 </select>
 
 <!-- 댓글 등록 -->
