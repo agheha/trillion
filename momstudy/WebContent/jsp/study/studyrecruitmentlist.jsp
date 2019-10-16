@@ -56,6 +56,8 @@
 	</section>
 
 	<div class="board_cont_wrap">
+	
+		<%@ include file="/jsp/common/searchtab.jsp" %>
 		<div>
 			<button id="myBtn" type="button">새로운 스터디 등록하기</button>
 		</div>
@@ -110,6 +112,7 @@
 		$(document).ready(function() {
 			$("#header").load("header.html");
 			$(".board_cont").mouseover("")
+
 			$('.slide_wrap').slick({
 				slidesToShow : 3,
 				slidesToScroll : 1,

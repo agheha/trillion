@@ -34,9 +34,12 @@ public class StudyRecruitmentListController extends HttpServlet{
 		List<String> cList = dao.categorySelect();
 		req.setAttribute("cList", cList);
 		
+		/*
 		// 스터디 등록을 위한 주소도 공유영역에 올려준다.
 		List<Address> bigAList = uDao.selectBigAddress();
 		req.setAttribute("bigAList", bigAList);
+		 */
+		
 		
 		
 		String sPageNo = req.getParameter("PageNo");
@@ -55,13 +58,25 @@ public class StudyRecruitmentListController extends HttpServlet{
 		String keyword = req.getParameter("keyword");
 		
 		
+		// 검색에서 선택된 지역의 코드
+		
 		Search search = new Search(pageNo, 10);
+
+		if(req.getParameter("code") != null) {
+			String[] arr = req.getParameter("code").split(",");;			
+			int[] codes = new int[arr.length];
+			for (int i = 0; i < arr.length; i++) {
+				codes[i] = Integer.parseInt(arr[i]);
+			}
+			search.setAddrCode(codes);
+		}
 		
 		search.setTypes("제목", "글쓴이", "내용");
 		search.setFilters("일자", "조회수", "별점");
 		search.setFilter(filter);
 		search.setKeyword(keyword);
 		search.setType(type);
+		
 		
 		// 받아온 카테고리 코드 있다면 Search 객체에 넣어준다
 		if (req.getParameter("code") != null) {
@@ -83,6 +98,7 @@ public class StudyRecruitmentListController extends HttpServlet{
 		req.setAttribute("search", search);
 		req.setAttribute("pr", pr);
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentlist.jsp");
+//		RequestDispatcher rd = req.getRequestDispatcher("/jsp/common/searchtab.jsp");
 		rd.forward(req, res);
 	}
 }

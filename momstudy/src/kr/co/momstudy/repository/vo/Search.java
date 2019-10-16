@@ -25,10 +25,18 @@ public class Search extends Page{
 	private String filter;
 	private List<String[]> types;
 	private List<String[]> filters;
-	private Address[] address;
+	private int[] addrCode;
 	
 	
 	
+	public int[] getAddrCode() {
+		return addrCode;
+	}
+
+	public void setAddrCode(int[] addrCode) {
+		this.addrCode = addrCode;
+	}
+
 	public List<String[]> getTypes() {
 		return types;
 	}

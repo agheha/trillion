@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
+    form, fieldset {
+        border: 0;
+    }
     div{
         display: block;
         padding: 0;
@@ -13,7 +16,7 @@
     .localWrap {
         position: relative;
         z-index: 10;
-        border: 2px solid #667da9;
+        border: 2px solid darkorange;
     }
     legend {
     overflow: hidden;
@@ -95,9 +98,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 4px 0 4px 0;
     letter-spacing: -1px;
 }
+
 li {
     display: list-item;
     text-align: -webkit-match-parent;
+    display: inline-block;
 }
 
 a:visited {
@@ -118,17 +123,41 @@ a:-webkit-any-link {
     cursor: pointer;
     text-decoration: underline;
 }
-/*
-.monArea .localWrap .listArea ul:after {
-    clear: both;
-    content: " ";
-    display: block;
+.monArea .localWrap dl {
+    overflow: hidden;
+    _zoom: 1;
+    padding: 20px;
+    border-top: 1px solid #8fa3c8;
 }
-*/
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-color: threedface;
+    border-image: initial;
+}
+.pageTit {
+    position: relative;
+    height: 33px;
+    padding: 12px 0 0 0;
+}
+#container #subcontent {
+    float: right;
+    width: 775px;
+}
+
     </style>
     <title>Document</title>
 </head>
 <body>
+    <div id="container">
+ 
     <div class="pageTit">
         <h1><img src="/monimg/list/title_mon_area.gif?201801161930" alt="지역별 알바" /></h1>
         <p id="pgJKList" class="jkList"></p>
@@ -207,5 +236,8 @@ a:-webkit-any-link {
                 </dl>
             </fieldset>
         </div>
+           
+    </div>
+
 </body>
 </html>

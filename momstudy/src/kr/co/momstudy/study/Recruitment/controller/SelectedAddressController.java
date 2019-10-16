@@ -1,4 +1,4 @@
-package kr.co.momstudy.study.controller;
+package kr.co.momstudy.study.Recruitment.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,10 +16,10 @@ import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
 import kr.co.momstudy.repository.vo.Address;
 
-@WebServlet("/study/address.do")
-public class StudySelectAddressController extends HttpServlet{
+@WebServlet("/study/selectedaddress.do")
+public class SelectedAddressController extends HttpServlet{
 	UserDAO dao;
-	public StudySelectAddressController() {
+	public SelectedAddressController() {
 		this.dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(UserDAO.class);
 	}
 
@@ -27,12 +27,12 @@ public class StudySelectAddressController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8"); 
 		
-		String baddr = req.getParameter("baddr");
+		int num = Integer.parseInt(req.getParameter("num"));
 		
-		List<Address> list = dao.selectAddress(baddr);
+		Address addr = dao.selectAddressNum(num);
 		
 		Gson g = new  Gson();
-		String json = g.toJson(list);
+		String json = g.toJson(addr);
 		PrintWriter out = resp.getWriter();
 		out.println(json);
 		out.close();

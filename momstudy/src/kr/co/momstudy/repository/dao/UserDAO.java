@@ -66,4 +66,6 @@ public interface UserDAO {
 	List<User> selectUserByStudyNum2(Search search);
 	//스터디등록에 주소 뽑기
 	List<Address> selectAddress(String baddr);
+	// 주소코드 넣어서 주소 가져오기
+	Address selectAddressNum(int num);
 }
