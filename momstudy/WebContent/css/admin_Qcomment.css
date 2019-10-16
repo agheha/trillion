@@ -1,0 +1,30 @@
+#Qcomment{
+	width: 100% !important;
+	margin-top: 50px;
+}
+
+#Qcemail div {
+	display: inline-block;
+}
+
+#Qcemail {
+	height: 50px;
+	text-align: right;
+}
+
+#Qccontent {
+	height: 200px;
+}
+#Qccontent>h3 {
+font-size: 20px;
+	}
+#Qccontent>div {
+font-size: 20px;
+	}
+
+#Qcemail>p {
+	font-size: 21px;
+	font-weight: 900;
+	float:left;
+	padding: 0 15px 15px;
+}

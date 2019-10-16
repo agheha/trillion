@@ -98,6 +98,13 @@
 		and q.num = #{num}
 	</select>
 	
+	<!-- 답변 상태 없데이트 -->
+	<update id="QconditionUpdate" parameterType="Comment">
+	UPDATE TB_QUESTION_BOARD
+	set CONDITION = 2
+	where COMMENT_GROUP_CODE = #{commentGroupCode}
+	</update>
+	
 	
 	
 </mapper>

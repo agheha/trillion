@@ -31,7 +31,11 @@ public class InquiryInsertController extends HttpServlet {
 		comment.setCommentGroupCode(Integer.parseInt(req.getParameter("commentGroupCode")));
 		comment.setContent(req.getParameter("Qcontent"));
 		
-		dao.insertQcoment(comment);
+		int fac = dao.insertQcoment(comment);
+		
+		if( fac == 1) {
+			dao.QconditionUpdate(comment);
+		}
 
 	
 		res.sendRedirect("/momstudy/admin/admininquiry.do");

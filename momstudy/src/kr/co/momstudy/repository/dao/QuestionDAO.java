@@ -20,5 +20,6 @@ public interface QuestionDAO {
 	//문의 글의 코멘트 그룹 코드를 받아서 그 글에 있는 답변 목록 가져옴admin
 	List<Comment>selectAdminQuestioncomment(int num);
 	//문의글 하나에 코멘트 쓰기(답변등록)admin
-	void insertQcoment(Comment comment);
+	int insertQcoment(Comment comment);
+	int QconditionUpdate(Comment comment);
 }

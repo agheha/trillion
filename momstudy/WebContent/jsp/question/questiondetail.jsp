@@ -8,13 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.texta {
-		width : 100%;
-		resize :none;
-		border :none;
-		min-height: 50px;
-		overflow: hidden;
-	}
+.texta {
+	width: 100%;
+	resize: none;
+	border: none;
+	min-height: 50px;
+	overflow: hidden;
+}
 </style>
 <link rel="stylesheet" href="<c:url value="/css/common.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/layout.css"/>">
@@ -22,6 +22,8 @@
 <link rel="stylesheet"
 	href='<c:url value="/css/studyboard_detail.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/comment.css" />'>
+<!-- 답변 댓글 내용 뿌려줌.css -->
+<link rel="stylesheet" href='<c:url value="/css/admin_Qcomment.css" />'>
 </head>
 <body>
 	<header id="header">
@@ -66,6 +68,27 @@
 			</div>
 			<br>
 		</div>
+
+		<!-- 답변댓글 내용 뿌려줌 -->
+		<div id="Qcomment">
+			<c:forEach var="comment" items="${comment}">
+				<div id="Qcemail">
+					<p>질문주신 <c:out value="${question.title}" />에 (
+						<c:out value="${comment.email}" />
+						) 가답변드립니다.
+					</p>
+					<div>
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${comment.regDate}" />
+					</div>
+				</div>
+
+				<div id="Qccontent">
+					<h3>답변 내용</h3>
+					<div>${comment.content}</div>
+				</div>
+			</c:forEach>
+		</div>
+
 	</section>
 	<script>
 		function resize(obj) {
