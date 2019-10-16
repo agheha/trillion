@@ -22,43 +22,45 @@
 		<result column="comment_group" property="commentGroup" />
 	</resultMap>
 	<delete id="deleteQuestion" parameterType="int">
-		delete
-		from
-		tb_question_boardwhere num = #{num} 
+		delete from tb_question_board
+		where num = #{num} 
 	</delete>
-
 	<!-- 글 수정하고 수정된 글 가져옴 -->
-
-
 	<update id="updateQuestion" parameterType="Question">
-	update tb_question_board 
-		set content = #{content}
-		where email = #{email}
-		and num = #{num} 
+		update tb_question_board 
+		   set content = #{content}
+		 where email = #{email}
+		   and num = #{num} 
 	</update>
 
 	<!-- 선택된 글 상세보기 -->
-	<!-- 선택된 글 상세보기 -->
-	<select id="selectOneQuestion" resultMap="questionMap"
-		parameterType="int">
+	<select id="selectOneQuestion" resultMap="questionMap"	parameterType="int">
 		select *
-		from tb_question_board
-		where num = #{num}
+		  from tb_question_board
+		 where num = #{num}
 	</select>
+	
 	<!-- 내가 문의한 글 목록보기 -->
-	<select id="selectQuestion" resultMap="questionMap"
-		parameterType="Search">
-		select *
-		from (select rownum rnum,
-		a.*,
-		count(*) over() as
-		cnt
-		from tb_question_board a)
+	<select id="selectQuestion" resultType="Question" parameterType="Search">
+		select num,
+			   email,
+			   title,
+			   content,
+			   reg_date as regDate,
+			   condition,
+			   comment_group_code as commentGroupCode,
+			   cnt,
+			   numbering
+		  from (select b.*,
+       				   rownum as rnum      
+  				  from (select  row_number() over(order by reg_date) as numbering,
+               					a.*,
+               		    	    count(*) over() as cnt
+       				      from tb_question_board a
+       				     order by reg_date desc) b)
 		where rnum between #{begin} and #{end}
-		and
-		email = #{email}
-		order by reg_date desc
 	</select>
+	
 	<!-- 문의글 추가 -->
 	<insert id="questionWrite" parameterType="Question">
 		insert into

@@ -61,7 +61,9 @@
 				<span id="agreebtn">
 					<button type="button" id="updatequestion">수정</button>
 				</span>
-				<button type="button" id="deletequestion">삭제</button>
+				<button type="button">
+				<a class="del" href="<c:url value="/question/questiondelete.do?num=${question.num}"/>">
+				삭제</a></button>
 				<button type="button">
 					<a class="del" href="<c:url value="/question/questionform.do"/>">목록</a>
 				</button>
@@ -91,20 +93,9 @@
 
 	</section>
 	<script>
-		function resize(obj) {
-			obj.style.height="1px";
-			obj.style.height = (12+obj.scrollHeight) + "px";
-		}
-		let upque = document.querySelector("#updatequestion");
-		upque.addEventListener("click", () => {
-			let agreebtn = document.querySelector("#agreebtn");
-			agreebtn.innerHTML = "<button type='button' id='agbtn'>확인</button>"
-			let content = document.querySelector(".board_cont");
-			content.innerHTML = "<textarea onkeydown='resize(this)' onkeyup='resize(this)' id='uptext'>${question.content}</textarea>"
-			let uptext = document.querySelector("#uptext")
-			uptext.focus();
-			uptext.classList.add("texta")
-		})
+		let num = "${question.num}"
+		let content = "${question.content}"
 	</script>
+	<script src="<c:url value="/script/question/questionupdate.js" />"></script>
 </body>
 </html>
