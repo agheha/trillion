@@ -1,5 +1,5 @@
 
-			let f = document.myForm;
+			let f = document.querySelector("#studyWriteForm");
 
 			let selectb = f.address1;
 			selectb.addEventListener("change",selectaddress)
@@ -28,23 +28,18 @@
 
 		}
 
-		
-
-
-		
 		function selectaddress(e){
 			let bigAddr = e.target.value;
-			let sAddrSle = document.myForm.address2;
+			let sAddrSle = f.address2;
 			let xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = ()=>{
 				if(xhr.readyState === 4){
 					if(xhr.status === 200){
 						let obj = JSON.parse(xhr.responseText)
 						let html = "<option>선택</option>";
-						console.log(obj[0].addressDetail2);
-						obj.forEach(sAddr => {
-							html += `<option value="${sAddr.addressCode}">${sAddr.addressDetail2}</option>`
-						});
+							obj.forEach(sAddr => {
+								html += `<option value="${sAddr.addressCode}">${sAddr.addressDetail2}</option>`
+							});							
 						sAddrSle.innerHTML = html;
 					}
 				}

@@ -42,7 +42,7 @@
 			<a href='<c:url value="/review/list.do" />'>후기게시판</a>
 		</div>
 		<div>
-			<a href="./inquire_board.html">문의하기</a>
+			<a href="<c:url value="/question/questionform.do" />">문의하기</a>
 		</div>
 	</div>
 </div>
