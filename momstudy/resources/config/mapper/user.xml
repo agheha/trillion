@@ -276,6 +276,13 @@
  		 where address_Detail = #{baddr}
 	</select>
 	
+	<!-- 주소 코드 넣어서 주소 가져오기 -->
+	<select id="selectAddressNum" parameterType="int" resultMap="addressMap">
+		select *
+		  from tb_address
+		 where address_code = #{addressCode}
+	</select>
+	
 	
 </mapper>
 

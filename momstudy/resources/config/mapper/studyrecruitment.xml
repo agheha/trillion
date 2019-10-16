@@ -82,6 +82,12 @@
 			   		<if test="categoryCode != 0">                      	    
 	                    and category_code = #{categoryCode}
 	                </if> 
+			   		<if test="addrCode != null">                      	    
+	                    and address_code in
+	                    <foreach collection="addrCode" item="addr" open="(" close=")" separator=",">
+	                    	#{addr}
+	                    </foreach> 
+	                </if> 
            			<choose>  
 						<when test="filter == 'seeCnt'"> 
 							order by str.see_cnt desc

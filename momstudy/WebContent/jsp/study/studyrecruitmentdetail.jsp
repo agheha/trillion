@@ -55,9 +55,7 @@
 
 	<section id="layout">
 		<div class="study_right_wrap">
-			<div>
-				<button type="button" id="report" onclick="mopen()">신고하기</button>
-			</div>
+
 			<div class="board_title">
 				<p>
 					<c:out value="${str.title}" />
@@ -95,12 +93,15 @@
 						<a class="del"
 							href='<c:url value="/study/studyrecruitmentdelete.do?num=${str.num}" />'>삭제</a>
 					</button>
+					<span>
+						<button type="button" id="report">신고하기</button>
+					</span>
 				</c:if>
-				<!-- 신청하기 버튼 => 스터디원 이고, 로그인이 되어있는 상태에서만 활성화-->
-				<c:if test="${user.email != str.email && not empty user.email}">
+           <!-- 신청하기 버튼 => 스터디원 이고, 로그인이 되어있는 상태에서만 활성화-->
+				<c:if test="${user.email != str.email}">
 					<!-- 참여한 적이 없는 사람만 활성화 -->
 					<c:if test="${p_flag}">
-						<button type="button" id="myBtn">
+						<button type="button" id="myBtn" >
 							<a id="stdsign" href='#'>신청하기</a>
 						</button>
 					</c:if>
@@ -110,6 +111,9 @@
 				<button type="button" id="golist">
 					<a href='<c:url value="/study/studyrecruitmentlist.do"/>'>목록으로</a>
 				</button>
+			<div>
+				<button type="button" id="report" onclick="mopen()">신고하기</button>
+			</div>
 			</div>
 		</div>
 
@@ -173,8 +177,6 @@
 			</div>
 		</div>
 
-
-		<!--  -->
 		<script src="<c:url value="/script/study/studysignup.js"/>"></script>
 </body>
 </html>

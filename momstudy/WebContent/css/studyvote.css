@@ -83,6 +83,7 @@
 }
 .board_list li:nth-child(2) {
 	width: auto;
+	max-width: 570px;
     position:relative;
     text-align: left;
     text-overflow: ellipsis;
@@ -121,3 +122,17 @@
     padding: 8px;
     font-weight: bold;
 }
+
+.red * {
+	color: #fe6872 !important;
+}
+.board_list li:nth-child(1) {
+    width: 90px;
+}
+.noticeback {
+	padding: 1px 5px;
+	background: pink;
+	border: solid 1px #a2a2a2;
+	border-radius: 4px;
+}
+

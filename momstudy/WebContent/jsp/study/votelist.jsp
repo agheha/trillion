@@ -68,7 +68,7 @@
 					</ul>
 					<c:if test="${empty vlist}">
 						<div>
-							<h2>투표가 없습니다</h2>
+							<h2 class="emptyCont">투표가 없습니다</h2>
 						</div>
 					</c:if>
 					<form name="vForm" action="" method="post">
