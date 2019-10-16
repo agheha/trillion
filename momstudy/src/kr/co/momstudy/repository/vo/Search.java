@@ -23,10 +23,10 @@ public class Search extends Page{
 	private int categoryCode;
 	private int studyNum;
 	private String filter;
+	private String email;
 	private List<String[]> types;
 	private List<String[]> filters;
 	private int[] addrCode;
-	
 	
 	
 	public int[] getAddrCode() {
@@ -35,6 +35,22 @@ public class Search extends Page{
 
 	public void setAddrCode(int[] addrCode) {
 		this.addrCode = addrCode;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public void setTypes(List<String[]> types) {
+		this.types = types;
+	}
+
+	public void setFilters(List<String[]> filters) {
+		this.filters = filters;
 	}
 
 	public List<String[]> getTypes() {

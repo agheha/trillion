@@ -9,6 +9,7 @@
 		<result column="category_code" property="categoryCode" />
 		<result column="address_code" property="addressCode" />
 		<result column="num" property="num" />
+		<result column="file_group_code" property="fileGroupCode" />
 	</resultMap>
 	<resultMap type="Calenders" id="calenderMap">
 		<result column="num" property="num" />
@@ -53,11 +54,15 @@
 	<!-- 참여한 스터디를 가져옴 -->
 	<select id="selectStudy" parameterType="string"
 		resultMap="studyMap">
-		select *
-		from tb_study
-		where num in (select study_num
-		from tb_participant
-		where email = #{email} and condition = 2)
+		select a.*,
+       		   nvl(b.FILE_GROUP_CODE,0) as file_group_code
+  		  from tb_study a
+    left outer join tb_study_recruitment b
+    	    on a.num = b.num
+ 		 inner join tb_participant c
+    		on c.study_num = a.num
+ 		 where c.CONDITION = 2 and c.email = #{email}
+  		 order by c.PART_DATE			    
 	</select>
 
 	<select id="selectOneStudy" parameterType="int"
@@ -110,6 +115,8 @@
   		from TB_CALENER
  		where STUDY_NO = #{studyNo} and start_date <![CDATA[<]]> to_date(#{stend},'YYYYMMDD')
                      		and end_date <![CDATA[>]]> to_date(#{ststart},'YYYYMMDD')
+        order by end_date - start_date desc
+                     		
 	</select>
 	
 	<insert id="insertCalender" parameterType="Calenders">
@@ -149,4 +156,43 @@
  		 where num = #{num}
 	</update>
 
+	<select id="selectStudyInfo" parameterType="int" resultType="Study" >
+			select a.name,
+			       a.email,
+			       b.category_name as category,
+			       c.address_detail || ' ' || address_detail2 as address,
+			       d.cnt as member,
+			       a.reg_date as regDate,
+			       nvl(e.chk,0) as chk 
+			  from tb_study a
+			 inner join tb_category b
+			    on a.category_code = b.category_code
+			 inner join tb_address c
+			    on a.address_code = c.address_code
+			 inner join (select distinct study_num,
+			                    count(*) over() as cnt
+			               from tb_participant
+			              where study_num = #{num}) d
+			    on a.num = d.study_num
+			 left outer join (select count(*) over() as chk,
+			                    study_num
+			               from tb_study_recruitment
+			               where study_num = #{num}) e
+			    on a.num = e.study_num
+	</select>
+	
+	<update id="updateStudyLeader" parameterType="Study">
+		update tb_study
+		   set email = #{email}
+		 where num = #{num}  
+	</update>
+	
+	<update id="updateStudy" parameterType="Study">
+		update tb_study
+		   set name = #{name},
+		   	   category_code = #{categoryCode},
+		   	   address_code = #{addressCode}
+		 where num = #{num}  
+	</update>
+	
 </mapper>

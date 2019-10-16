@@ -4,36 +4,46 @@ import java.util.Date;
 
 public class Report {
 
-	private int num;
+	private Integer num;
 	private String type;
 	private String reportTarget; // 신고당한사람
 	private String content;
 	private String email; // 신고자
 	private Date regDate;
 	// 글
-	private int boardNum;
-	private String boardType; // 게시판 종류
+	private Integer boardNum;
+	private String boardType = ""; // 게시판 종류
 	private String boardTitle; // 게시판 제목
 
 	// 신고사유
-	private int code; // 신고사유 번호
+	private Integer code; // 신고사유 번호
 	private String reseaon; // 신고사유 내용
 	// 스터디
-	private int studyNum;
+	private Integer studyNum;
 	private String categoryName; // 스터디 분야
+	private String categoryCode; // 스터디 분야
+	
+
 	private String studyTitle; // 스터디 명
 	// 스터디 방장 이메일
 	private String cap;
 	//	각 별 신고수 가져온 결과를 받기위함
-	private int rpcnt;
+	private Integer rpcnt;
 	// 총 개시물 갯수(페이징 처리하는데 필요)
-	private int cnt;
+	private Integer cnt;
 	
-	public int getCnt() {
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+	
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+	public Integer getCnt() {
 		return cnt;
 	}
 
-	public void setCnt(int cnt) {
+	public void setCnt(Integer cnt) {
 		this.cnt = cnt;
 	}
 
@@ -77,11 +87,11 @@ public class Report {
 		this.boardType = boardType;
 	}
 
-	public int getStudyNum() {
+	public Integer getStudyNum() {
 		return studyNum;
 	}
 
-	public void setStudyNum(int studyNum) {
+	public void setStudyNum(Integer studyNum) {
 		this.studyNum = studyNum;
 	}
 
@@ -93,19 +103,19 @@ public class Report {
 		this.reseaon = reseaon;
 	}
 
-	public int getRpcnt() {
+	public Integer getRpcnt() {
 		return rpcnt;
 	}
 
-	public void setRpcnt(int rpcnt) {
+	public void setRpcnt(Integer rpcnt) {
 		this.rpcnt = rpcnt;
 	}
 
-	public int getNum() {
+	public Integer getNum() {
 		return num;
 	}
 
-	public void setNum(int num) {
+	public void setNum(Integer num) {
 		this.num = num;
 	}
 
@@ -125,11 +135,11 @@ public class Report {
 		this.reportTarget = reportTarget;
 	}
 
-	public int getBoardNum() {
+	public Integer getBoardNum() {
 		return boardNum;
 	}
 
-	public void setBoardNum(int boardNum) {
+	public void setBoardNum(Integer boardNum) {
 		this.boardNum = boardNum;
 	}
 
@@ -141,11 +151,11 @@ public class Report {
 		this.content = content;
 	}
 
-	public int getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 

@@ -6,26 +6,36 @@ function commentListAjax() {
 			if(xhr.status === 200) {
 				makeCommentList(JSON.parse(xhr.responseText));
 				
+				let cmtBtn = document.querySelectorAll(".cmtBtn");
 				let cmtUpBtn = document.querySelectorAll(".cmtUpBtn");
+				let commentWrapUp = document.querySelectorAll(".commentWrapUp");
+				let textAreaWrap = document.querySelectorAll(".textAreaWrap");
+				let commentList = document.getElementById("commentList");
+
 				
 				for (let i = 0; i < cmtUpBtn.length; i++) {
+					
+					// 수정버튼 클릭시 Textarea 수정할 수 있는 창이 생기는 버튼
 					cmtUpBtn[i].addEventListener("click", (e) => {
-						let commentWrap = document.querySelectorAll(".commentWrap");
-						let textAreaWrap = document.querySelectorAll(".textAreaWrap");
-						
-						if (commentWrap[i].style.display == "block") {
-							commentWrap[i].style.display = "none";
-							textAreaWrap[i].style.display = "block";
-							
-						} else {
-							
-							commentWrap[i].style.display = "block";
+						if (commentWrapUp[i].style.display == "none") {
+							commentWrapUp[i].style.display = "block";
 							textAreaWrap[i].style.display = "none";
+							return
 						}
-						
+						commentWrapUp[i].style.display = "none";
+						textAreaWrap[i].style.display = "block";
 					})
+					
+					cmtBtn[i].addEventListener("click", (e) => {
+						commentUpdateAjax(i);
+						commentListAjax()
+					})
+					
+					
 				}
-
+				
+				
+				
 			}
 		}
 	}
@@ -34,37 +44,38 @@ function commentListAjax() {
 }
 commentListAjax();
 
+
 // 댓글 뿌려주는 html 영역
 function makeCommentList(list) {
 	let user = document.getElementById("user");
 	let commentList = document.getElementById("commentList");
 	let html = "<div>";
-	let cnt = 0;
 	for (let i = 0; i < list.length; i++) {
 		let comment = list[i];
-		
-		if (`${comment.email}` == user.value) {
+		if (`${comment.email}` == email) {
 			html += `
 			<div>
-				< div class="commentInfo">
+				<div class="commentInfo">
 					<span>작성자 : ${comment.email}</span>
 					<span>작성일 : ${comment.regDate}</span>
 					댓글 번호 : ${comment.num}
 					<div>
-						<button type="button" class="cmtUpBtn" index="${cnt++}">수정</button>				
+						<button type="button" class="cmtUpBtn"">수정</button>				
 						<button type="button" onclick="commentDeleteAjax(${comment.num}, ${comment.commentGroupCode})">삭제</button>
 					</div>
 				</div>
-				<div class="commentWrap" id="commentWrap${cnt}">
+				
+				<div class="commentWrapUp">
 					${comment.content}
 				</div>
-				<div class="textAreaWrap" id="textAreaWrap${cnt}">
-					
+				
+				<div class="textAreaWrap">
+				
 					<form name="cmtForm" method="post" action="commentUpdate.do" >
-						<textarea class="cmtContent" index="${cnt}">${comment.content}</textarea>
-						<button class="cmtBtn" type="button" onclick="commentUpdateAjax(${comment.num}, ${comment.commentGroupCode})">등록</button>
-					</form>
+						<textarea class="cmtContent" num="${comment.num}">${comment.content}</textarea>
+						<button class="cmtBtn" value="${comment.num},${comment.commentGroupCode}" type="button">등록</button>
 					
+					</form>
 				</div>
 			</div>
 			`;
@@ -76,7 +87,7 @@ function makeCommentList(list) {
 					<span>작성자 : ${comment.email}</span>
 					<span>작성일 : ${comment.regDate}</span>		
 				</div>
-				< div class = "commentWrap">
+				<div class = "commentWrap">
 					${comment.content}
 				</div>
 			</div>
@@ -90,7 +101,7 @@ function makeCommentList(list) {
 }
 
 //댓글 수정
-function commentUpdateAjax(commentNum, commentGroupCode) {
+function commentUpdateAjax(i) {
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = (e) => {
 		if(xhr.readyState === 4) {
@@ -102,14 +113,11 @@ function commentUpdateAjax(commentNum, commentGroupCode) {
 	xhr.open("POST", "commentUpdate.do", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
-	let values = document.querySelectorAll(".cmtContent");
 	let cmtBtn = document.querySelectorAll(".cmtBtn");
-
-	for (let i = 0; i < values.length; i++) {
-		cmtBtn[i].addEventListener("click", (e) => {
-			xhr.send(`commentNum=${commentNum}&commentGroupCode=${commentGroupCode}&content=${values[i].value}`);
-		})
-	}
+	let values = document.querySelectorAll(".cmtContent");
+	let commentNum = cmtBtn[i].value.slice(0, cmtBtn[i].value.indexOf(","));
+	let commentGroupCode = cmtBtn[i].value.slice(cmtBtn[i].value.indexOf(",")+1);
+	xhr.send(`commentNum=${commentNum}&commentGroupCode=${commentGroupCode}&content=${values[i].value}`);
 }
 
 

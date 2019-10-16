@@ -14,7 +14,6 @@ textarea, th, ul, a {
 }
 
 html, body {
-    height: 100%;
     min-width: 1200px;
 }
 
@@ -22,12 +21,11 @@ html, body {
 .submit_btn {
     display:block;
     width : 300px;
-    height: 52px;
+    height: 35px;
     color: #fff;
     background-color: #4d4d4d;
     border: none;
     border-radius: 3px;
-    line-height: 50px;
     text-align: center;
     cursor: pointer;
 }
@@ -60,8 +58,7 @@ html, body {
 }
 /* 일반 버튼 */
 .oneBtn {
-    width: 85px;
-    padding: 3px 0;
+    padding: 3px 20px;
     background-color: #fff;
     color: #333;
     cursor: pointer;
@@ -73,16 +70,38 @@ html, body {
     background-color: #333;
     color: #fff;
 }
+.alertBtn {
+	position: absolute;
+	right: 0;
+	bottom: 15px;
+	border: none;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+.alertBtn:hover {
+	color: red;
+}
 
 .close {
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    font-weight: 900;
     border: none;
     padding: 0 5px;
     z-index: 1;
-    font-size: 28px;
-    font-weight: 900;
     color: #333;
     cursor: pointer;
-    float:right;
+    background-color: transparent;
+}
+.close > i {
+	position: absolute;
+    top: 4px;
+    left: 5px;	
 }
 .modal p {
     padding: 8px 0 15px;
@@ -100,4 +119,30 @@ html, body {
     color: red;
     font-size: 13px;
     margin-left: 5px;
+}
+
+/* 게시물이 없을 경우 */
+.emptyCont {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 320px 0 50px 0;
+    background-image: url(./../images/empty-result.png);
+	background-position: center;
+    background-repeat: no-repeat;
+    font-size: 18px;
+  	background-size: 250px;
+}
+
+.studyboardlayout {
+	width: 820px !important;
+    border-left: 3px solid #dadada !important;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    float: left;
+}
+
+.studyboardfreelayout {
+	width: 100% !important;
+	border-left: none !important;
 }

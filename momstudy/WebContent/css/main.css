@@ -93,7 +93,7 @@
     display: block;
     margin: 0 auto 30px;
     width: 50px;
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid #fff;
 }
 
 .main_title_cont {
@@ -242,4 +242,7 @@ section.main_bot {
     padding-left: 15px;
     color: #fff;
     font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

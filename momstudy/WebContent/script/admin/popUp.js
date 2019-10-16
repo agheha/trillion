@@ -1,14 +1,15 @@
 // 0번째모달
 function mopen() {
-  document.querySelector("#modal").classList.add("show");
+//	alert("팝업실행");
+  document.querySelector("#prpop").classList.add("prshow");
 }
 function mclose() {
-let close =  document.querySelector("#modal");
+let close =  document.querySelector("#prpop");
 
-  close.classList.remove("show");
-  close.classList.add("hide");
+  close.classList.remove("prshow");
+  close.classList.add("prhide");
   setTimeout(function () {
-    close.classList.remove('hide');
-}, 500);
+    close.classList.remove('prhide');
+}, 10);
 }
 

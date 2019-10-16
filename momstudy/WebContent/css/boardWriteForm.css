@@ -1,6 +1,7 @@
 #layout > form > div {
     width: 100%;
     margin-bottom:15px;
+    overflow: hidden;
 }
 #layout > form > div > p {
     margin-bottom: 8px;
@@ -9,6 +10,7 @@
     width: 100%;
     margin-bottom: 18px;
     border: 1px solid #dadada;
+    padding: 5px;
 }
 #layout > form > div > textarea {
     width: 100%;
@@ -18,6 +20,11 @@
     overflow:visible;
     margin-bottom: 18px;
     border: 1px solid #dadada;
+    padding: 5px;
+}
+#layout > form > div > select {
+    width: 85px;
+    padding: 3px 0;
 }
 #layout > form > div.buttons {
     width: unset;
@@ -29,25 +36,23 @@
 .upload {
     width: auto;
 }
-.upload label { 
-    display: inline-block; 
-    padding: 6px 15px; 
-    color: #999; 
-    font-size: inherit; 
-    line-height: normal; 
-    vertical-align: middle; 
-    background-color: transparent;
-    cursor: pointer; 
-    border: 1px solid #dadada;
-    border-radius: 4px;
-} 
-.upload input[type="file"] {
-    position: absolute; 
-    width: 1px; 
-    height: 1px; 
-    padding: 0; 
-    margin: -1px; 
-    overflow: hidden; 
-    clip:rect(0,0,0,0); 
-    border: 0; 
+.upload label {
+	  display: none;
+}
+.studyName {
+	margin-bottom: 15px;
+}
+#layout > form {
+	width: 850px;
+	margin: 0 auto;
+}
+#layout > form > div.checked > div {
+	float: left;
+	margin-right: 15px;
+}
+.form {
+	border-left: 3px solid #dadada;
+    box-sizing: border-box;
+    padding: 30px;
+    width: 820px !important;
 }

@@ -21,6 +21,7 @@
 		<!-- 스터디 번호, 카테고리, 스터디 명 -->
 		<result column="STUDY_NUM" property="studyNum" />
 		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="CATEGORY_CODE" property="categoryCode" />
 		<result column="NAME" property="studyTitle" />
 		<!-- 스터디 방장 -->
 		<result column="cap" property="cap" />
@@ -67,12 +68,11 @@
 		<result column="join" property="joinCnt" />
 
 	</resultMap>
+	
 	<resultMap type="Category" id="AcategoryMap">
 		<result column="CATEGORY_CODE" property="categoryCode" />
 		<result column="CATEGORY_NAME" property="categoryName" />
 		<result column="count" property="cnt" />
-
-
 	</resultMap>
 
 
@@ -294,7 +294,7 @@
 		r.CODE =
 		rr.CODE
 		and
-		r.STUDY_TYPE =
+		r.CATEGORY_CODE =
 		ca.CATEGORY_CODE
 		and
 		r.STUDY_NUM = s.NUM
@@ -347,7 +347,7 @@
 		and
 		r.CODE = rr.CODE
 		and
-		r.STUDY_TYPE =
+		r.CATEGORY_CODE =
 		ca.CATEGORY_CODE
 		and
 		r.STUDY_NUM = s.NUM
@@ -413,7 +413,7 @@
 	<!-- 아이디 받아서 그사람이 개설한 스터디 + 팀원 수 -->
 	<select id="selectPeopleOpenStudy" parameterType="String"
 		resultMap="AstudyMap">
-
+ 
 		select a.ADDRESS_DETAIL,a.ADDRESS_DETAIL2 ,s.* ,
 		member,ca.CATEGORY_NAME
 		from
@@ -439,7 +439,6 @@
 		and
 		s.ADDRESS_CODE =
 		a.ADDRESS_CODE
-
 	</select>
 
 	<!-- 아이디 받아서 그사람이 가입한 스터디 + 팀원수 -->
@@ -602,10 +601,10 @@
 
 	<insert id="insertReport" parameterType="Report">
 		insert into
-		tb_report(num,TYPE,REPORT_TARGET,BOARD_NUM,CONTENT,CODE,EMAIL,
+		tb_report(num,CATEGORY_CODE,TYPE,REPORT_TARGET,BOARD_NUM,CONTENT,CODE,EMAIL,
 		BOARD_TYPE,STUDY_NUM)
-		values(SEQ_REPORT_NUM.nextval,#{type},#{reportTarget},#{boardNum},
-		#{content},#{code},#{email},#{boardType},#{studyNum})
+		values(SEQ_REPORT_NUM.nextval,#{categoryCode,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{reportTarget,jdbcType=VARCHAR},#{boardNum,jdbcType=VARCHAR},
+		#{content,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{boardType,jdbcType=VARCHAR},#{studyNum,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- 아이디 받아서 밴기간 설정 -->
@@ -615,6 +614,16 @@
 		set
 		ban_Date = SYSDATE + ${ban}
 		,STATUS = 2
+		where email=#{email}
+	</update>
+	
+	<!-- 밴 헤제 -->
+	
+	<update id="updateBanRelease" parameterType="user">
+		update tb_user
+		set
+		ban_Date = null
+		,STATUS = 1
 		where email=#{email}
 	</update>
 

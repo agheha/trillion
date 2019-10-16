@@ -34,8 +34,6 @@ public class StudyUserInfoController extends HttpServlet {
 		String email = req.getParameter("email");
 		User user = dao.selectFindLogin(email);
 		List<Score> slist = sdao.selectScore(email);
-		StringBuffer sb = new StringBuffer();
-		
 		Gson g = new Gson();
 		String scores = g.toJson(slist);
 		PrintWriter out = resp.getWriter();

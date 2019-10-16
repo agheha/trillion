@@ -7,6 +7,7 @@
 }
 
 .board_title {
+	position: relative;
     overflow: hidden;
     width: 100%;
     border-bottom: 3px solid #333;
@@ -15,26 +16,35 @@
     font-size: 18px;
     font-weight: 900;
     float:left;
-    padding: 0 30px 15px;
+    padding: 0 15px 15px;
 }
 
-.board_title > div {
-    float: right;
+.boardInfo {
+	float:right;
+	margin: 5px 5px 0 0;
+	overflow: hidden;
 }
-.board_title > div > span {
+.boardInfo > span {
     display: block;
     float: left;
-    width: 120px;
+    margin-left: 25px;
 }
 
 .board_cont {
+	position: relative;
     box-sizing: border-box;
     width: 100%;
     min-height: 150px;
-    padding: 30px 30px;
+    padding: 15px 30px;
     margin-bottom: 20px;
     border-bottom: 1px solid #dadada;
 }
+.board_cont > form {
+	position: absolute;
+    right: 0;
+    bottom: 15px;
+}
+
 .del {
 	color: black;
 	text-decoration: unset
@@ -45,10 +55,11 @@
 .image_wrap {
     box-sizing: border-box;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 50px;
+    text-align: center;
 }
 .image_wrap > img {
-    max-width: 100%;
+    max-width: 450px;
 }
 
 
@@ -81,12 +92,12 @@
     vertical-align: middle;
 }
 #commentRegistForm > form > div:nth-child(3) {
-    max-width:1135px;
+    max-width: 975px;
 }
 #commentRegistForm > form > div textarea {
     position: relative;
     top: 3px;
-    width: 1135px;
+    width: 975px;
     resize: none;
     height: 120px;
     border: 1px solid #dadada;
@@ -100,6 +111,8 @@
     line-height: 60px;
     text-align: center;
     border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #dadada;
 }
 #commentRegistForm > form > div button:hover {
     background-color: #333;
@@ -110,7 +123,7 @@
     box-sizing: border-box;
     padding: 30px 0 30px 10px;
 }
-#commentList > div {
+#commentList > div > div {
     margin-bottom: 15px;
     border-left: 8px solid #333;
     padding-left: 20px;
@@ -132,11 +145,17 @@
 .commentInfo > div > button {
     padding: 3px 15px;
     border: none;
+    background-color: #fff;
+    cursor: pointer;
 }
-.commentWrap {
+.commentInfo > div > button:hover {
+	color: #dd333d;
+}
+.commentWrap, .commentWrapUp {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+   	word-break: break-word;
 }
 .textAreaWrap {
     margin: 8px 0 3px 0;
@@ -154,4 +173,74 @@
     height: 80px;
     border-radius: 4px;
     float: right;
+    background-color: #fff;
+    border: 1px solid #dadada
+}
+.cmtBtn:hover {
+	background-color: #333;
+	color: #fff;
+}
+#comment_Wrap {
+	margin-top: 40px;
+}
+
+table {
+	width: 80%
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.commentForm {
+	display: flex;
+	flex-direction: row;
+}
+
+.comment {
+	height: 100%;
+}
+
+.insert1 {
+	float: none;
+	margin-left: auto;
+}
+
+.review {
+	margin-bottom: 25px;
+}
+
+.comm {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
+
+.comm_id {
+   margin-right: 10px;
+}
+
+.comm_content {
+	margin-right: auto;
+}
+
+.comm_reg {
+	margin-right: auto;
+}
+
+.comm_action {
+	
+}
+.comm_reply {
+   margin-left: 30px;
+}
+a {
+	color: black
+}
+.top {
+ text-align: right;
+}
+.prshow {
+    opacity: 1;
 }

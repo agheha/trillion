@@ -60,7 +60,8 @@
 }
 .board_list > div {
     width: 100%;
-    height: 45px;
+    box-sizing: border-box;
+    padding: 2px 0;
     border-bottom: 1px solid #dadada;
 }
 .board_list a {
@@ -68,7 +69,7 @@
     width: 100%;
     height: 100%;
 }
-.board_list a:hover {
+.board_list > div:hover {
     background-color: #dadada44
 }
 
@@ -81,8 +82,8 @@
     width: 60px;
 }
 .board_list li:nth-child(2) {
-	width: 220px;
-
+	width: auto;
+	max-width: 570px;
     position:relative;
     text-align: left;
     text-overflow: ellipsis;
@@ -96,6 +97,10 @@
 .board_list li:nth-child(4) {
     width: 150px;
     max-width: 150px;
+}
+.board_list li:nth-child(5) {
+	width: 80px;
+    max-width: 80px;
 }
 .study_right_wrap{
 	height: 650px;
@@ -116,5 +121,18 @@
     height: 40px;
     padding: 8px;
     font-weight: bold;
+}
+
+.red * {
+	color: #fe6872 !important;
+}
+.board_list li:nth-child(1) {
+    width: 90px;
+}
+.noticeback {
+	padding: 1px 5px;
+	background: pink;
+	border: solid 1px #a2a2a2;
+	border-radius: 4px;
 }
 

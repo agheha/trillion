@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="<c:url value="/css/header.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/sidebar.css"/>">
 <div class="header">
 	<div class="header_top_wrap">
 		<div>
@@ -25,14 +26,10 @@
 	<div class="header_bot_wrap">
 		<div>
 			<c:if test="${user.type == 2 }">
-				<a href="<c:url value="/admin/reportuser.do"/>"> <i
-					class="fas fa-address-card"></i> 관리자페이지
-				</a>
+				<a href="<c:url value="/admin/reportuser.do"/>">관리자페이지</a>
 			</c:if>
 			<c:if test="${user.type == 1 }">
-				<a href="<c:url value="/user/mypage.do"/>"> <i
-					class="fas fa-address-card"></i> 마이페이지
-				</a>
+				<a href="<c:url value="/user/mypage.do"/>">마이페이지</a>
 			</c:if>
 		</div>
 		<div>
@@ -45,7 +42,7 @@
 			<a href='<c:url value="/review/list.do" />'>후기게시판</a>
 		</div>
 		<div>
-			<a href="./inquire_board.html">문의하기</a>
+			<a href="<c:url value="/question/questionform.do" />">문의하기</a>
 		</div>
 	</div>
 </div>

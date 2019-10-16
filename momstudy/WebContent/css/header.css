@@ -71,41 +71,9 @@ header > div.header {
     font-size: 18px;
     text-align: center;
 }
-/* .header_bot_wrap > div > a > span:before {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    left: 0px;
-    bottom: 0px;
-    content: '';
-    background: #333;
-    opacity: 0.1;
-    transition: all 0.3s;
-}
-.header_bot_wrap > div > a > span:hover:before {
-    height: 100%;
-} */
 .header_bot_wrap > div > a:hover {
     color: #dd333d;
 }
-
-
-/* .header_bot_wrap > div > ul > li > a:before {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    left: 0px;
-    bottom: 0px;
-    content: '';
-    background: #FFF;
-    opacity: 0.3;
-    transition: all 0.3s;
-}
-
-div.pullUp a:hover:before
-{
-    height: 100%;
-} */
 
 /* section 전체 범위 설정 */
 section {

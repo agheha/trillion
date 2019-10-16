@@ -15,7 +15,7 @@ function userAjax(no) {
 
 function make(user) {
 
-	let popUp = document.getElementById("modal_content");
+	let popUp = document.getElementById("prpop_content");
 
 	let html = 
 		`<div id="b_main">
@@ -33,7 +33,7 @@ function make(user) {
     </div >
     <div id="b_content">내용<br/>${user.content}</div>
 </div>
-<div id="modarlayer" onclick="mclose()"></div>`;
+<div id="prpoplayer" onclick="mclose()"></div>`;
 	
 	console.log(html);
 	popUp.innerHTML = html;

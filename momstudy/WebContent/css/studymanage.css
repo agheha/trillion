@@ -37,6 +37,20 @@ td {
     padding-left: 15px;
     cursor: pointer;
 }
+.leader_button { /* 강퇴 버튼*/
+    width: 100px;
+    height: 45px;
+    margin: 5px;
+    border-radius: 45px;
+    background: orange;
+    color: white;
+    font: normal normal 12px;
+    text-align: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
 .agr_button { /* 스터디 신청 수락 버튼*/
     width: 50px;
     height: 27px;
@@ -99,4 +113,9 @@ table th:nth-child(6) {
 
 .contents{
     height: 492px;
+}
+
+.alertBtn {
+    position: relative !important;
+    bottom: 0 !important;
 }

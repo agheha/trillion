@@ -46,8 +46,8 @@
 	</table>
 </div>
 
-<div id="modal">
-	<div id="modal_content">
+<div id="prpop">
+	<div id="prpop_content">
 		<div id="b_main">
 			<div class="b_content">
 				<div>글</div>
@@ -64,12 +64,12 @@
 			</div>
 			<div id="b_content">내용</div>
 		</div>
-		<div id="modarlayer" onclick="mclose()"></div>
+		<div id="prpoplayer" onclick="mclose()"></div>
 	</div>
 </div>
 
-<div id="modal1">
-	<div id="modal_content1">
+<div id="prpop1">
+	<div id="prpop_content1">
 	
 	</div>
 </div>

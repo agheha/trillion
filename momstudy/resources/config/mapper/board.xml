@@ -36,14 +36,16 @@
 	                  	and title like '%'||#{keyword}||'%'
 	                 </when>
 	               </choose>           
-	                    </where>
+	             </where>
 	                 	  order by notice asc,
-	                  <if test="filter == 'regDate'">
-	                 	    reg_date desc,
-	                  </if>
-	                  <if test="filter == 'seeCnt'">
-	                   see_cnt desc,
-	                  </if>
+	                <choose>
+	                   <when test="filter == 'regDate'">
+	                  	reg_date desc,
+	                   </when>
+	                   <when test="filter == 'seeCnt'">
+	                    see_cnt desc,
+	                   </when>
+	                </choose>
 	                  num desc) a)
 		where  rnum between #{begin} and #{end} 
 	</select>

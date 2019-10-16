@@ -9,14 +9,14 @@
 	width: auto;
 }
 /* modal pop-up */
-#modal_content .d {
+#prpop_content .d {
 	
 	margin: 10px auto;
 	width: 50%;
 	height: 200px;
 }
 
-#modal {
+#prpop {
 	position: absolute;
 	width: 100%;
 	top: 50%;
@@ -24,19 +24,19 @@
 	display: none;
 }
 
-.hide {
+.prhide {
 	display: block !important;
 	animation: hide 0.5s linear forwards !important;
 }
 
-.show {
+.prshow {
 	display: block !important;
-	opacity: 0.01;
+	opacity: 1;
 	animation: show 0.5s linear forwards;
 	display: none;
 }
 
-#modal_content {
+#prpop_content {
 	background: white;
 	margin: 5% auto;
 	width: 50%;
@@ -47,7 +47,7 @@
 	background: white;
 }
 
-#modarlayer {
+#prpoplayer {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -59,7 +59,7 @@
 }
 
 @
-keyframes show { 0% {
+keyframes prshow { 0% {
 	opacity: 0.01;
 }
 
@@ -72,7 +72,7 @@ opacity
 }
 }
 @
-keyframes hide { 0% {
+keyframes prhide { 0% {
 	opacity: 1;
 }
 100%

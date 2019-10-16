@@ -31,7 +31,7 @@
 				// ajax 사용하거나 이미 가져온 데이터 활용하거나 선택
 				loading(email);
 				document.querySelector("#username").innerText = name;
-				chkStar();
+				document.querySelector("#inputscore").innerText = '승인 후에 별점주기가 가능합니다.';
 				
 			}
 
@@ -42,5 +42,6 @@
 					tdEles[i].addEventListener('click',onClickModal);
 				}
 			}
+			
 			
 			

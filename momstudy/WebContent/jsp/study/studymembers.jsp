@@ -66,13 +66,14 @@
 							<th>별명</th>
 							<th>성별</th>
 							<th>가입일</th>
+							<th>신고</th>
 						</tr>
 					</thead>
 					<tbody class="stdmem_td">
 						<c:forEach items="${ulist}" var="oneUser">
 							<tr  email="${oneUser.email}" name="${oneUser.name}" class="tr_row">
 								<c:choose>
-									<c:when test="${user.email eq oneUser.email}">
+									<c:when test="${study.email eq oneUser.email}">
 										<td class="study_leader"><span><i
 												class="fas fa-crown"></i></span>${oneUser.email}</td>
 									</c:when>
@@ -86,6 +87,10 @@
 								<td>${oneUser.gender}</td>
 								<td><fmt:formatDate value="${oneUser.partDate}"
 										pattern="yyyy-MM-dd" /></td>
+								<td ><button class="alertBtn" type="button" onclick="mopen()">
+					<i class="fas fa-comment-slash"></i>
+					신고하기
+				</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

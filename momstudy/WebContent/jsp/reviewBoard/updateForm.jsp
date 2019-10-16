@@ -38,17 +38,18 @@
     </section>
 
     <section id="layout">
-        <form action="<c:url value="/review/update.do?num=${rBoard.num}" />" method="post" enctype="multipart/form-data">
+        <form action="<c:url value="/review/update.do?num=${rBoard.num}" />" method="post" enctype="multipart/form-data" onsubmit="return dataChk()">
             <div>
             	<p>스터디명</p>
             	<div>${study.name}</div>
             	<input type="hidden" name="studyNum" value="${study.num}"/>
             	
                 <p>제목</p>
-                <input type="text" name="title" value="${rBoard.title}" />
+                <input type="text" id="title" name="title" value="${rBoard.title}" />
                 
                 <p>내용</p>
-                <textarea name="content">${rBoard.content}</textarea>
+                <textarea id="content" name="content">${rBoard.content}</textarea>
+               
                 <p>평가</p>
                 <select id="score" name="score">
                 	<c:forEach var="score" begin="1" end="10">
@@ -67,10 +68,6 @@
         </form>
     </section>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-        });
-    </script>
+    <script src="<c:url value='/script/review/reviewBoard.js' />"></script>
 </body>
 </html>

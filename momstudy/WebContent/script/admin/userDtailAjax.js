@@ -15,7 +15,7 @@ function userDtailAjax(email) {
 
 function make1(list) {
 
-	let popUp = document.getElementById("modal_content1");
+	let popUp = document.getElementById("prpop_content1");
 	let birth = document.getElementById("birth");
 	let einfo = document.getElementById("einfo");
 	
@@ -48,9 +48,16 @@ function make1(list) {
                     <form action="ban.do">
                      <input type="number" name="banDate" min="1" max="30" step="1">
                      <input type="hidden" name="email" value="${info.email}">
+					 <input type="hidden" name="status" value="2">
                             <button>정지</button>
                     </form>
                 </div>
+				<div>
+					<form action="banrelease.do">
+					<input type="hidden" name="email" value="${info.email}">
+							<button>정지해제</button>
+					</form>
+				</div>
 
                 <div>
                     <button onclick="location.href='/momstudy/admin/admindeleteuser.do?email=${info.email}'">회원탈퇴</button>
@@ -119,7 +126,7 @@ function make1(list) {
 	    </tbody>
         </table>
 		</div>
-		 <div id="modarlayer1" onclick="mclose(),mclose1()"></div>
+		 <div id="prpoplayer1" onclick="mclose(),mclose1()"></div>
 	`;
 		
 	console.log(html);

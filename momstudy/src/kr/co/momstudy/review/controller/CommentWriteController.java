@@ -29,11 +29,6 @@ public class CommentWriteController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		System.out.println("num = " + req.getParameter("num"));
-		System.out.println("content = " + req.getParameter("content"));
-		System.out.println("writer = " + req.getParameter("email"));
-		
 		// 넘어온 파라미터의 등록된 글번호를 받아옴
 		int num = Integer.parseInt(req.getParameter("num"));
 		

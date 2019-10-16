@@ -15,6 +15,7 @@ import kr.co.momstudy.repository.dao.BoardDAO;
 import kr.co.momstudy.repository.vo.Board;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.Study;
+import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.PageResult;
 @WebServlet("/board/list.do")
 public class ListBoardController extends HttpServlet {
@@ -27,6 +28,7 @@ public class ListBoardController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
       HttpSession session = req.getSession();
       Study study = (Study)session.getAttribute("study");
+      User user = (User)session.getAttribute("user");
       int studyNum = study.getNum();
            
       String bPageNo = req.getParameter("pageNo");
@@ -36,6 +38,9 @@ public class ListBoardController extends HttpServlet {
     	  pageNo = Integer.parseInt(bPageNo);
       }
       String filter = "regDate";
+      if (req.getParameter("filter") != null) {
+    	  filter = req.getParameter("filter");
+      }
       String type = req.getParameter("type");
       String keyword = req.getParameter("keyword");
       

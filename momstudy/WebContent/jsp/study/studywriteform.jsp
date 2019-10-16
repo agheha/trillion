@@ -20,15 +20,16 @@
 </head>
 
 <body>
-	<form name="myForm" action="studywrite.do" method="post" onsubmit="return chknull();">
-		<div class="cotents">
+	<form name="myForm" action="studywrite.do" method="post" onsubmit="return chknull();" id="studyWriteForm">
+	<input type="hidden" value="" name="num">
+		<div class="wcotents">
 			<div class="name">
-				<span>스터디 등록</span>
+				<span id="sname">스터디 등록</span>
 			</div>
 			<div class="sn">
 				<div class="inner">
 					<div>
-						<span class="item">이름</span>
+						<span class="items">이름</span>
 					</div>
 					<div>
 						<input type="text" name="name" placeholder="스터디 이름을 입력해주세요.">
@@ -38,7 +39,7 @@
 			<div class="sn">
 				<div class="inner">
 					<div>
-						<span class="item">카테고리</span>
+						<span class="items">카테고리</span>
 					</div>
 					<div>
 						<select name="category">
@@ -53,7 +54,7 @@
 			<div class="sn">
 				<div class="inner">
 					<div>
-						<span class="item">지역</span>
+						<span class="items">지역</span>
 					</div>
 					<div>
 						<select name="address1">
@@ -69,7 +70,7 @@
 			</div>
 			<div class="sn">
 				<button class="inbutton closer" type="button">취소</button>
-				<button class="inbutton">만들기</button>
+				<button class="inbutton" id="studyWriteBtn">만들기</button>
 
 			</div>
 		</div>

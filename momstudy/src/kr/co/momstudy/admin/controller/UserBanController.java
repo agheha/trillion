@@ -22,6 +22,7 @@ public class UserBanController extends HttpServlet{
 	 User user = new User();
 	 user.setBan(Integer.parseInt(req.getParameter("banDate")));
 	 user.setEmail(req.getParameter("email"));
+
 	
 	
 	dao.updateBanDate(user);

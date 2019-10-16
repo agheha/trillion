@@ -46,18 +46,22 @@ function make(board) {
 	btitle.addEventListener('click',(e) => {
         
 		if(board.boardType == 'free' && board.studyNum == 0) {
-			location.href = `/momstudy/board/detail.do?no=${board.boardNum}`
+			
+			location.href = `/momstudy/boardfree/freedetail.do?no=${board.boardNum}`
 				return;
 		}else if(board.boardType == 'free' && board.studyNum != 0) {
-			location.href = `/momstudy//board/freedetail?no=${board.boardNum}`
+		
+			location.href = `/momstudy/board/detail.do?no=${board.boardNum}`
 				return;
 		}
 		else if(board.boardType == 'recruit' ) {
-			location.href = `/momstudy/review/detail.do?num=${board.boardNum}`
+			
+			location.href = `/momstudy/study/studyrecruitmentdetail.do?num=${board.boardNum}`
 				return;
 		}
 		else if(board.boardType == 'review' ) {
-			location.href = `/momstudystudy/studyrecruitmentdetail.do?num=${board.boardNum}`
+			
+			location.href = `/momstudy/review/detail.do?num=${board.boardNum}`
 				return;
 		}
 		

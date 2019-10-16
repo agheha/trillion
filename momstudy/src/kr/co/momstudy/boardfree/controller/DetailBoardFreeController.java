@@ -37,23 +37,9 @@ public class DetailBoardFreeController extends HttpServlet {
 		// req.setAttribute("commentGroupCode", commentGroupCode);
 		req.setAttribute("type", type);
 		
-		// 댓글 수정
-		if(type.equals("modify")) {
-			int commentGroupCode = Integer.parseInt(req.getParameter("commentGroupCode"));
-			int commentNo = Integer.parseInt(req.getParameter("commentNo"));
-			
-			req.setAttribute("commentGroupCode", commentGroupCode);
-			req.setAttribute("commentNo", commentNo);
-		} else if (type.equals("reply")) {
-			
-			int parentNo = Integer.parseInt(req.getParameter("parentNo"));
-			
-			req.setAttribute("parentNo", parentNo);
-		}
-
+		
 		// 댓글 목록 공유
 		List<Comment> commentList = dao1.selectComment(num);
-//		System.out.println("commentList = " + commentList);
 		req.setAttribute("commentList", commentList);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/detailfree.jsp");
