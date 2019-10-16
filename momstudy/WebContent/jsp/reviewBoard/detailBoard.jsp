@@ -134,18 +134,22 @@
 			</div>
 		</div>
 
+
 		<div id="prpop">
 			<div id="prpop_content">
+				<button type="button" id="prpoplayer" onclick="mclose()">x</button>
 				<!-- 상세신고 ui -->
 				<div id="b_main">
 				
 					<h2 id="rptitle">신고하기</h2>
 					<div id="rpemail_wrap">
-						<div class="rpemail">신고자</div>
-						<div class="rpemail">${user.email}</div>
+					<%-- span Tag로 변경 --%>
+						<span>신고한 유저 : </span>
+						<span>${user.email}</span>
 					</div>
 
-					<h3>신고사유 선택</h3>
+					<%-- P Tag로 변경 --%>
+					<p>신고사유 선택</p>
 					<div>
 						<form action='<c:url value="/admin/report.do"/>' method="post" name="rpform">
 							<div>
@@ -191,16 +195,15 @@
 								<input type="hidden" name="categoryCode" value="${study.categoryCode}" class="categoryCode"/>
 							</div>
 							<div id="rpbtn">
-								   <button type="button" id="btn" onclick="reportAjax(),mclose()">신고하기</button>
+									<%-- oneBtn class 추가 --%>
+								   <button class="oneBtn" type="button" id="btn" onclick="reportAjax(),mclose()">신고하기</button>
 							</div>
 						</form>
 					</div>
 				</div>
-				
-				<div id="prpoplayer" onclick="mclose()"></div>
-				
 			</div>
 		</div>
+
 	</section>
 	
 	<!-- RP팝업 js -->
