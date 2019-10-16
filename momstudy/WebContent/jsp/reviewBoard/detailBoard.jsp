@@ -35,7 +35,7 @@
 	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <style>
 .prshow {
-	opacity: 1;
+	/* opacity: 1; */
 }
 </style>
 </head>

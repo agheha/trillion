@@ -66,12 +66,13 @@
 		<if test="type == 'email'">
 			and email like '%'||#{keyword}||'%'
 		</if>
-		order by
+		
 		<if test="filter == 'Qcondition'">
-			condition
+			order by condition
+		desc
 		</if>
 	
-		desc) a)
+		) a)
 		where rnum between #{begin} and #{end}
 	</select>
 	<!-- 글번호 하나 받아서 문의 된 하나의 글 보기 admin-->

@@ -17,7 +17,7 @@
 }
 .prhide1{
   display: block !important;
-  animation: hide 0.5s linear forwards !important;
+  animation: prhide 0.5s linear forwards !important;
  
   
 }
@@ -25,7 +25,7 @@
   display: block !important;
   opacity: 1;
  
-  animation: show 0.5s linear forwards;
+  animation: prshow 0.5s linear forwards;
   display: none;
 }
 #prpop_content1 {

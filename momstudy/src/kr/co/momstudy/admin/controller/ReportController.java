@@ -45,63 +45,63 @@ public class ReportController extends HttpServlet {
 		System.out.println("studyNum: "+studyNum);
 		
 		//
-		if(categoryCode.equals("undefined")){
+		if(categoryCode.equals("undefined") || categoryCode.equals("")){
 			report.setCategoryCode(null);
 		}
 		else if(categoryCode != null ) {
 			report.setCategoryCode(categoryCode);
 		}
 		//
-		if(type.equals("undefined") ) {
+		if(type.equals("undefined") || type.equals("")) {
 			report.setType(null);
 		}
 		else if(type != null) {
 			report.setType(type);
 		}
 		//
-		if(reportTarget.equals("undefined")) {
+		if(reportTarget.equals("undefined") || reportTarget.equals("")) {
 			report.setReportTarget(null);
 		}
 		else if(reportTarget != null) {
 			report.setReportTarget(reportTarget);
 		}
 		//
-		if(boardNum.equals("undefined")) {
+		if(boardNum.equals("undefined") || boardNum.equals("")) {
 			report.setBoardNum(null);
 		}
 		else if(boardNum != null) {
 			report.setBoardNum(Integer.parseInt(boardNum));
 		}
 		//
-		if(content.equals("undefined")) {
+		if(content.equals("undefined") || content.equals("")) {
 			report.setContent(null);
 		}
 		else if(content != null) {
 			report.setContent(content);
 		}
 		//
-		if(code.equals("undefined")) {
+		if(code.equals("undefined") || code.equals("")) {
 			report.setCode(null);
 		}
 		else if(code != null) {
 			report.setCode(Integer.parseInt(code));
 		}
 		//
-		if(email.equals("undefined")) {
+		if(email.equals("undefined") || email.equals("")) {
 			report.setEmail(null);
 		}
 		else if(email != null) {
 			report.setEmail(email);
 		}
 		//
-		if(boardType.equals("undefined")) {
+		if(boardType.equals("undefined") || boardType.equals("")) {
 			report.setBoardType(null);
 		}
 		else if(boardType != null) {
 			report.setBoardType(boardType);
 		}
 		//
-		if(studyNum.equals("undefined")) {
+		if(studyNum.equals("undefined") || studyNum.equals("")) {
 			report.setStudyNum(null);
 		}
 		else if(studyNum != null) {

@@ -26,13 +26,13 @@
 
 .prhide {
 	display: block !important;
-	animation: hide 0.5s linear forwards !important;
+	animation: prhide 0.5s linear forwards !important;
 }
 
 .prshow {
 	display: block !important;
 	opacity: 1;
-	animation: show 0.5s linear forwards;
+	animation: prshow 0.5s linear forwards;
 	display: none;
 }
 

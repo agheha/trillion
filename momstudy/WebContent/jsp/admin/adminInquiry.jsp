@@ -50,7 +50,7 @@
 			</table>
 
 			<button type="button" id="Qbtn" onclick="mopen1()">답변하기</button>
-			>
+			
 		</div>
 		<div id="prpoplayer" onclick="mclose()"></div>
 	</div>
@@ -73,6 +73,7 @@
 				</form>
 			</div>
 		</div>
+		<div id="prpoplayer" onclick="mclose(),mclose1()"></div>
 	</div>
 </div>
 
@@ -88,6 +89,6 @@
 
 </div>
 </section>
-<script type="text/javascript" src="<c:url value='/script/Qajax.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/script/admin/Qajax.js'/>"></script>
 </body>
 </html>

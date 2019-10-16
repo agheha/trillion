@@ -23,7 +23,9 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
-
+<!-- PR신고 -->
+    <link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
+    <link rel="stylesheet" href='<c:url value="/css/admin_reportform.css" />'>
 <title>스터디</title>
 
 <!-- jquery -->
@@ -99,6 +101,67 @@
 			</div>
 			<%@include file="/jsp/common/pagination.jsp"%>
 		</div>
+		
+		
+		<div id="prpop">
+	<div id="prpop_content">
+	<!-- 상세신고 ui -->
+	  <div id="b_main">
+        <h2 id="rptitle">신고하기</h2>
+        <hr/>
+        <div id="rpemail_wrap">
+            <div class="rpemail">신고자</div>
+            <div class="rpemail">${user.email}</div>
+        </div>
+
+        <h3>신고사유 선택</h3>
+        <div>
+            <form action='<c:url value="/admin/report.do"/>' method="post" name="rpform">
+                <input type="radio" name="code" value="1" id="rpc1" class="rpcode"/>
+                <label for="rpc1">욕설/비하</label>
+                <br />
+                <input type="radio" name="code" value="2" id="rpc2" class="rpcode"/>
+                <label for="rpc2">음란성</label>
+                <br />
+                <input type="radio" name="code" value="3" id="rpc3" class="rpcode"/>
+                <label for="rpc3">게시글/댓글 도배</label>
+                <br />
+                <input type="radio" name="code" value="4" id="rpc4" class="rpcode"/>
+                <label for="rpc4">홍보성 콘텐츠</label>
+                <br />
+                <input type="radio" name="code" value="5" id="rpc5" class="rpcode"/>
+                <label for="rpc5">타인의 개인정보 유포</label>
+                <br />
+                <input type="radio" name="code" value="6" id="rpc6" class="rpcode"/>
+                <label for="rpc6">허위사실 유포</label>
+                <br />
+                <input type="radio" name="code" value="7" id="rpc7" class="rpcode"/>
+                <label for="rpc7">명예회손 관련</label>
+                <br />
+                <input type="radio" name="code" value="8" id="rpc8" class="rpcode"/>
+                <label for="rpc8">기타</label>
+                <br />
+                <div id="rpcontent">
+                    <textarea name="content" placeholder="내용을 입력하세요." class="content"></textarea>
+                </div>
+                <input type="hidden" name="categoryCode" value="${study.categoryCode}" class="categoryCode"/>
+                <input type="hidden" name="type" value="user" class="type"/>
+                <input type="hidden" name="reportTarget" value="${oneUser.email}" class="reportTarget"/>
+                <input type="hidden" name="boardNum" value="${board.num}" class="boardNum"/>
+                <input type="hidden" name="email" value="${user.email}" class="email"/>
+                <input type="hidden" name="boardType" value="" class="boardType"/>
+                <input type="hidden" name="studyNum" value="${study.num}" class="studyNum"/>
+                <div id="rpbtn">
+                      <button type="button" id="btn" onclick="reportAjax(),mclose()">신고하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+	<div id="prpoplayer" onclick="mclose()"></div>
+	</div>
+</div>		
+		
+		
 	</section>
 
 
@@ -115,4 +178,7 @@
 
 
 	<script src="<c:url value="/script/study/studymembers.js"/>"></script>
+	  <!-- RP팝업 js -->
+<script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/script/admin/reportAjax.js'/>"></script>
 </body>
