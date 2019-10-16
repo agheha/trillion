@@ -24,20 +24,14 @@ public class CommentUpdateFreeController extends HttpServlet {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(CommentDAO.class);
 		
 	}
-	public void service(
+	public void doPost(
 			HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		int num = Integer.parseInt(req.getParameter("commentNum"));
-		int commentGroupCode = Integer.parseInt(req.getParameter("commentGroupCode"));
-		String content = req.getParameter("content");
-		User user = (User)req.getSession().getAttribute("user");
 		
-		System.out.println("num = " + num);
-		System.out.println("content = " + content);
-		System.out.println("groupCode = " + commentGroupCode);
-			
         Comment comment = new Comment();
 		comment.setContent(req.getParameter("content"));
+		comment.setNum(Integer.parseInt(req.getParameter("commentNum")));
+		comment.setCommentGroupCode(Integer.parseInt(req.getParameter("commentGroupCode")));
 		
 		//comment.setEmail(user.getEmail());
 		dao.updateComment(comment);

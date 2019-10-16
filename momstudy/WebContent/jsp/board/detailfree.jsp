@@ -16,9 +16,7 @@
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-
-<link rel="stylesheet"
-	href='<c:url value="/css/studyboard_detail.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/comment.css" />'>
 <!-- PR신고 -->
     <link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
@@ -80,7 +78,7 @@
 			  <div class="buttons">
 	           <c:choose>
 			        <c:when test="${board.email == user.email}">
-				        <button type="button" onclick="location.href='<c:url value="/boardfree/freeupdateForm.do?num=${board.num}"/>' ">수정</button>
+				        <button type="button" onclick="location.href='<c:url value="/boardfree/freeupdateform.do?num=${board.num}"/>' ">수정</button>
 		                <button type="button" onclick="location.href='<c:url value="/boardfree/freedelete.do?num=${board.num}"/>' ">삭제</button>
 			        </c:when>
 			        <c:otherwise>
@@ -92,7 +90,7 @@
 			   <!--  댓글 -->
 		 	<div id="comment_Wrap">
 				<div id="commentRegistForm">
-					<form name="crForm" method="post" action="freecommentWrite.do" onsubmit="return commentRegistAjax()" >
+					<form name="crForm" method="post" action="freecommentWrite.do" >
 						
 						<input type="hidden" name="num" value="${board.num}" id="numput"/>
 						<input id="user" type="hidden" name="email" value="${user.email}" />
@@ -100,13 +98,13 @@
 							<textarea name="content"></textarea>
 						</div>
 						<div>
-							<button type="submit" id="addbtn">등록</button>
+							<button type="button" id="addbtn">등록</button>
 						</div>
 				    	</form>
 				  </div>
 				<div id="commentList"></div>
+               
 			</div>
-
 		</div>
 		
 		<div id="prpop">
@@ -170,10 +168,9 @@
   <!-- RP팝업 js -->
 <script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/script/admin/reportAjax.js'/>"></script>
-<script type="text/javascript"  src="<c:url value="/script/board/detailboard.js" />"></script>
 <script type="text/javascript">
-let num = ${board.num}
-let email = `${user.email}`
+let num = ${board.num};
+let email = `${user.email}`;
 </script>
 
 
