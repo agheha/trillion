@@ -28,8 +28,6 @@ function login() {
             }
         }
     }
-
-   
     xhr.open("POST", "login.do");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`email=${email}&pass=${pass}`);
@@ -37,3 +35,8 @@ function login() {
 }
 
 document.querySelector("#sbtn").addEventListener("click",login);
+document.addEventListener("keydown",e => {
+	  if(e.keyCode === 13){
+		 login();
+	  }
+})

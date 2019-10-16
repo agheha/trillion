@@ -53,8 +53,6 @@
 		<%--사이드바 인클루드 --%>
 		<%@include file="/jsp/common/sidebar.jsp"%>
 
-
-
 		<div class="study_right_wrap">
 			<div class="contents">
 				<form action="studyaprovalmember.do" method="post" name="aprovalform">

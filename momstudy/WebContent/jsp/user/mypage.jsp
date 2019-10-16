@@ -8,10 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="<c:url value="/css/common.css"/>">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">	
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" -->
+<!-- 	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" -->
+<!-- 	crossorigin="anonymous">	 -->
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>">
 
@@ -94,14 +94,11 @@
 			</div>
 		</div>
 	</section>
-
+	<%@include file="/jsp/user/deletestudy.jsp"%>
 	<script>
-		let email = '${user.email}';
-		let userinfo = document.querySelector("#userinfo");
-		userinfo.addEventListener("click", e =>{
-			location.href ="/momstudy/user/userinfo.do"
-		})
+	let email = "${user.email}";
 	</script>
+	<script src="<c:url value="/script/user/deletestudylist.js"/>"></script>
 	<script src="<c:url value='/script/user/mypage.js'/>"></script>
 </body>
 </html>

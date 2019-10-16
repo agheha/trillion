@@ -53,8 +53,8 @@ public class QuestionformController extends HttpServlet {
 		if(queList.size() != 0) {
 			count = queList.get(0).getCnt();
 		}
+		
 		PageResult pr = new PageResult(pageNo,count);
-		req.setAttribute("vlist", queList);
 		req.setAttribute("pr", pr);
 		req.setAttribute("search", search);
 		req.setAttribute("quelist", queList );

@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.UserDAO;
@@ -27,12 +26,12 @@ public class UserInfoController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		User user = (User)req.getSession().getAttribute("user");
+		
 		List<Category> cateList = dao.selectCategory();
 		List<Category> userCate = dao.selectUserCategoryCode(user.getEmail());
 		List<UserArea> userArea = dao.selectUserArea(user.getEmail());
 		List<Address> smallAddr = dao.selectSmallAddress();
 		List<Address> bigAddr = dao.selectBigAddress();
-		System.out.println(user.getFileGroupCode());
 		req.setAttribute("bigAddr",bigAddr);
 		req.setAttribute("smallAddr",smallAddr);
 		req.setAttribute("userArea", userArea);

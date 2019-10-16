@@ -14,7 +14,12 @@ function agree() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				setTimeout(() => {
-					location.href="/momstudy/user/studydeleteform.do"
+					modal.style.display="none"
+					divEle.innerHTML =`
+					<div id="que">스터디를 탈퇴하시겠습니까?</div>
+						<br/>
+						<button type="button" id="signup" onclick="agree()">확인</button>
+						<button class="closer" onclick="return clean()">취소</button>`
 				}, 2000);
 			} 
 		}

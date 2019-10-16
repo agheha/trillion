@@ -50,21 +50,19 @@
 							<td colspan="4" style="text-align: center">문의 내역이 없습니다</td>
 						</c:when>
 						<c:otherwise>
-							<c:forEach var="que" items="${quelist}" varStatus="i">
-								<tr>
-									<td data-title="ID">${i.count}</td>
-									<td data-title="Name"><a style="text-decoration: none"
-										href="<c:url value="/question/questiondetail.do?num=${que.num}"/>">${que.title}</a>
-									</td>
+							<c:forEach var="que" items="${quelist}">
+								<tr onclick="showlist(${que.num})">
+									<td data-title="ID">${que.numbering}</td>
+									<td data-title="Name">${que.title}</td>
 									<td data-title="Link"><fmt:formatDate
 											value="${que.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 									<c:choose>
-										<c:when test="${que.condition} eq 2">
-											<td data-title="Status">답변완료</td>
-										</c:when>
-										<c:otherwise>
-											<td data-title="Status">대기중</td>
-										</c:otherwise>
+									<c:when test="${que.condition eq 2}">
+										<td data-title="Status">답변완료</td>
+									</c:when>
+									<c:otherwise>
+										<td data-title="Status">대기중</td>
+									</c:otherwise>
 									</c:choose>
 							</c:forEach>
 						</c:otherwise>
@@ -73,8 +71,9 @@
 			</table>
 		</div>
 	</div>
-			<%@include file="/jsp/common/pagination.jsp"%>
-		<%@include file="/jsp/question/questionwrite.jsp"%>
+	<%@include file="/jsp/common/pagination.jsp"%>
+	<%@include file="/jsp/question/questionwrite.jsp"%>
 	<script src="<c:url value="/script/question/question.js" />"></script>
+
 </body>
 </html>

@@ -1,8 +1,13 @@
+
+function showlist(num) {
+	location.href="/momstudy/question/questiondetail.do?num="+num
+}
 let formMain = document.querySelector("#form-main");
 window.onclick = function(e) {
     if (e.target == formMain) {formMain.style.display = "none";}
 }
 let wrtbtn = document.querySelector("#wrtbtn");
+
 wrtbtn.addEventListener("click", e=> {
 	formMain.style.display = "block";
 	let title = document.querySelector("#email").value;
@@ -10,27 +15,29 @@ wrtbtn.addEventListener("click", e=> {
 	title="";
 	content="";
 })
+
+
 let btnblue = document.querySelector("#button-blue");
 
-		btnblue.addEventListener("click", () =>{
-			let title = document.querySelector("#email").value;
-			let content = document.querySelector("#comment").value;
-			let formd = document.querySelector("#form-div");
-			let xhr = new XMLHttpRequest()
-			xhr.onreadystatechange = () => {
-				if (xhr.readyState === 4){
-					if (xhr.status === 200) {
-						formd.innerHTML = "<div class='feedback' style='color:white'>글이 정상적으로 등록되었습니다.</div>"
-						setTimeout(() => {
-							location.href="/momstudy/question/questionform.do"
-						}, 1000);
-					}
-				}
+btnblue.addEventListener("click", () =>{
+	let title = document.querySelector("#email").value;
+	let content = document.querySelector("#comment").value;
+	let formd = document.querySelector("#form-div");
+	let xhr = new XMLHttpRequest()
+	xhr.onreadystatechange = () => {
+		if (xhr.readyState === 4){
+			if (xhr.status === 200) {
+				formd.innerHTML = "<div class='feedback' style='color:white'>글이 정상적으로 등록되었습니다.</div>"
+				setTimeout(() => {
+					location.href="/momstudy/question/questionform.do"
+				}, 1000);
 			}
-			xhr.open("GET",  `/momstudy/question/questionwrite.do?title=${title}&content=${content}`)
-			xhr.send();
-			
-		})
+		}
+	}
+	xhr.open("GET",  `/momstudy/question/questionwrite.do?title=${title}&content=${content}`)
+	xhr.send();
+	
+})
 
 //$(document).ready(function() {
 //

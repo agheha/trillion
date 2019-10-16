@@ -96,7 +96,7 @@
 			<li>
 				<div>
 					<a href="<c:url value="/question/questionform.do"/>"> <i
-						class="fas fa-object-group"></i> 후기게시판
+						class="fas fa-object-group"></i> 문의게시판
 					</a>
 				</div>
 			</li>

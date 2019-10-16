@@ -7,10 +7,11 @@ public class Question {
 	private String email;
 	private String title;
 	private String content;
-	private Date regDate;
+	private Date regDate; 
 	private int condition;
 	private int commentGroupCode;
 	private int cnt;
+	private int numbering;
 	
 	public int getCnt() {
 		return cnt;
@@ -60,5 +61,12 @@ public class Question {
 	public void setCommentGroupCode(int commentGroupCode) {
 		this.commentGroupCode = commentGroupCode;
 	}
+	public int getNumbering() {
+		return numbering;
+	}
+	public void setNumbering(int numbering) {
+		this.numbering = numbering;
+	}
+
 	
 }

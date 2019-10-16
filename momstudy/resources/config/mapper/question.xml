@@ -11,17 +11,33 @@
 		<result column="condition" property="condition" />
 		<result column="comment_group_code" property="commentGroupCode" />
 	</resultMap>
-	
+
 	<resultMap type="Comment" id="commentMap">
-		<result column="email"  property="email"/>
-		<result column="num"  property="num"/>
-		<result column="content"  property="content"/>
-		<result column="reg_date"  property="regDate"/>
-		<result column="comment_group_code"  property="commentGroupCode"/>
-		<result column="parent"  property="parent"/>
-		<result column="comment_group"  property="commentGroup"/>
+		<result column="email" property="email" />
+		<result column="num" property="num" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="comment_group_code" property="commentGroupCode" />
+		<result column="parent" property="parent" />
+		<result column="comment_group" property="commentGroup" />
 	</resultMap>
-	
+	<delete id="deleteQuestion" parameterType="int">
+		delete
+		from
+		tb_question_boardwhere num = #{num} 
+	</delete>
+
+	<!-- 글 수정하고 수정된 글 가져옴 -->
+
+
+	<update id="updateQuestion" parameterType="Question">
+	update tb_question_board 
+		set content = #{content}
+		where email = #{email}
+		and num = #{num} 
+	</update>
+
+	<!-- 선택된 글 상세보기 -->
 	<!-- 선택된 글 상세보기 -->
 	<select id="selectOneQuestion" resultMap="questionMap"
 		parameterType="int">
@@ -35,21 +51,25 @@
 		select *
 		from (select rownum rnum,
 		a.*,
-		count(*) over() as cnt
+		count(*) over() as
+		cnt
 		from tb_question_board a)
 		where rnum between #{begin} and #{end}
-		and email = #{email}
+		and
+		email = #{email}
 		order by reg_date desc
 	</select>
 	<!-- 문의글 추가 -->
 	<insert id="questionWrite" parameterType="Question">
 		insert into
 		tb_question_board(num, email, title, content, comment_group_code)
-		values (seq_question_board_num.nextval, #{email}, #{title}, #{content}, seq_comment_num.nextVal)
+		values (seq_question_board_num.nextval, #{email}, #{title},
+		#{content}, seq_comment_num.nextVal)
 	</insert>
 
 	<!-- 문의 된 전체글 목록보기admin -->
-	<select id="selectAdminQuestion" parameterType="Search" resultMap="questionMap">
+	<select id="selectAdminQuestion" parameterType="Search"
+		resultMap="questionMap">
 
 		select *
 		from (select rownum rnum,
@@ -59,24 +79,25 @@
 
 		select *
 		from tb_question_board
-		where num = num 
+		where num = num
 		<if test="type == 'title'">
 			and title like '%'||#{keyword}||'%'
 		</if>
 		<if test="type == 'email'">
 			and email like '%'||#{keyword}||'%'
 		</if>
-		
+
 		<if test="filter == 'Qcondition'">
 			order by condition
-		desc
+			desc
 		</if>
-	
+
 		) a)
 		where rnum between #{begin} and #{end}
 	</select>
-	<!-- 글번호 하나 받아서 문의 된 하나의 글 보기 admin-->
-	<select id="selectAdminOneQuestion" parameterType="int" resultMap="questionMap">
+	<!-- 글번호 하나 받아서 문의 된 하나의 글 보기 admin -->
+	<select id="selectAdminOneQuestion" parameterType="int"
+		resultMap="questionMap">
 		select *
 		from tb_question_board
 		where num = #{num}
@@ -84,27 +105,29 @@
 
 	<!-- 문의글 하나에 코멘트 쓰기(답변등록)admin -->
 	<insert id="insertQcoment" parameterType="Comment">
-		insert into tb_comment (
-			email, content, num, comment_group_code
+		insert into tb_comment
+		(
+		email, content, num, comment_group_code
 		) values (
-			#{email}, #{content}, seq_comment_num.nextVal, #{commentGroupCode}
+		#{email}, #{content}, seq_comment_num.nextVal, #{commentGroupCode}
 		)
 	</insert>
 	<!-- 문의 글의 번호를 받아서 그 글에 있는 답변 목록 가져옴admin -->
-	<select id="selectAdminQuestioncomment" parameterType="int" resultMap="commentMap">
-	 select c.*  
+	<select id="selectAdminQuestioncomment" parameterType="int"
+		resultMap="commentMap">
+		select c.*
 		from tb_question_board q,tb_comment c
-        where q.comment_group_code = c.comment_group_code
+		where q.comment_group_code = c.comment_group_code
 		and q.num = #{num}
 	</select>
-	
+
 	<!-- 답변 상태 없데이트 -->
 	<update id="QconditionUpdate" parameterType="Comment">
-	UPDATE TB_QUESTION_BOARD
-	set CONDITION = 2
-	where COMMENT_GROUP_CODE = #{commentGroupCode}
+		UPDATE TB_QUESTION_BOARD
+		set CONDITION = 2
+		where COMMENT_GROUP_CODE = #{commentGroupCode}
 	</update>
-	
-	
-	
+
+
+
 </mapper>
