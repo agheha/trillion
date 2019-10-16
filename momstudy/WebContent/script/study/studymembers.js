@@ -30,7 +30,10 @@
 
 			// add event listener
 			for (let i = 0; i < dataRows.length; i++) {
-				dataRows[i].addEventListener('click', onClickModal, false);
+				let tdEles = dataRows[i].children;
+				for(let i = 0; i < tdEles.length - 1; i++){
+					tdEles[i].addEventListener('click',onClickModal);
+				}
 			}
 			
 			

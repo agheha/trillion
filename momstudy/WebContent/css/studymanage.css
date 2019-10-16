@@ -114,3 +114,8 @@ table th:nth-child(6) {
 .contents{
     height: 492px;
 }
+
+.alertBtn {
+    position: relative !important;
+    bottom: 0 !important;
+}
