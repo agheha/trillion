@@ -75,7 +75,7 @@
 				<div id="Qcemail">
 					<p>질문주신 <c:out value="${question.title}" />에 (
 						<c:out value="${comment.email}" />
-						) 가답변드립니다.
+						) 가 답변드립니다.
 					</p>
 					<div>
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${comment.regDate}" />
