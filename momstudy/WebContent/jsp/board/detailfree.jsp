@@ -68,19 +68,6 @@
 				<span>조회수 : ${board.seeCnt}</span>
 			</div>
 
-			
-           <!-- 수정 삭제 버튼 -->
-			<div class="buttons">
-				<button type="button">
-					<a class="del" href='freeupdateform.do?num=${board.num}'>수정</a>
-				</button>
-				<button type="button">
-					<a class="del" href='freedelete.do?num=${board.num}'>삭제</a>
-				</button>
-				<button type="button">
-				  <a class="del" href='freelist.do'>목록</a>
-				</button>				
-
 			<div class="board_cont" style="padding-top: 50px;">
 				${board.content}
 				<button type="button" class="alertBtn" onclick="mopen()">
@@ -107,13 +94,13 @@
 				<div id="commentRegistForm">
 					<form name="crForm" method="post" action="freecommentWrite.do" onsubmit="return commentRegistAjax()" >
 						
-						<input type="hidden" name="num" value="${board.num}" />
+						<input type="hidden" name="num" value="${board.num}" id="numput"/>
 						<input id="user" type="hidden" name="email" value="${user.email}" />
 						<div>
 							<textarea name="content"></textarea>
 						</div>
 						<div>
-							<button type="submit">등록</button>
+							<button type="submit" id="addbtn">등록</button>
 						</div>
 				    	</form>
 				  </div>
