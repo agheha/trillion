@@ -29,8 +29,8 @@
 	</table>
 </div>
 
-<div id="modal">
-	<div id="modal_content">
+<div id="prpop">
+	<div id="prpop_content">
 	
 	</div>
 </div>

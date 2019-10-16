@@ -15,7 +15,7 @@ function userDtailAjax1(email) {
 
 function make1(list) {
 
-	let popUp = document.getElementById("modal_content");
+	let popUp = document.getElementById("prpop_content");
 
 	let info = list.user;
 	let openStudy =list.openStudy;
@@ -123,7 +123,7 @@ function make1(list) {
 	    </tbody>
         </table>
 		</div>
-		 <div id="modarlayer" onclick="mclose()"></div>
+		 <div id="prpoplayer" onclick="mclose()"></div>
 	`;
 
 	console.log(html);

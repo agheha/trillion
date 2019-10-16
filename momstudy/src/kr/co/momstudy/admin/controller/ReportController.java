@@ -34,32 +34,77 @@ public class ReportController extends HttpServlet {
 		String boardType = req.getParameter("boardType");
 		String studyNum = req.getParameter("studyNum");
 		
-		System.out.println(boardNum);
-		if(categoryCode != null) {
+		System.out.println("categoryCode: "+categoryCode);
+		System.out.println("type: "+type);
+		System.out.println("reportTarget: "+reportTarget);
+		System.out.println("boardNum: "+boardNum);
+		System.out.println("content: "+content);
+		System.out.println("code: "+code);
+		System.out.println("email: "+email);
+		System.out.println("boardType: "+boardType);
+		System.out.println("studyNum: "+studyNum);
+		
+		//
+		if(categoryCode.equals("undefined")){
+			report.setCategoryCode(null);
+		}
+		else if(categoryCode != null ) {
 			report.setCategoryCode(categoryCode);
 		}
-		if(type != null) {
+		//
+		if(type.equals("undefined") ) {
+			report.setType(null);
+		}
+		else if(type != null) {
 			report.setType(type);
 		}
-		if(reportTarget != null) {
+		//
+		if(reportTarget.equals("undefined")) {
+			report.setReportTarget(null);
+		}
+		else if(reportTarget != null) {
 			report.setReportTarget(reportTarget);
 		}
-		if(boardNum != null) {
+		//
+		if(boardNum.equals("undefined")) {
+			report.setBoardNum(null);
+		}
+		else if(boardNum != null) {
 			report.setBoardNum(Integer.parseInt(boardNum));
 		}
-		if(content != null) {
+		//
+		if(content.equals("undefined")) {
+			report.setContent(null);
+		}
+		else if(content != null) {
 			report.setContent(content);
 		}
-		if(code != null) {
+		//
+		if(code.equals("undefined")) {
+			report.setCode(null);
+		}
+		else if(code != null) {
 			report.setCode(Integer.parseInt(code));
 		}
-		if(email != null) {
+		//
+		if(email.equals("undefined")) {
+			report.setEmail(null);
+		}
+		else if(email != null) {
 			report.setEmail(email);
 		}
-		if(boardType != null) {
+		//
+		if(boardType.equals("undefined")) {
+			report.setBoardType(null);
+		}
+		else if(boardType != null) {
 			report.setBoardType(boardType);
 		}
-		if(studyNum != null) {
+		//
+		if(studyNum.equals("undefined")) {
+			report.setStudyNum(null);
+		}
+		else if(studyNum != null) {
 			report.setStudyNum(Integer.parseInt(studyNum));
 		}
 		

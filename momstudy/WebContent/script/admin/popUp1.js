@@ -1,14 +1,15 @@
 // 1번쨰 모달
 function mopen1() {
-  document.querySelector("#modal1").classList.add("show1");
+//	alert("팝업실행");
+  document.querySelector("#prpop1").classList.add("prshow1");
 }
 function mclose1() {
-let close =  document.querySelector("#modal1");
+let close =  document.querySelector("#prpop1");
 
-  close.classList.remove("show1");
-  close.classList.add("hide1");
+  close.classList.remove("prshow1");
+  close.classList.add("prhide1");
   setTimeout(function () {
-    close.classList.remove('hide1');
-}, 500);
+    close.classList.remove('prhide1');
+}, 10);
 }
 

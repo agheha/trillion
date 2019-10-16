@@ -28,14 +28,14 @@
 	</table>
 </div>
 
-<div id="modal">
-	<div id="modal_content">
+<div id="prpop">
+	<div id="prpop_content">
 	
 	</div>
 </div>
 
-<div id="modal1">
-	<div id="modal_content1">
+<div id="prpop1">
+	<div id="prpop_content1">
 	
 	</div>
 </div>

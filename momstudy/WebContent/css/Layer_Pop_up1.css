@@ -1,12 +1,12 @@
 /* modal pop-up */
-#modal_content1 .d {
+#prpop_content1 .d {
   margin: 10px auto;
   width: 50%;
   height: 200px;
 }
 
 
-#modal1 {
+#prpop1 {
   position: absolute;
   width: 100%;
   top: 0;
@@ -15,20 +15,20 @@
   display: none;
   
 }
-.hide1{
+.prhide1{
   display: block !important;
   animation: hide 0.5s linear forwards !important;
  
   
 }
-.show1 {
+.prshow1 {
   display: block !important;
-  opacity: 0.01;
+  opacity: 1;
  
   animation: show 0.5s linear forwards;
   display: none;
 }
-#modal_content1 {
+#prpop_content1 {
   margin: 5% auto;
   width: 50%;
   background: white;
@@ -37,7 +37,7 @@
 
 
 
-#modarlayer1 {
+#prpoplayer1 {
   position: fixed;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@
   margin: 0;
 }
 
-@keyframes show {
+@keyframes prshow {
   0% {
       opacity: 0.01;
   }
@@ -57,7 +57,7 @@
   }
 }
 
-@keyframes hide {
+@keyframes prhide {
   0% {
       opacity: 1;
   }
