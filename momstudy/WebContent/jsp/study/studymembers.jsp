@@ -66,6 +66,7 @@
 							<th>별명</th>
 							<th>성별</th>
 							<th>가입일</th>
+							<th>신고</th>
 						</tr>
 					</thead>
 					<tbody class="stdmem_td">
@@ -87,6 +88,10 @@
 								<td>${oneUser.gender}</td>
 								<td><fmt:formatDate value="${oneUser.partDate}"
 										pattern="yyyy-MM-dd" /></td>
+								<td ><button class="alertBtn" type="button" onclick="mopen()">
+					<i class="fas fa-comment-slash"></i>
+					신고하기
+				</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

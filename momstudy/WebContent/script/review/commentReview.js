@@ -12,6 +12,7 @@ function commentListAjax() {
 				let textAreaWrap = document.querySelectorAll(".textAreaWrap");
 				let commentList = document.getElementById("commentList");
 
+				
 				for (let i = 0; i < cmtUpBtn.length; i++) {
 					
 					// 수정버튼 클릭시 Textarea 수정할 수 있는 창이 생기는 버튼
@@ -63,13 +64,17 @@ function makeCommentList(list) {
 						<button type="button" onclick="commentDeleteAjax(${comment.num}, ${comment.commentGroupCode})">삭제</button>
 					</div>
 				</div>
+				
 				<div class="commentWrapUp">
 					${comment.content}
 				</div>
+				
 				<div class="textAreaWrap">
+				
 					<form name="cmtForm" method="post" action="commentUpdate.do" >
 						<textarea class="cmtContent" num="${comment.num}">${comment.content}</textarea>
 						<button class="cmtBtn" value="${comment.num},${comment.commentGroupCode}" type="button">등록</button>
+					
 					</form>
 				</div>
 			</div>

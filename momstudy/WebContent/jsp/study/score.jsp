@@ -6,7 +6,7 @@
 
 
 <div class="container">
-	<div class="inner">
+	<div class="sinner">
 		<div class="rating">
 			<span class="rating-num" id="avg"> 0.0 </span>
 			<div class="rating-stars">

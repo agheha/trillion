@@ -21,6 +21,7 @@
 
 <body>
 	<form name="myForm" action="studywrite.do" method="post" onsubmit="return chknull();" id="studyWriteForm">
+	<input type="hidden" value="" name="num">
 		<div class="wcotents">
 			<div class="name">
 				<span id="sname">스터디 등록</span>
