@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,13 @@
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/study_nlogin.css" />'>
 <link rel="stylesheet" href='<c:url value="/css/recruitmentlist.css" />'>
+
+<link rel="stylesheet" href='<c:url value="/css/searchtab.css"/>' >
+<link rel="stylesheet" href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- slide plugin -->
 <link rel="stylesheet" type="text/css"
@@ -40,6 +48,7 @@
 			<h1>스터디</h1>
 			<p>--------------</p>
 		</div>
+		
 		<div class="left_list">
         	<form action="<c:url value="/study/studyrecruitmentlist.do" />"  method="GET" >
 	            <ul>
@@ -54,9 +63,11 @@
         	</form>
         </div>
 	</section>
+		 
 
 	<div class="board_cont_wrap">
 	
+		<!-- 서치바 인클루드 자리 -->
 		<%@ include file="/jsp/common/searchtab.jsp" %>
 		<div>
 			<button id="myBtn" type="button">새로운 스터디 등록하기</button>
@@ -83,7 +94,7 @@
 					<div class="study_cont">
 						<p>${str.title}</p>
 						<div>
-							<span>평점 ${str.avr} 점</span> <span>회원 ${str.pCnt} 명</span>
+							<span>평점 ${str.avr} 점 / 후기 ${str.reviewCnt} 개</span> <span>회원 ${str.pCnt} 명</span>
 						</div>
 					</div>
 				</a>
@@ -108,16 +119,6 @@
 	</div>
 	
 	<script src="<c:url value="/script/study/studysignup.js"/>"></script>	
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#header").load("header.html");
-			$(".board_cont").mouseover("")
-
-			$('.slide_wrap').slick({
-				slidesToShow : 3,
-				slidesToScroll : 1,
-			});
-		});
-	</script>
+	
 </body>
 </html>

@@ -3,6 +3,7 @@ package kr.co.momstudy.repository.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.FileVO;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
@@ -43,4 +44,7 @@ public interface StudyRecruitmentDAO {
 	FileVO selectFile(int studyNum);
 	
 	HashMap<String,Integer> selectMainCnt();
+
+	// 선택한 주소 목록 가져오기
+	List<Address> getAnAddress(Search search);
 } 

@@ -27,8 +27,17 @@ public class Search extends Page{
 	private List<String[]> types;
 	private List<String[]> filters;
 	private int[] addrCode;
+	private String addrCodes;
 	
 	
+	public String getAddrCodes() {
+		return addrCodes;
+	}
+
+	public void setAddrCodes(String addrCodes) {
+		this.addrCodes = addrCodes;
+	}
+
 	public int[] getAddrCode() {
 		return addrCode;
 	}

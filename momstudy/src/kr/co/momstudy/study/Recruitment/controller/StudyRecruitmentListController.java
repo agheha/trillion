@@ -34,15 +34,15 @@ public class StudyRecruitmentListController extends HttpServlet{
 		List<String> cList = dao.categorySelect();
 		req.setAttribute("cList", cList);
 		
-		/*
+		
 		// 스터디 등록을 위한 주소도 공유영역에 올려준다.
 		List<Address> bigAList = uDao.selectBigAddress();
 		req.setAttribute("bigAList", bigAList);
-		 */
 		
 		
 		
-		String sPageNo = req.getParameter("PageNo");
+		
+		String sPageNo = req.getParameter("pageNo");
 		int pageNo = 1;
 		int count = 0;
 		if(sPageNo != null) {
@@ -61,14 +61,20 @@ public class StudyRecruitmentListController extends HttpServlet{
 		// 검색에서 선택된 지역의 코드
 		
 		Search search = new Search(pageNo, 10);
-
-		if(req.getParameter("code") != null) {
-			String[] arr = req.getParameter("code").split(",");;			
-			int[] codes = new int[arr.length];
+		
+		
+		System.out.println("코드 " + req.getParameter("addressCode"));
+		if(req.getParameter("addressCode") != null) {
+			String addrCodes = req.getParameter("addressCode");
+			search.setAddrCodes(addrCodes);
+			String[] arr = addrCodes.split(",");;			
+			int[] address = new int[arr.length];
 			for (int i = 0; i < arr.length; i++) {
-				codes[i] = Integer.parseInt(arr[i]);
+				address[i] = Integer.parseInt(arr[i]);
 			}
-			search.setAddrCode(codes);
+			search.setAddrCode(address);
+			
+			req.setAttribute("addressList", dao.getAnAddress(search)); ;
 		}
 		
 		search.setTypes("제목", "글쓴이", "내용");
@@ -80,7 +86,9 @@ public class StudyRecruitmentListController extends HttpServlet{
 		
 		// 받아온 카테고리 코드 있다면 Search 객체에 넣어준다
 		if (req.getParameter("code") != null) {
-			search.setCategoryCode(Integer.parseInt(req.getParameter("code")));			
+			int code = Integer.parseInt(req.getParameter("code"));
+			search.setCategoryCode(code);		
+			req.setAttribute("code", code);
 		}
 
 		List<StudyRecruitment> list = dao.selectStudyRecruitment(search);
@@ -94,9 +102,15 @@ public class StudyRecruitmentListController extends HttpServlet{
 				10,				// 보여줄 게시물 갯수
 				10				// 보여줄 페이징 갯수
 				);
+		
 		req.setAttribute("list", list);
 		req.setAttribute("search", search);
 		req.setAttribute("pr", pr);
+		//temp
+		
+		req.setAttribute("address", req.getParameter("address"));
+		req.setAttribute("testhtml", req.getParameter("testhtml"));
+		
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentlist.jsp");
 //		RequestDispatcher rd = req.getRequestDispatcher("/jsp/common/searchtab.jsp");
 		rd.forward(req, res);

@@ -13,8 +13,9 @@
 			<form action="#" method="post" name="pForm">
 				<input type="hidden" value="${search.filter}" name="filter">
 				<input type="hidden" value="${search.keyword}" name="keyword">
-				<input type="hidden" value="${search.type}" name="type"> <input
-					type="hidden" value="${search.categoryCode}" name="categoryCode">
+				<input type="hidden" value="${search.type}" name="type">
+				<input type="hidden" value="${search.addrCodes}" name="addressCode"> 
+				<input type="hidden" value="${search.categoryCode}" name="categoryCode">
 				<input type="hidden" value="" name="pageNo" id="pageNo">
 				<ul class="page">
 					<c:forEach begin="${pr.beginPage}" end="${pr.endPage}" varStatus="status">
@@ -45,6 +46,7 @@
 					<input type="text" name="keyword" />
 					<div class="divbt" id="searchbtn"></div>				
 				</div>
+				<input type="hidden" name="addressCode" value="${search.addrCodes}">;
 		</form>
 		</div>
 	</div>
