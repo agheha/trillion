@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="<c:url value="/css/deletestudy.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/deletemsg.css"/>">
 
+
 <title>마이페이지</title>
 <!-- slide plugin -->
 <link rel="stylesheet" href="<c:url value="/script/slick/slick.css"/>">
@@ -33,7 +34,6 @@
 	src="<c:url value="/script/slick/slick.js"/>"></script>
 
 <style>
-
 </style>
 </head>
 <body>
@@ -117,26 +117,44 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<div class="partlistModal hidden">
 		<!-- 우측 상당 슬라이드 -->
 		<div class="partlist_sub"></div>
 		<table class="part_table" id="pttable">
 		</table>
 	</div>
-	<%@include file="/jsp/user/deletestudy.jsp"%>
+	<div class="heightAuto hidden">
+		<div class="right_top_cont" id="partlist"></div>
+		<table class='rwd-table'></table>
+	</div>
+	<div id="myModal" class="msgmodal">
+		<!-- Modal content -->
+		<div class="msgcontent" id="myBtn">
+			<div id="que">스터디를 탈퇴하시겠습니까</div>
+			<div>
+				<button type="button" id="signup" onclick="agree()">확인</button>
+				<button name="detbe" class="closer" id="closecell">취소</button>			
+			</div>
+		</div>
+	</div>
 	<script>
 		let email = "${user.email}";
+		let pttable = document.querySelector("#pttable");
 		let userinfo = document.querySelector("#userinfo");
 		userinfo.addEventListener("click", e =>{
 			location.href ="/momstudy/user/userinfo.do"
 		})
+		
 	</script>
-	<script src="<c:url value="/script/user/deletestudy.js"/>"></script>
 	<script src="<c:url value="/script/user/deletestudylist.js"/>"></script>
-	 <script src="<c:url value="/script/user/deletemsg.js"/>"></script>		
 	<script src="<c:url value="/script/user/deletepartisipant.js"/>"></script>
+	<script src="<c:url value="/script/user/deletestudy.js"/>"></script>
+	<script src="<c:url value="/script/user/deletemsg.js"/>"></script>
 	<script src="<c:url value='/script/user/mypage.js'/>"></script>
+	<script>
+
+	</script>
 </body>
 </html>
 

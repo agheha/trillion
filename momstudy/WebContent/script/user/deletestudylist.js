@@ -35,7 +35,7 @@ function loadPart() {
 					<tr>
 						<td colspan="5" style="text-align: center">등록된 스터디가 존재하지 않습니다</td>
 					</tr>`
-				} else{
+				} else {
 					list.forEach(parlist => {
 						html += `
 								<tr>
@@ -49,10 +49,9 @@ function loadPart() {
 								</tr>`
 					})
 					html += 
-						`
-												
+						`						
 						<tr>
-						<td colspan="5" style="text-align: center">스터디장은 스터디게시판에서 스터디장 위임 후 탈퇴가 가능합니다. </td>
+						<td colspan="5" style="text-align: center"> 스터디장은 스터디게시판에서 스터디장 위임 후 탈퇴가 가능합니다. </td>
 						</tr>`
 				}
 				partlist.innerHTML = html;

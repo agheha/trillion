@@ -1,11 +1,11 @@
-const delButton = document.getElementById("signup"); 
 const msgmodal = document.querySelector(".msgmodal"); 
-const closecell = document.querySelector("#closecell"); 
+const delButton = document.getElementById("signup"); 
+const closecell = document.querySelector(".closer"); 
 const delOpenModal = () => { 
-	msgmodal.classList.remove("hidden");
+	msgmodal.style.display = "block";
 } 
 const delCloseModal = () => { 
-	msgmodal.classList.add("hidden"); 
+	msgmodal.style.display = "none"; 
 } 
 closecell.addEventListener("click", delCloseModal); 
 delButton.addEventListener("click", delOpenModal); 

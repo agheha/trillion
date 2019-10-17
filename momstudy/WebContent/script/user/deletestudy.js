@@ -5,8 +5,7 @@ function btnAction(num) {
 		cancells.forEach((ele) => {
 			ele.addEventListener("click", e => {
 				select = e.target.value
-				deleteCode(num) 
-				msgmodal.classList.add("hidden"); 
+				msgmodal.style.display="block";
 			})
 		})
 	} else {
@@ -14,53 +13,53 @@ function btnAction(num) {
 		parcancell.forEach((ele) => {
 			ele.addEventListener("click", e => {
 				select = e.target.value
-				document.querySelector("#loadingdelmsg").innerHTML = deleteCode(num)
-				msgmodal.classList.add("hidden"); 
+				msgmodal.style.display="block";
 			})
 		})
 			
 	}
 }
 function deleteCode(num) {
-	return html = 
-		`<input type="hidden" name="stdnum" />
-		<div id="que">스터디를 탈퇴하시겠습니까?</div>
-		<br/>
-		<button type="button" id="signup" onclick="agree(${num})">확인</button>
-		<button class="closer">취소</button>`
+	return html = `
+		<div id="que">스터디를 탈퇴하시겠습니까</div>
+		<div>
+			<button type="button" id="signup" onclick="agree(${num})">확인</button>
+			<button name="detbe" class="closer" id="closecell">취소</button>
+		</div>	
+			`
 }
 
 
 function agree(num) {
 	if (num === 1) {
-		let divEle =  document.querySelector("#loadingdelmsg");
+		let divEle =  document.querySelector("#myBtn");
 		divEle.innerHTML = "<div id='que'>탈퇴되었습니다</div>"
 			let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = e => {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					setTimeout(() => {
-						msgmodal.classList.remove("hidden"); 
+						msgmodal.style.display = "none"; 
 						divEle.innerHTML = deleteCode(num);
-						loadPartList()
-					}, 2000);
+						loadPartList();
+					}, 1500);
 				} 
 			}
 		}
 		xhr.open("GET", "/momstudy/user/studydelete.do?cancell="+select)
 		xhr.send();
 	} else {
-		let divEle =  document.querySelector("#loadingdelmsg");
+		let divEle =  document.querySelector("#myBtn");
 		divEle.innerHTML = "<div id='que'>탈퇴되었습니다</div>"
 			let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = e => {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					setTimeout(() => {
-						msgmodal.classList.remove("hidden"); 
+						msgmodal.style.display = "none"; 
 						divEle.innerHTML = deleteCode(num);
-						loadPart()
-					}, 2000);
+						loadPart();
+					}, 1500);
 				} 
 			}
 		}
