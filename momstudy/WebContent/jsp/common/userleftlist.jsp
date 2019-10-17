@@ -28,21 +28,11 @@
 
 	<div class="left_list">
 		<div>
-			<c:choose>
-				<c:when test="${user.fileGroupCode} == 0">
-					<div class="profile">
-						<img src="<c:url value="/images/user_basic_img.png" />"
-							width="200" height="200" alt="testImg">
-					</div>
-				</c:when>
-				<c:otherwise>
 					<div class="profile">
 						<img
 							src="<c:url value="/util/download.do?fgno=${user.fileGroupCode}" />"
 							width="200" height="200" alt="testImg">
 					</div>
-				</c:otherwise>
-			</c:choose>
 			<div>
 
 				<form method="post" enctype="multipart/form-data" name="fForm"
@@ -62,30 +52,12 @@
 	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script src="<c:url value="/script/user/userimg.js" />"></script>
 	<script>	
-		let bAdmin = document.querySelector("#admin");
-		let admin = document.querySelector(".admin");
-		let aForm = document.adminForm;
-		
-		let adminEle = document.querySelectorAll(".adminele");
-		
-		adminEle.forEach((ele) =>{
-			ele.addEventListener('click',()=>{
-				aForm["action"] = ele.getAttribute("go");
-				 aForm.submit();
-			})
-		})
-		
-		console.log(bAdmin);
-		
+	
 		function goMain(){
 			let f = document.goForm;
 			f.submit();
 		}
 		
-		bAdmin.addEventListener('click',()=>{
-			bAdmin.classList.toggle("clicked");
-			admin.classList.toggle("admin")
-		})
 	</script>
 </body>
 </html>
