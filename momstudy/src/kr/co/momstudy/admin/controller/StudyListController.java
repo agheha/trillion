@@ -28,6 +28,7 @@ public class StudyListController extends HttpServlet {
 		String sPageNo = req.getParameter("pageNo");
 		int pageNo = 1;
 		int count = 0;
+		int postCnt = 10; // 보여줄 개시물 갯수
 		if(sPageNo != null) {
 			pageNo = Integer.parseInt(sPageNo);
 		}
@@ -39,7 +40,7 @@ public class StudyListController extends HttpServlet {
 		String type = req.getParameter("type");
 		String keyword = req.getParameter("keyword");
 		
-		Search search = new Search(pageNo ,5);
+		Search search = new Search(pageNo ,postCnt);
 		search.setTypes("스터디이름","이메일","시/도","구/군/시");
 		search.setFilters("일자","스터디 분야","팀원수");
 		search.setFilter(filter);
@@ -55,7 +56,7 @@ public class StudyListController extends HttpServlet {
 		PageResult pr = new PageResult(
 				pageNo,				// 현재 페이지 번호
 				count,				// 게시물 전체 갯수
-				5,					// 보여줄 게시물 갯수
+				postCnt,			// 보여줄 게시물 갯수
 				10					// 보여줄 페이징 갯수
 				);
 		
