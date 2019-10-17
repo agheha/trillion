@@ -135,7 +135,7 @@ admin modar -->.ddddd {
 						<span class="rpemail">신고한 유저 : </span> <span class="rpemail">${user.email}</span>
 					</div>
 
-					<h3>신고사유 선택</h3>
+					<p>신고사유 선택</p>
 
 					<div>
 						<form action='<c:url value="/admin/report.do"/>' method="post"
