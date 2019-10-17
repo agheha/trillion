@@ -27,13 +27,17 @@ function slideNext(){
     }
 }
 
+let forslide = document.querySelector(".forslide");
+forslide.style.width = cardEle.length * 270 + 'px';
 
 document.querySelector("#prevBtn").addEventListener("click",slidePrev);
 document.querySelector("#nextBtn").addEventListener("click",slideNext);
-let forslide = document.querySelector(".forslide");
-let cardEle = document.querySelectorAll(".studycard");
+if(document.querySelector("#smallcon") !== false){
+	document.querySelector("#prevBtn").remove();
+	document.querySelector("#nextBtn").remove();
+}
 
-forslide.style.width = cardEle.length * 270 + 'px';
+let cardEle = document.querySelectorAll(".studycard");
 
 cardEle.forEach((card)=>{
 	card.addEventListener("click",()=>{
