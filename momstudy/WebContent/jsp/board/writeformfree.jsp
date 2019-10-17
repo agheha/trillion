@@ -21,9 +21,7 @@
 
     <title>자유게시판</title>
 
-    <!-- jquery -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+   
 
 </head>
 <body>
@@ -39,7 +37,9 @@
 	</section>
 	
 	<section id="layout">
-		<form class="form studyboardfreelayout" name="create" action="freewrite.do" method="post" onsubmit="return check()">
+	
+		<form class="form studyboardfreelayout" name="create" action="freewrite.do" method="post" onsubmit="return check()">    
+		<c:if test="${user.type == 2}">  
 			<div class="checked">
 				<div>
 					<input id="type" class="type" type="checkbox" name="type" value="0" onclick=" checkDisable(this.form)" />	            			
@@ -50,6 +50,7 @@
 					<label for="notice">상단고정</label>
 				</div>
 			</div>
+			</c:if>
 			<div>
 				<p>제목</p>
 				<input type="text" name="title" />
@@ -64,10 +65,7 @@
    
 
     <script type="text/javascript"  src="<c:url value="/script/board/writeboard.js" />">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-        });
-
+ 
         function resize(obj) {
             obj.style.height = "1px";
             obj.style.height = (12+obj.scrollHeight)+"px";

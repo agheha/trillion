@@ -28,20 +28,24 @@ function make1(list) {
 	let html = 
 		`
 	  <div class="b1_main">
-
-        <div id="b1_Profile" ><img id="userimg" src="<c:url value="/util/download.do?fgno=${info.fileGroupCode}" />" alt=""></div>
-        <div id="b1_Info">
-            <div id="einfo">ID : ${info.email}</div>
-            <div>이름 : ${info.name}</div>
-            <div id="birth">생일 : <fmt:formatDate pattern="yyyy-MM-dd"
-							value="${info.birth}" /></div>
-            <div>성별 : ${info.gender}</div>
-            <div>연락처 : ${info.phoneNum}</div>
-            <div>개설 스터디 수 : ${info.openCnt}</div>
-            <div>가입 스터디 수: ${info.joinCnt}</div>
-            <div>신고된 횟수 : ${info.rpcount}</div>
+		<div>
+	        <div id="b1_Profile" >
+	        	<div>
+	        		<img id="userimg" src="<c:url value="/util/download.do?fgno=${info.fileGroupCode}" />" alt="">
+	        	</div>
+	        </div>
+	        <div id="b1_Info">
+	            <div id="einfo">ID : ${info.email}</div>
+	            <div>이름 : ${info.name}</div>
+	            <div id="birth">생일 : <fmt:formatDate pattern="yyyy-MM-dd"
+								value="${info.birth}" /></div>
+	            <div>성별 : ${info.gender}</div>
+	            <div>연락처 : ${info.phoneNum}</div>
+	            <div>개설 스터디 수 : ${info.openCnt}</div>
+	            <div>가입 스터디 수: ${info.joinCnt}</div>
+	            <div>신고된 횟수 : ${info.rpcount}</div>
+	        </div>
         </div>
-        <br>
         <div id="b1_Function">회원정지
             <div>
                 <div>

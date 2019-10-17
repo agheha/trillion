@@ -66,13 +66,14 @@
 					<c:when test="${board.email == user.email}">
 						<button type="button" onclick="location.href='<c:url value="/boardfree/freeupdateform.do?num=${board.num}"/>' ">수정</button>
 						<button type="button" onclick="location.href='<c:url value="/boardfree/freedelete.do?num=${board.num}"/>' ">삭제</button>
+						<button type="button" onclick="location.href='<c:url value="/boardfree/freelist.do"/>' ">목록</button>
 					</c:when>
 					<c:otherwise>
 						<button type="button" onclick="location.href='<c:url value="/boardfree/freelist.do"/>' ">목록</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
-
+             <!-- 여기서부터 댓글 -->
 			<div id="comment_Wrap">
 				<div id="commentRegistForm">
 					<form name="crForm" method="post" action="freecommentWrite.do" >
@@ -166,7 +167,7 @@
 		let num = ${board.num};
 		let email = `${user.email}`;
 	</script>
-	<script type="text/javascript"  src="<c:url value="/script/board/detailboard.js" />"></script>
+	<script type="text/javascript"  src="<c:url value="/script/board/freedetailboard.js" />"></script>
 	
 </body>
 </html>

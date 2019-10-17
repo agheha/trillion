@@ -40,6 +40,7 @@
 		
 		<form class="studyboardlayout" name="create" action="write.do" method="post" onsubmit="return check()" >
 			<div class="checked">
+				<c:if test="${user.email == study.email}">  
 				<div>
 					<input id="type" class="type" type="checkbox" name="type" value="0" onclick=" checkDisable(this.form)" />
 					<label for="type">공지사항</label>
@@ -48,6 +49,8 @@
 					<input id="notice" class="notice" type="checkbox" name="notice" value="0" disabled />
 					<label for="notice">상단고정</label>
 				</div>
+				</c:if>
+				
 			</div>
 			<div>
 				<p>제목</p>

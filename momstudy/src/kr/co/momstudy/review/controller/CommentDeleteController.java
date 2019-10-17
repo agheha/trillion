@@ -25,8 +25,9 @@ public class CommentDeleteController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("application/json; charset=utf-8");
 		int num = Integer.parseInt(req.getParameter("num"));
-		System.out.println("넘어온 댓글번호 : " + num);
 		dao.deleteComment(num);
 
 		List<Comment> commentList = dao.selectComment(Integer.parseInt(req.getParameter("commentGroupCode")));

@@ -56,19 +56,12 @@
 			<ul>
 				<li><a id="passUpdate">비밀번호 변경</a></li>
 				<li><a href="<c:url value="/jsp/user/deleteuser.jsp"/>">회원탈퇴</a></li>
-				<li><a id="admin">스터디 관리</a></li>
-				<form name="adminForm" action="" method="post">
-					<ul class="admin">
-						<li><div class="space"></div><a class="adminele" go="<c:url value="/user/participant.do"/>">스터디 신청 내역</a></li>
-						<li><div class="space"></div><a class="adminele" go="<c:url value="/user/studydeleteform.do"/>">스터디 탈퇴 </a></li>
-					</ul>
-				</form>
 			</ul>
 		</div>
 	</div>
 	<script src="<c:url value="/script/user/usermodal.js" />"></script>
 	<script src="<c:url value="/script/user/userimg.js" />"></script>
-	<script>
+	<script>	
 		let bAdmin = document.querySelector("#admin");
 		let admin = document.querySelector(".admin");
 		let aForm = document.adminForm;

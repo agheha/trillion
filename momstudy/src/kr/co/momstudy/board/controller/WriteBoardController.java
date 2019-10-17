@@ -15,7 +15,7 @@ import kr.co.momstudy.repository.vo.Board;
 import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/board/write.do")
+@WebServlet("/study/write.do")
 public class WriteBoardController extends HttpServlet {
 	private BoardDAO dao;
 	
@@ -25,11 +25,11 @@ public class WriteBoardController extends HttpServlet {
 	
 	public void service(HttpServletRequest req, HttpServletResponse res) 
 	                      throws ServletException, IOException {
-		 HttpSession session = req.getSession();
-	     Study study = (Study)session.getAttribute("study");
-	     User user = (User)req.getSession().getAttribute("user");
-	     int studyNum = study.getNum();
-	      
+		HttpSession session = req.getSession();
+	    Study study = (Study)session.getAttribute("study");
+	    User user = (User)req.getSession().getAttribute("user");
+	    int studyNum = study.getNum();
+	    
 		Board board = new Board(); 
 		
 		board.setTitle(req.getParameter("title"));

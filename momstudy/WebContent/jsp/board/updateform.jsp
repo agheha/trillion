@@ -39,7 +39,7 @@
 	
 		<%@include file="/jsp/common/sidebar.jsp" %>
 		
-		<form class="studyboardlayout" name="create" action='<c:url value="/board/update.do?num=${board.num}" />' enctype="multipart/form-data" onsubmit="return check()">
+		<form class="studyboardlayout" name="create" action='<c:url value="/study/update.do?num=${board.num}" />' enctype="multipart/form-data" onsubmit="return check()">
 			<input type="hidden" name="num" value="${board.num}" />  
 			<div class="checked">
 				<div>

@@ -35,7 +35,6 @@
 				<div>이메일</div>
 				<div id="Qemail2" class="Qemail2">?</div>
 			</div>
-			<br />
 			<div id="Qtitle">
 				<div>제목</div>
 				<div id="Qtitle2">?</div>

@@ -61,10 +61,7 @@
    
 
     <script type="text/javascript"  src="<c:url value="/script/board/updateboard.js" />">
-        $(document).ready(function() {
-            $("#header").load("header.html");
-        });
-
+  
         function resize(obj) {
             obj.style.height = "1px";
             obj.style.height = (12+obj.scrollHeight)+"px";

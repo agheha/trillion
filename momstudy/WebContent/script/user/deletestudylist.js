@@ -1,7 +1,4 @@
-let userinfo = document.querySelector("#userinfo");
-	userinfo.addEventListener("click", e =>{
-		location.href ="/momstudy/user/userinfo.do"
-	})
+
 const openButton = document.getElementById("myparticipant"); 
 const heightAuto = document.querySelector(".heightAuto"); 
 const overlay = document.querySelector(".right_top_cont"); 
@@ -44,16 +41,22 @@ function loadPart() {
 								<tr>
 									<td>${parlist.name}</td>
 									<td>${parlist.email}</td>
-									<td></td>
+									<td>${parlist.partDate}</td>
 									<td>가입중</td>
 									<td>
 										<button name="cancell" type="button" value="${parlist.num}">탈퇴</button>
 									</td>
 								</tr>`
 					})
+					html += 
+						`
+												
+						<tr>
+						<td colspan="5" style="text-align: center">스터디장은 스터디게시판에서 스터디장 위임 후 탈퇴가 가능합니다. </td>
+						</tr>`
 				}
 				partlist.innerHTML = html;
-
+				btnAction(1)
 			}
 		}
 	}

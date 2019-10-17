@@ -35,7 +35,7 @@
 	<section class="background_wrap">
 		<div class="background">
 			<h1>스터디 자유게시판</h1>
-			<p>2019년 10월10일 3시 18분</p>
+			<p>치달</p>
 		</div>
 	</section>
 
@@ -44,7 +44,7 @@
 		<div class="study_right_wrap studyboardlayout">
 			<div class="vote_title">
 				<div>
-					<button class="oneBtn" type="button" onclick="location.href='<c:url value="/board/writeform.do"/>'">글등록</button>
+					<button class="oneBtn" type="button" onclick="location.href='<c:url value="/study/writeform.do"/>'">글등록</button>
 				</div>
 			</div>
 			<div class="board_list">
@@ -64,7 +64,7 @@
 					<c:choose>
 						<c:when test="${b.type == 0 && b.notice == 0}">
 						<div class="red">
-							<a href="<c:url value="/board/detail.do?no=${b.num}" />"  >
+							<a href="<c:url value="/study/detail.do?no=${b.num}" />"  >
 								<ul>
 									<li><span class="noticeback">공지</span></li>
 									<li>${b.title}</li>
@@ -77,7 +77,7 @@
 						</c:when>
 						<c:when test="${b.type == 0}">
 							<div class="red">
-								<a href="<c:url value="/board/detail.do?no=${b.num}" />"  >
+								<a href="<c:url value="/study/detail.do?no=${b.num}" />"  >
 									<ul>
 										<li><span class="noticeback">공지</span></li>
 										<li>${b.title}</li>
@@ -90,7 +90,7 @@
 						</c:when>
 						<c:otherwise>
 							<div>
-								<a href="<c:url value="/board/detail.do?no=${b.num}" />">
+								<a href="<c:url value="/study/detail.do?no=${b.num}" />">
 									<ul>
 										<li>${b.numbering}</li>
 										<li>${b.title}</li>

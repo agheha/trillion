@@ -20,10 +20,11 @@ import kr.co.momstudy.repository.vo.Board;
 import kr.co.momstudy.repository.vo.Comment;
 import kr.co.momstudy.repository.vo.User;
 
-@WebServlet("/board/commentlist.do")
+@WebServlet("/study/commentlist.do")
 public class CommentListController extends HttpServlet {
 	private BoardDAO dao;
 	private CommentDAO dao1;
+	
 	public CommentListController() {
 		dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(BoardDAO.class);
 		dao1 = MyAppSqlConfig.getSqlSessionInstance().getMapper(CommentDAO.class);
@@ -31,6 +32,10 @@ public class CommentListController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("application/json; charset=utf-8");
+		
 		Board b = dao.selectOneBoard(Integer.parseInt(req.getParameter("num")));
 		List<Comment> commentList = dao1.selectComment(b.getCommentGroupCode());
 

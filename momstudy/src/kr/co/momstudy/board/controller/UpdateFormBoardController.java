@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.momstudy.common.db.MyAppSqlConfig;
 import kr.co.momstudy.repository.dao.BoardDAO;
 
-@WebServlet("/board/updateform.do")
+@WebServlet("/study/updateform.do")
 public class UpdateFormBoardController extends HttpServlet {
 
 	private BoardDAO dao;

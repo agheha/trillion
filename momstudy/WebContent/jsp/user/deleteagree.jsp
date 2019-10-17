@@ -8,14 +8,10 @@
 		<div id="que">스터디를 탈퇴하시겠습니까?</div>
 		<br/>
 		<button type="button" id="signup" onclick="agree()">확인</button>
-		<button class="closer" onclick="return clean()">취소</button>
+		<button class="closer" id="closecell()">취소</button>
     </div>
-	
 	<script>
-	function clean() {
-		modal.style.display="none"
-	}
+		function closecell() {
+			modal.style.display="none";
+		}
 	</script>
-    <script src="<c:url value="/script/user/deletestudy.js"/>"></script>	
-    <script src="<c:url value="/script/study/studysignup.js"/>"></script>	
-    	

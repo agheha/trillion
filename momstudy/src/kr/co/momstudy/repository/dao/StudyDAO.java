@@ -47,4 +47,8 @@ public interface StudyDAO {
 	void updateStudyLeader(Study study);
 	
 	void updateStudy(Study study);
+	
+	//y
+	int deleteStudy(int num);
+	//y
 }

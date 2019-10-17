@@ -115,10 +115,18 @@
 		</div>
 	</section>
 	<%@include file="/jsp/user/deletestudy.jsp"%>
+	<%@include file="/jsp/user/participant.jsp"%>
 	<script>
-		let email = "${user.email}";
+	let email = "${user.email}";
+	let userinfo = document.querySelector("#userinfo");
+	userinfo.addEventListener("click", e =>{
+		location.href ="/momstudy/user/userinfo.do"
+	})
 	</script>
+	<script src="<c:url value="/script/user/deletestudy.js"/>"></script>
 	<script src="<c:url value="/script/user/deletestudylist.js"/>"></script>
+	<script src="<c:url value="/script/user/deletepartisipant.js"/>"></script>
+	 <script src="<c:url value="/script/study/studysignup.js"/>"></script>		
 	<script src="<c:url value='/script/user/mypage.js'/>"></script>
 </body>
 </html>

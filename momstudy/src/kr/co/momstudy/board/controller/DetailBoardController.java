@@ -15,7 +15,7 @@ import kr.co.momstudy.repository.dao.BoardDAO;
 import kr.co.momstudy.repository.dao.CommentDAO;
 import kr.co.momstudy.repository.vo.Comment;
 
-@WebServlet("/board/detail.do")
+@WebServlet("/study/detail.do")
 public class DetailBoardController extends HttpServlet {
     private BoardDAO dao;
 	private CommentDAO dao1;
@@ -30,34 +30,14 @@ public class DetailBoardController extends HttpServlet {
 		// 게시물 상세 정보 조회하기
 		int num = Integer.parseInt(req.getParameter("no"));
 		String type = (req.getParameter("type") != null ? req.getParameter("type") : "");
-		
+		//조회 수
 		dao.updateSeeCnt(num);
 		
 		req.setAttribute("board", dao.selectOneBoard(num));
-		// req.setAttribute("commentGroupCode", commentGroupCode);
 		req.setAttribute("type", type);
-		
-		// 댓글 수정
-		if(type.equals("modify")) {
-			int commentGroupCode = Integer.parseInt(req.getParameter("commentGroupCode"));
-			int commentNo = Integer.parseInt(req.getParameter("commentNo"));
 			
-			req.setAttribute("commentGroupCode", commentGroupCode);
-			req.setAttribute("commentNo", commentNo);
-		} else if (type.equals("reply")) {
-			
-			int parentNo = Integer.parseInt(req.getParameter("parentNo"));
-			
-			req.setAttribute("parentNo", parentNo);
-		}
-		if(type.equals("reply")) {
-			
-		}
-		
-
 		// 댓글 목록 공유
 		List<Comment> commentList = dao1.selectComment(num);
-//		System.out.println("commentList = " + commentList);
 		req.setAttribute("commentList", commentList);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/board/detail.jsp");

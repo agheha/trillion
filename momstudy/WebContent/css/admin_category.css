@@ -1,12 +1,5 @@
 @charset "UTF-8";
 
-#category {
-	border: 1px solid black;
-	height: 650px;
-	width: 1012px;
-	z-index: 0;
-}
-
 #categorytitle {
 	position: relative;
 	bottom: 19px;
@@ -18,19 +11,6 @@
 	font-weight: bold;
 }
 
-/* .saerch-cat {
-	position: absolute;
-	z-index: 1;
-	width: auto;
-    top: 535px;
-    left: 1066px;
-} */
-
-#category_table {
-	width: 500px;
-	margin: 20px;
-	z-index: 10;
-}
 
 #categoryName {
 	width: 16px;
@@ -78,30 +58,25 @@
 	width: 50px;
 }
 
-#categoryadd {
-	top: 219px;
-	left: 650px;
-	z-index: 1;
-	height: 45px;
-}
-
-#cadd {
-	top: 280px;
-	left: 469px;
-	z-index: 1;
-	width: 50px;
-}
-
-.add {
+/* .add {
 	top: 140px;
 	left: 18px;
-}
+} */
 
 #del2 {
-    position: absolute;
-    left: 792px;
-    top: 384px;
-    width: 50px;
-    height: 27px;
-    z-index: 1;
+	float: right;
+	margin: 15px 60px;
+}
+#category > div {
+	overflow: hidden;
+	text-align: center;
+}
+#category > div > form > input {
+	box-sizing: border-box;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    margin: 0 5px 30px;
+    width: 250px;
 }
