@@ -3,7 +3,7 @@ let xindex = 0;
 let sForm = document.sForm;
 let numput = document.querySelector("#numput")
 
-if(document.querySelector("#forslide") !== null){
+if(document.querySelector(".forslide") !== null){
 	let forslide = document.querySelector(".forslide");
 	let cardEle = document.querySelectorAll(".studycard");
 	forslide.style.width = cardEle.length * 270 + 'px';	
