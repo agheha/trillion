@@ -71,9 +71,9 @@ function insertInfo(){
 				//Y
 				
 				let sn = document.querySelector("#Ysn");
-				let indelb = document.querySelector("#clsmodbtn")
+				let indelb = document.querySelector("#delsbtn")
 				if(indelb == null){
-				sn.innerHTML += `<button class="inbutton del" type="button" onclick="deleteStudy()">삭제</button>`;
+				sn.innerHTML += `<button class="inbutton del" type="button" id="delsbtn" onclick="deleteStudy()">삭제</button>`;
 				}
 				//Y
 				studyWriteBtn.type = "button";
