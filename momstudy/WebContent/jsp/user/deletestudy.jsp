@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<link rel="stylesheet" href="<c:url value="/css/participant.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/deletestudy.css"/>">
 
 <title>계정관리</title>
 <!-- full calendar -->
@@ -23,9 +23,8 @@
 	</div>
 	<!-- The Modal -->
 	<div id="myModal" class="modal hidden">
-
 		<!-- Modal content -->
-		<div class="modal-content">
+		<div class="modal-content" id="myBtn">
 			<%@include file="/jsp/user/deleteagree.jsp"%>
 		</div>
 	</div>
