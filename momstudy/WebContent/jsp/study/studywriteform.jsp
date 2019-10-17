@@ -68,8 +68,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="sn">
-				<button class="inbutton closer" type="button">취소</button>
+			<div class="sn" id="Ysn">
+				<button class="inbutton" id="clsmodbtn" type="button" onclick="clsStudyMd()">취소</button>
 				<button class="inbutton" id="studyWriteBtn">만들기</button>
 
 			</div>

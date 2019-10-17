@@ -24,10 +24,10 @@
 	</resultMap>
 	<resultMap type="Participant" id="participantMap">
 		<result column="num" property="num" />
-		<result column="studyNum" property="studyNum"/>
+		<result column="studyNum" property="studyNum" />
 		<result column="email" property="email" />
-		<result column="part_date" property="partDate"/>
-		<result column="condition" property="condition"/>
+		<result column="part_date" property="partDate" />
+		<result column="condition" property="condition" />
 	</resultMap>
 
 	<!-- 스터디 등록 -->
@@ -55,14 +55,14 @@
 	<select id="selectStudy" parameterType="string"
 		resultMap="studyMap">
 		select a.*,
-       		   nvl(b.FILE_GROUP_CODE,0) as file_group_code
-  		  from tb_study a
-    left outer join tb_study_recruitment b
-    	    on a.num = b.num
- 		 inner join tb_participant c
-    		on c.study_num = a.num
- 		 where c.CONDITION = 2 and c.email = #{email}
-  		 order by c.PART_DATE			    
+		nvl(b.FILE_GROUP_CODE,0) as file_group_code
+		from tb_study a
+		left outer join tb_study_recruitment b
+		on a.num = b.num
+		inner join tb_participant c
+		on c.study_num = a.num
+		where c.CONDITION = 2 and c.email = #{email}
+		order by c.PART_DATE
 	</select>
 
 	<select id="selectOneStudy" parameterType="int"
@@ -74,7 +74,8 @@
 
 	<delete id="deleteParticipant" parameterType="Participant">
 		delete
-		from tb_participant
+		from
+		tb_participant
 		where email = #{email} and study_num = #{studyNum}
 	</delete>
 
@@ -82,119 +83,141 @@
 		update
 		tb_participant
 		set condition = 2
-		where email = #{email} and study_num = #{studyNum}
+		where email = #{email} and study_num =
+		#{studyNum}
 	</update>
 
 	<select id="selectScore" parameterType="string"
 		resultType="Score">
-		select score , 
-			   count(*) over(partition by SCORE) as cnt, 
-			   count(*) over() as total, 
-			   round(count(*) over(partition by SCORE) / count(*) over() *100,0) as percent, 
-			   round(avg(SCORE) over(),1) as avg 
-		  from tb_review_user 
-		 where email = #{email} 
-		 order by score
-	</select>
-	
-	<insert id="insertScore" parameterType="Score">
-		insert into 
-		tb_review_user (score, num, email, email_recom
-		) values (#{score}, #{num}, #{email}, #{emailRecom})
-	
-	</insert>
-	
-	<select id="checkScore" parameterType="Score" resultType="int">
-		select count(*)
-		  from tb_review_user
-		 where num = #{num} and email = #{email} and email_recom = #{emailRecom} 
+		select score ,
+		count(*) over(partition by SCORE) as cnt,
+		count(*) over() as total,
+		round(count(*) over(partition by SCORE) / count(*) over() *100,0) as percent,
+		round(avg(SCORE) over(),1) as avg
+		from tb_review_user
+		where email = #{email}
+		order by score
 	</select>
 
-	<select id="selectCalender" parameterType="Calenders" resultMap="calenderMap">
-		select num, study_no, content, to_char(start_date,'yyyymmdd') as start_date, to_char(end_date,'yyyymmdd') as end_date, type, font_color,bar_color  ,title
-  		from TB_CALENER
- 		where STUDY_NO = #{studyNo} and start_date <![CDATA[<]]> to_date(#{stend},'YYYYMMDD')
-                     		and end_date <![CDATA[>]]> to_date(#{ststart},'YYYYMMDD')
-        order by end_date - start_date desc
-                     		
-	</select>
-	
-	<insert id="insertCalender" parameterType="Calenders">
-		insert into tb_calener(num,title,content,Start_date,end_date,type,study_no, bar_color, font_color,email
-		) values (seq_callender_num.nextval,#{title},#{content},to_date(#{startDate},'YYYYMMDD'),to_date(#{endDate},'YYYYMMDD'),#{type},#{studyNo},#{barColor},#{fontColor},#{email})
+	<insert id="insertScore" parameterType="Score">
+		insert into
+		tb_review_user (score, num, email, email_recom
+		) values (#{score},
+		#{num}, #{email}, #{emailRecom})
+
 	</insert>
-	
-	<select id="selectOneCalender" parameterType="int" resultMap="calenderMap">
-		select email,num, study_no, content, to_char(start_date,'yyyymmdd') as start_date, to_char(end_date,'yyyymmdd') as end_date, type, font_color,bar_color  ,title
-  		from TB_CALENER
- 		where num = #{num}
+
+	<select id="checkScore" parameterType="Score" resultType="int">
+		select
+		count(*)
+		from tb_review_user
+		where num = #{num} and email = #{email} and email_recom = #{emailRecom}
 	</select>
-	
+
+	<select id="selectCalender" parameterType="Calenders"
+		resultMap="calenderMap">
+		select num, study_no, content, to_char(start_date,'yyyymmdd') as
+		start_date, to_char(end_date,'yyyymmdd') as end_date, type,
+		font_color,bar_color ,title
+		from TB_CALENER
+		where STUDY_NO = #{studyNo} and start_date <![CDATA[<]]>
+		to_date(#{stend},'YYYYMMDD')
+		and end_date <![CDATA[>]]>
+		to_date(#{ststart},'YYYYMMDD')
+		order by end_date - start_date desc
+
+	</select>
+
+	<insert id="insertCalender" parameterType="Calenders">
+		insert into
+		tb_calener(num,title,content,Start_date,end_date,type,study_no,
+		bar_color, font_color,email
+		) values
+		(seq_callender_num.nextval,#{title},#{content},to_date(#{startDate},'YYYYMMDD'),to_date(#{endDate},'YYYYMMDD'),#{type},#{studyNo},#{barColor},#{fontColor},#{email})
+	</insert>
+
+	<select id="selectOneCalender" parameterType="int"
+		resultMap="calenderMap">
+		select email,num, study_no, content,
+		to_char(start_date,'yyyymmdd') as start_date,
+		to_char(end_date,'yyyymmdd') as end_date, type, font_color,bar_color
+		,title
+		from TB_CALENER
+		where num = #{num}
+	</select>
+
 	<delete id="deleteCalender" parameterType="int">
 		delete
-		  from tb_calener
-		 where num = #{num}  
+		from tb_calener
+		where num = #{num}
 	</delete>
-	
+
 	<!-- 스터디에 신청한 적 있나 확인 -->
-	<select id="CheckParticipation" parameterType="Participant" resultType="int">
+	<select id="CheckParticipation" parameterType="Participant"
+		resultType="int">
 		select count(*)
-		  from tb_participant
-		 where study_num = #{studyNum}
-		   and email = #{email}
+		from tb_participant
+		where study_num = #{studyNum}
+		and email = #{email}
 	</select>
 
 	<update id="updateCalender" parameterType="Calenders">
-		update TB_CALENER   
-		   set content = #{content},
-		       start_date = to_date(#{startDate},'YYYYMMDD'),
-		       end_date = to_date(#{endDate},'YYYYMMDD'),
-		       type = #{type}, 
-		       font_color = #{fontColor},
-		       bar_color = #{barColor},
-		       title = #{title}
- 		 where num = #{num}
+		update TB_CALENER
+		set content = #{content},
+		start_date = to_date(#{startDate},'YYYYMMDD'),
+		end_date = to_date(#{endDate},'YYYYMMDD'),
+		type = #{type},
+		font_color = #{fontColor},
+		bar_color = #{barColor},
+		title = #{title}
+		where num = #{num}
 	</update>
 
-	<select id="selectStudyInfo" parameterType="int" resultType="Study" >
-			select a.name,
-			       a.email,
-			       b.category_name as category,
-			       c.address_detail || ' ' || address_detail2 as address,
-			       d.cnt as member,
-			       a.reg_date as regDate,
-			       nvl(e.chk,0) as chk 
-			  from tb_study a
-			 inner join tb_category b
-			    on a.category_code = b.category_code
-			 inner join tb_address c
-			    on a.address_code = c.address_code
-			 inner join (select distinct study_num,
-			                    count(*) over() as cnt
-			               from tb_participant
-			              where study_num = #{num}) d
-			    on a.num = d.study_num
-			 left outer join (select count(*) over() as chk,
-			                    study_num
-			               from tb_study_recruitment
-			               where study_num = #{num}) e
-			    on a.num = e.study_num
+	<select id="selectStudyInfo" parameterType="int"
+		resultType="Study">
+		select a.name,
+		a.email,
+		b.category_name as category,
+		c.address_detail || ' ' || address_detail2 as address,
+		d.cnt as member,
+		a.reg_date as regDate,
+		nvl(e.chk,0) as chk
+		from tb_study a
+		inner join tb_category b
+		on a.category_code = b.category_code
+		inner join tb_address c
+		on a.address_code = c.address_code
+		inner join (select distinct study_num,
+		count(*) over() as cnt
+		from tb_participant
+		where study_num = #{num}) d
+		on a.num = d.study_num
+		left outer join (select count(*) over() as chk,
+		study_num
+		from tb_study_recruitment
+		where study_num = #{num}) e
+		on a.num = e.study_num
 	</select>
-	
+
 	<update id="updateStudyLeader" parameterType="Study">
 		update tb_study
-		   set email = #{email}
-		 where num = #{num}  
+		set email = #{email}
+		where num = #{num}
 	</update>
-	
+
 	<update id="updateStudy" parameterType="Study">
 		update tb_study
-		   set name = #{name},
-		   	   category_code = #{categoryCode},
-		   	   address_code = #{addressCode}
-		 where num = #{num}  
+		set name = #{name},
+		category_code = #{categoryCode},
+		address_code = #{addressCode}
+		where num = #{num}
 	</update>
-	
+<!-- y -->
+	<delete id="deleteStudy" parameterType="int">
+		delete
+		from TB_STUDY
+		where num = #{num}
+	</delete>
+<!-- y -->
 
-	
 </mapper>

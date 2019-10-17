@@ -2,7 +2,6 @@
 let bAdmin = document.querySelector("#admin");
 let admin = document.querySelector(".admin");
 let aForm = document.adminForm;
-	
 let adminEle = document.querySelectorAll(".adminele");
 
 // 반목돌면서 관리자메뉴에 클릭이벤트를 걸어줌
@@ -29,7 +28,7 @@ if(bAdmin !== undefined ){
 // 모달을 위한 변수 설정
 let updateStudyMd = document.querySelector(".updateStudyMd");
 let studyUpdate = document.querySelector("#studyUpdate");
-let clsbtn = updateStudyMd.querySelector("button");
+let clsmodbtn = document.querySelector("#clsmodbtn");
 let backgroundMd = document.querySelector(".backgroundMd");
 // 모달 닫기 함수
 function clsStudyMd(){
@@ -41,9 +40,8 @@ studyUpdate.addEventListener("click",()=>{
 	updateStudyMd.classList.remove("mdhidden");
 	f.action = "studyupdate.do"
 })
-backgroundMd.addEventListener('click',clsStudyMd);
-clsbtn.addEventListener('click',clsStudyMd);
 
+backgroundMd.addEventListener('click',clsStudyMd);
 
 
 function insertInfo(){
@@ -70,9 +68,20 @@ function insertInfo(){
 				
 				let studyWriteBtn = document.querySelector("#studyWriteBtn")
 				studyWriteBtn.innerText = "수정";
+				//Y
+				
+				
+				
+				let sn = document.querySelector("#Ysn");
+				let indelb = document.querySelector("#Ydelbtn")
+				if(indelb == null){
+				sn.innerHTML += `<button class="inbutton del" type="button" onclick="deleteStudy()">삭제</button>`;
+				}
+				//Y
 				studyWriteBtn.type = "button";
 				studyWriteBtn.addEventListener("click",chknull);
 				studyWriteBtn.addEventListener("click",updateStudy);
+
 			}
 		}
 	}
@@ -100,4 +109,24 @@ function updateStudy(){
 	xhr.open("POST","studyupdate.do");
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 	xhr.send(`name=${name}&categoryCode=${categoryCode}&addressCode=${addressCode}`);
+}
+
+function deleteStudy() {
+	
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = ()=>{
+		if(xhr.readyState === 4){
+			if(xhr.status === 200){
+				if(xhr.responseText.trim() === '1'){
+					alert("스터디원이 존재합니다.");
+				}else{
+					alert("스터디가 삭제되었습니다.");
+					location.href = "/momstudy/user/mypage.do";
+				
+				}
+			}
+		}
+	}
+	xhr.open("POST","studydelete.do");
+	xhr.send();
 }
