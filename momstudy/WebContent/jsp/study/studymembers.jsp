@@ -62,7 +62,8 @@
 				<h3 class="stm_title">스터디원 목록</h3>
 				<table class="study_member">
 					<thead>
-						<tr>
+						<tr>							
+							<th>리더</th>
 							<th>아이디</th>
 							<th>나이</th>
 							<th>별명</th>
@@ -75,15 +76,12 @@
 						<c:forEach items="${ulist}" var="oneUser">
 							<tr email="${oneUser.email}" name="${oneUser.name}"
 								class="tr_row">
-								<c:choose>
-									<c:when test="${study.email eq oneUser.email}">
-										<td class="study_leader"><span><i
-												class="fas fa-crown"></i></span>${oneUser.email}</td>
-									</c:when>
-									<c:otherwise>
-										<td>${oneUser.email}</td>
-									</c:otherwise>
-								</c:choose>
+								<td class="study_leader">
+									<c:if test="${study.email eq oneUser.email}">
+									<span><i class="fas fa-crown"></i></span>
+									</c:if>
+								</td>	
+								<td>${oneUser.email}</td>								
 								<td><fmt:formatDate var="age" value="${oneUser.birth}"
 										pattern="yyyy" /> ${year - age + 1}</td>
 								<td>${oneUser.name }</td>

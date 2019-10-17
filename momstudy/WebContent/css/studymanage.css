@@ -22,7 +22,7 @@ td {
     font-size: 18px;
     float:left;
 }
-.stm_button { /* 강퇴 버튼*/
+.stm_button { /* 위임 버튼*/
     width: 100px;
     height: 45px;
     margin: 5px;
@@ -79,35 +79,28 @@ td {
 .study_leader {
     position: relative;
 }
-.study_leader span {
-    position: absolute;
-    left: 10px;
-}
 .apply_user {
     margin-bottom: 20px;
 }
 table th:nth-child(1) {
-    max-width:120px;
-    width: 120px;
-}
-table th:nth-child(2) {
-    max-width:60px;
     width: 60px;
 }
+table th:nth-child(2) {
+    width: 120px;
+}
 table th:nth-child(3) {
-    max-width:272px;
-    width: 272px;
+    width: 60px;
 }
 table th:nth-child(4) {
-    max-width:65px;
     width: 65px;
 }
 table th:nth-child(5) {
-    max-width:120px;
-    width: 120px;
+    width: 90px;
 }
 table th:nth-child(6) {
-    max-width:120px;
+    width: 130px;
+}
+table th:nth-child(7) {
     width: 120px;
 }
 
