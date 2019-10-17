@@ -195,4 +195,6 @@
 		 where num = #{num}  
 	</update>
 	
+
+	
 </mapper>

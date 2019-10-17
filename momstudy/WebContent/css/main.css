@@ -1,4 +1,4 @@
-.body_wrap {
+﻿.body_wrap {
     width: 100%;
     min-width: 1200px;
     /* background-image: url("./../images/bg_image01.jpg"); */
@@ -245,4 +245,14 @@ section.main_bot {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+#searchbtn{
+    position: relative;
+    left: -57px;
+    width: 40px;
+    height: 40px;
+    top: 13px;
+    background: none;
+    border: none;
 }

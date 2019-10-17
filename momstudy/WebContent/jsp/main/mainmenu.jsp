@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,13 +14,13 @@
 					<div>
 						<h2>회원 :</h2>
 						<p>
-							<span>1,000,000</span>명
+							<span>${cntmap.USERCNT}</span>명
 						</p>
 					</div>
 					<div>
 						<h2>스터디 :</h2>
 						<p>
-							<span>300,000</span>개
+							<span>${cntmap.STUDYCNT}</span>개
 						</p>
 					</div>
 				</div>
@@ -50,7 +50,11 @@
 
 
 				<div>
-					<input type="text" placeholder="스터디를 검색 해 보세요.">
+					<form action="<c:url value="/study/studyrecruitmentlist.do"/>" method="get">
+						<input type="text" placeholder="스터디를 검색 해 보세요." name="keyword">
+						<input type="hidden" value="title" name="type"/>
+						<button class="divbt" id="searchbtn"></button>
+					</form>
 				</div>
 
 			</div>
