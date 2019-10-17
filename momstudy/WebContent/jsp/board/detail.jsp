@@ -42,8 +42,7 @@ admin modar -->#prpop {
 	width: 900px !important;
 }
 
-<!--
-admin modar -->.ddddd {
+.ddddd {
 	position: relative;
 	top: 2px;
 	width: 690px !important;
