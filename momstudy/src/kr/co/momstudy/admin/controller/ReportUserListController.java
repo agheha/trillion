@@ -38,6 +38,7 @@ public class ReportUserListController extends HttpServlet {
 			String sPageNo = req.getParameter("pageNo");
 			int pageNo = 1;
 			int count = 0;
+			int postCnt = 10; // 보여줄 개시물 갯수
 			if(sPageNo != null) {
 				pageNo = Integer.parseInt(sPageNo);
 			}
@@ -49,7 +50,7 @@ public class ReportUserListController extends HttpServlet {
 			String type = req.getParameter("type");
 			String keyword = req.getParameter("keyword");
 			
-			Search search = new Search(pageNo ,3);
+			Search search = new Search(pageNo ,postCnt);
 			search.setTypes("신고된 사람","신고사유");
 			search.setFilters("일자","신고된 횟수","신고사유");
 			search.setFilter(filter);
@@ -65,7 +66,7 @@ public class ReportUserListController extends HttpServlet {
 			PageResult pr = new PageResult(
 					pageNo,				// 현재 페이지 번호
 					count,				// 게시물 전체 갯수
-					3,					// 보여줄 게시물 갯수
+					postCnt,			// 보여줄 게시물 갯수
 					10					// 보여줄 페이징 갯수
 					);
 			

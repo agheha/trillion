@@ -27,8 +27,6 @@ for (let i = 0; i < check.length; i++) {
 function dataChk() {
 	let title = document.getElementById("title");
 	let cont = document.getElementById("content");
-	alert(title.value)
-	
 	if(isEmpty(title, "제목을 입력해 주세요.")) return false;
 	if(isEmpty(cont, "내용을 입력해 주세요.")) return false;
 }

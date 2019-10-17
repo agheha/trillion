@@ -32,8 +32,8 @@
 <!-- 신고하기 ajax -->
 <script type="text/javascript" src="<c:url value='/script/admin/reportAjax.js'/>"></script>
 <style type="text/css">
-.prshow {
-	opacity: 1;
+#prpop {
+	width: 900px !important;
 }
 </style>
 </head>
@@ -91,11 +91,11 @@
 							href='<c:url value="/study/studyrecruitmentdelete.do?num=${str.num}" />'>삭제</a>
 					</button>
 				</c:if>
-           <!-- 신청하기 버튼 => 스터디원 이고, 로그인이 되어있는 상태에서만 활성화-->
+				<!-- 신청하기 버튼 => 스터디원 이고, 로그인이 되어있는 상태에서만 활성화-->
 				<c:if test="${user.email != str.email}">
 					<!-- 참여한 적이 없는 사람만 활성화 -->
 					<c:if test="${p_flag}">
-						<button type="button" id="myBtn" >
+						<button type="button" id="myBtn">
 							<a id="stdsign" href='#'>신청하기</a>
 						</button>
 					</c:if>
@@ -154,8 +154,10 @@
 								<label for="rpc8">기타</label>
 							</div>
 							<div id="rpcontent">
-								<textarea name="content" placeholder="내용을 입력하세요." class="content"></textarea>
+								<textarea name="content" placeholder="내용을 입력하세요."
+									class="content"></textarea>
 							</div>
+
 							<div>
 								<input type="hidden" name="type" value="board" class="type" />
 								<input type="hidden" name="boardNum" value="${str.num}" class="boardNum" />

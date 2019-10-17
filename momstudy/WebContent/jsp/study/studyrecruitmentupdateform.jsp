@@ -38,14 +38,8 @@
     </section>
         
     <section id="layout">
-            
-        <div class="study_right_wrap">
-        	<form action="<c:url value="/study/studyrecruitmentupdate.do?num=${str.num}" />" method="post" enctype="multipart/form-data">
+       	<form action="<c:url value="/study/studyrecruitmentupdate.do?num=${str.num}" />" method="post" enctype="multipart/form-data">
             <div>
-            	<!-- 
-            	<p>스터디명</p>
-            	<div>${study.name}</div>
-            	 -->
             	<input type="hidden" name="studyNum" value="${str.studyNum}"/>
             	
                 <p>제목</p>
@@ -69,10 +63,6 @@
        
 
         <script type="text/javascript">
-            $(document).ready(function() {
-                $("#header").load("header.html");
-            });
-
             function resize(obj) {
                 obj.style.height = "1px";
                 obj.style.height = (12+obj.scrollHeight)+"px";

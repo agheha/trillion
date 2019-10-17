@@ -70,10 +70,8 @@ function insertInfo(){
 				studyWriteBtn.innerText = "수정";
 				//Y
 				
-				
-				
 				let sn = document.querySelector("#Ysn");
-				let indelb = document.querySelector("#Ydelbtn")
+				let indelb = document.querySelector("#clsmodbtn")
 				if(indelb == null){
 				sn.innerHTML += `<button class="inbutton del" type="button" onclick="deleteStudy()">삭제</button>`;
 				}

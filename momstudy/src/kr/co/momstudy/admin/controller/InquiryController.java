@@ -27,7 +27,7 @@ public class InquiryController extends HttpServlet {
 		String sPageNo = req.getParameter("pageNo");
 		int pageNo = 1;
 		int count = 0;
-		int postCnt = 3; // 보여줄 개시물 갯수
+		int postCnt = 10; // 보여줄 개시물 갯수
 
 		if (sPageNo != null) {
 			pageNo = Integer.parseInt(sPageNo);

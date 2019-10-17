@@ -8,27 +8,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	
-	<link rel="stylesheet" href='<c:url value="/css/common.css" /> '>
-	<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/comment.css" />'>
-	
-	<!-- PR신고 -->
-    <link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
-    <link rel="stylesheet" href='<c:url value="/css/admin_reportform.css" />'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-		crossorigin="anonymous">
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href='<c:url value="/css/common.css" /> '>
+<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
+<link rel="stylesheet"
+	href='<c:url value="/css/studyboard_detail.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/comment.css" />'>
+
+<!-- PR신고 -->
+<link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
+<link rel="stylesheet"
+	href='<c:url value="/css/admin_reportform.css" />'>
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+<!-- admin modar -->
+<style type="text/css">
+#prpop {
+	width: 900px !important;
+}
+</style>
 </head>
 <body>
 	<header id="header">
@@ -45,40 +53,44 @@
 	<section id="layout">
 		<div class="study_right_wrap studyboardfreelayout">
 			<div class="board_title">
-				<p><c:out value="${board.title}" /></p>
+				<p>
+					<c:out value="${board.title}" />
+				</p>
 			</div>
 			<div class="boardInfo">
-				<span>작성자 : ${board.email}</span> 
-				<span>작성일 : <fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>
-				<span>조회수 : ${board.seeCnt}</span>
+				<span>작성자 : ${board.email}</span> <span>작성일 : <fmt:formatDate
+						value="${board.regDate}" pattern="yyyy-MM-dd" /></span> <span>조회수
+					: ${board.seeCnt}</span>
 			</div>
 
 			<div class="board_cont" style="padding-top: 50px;">
 				${board.content}
 				<button type="button" class="alertBtn" onclick="mopen()">
-					<i class="fas fa-user-slash"></i>
-					신고하기
+					<i class="fas fa-user-slash"></i> 신고하기
 				</button>
 			</div>
 
 			<div class="buttons">
 				<c:choose>
 					<c:when test="${board.email == user.email}">
+
 						<button type="button" onclick="location.href='<c:url value="/boardfree/freeupdateform.do?num=${board.num}"/>' ">수정</button>
 						<button type="button" onclick="location.href='<c:url value="/boardfree/freedelete.do?num=${board.num}"/>' ">삭제</button>
 						<button type="button" onclick="location.href='<c:url value="/boardfree/freelist.do"/>' ">목록</button>
+
 					</c:when>
 					<c:otherwise>
-						<button type="button" onclick="location.href='<c:url value="/boardfree/freelist.do"/>' ">목록</button>
+						<button type="button"
+							onclick="location.href='<c:url value="/boardfree/freelist.do"/>' ">목록</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
              <!-- 여기서부터 댓글 -->
 			<div id="comment_Wrap">
 				<div id="commentRegistForm">
-					<form name="crForm" method="post" action="freecommentWrite.do" >
-						<input type="hidden" name="num" value="${board.num}" id="numput"/>
-						<input id="user" type="hidden" name="email" value="${user.email}" />	
+					<form name="crForm" method="post" action="freecommentWrite.do">
+						<input type="hidden" name="num" value="${board.num}" id="numput" />
+						<input id="user" type="hidden" name="email" value="${user.email}" />
 						<div>
 							<textarea name="content"></textarea>
 						</div>
@@ -87,9 +99,9 @@
 						</div>
 					</form>
 				</div>
-		  
+
 				<div id="commentList"></div>
-             
+
 			</div>
 		</div>
 
@@ -98,7 +110,7 @@
 				<button type="button" id="prpoplayer" onclick="mclose()"></button>
 				<!-- 상세신고 ui -->
 				<div id="b_main">
-				
+
 					<h2 id="rptitle">신고하기</h2>
 					<div id="rpemail_wrap">
 						<span class="rpemail">신고한 유저 : </span>
@@ -161,13 +173,16 @@
 	</section>
 
 	<!-- RP팝업 js -->
-	<script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/script/admin/reportAjax.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/script/admin/popUp.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/script/admin/reportAjax.js'/>"></script>
 	<script type="text/javascript">
 		let num = ${board.num};
 		let email = `${user.email}`;
 	</script>
+
 	<script type="text/javascript"  src="<c:url value="/script/board/freedetailboard.js" />"></script>
-	
+
 </body>
 </html>

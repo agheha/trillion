@@ -1,22 +1,22 @@
 function allCheck() {
 	let f = document.mform;
-	let dleNo = f.dleNo
+	let categoryCode = f.categoryCode
 
-	if (dleNo.length) {
+	if (categoryCode.length) {
 		if (document.querySelector("#all").checked == true) {
-			for (let i = 0; i < dleNo.length; i++) {
-				dleNo[i].checked = true;
+			for (let i = 0; i < categoryCode.length; i++) {
+				categoryCode[i].checked = true;
 			}
 		} else {
-			for (let i = 0; i < dleNo.length; i++) {
-				dleNo[i].checked = false;
+			for (let i = 0; i < categoryCode.length; i++) {
+				categoryCode[i].checked = false;
 			}
 		}
 	} else {
 		if (document.querySelector("#all").checked == true) {
-			dleNo.checked = true;
+			categoryCode.checked = true;
 		} else {
-			dleNo.checked = false;
+			categoryCode.checked = false;
 		}
 	}
 }

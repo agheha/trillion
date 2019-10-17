@@ -88,7 +88,8 @@
 								<td>${oneUser.gender}</td>
 								<td><fmt:formatDate value="${oneUser.partDate}"
 										pattern="yyyy-MM-dd" /></td>
-								<td ><button class="alertBtn" type="button" onclick="mopen()">
+								<td ><button class="alertBtn" type="button"
+								 onclick="mopen(),getAemail('${oneUser.email}')">
 					<i class="fas fa-comment-slash"></i>
 					신고하기
 				</button></td>

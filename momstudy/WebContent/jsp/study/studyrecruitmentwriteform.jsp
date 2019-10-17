@@ -23,7 +23,6 @@
 </head>
 <body>
     <header id="header">
-    	<%--헤더 인클루드 --%>
 		<%@include file="/jsp/common/header.jsp" %>
     </header>	
     

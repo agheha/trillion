@@ -69,6 +69,7 @@ function make1(list) {
         </div>
         
          <div id="b1_t1">개설</div>
+<div class="abt">
 
         <table id="b1_table1">
             <thead>
@@ -97,9 +98,11 @@ function make1(list) {
 	html +=` 
 	 </tbody>
         </table>
+</div>
 
         <div id="b1_t2">가입</div>
 
+		<div class="abt">
         <table id="b1_table2">
             <thead>
                 <th>스터디 분야</th>
@@ -126,8 +129,9 @@ function make1(list) {
 	html +=`
 	    </tbody>
         </table>
+        </div>
 		</div>
-		 <div id="prpoplayer" onclick="mclose()"></div>
+		<div id="prpoplayer" onclick="mclose()"></div>
 	`;
 
 	console.log(html);
