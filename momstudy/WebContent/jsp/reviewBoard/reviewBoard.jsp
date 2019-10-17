@@ -70,7 +70,7 @@
 						</button>
 						<p>등록하실 스터디를 선택하세요.</p>
 						<c:if test="${empty slist}">
-				       		<div>작성하실 스터디가 없습니다.</div>
+				       		<div class="emptyCont">작성 가능한 스터디가 없습니다.</div>
 				       	</c:if>
 				       	<c:forEach var="rb" items="${slist}" >
 					      	<div class="board_cont">
@@ -81,7 +81,7 @@
 				        <div class="mbtn_wrap">
 					        <c:choose>
 						        <c:when test="${empty slist}">
-							        <button type="button" id="close">취소</button>	        
+							        <!-- <button type="button" id="close">취소</button>	  -->       
 						        </c:when>
 						        <c:otherwise>
 							        <button type="submit">선택</button>
