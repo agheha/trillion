@@ -55,7 +55,7 @@
 	<select id="selectStudy" parameterType="string"
 		resultMap="studyMap">
 		select a.*,
-		nvl(b.FILE_GROUP_CODE,0) as file_group_code
+		nvl(b.FILE_GROUP_CODE,1) as file_group_code
 		from tb_study a
 		left outer join tb_study_recruitment b
 		on a.num = b.num
