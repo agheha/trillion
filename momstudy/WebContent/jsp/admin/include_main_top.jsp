@@ -21,39 +21,47 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="./../css/common.css">
 <link rel="stylesheet" href="./../css/Layer_Pop_up.css">
-<link rel="stylesheet" href="./../css/Layer_Pop_up1.css">
-<script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/script/admin/popUp1.js'/>"></script>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/popUp.js'/>"></script>
+<script type="text/javascript"
+	src="<c:url value='/script/admin/popUp1.js'/>"></script>
 <title>header</title>
+<style>
+#Qcontent {
+	width: 725px;
+	height: 350px;
+	resize: none;
+	overflow: auto;
+}
+#Qdtext{
+text-align: center;
+}
+
+</style>
 </head>
 
 <body>
 
-  <header id="header">
-    		<%@include file="/jsp/common/header.jsp"%>
-    </header>
+	<header id="header">
+		<%@include file="/jsp/common/header.jsp"%>
+	</header>
 
 	<section>
 		<div id="content">
-		
+
 			<div id="responsive-admin-menu">
-			
+
 				<!--Menu-->
 				<div id="menu">
-					<a href="<c:url value="/admin/reportuser.do"/>"><i
-						class="icon">=</i><span>신고된사람</span></a> <a
-						href="<c:url value="/admin/reportboard.do"/>"><i
+					<a href="<c:url value="/admin/reportuser.do"/>"><i class="icon">=</i><span>신고된사람</span></a>
+					<a href="<c:url value="/admin/reportboard.do"/>"><i
 						class="icon">=</i><span> 신고된 글</span></a> <a
-						href="<c:url value="/admin/reportstudy.do"/>"><i
-						class="icon">=</i><span> 신고된 스터디</span></a> <a
-						href="<c:url value="/admin/user.do"/>"><i
+						href="<c:url value="/admin/reportstudy.do"/>"><i class="icon">=</i><span>
+							신고된 스터디</span></a> <a href="<c:url value="/admin/user.do"/>"><i
 						class="icon">=</i><span>회원</span></a> <a
-						href="<c:url value="/admin/study.do"/>"><i
-						class="icon">=</i><span>스터디</span></a> 
-						<a
-						href="<c:url value="/admin/admininquiry.do"/>"><i
-						class="icon">=</i><span>문의</span></a>
-						<a
+						href="<c:url value="/admin/study.do"/>"><i class="icon">=</i><span>스터디</span></a>
+					<a href="<c:url value="/admin/admininquiry.do"/>"><i
+						class="icon">=</i><span>문의</span></a> <a
 						href="<c:url value="/admin/admincategory.do"/>"><i
 						class="icon">=</i><span>카테고리</span></a>
 
@@ -66,4 +74,3 @@
 				<div class="box-area">
 
 					<div class="box-wrap">
-					

@@ -95,3 +95,7 @@ table, tr, td, th {
 #b1_t1 {
 	float: left;
 }
+.abt{
+	height: 150px;
+	overflow: auto;
+}

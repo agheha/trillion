@@ -64,6 +64,7 @@
 			</div>
 			<div id="b_content">내용</div>
 		</div>
+		<!-- <div id="prpoplayer" onclick="mclose()"></div> -->
 		<div id="prpoplayer" onclick="mclose()"></div>
 	</div>
 </div>

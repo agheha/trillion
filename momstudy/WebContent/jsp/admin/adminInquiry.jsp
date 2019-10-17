@@ -3,6 +3,7 @@
 	
 <%@ include file="include_main_top.jsp"%>
 
+
 <div id="box-8">
 	<!-- box two content -->
 	<table>
@@ -48,7 +49,7 @@
 				</tr>
 			</table>
 
-			<button type="button" id="Qbtn" onclick="mopen1()">답변하기</button>
+			<button type="button" id="Qbtn" onclick="mopen1(),mclose()">답변하기</button>
 			
 		</div>
 		<div id="prpoplayer" onclick="mclose()"></div>
@@ -58,21 +59,18 @@
 <div id="prpop1">
 	<div id="prpop_content1">
 		<div id="b_main">
-			<div id="Qdemail">
-				<div>이메일</div>
-				<div class="Qemail2">이름</div>
-			</div>
+		
 			<div id="Qdtext">
 				<form action="inquiryinsert.do" method="post" name="Qform" id="Qform">
 					<input type="hidden" name="Qademail" value="${user.email}">
 					<input type="hidden" name="commentGroupCode" id="commentGroupCode">
 					<textarea name="Qcontent" id="Qcontent"></textarea>
 					<br />
-					<button id="Qbtn">답변</button>
+					<button id="Qbtn" class="oneBtn">답변</button>
 				</form>
 			</div>
 		</div>
-		<div id="prpoplayer" onclick="mclose(),mclose1()"></div>
+		<div id="prpoplayer1" onclick="mclose(),mclose1()"></div>
 	</div>
 </div>
 
