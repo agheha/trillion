@@ -37,8 +37,6 @@ function make1(list) {
 	        <div id="b1_Info">
 	            <div id="einfo">ID : ${info.email}</div>
 	            <div>이름 : ${info.name}</div>
-	            <div id="birth">생일 : <fmt:formatDate pattern="yyyy-MM-dd"
-								value="${info.birth}" /></div>
 	            <div>성별 : ${info.gender}</div>
 	            <div>연락처 : ${info.phoneNum}</div>
 	            <div>개설 스터디 수 : ${info.openCnt}</div>

@@ -22,6 +22,7 @@ public class ReportBoardController extends HttpServlet {
 		AdminDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 
 		res.setContentType("text/html;charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
 		
 		int no = Integer.parseInt(req.getParameter("num"));
 		System.out.println(no);

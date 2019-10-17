@@ -21,7 +21,7 @@ public class InquiryInsertController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		QuestionDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(QuestionDAO.class);
 		res.setContentType("text/html;charset=UTF-8");
-		
+		req.setCharacterEncoding("UTF-8");
 		System.out.println(req.getParameter("Qademail"));
 		System.out.println(req.getParameter("commentGroupCode"));
 		System.out.println(req.getParameter("Qcontent"));

@@ -22,7 +22,7 @@ public class InquiryController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		QuestionDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(QuestionDAO.class);
 		res.setContentType("text/html;charset=UTF-8");
-		
+		req.setCharacterEncoding("UTF-8");
 //		페이징 + 검색 쿼리
 		String sPageNo = req.getParameter("pageNo");
 		int pageNo = 1;
