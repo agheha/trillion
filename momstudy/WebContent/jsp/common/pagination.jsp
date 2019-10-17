@@ -46,7 +46,7 @@
 					<input type="text" name="keyword" />
 					<div class="divbt" id="searchbtn"></div>				
 				</div>
-				<input type="hidden" name="addressCode" value="${search.addrCodes}">;
+				<input type="hidden" name="addressCode" value="${search.addrCodes}">
 		</form>
 		</div>
 	</div>

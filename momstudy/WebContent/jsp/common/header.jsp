@@ -36,7 +36,7 @@
 			</c:if>
 		</div>
 		<div>
-			<a href='<c:url value="/study/studyrecruitmentlist.do" />'>스터디</a>
+			<a href='<c:url value="/study/studyrecruitmentlist.do" />'>스터디찾기</a>
 		</div>
 		<div>
 			<a href='<c:url value="/boardfree/freelist.do" />'>자유게시판</a>
