@@ -28,16 +28,17 @@ function slideNext(){
 }
 
 let forslide = document.querySelector(".forslide");
+let cardEle = document.querySelectorAll(".studycard");
 forslide.style.width = cardEle.length * 270 + 'px';
 
 document.querySelector("#prevBtn").addEventListener("click",slidePrev);
 document.querySelector("#nextBtn").addEventListener("click",slideNext);
-if(document.querySelector("#smallcon") !== false){
+
+if(document.querySelector("#smallcon") !== null){
 	document.querySelector("#prevBtn").remove();
 	document.querySelector("#nextBtn").remove();
 }
 
-let cardEle = document.querySelectorAll(".studycard");
 
 cardEle.forEach((card)=>{
 	card.addEventListener("click",()=>{
