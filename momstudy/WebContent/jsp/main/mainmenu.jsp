@@ -50,7 +50,11 @@
 
 
 				<div>
-					<input type="text" placeholder="스터디를 검색 해 보세요.">
+					<form action="<c:url value="/study/studyrecruitmentlist.do"/>" method="get">
+						<input type="text" placeholder="스터디를 검색 해 보세요." name="keyword">
+						<input type="hidden" value="title" name="type"/>
+						<button class="divbt" id="searchbtn"></button>
+					</form>
 				</div>
 
 			</div>
