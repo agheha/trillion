@@ -60,21 +60,23 @@ public class StudyRecruitmentListController extends HttpServlet{
 		
 		// 검색에서 선택된 지역의 코드
 		
-		Search search = new Search(pageNo, 10);
+		Search search = new Search(pageNo, 9);
 		
 		
-		System.out.println("코드 " + req.getParameter("addressCode"));
+//		System.out.println("코드 " + req.getParameter("addressCode"));
 		if(req.getParameter("addressCode") != null) {
-			String addrCodes = req.getParameter("addressCode");
-			search.setAddrCodes(addrCodes);
-			String[] arr = addrCodes.split(",");;			
-			int[] address = new int[arr.length];
-			for (int i = 0; i < arr.length; i++) {
-				address[i] = Integer.parseInt(arr[i]);
+			if(!req.getParameter("addressCode").equals("")) {
+				String addrCodes = req.getParameter("addressCode");
+				search.setAddrCodes(addrCodes);
+				String[] arr = addrCodes.split(",");;			
+				int[] address = new int[arr.length];
+				for (int i = 0; i < arr.length; i++) {
+					address[i] = Integer.parseInt(arr[i]);
+				}
+				search.setAddrCode(address);
+				
+				req.setAttribute("addressList", dao.getAnAddress(search)); ;
 			}
-			search.setAddrCode(address);
-			
-			req.setAttribute("addressList", dao.getAnAddress(search)); ;
 		}
 		
 		search.setTypes("제목", "글쓴이", "내용");
@@ -99,7 +101,7 @@ public class StudyRecruitmentListController extends HttpServlet{
 		PageResult pr = new PageResult(
 				pageNo, 		// 현재 페이지 번호
 				count,		    // 게시물 전체 갯수
-				10,				// 보여줄 게시물 갯수
+				9,				// 보여줄 게시물 갯수
 				10				// 보여줄 페이징 갯수
 				);
 		
@@ -112,7 +114,6 @@ public class StudyRecruitmentListController extends HttpServlet{
 		req.setAttribute("testhtml", req.getParameter("testhtml"));
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/study/studyrecruitmentlist.jsp");
-//		RequestDispatcher rd = req.getRequestDispatcher("/jsp/common/searchtab.jsp");
 		rd.forward(req, res);
 	}
 }
