@@ -103,9 +103,6 @@
 				<button type="button" id="golist">
 					<a href='<c:url value="/study/studyrecruitmentlist.do"/>'>목록으로</a>
 				</button>
-				<div>
-					<button type="button" id="report" onclick="mopen()">신고하기</button>
-				</div>
 			</div>
 		</div>
 
