@@ -16,7 +16,7 @@ for (let i = 0; i < li.length; i++) {
 					loc.forEach(sAddr => {
 						html += `<li class="loc" id="loc${sAddr.addressCode}">${sAddr.addressDetail2}</li>`
 					});
-					add2.innerHTML = html;
+					add2.innerHTML = html
 					let li2 = document.querySelectorAll(".loc");
 					for(let i = 0; i < li2.length; i++) {
 						li2[i].addEventListener("click", detailAddress);
@@ -93,7 +93,11 @@ sub.addEventListener("click", (e) => {
 	let reArr = removeDupArray(codeArr);
 	let act = document.getElementById("results");
 	act.value = reArr.join(",");
-	console.log(act.value);
+	let addressInput = document.sForm.addressCode;
+	console.log(addressInput);
+	addressInput.value = act.value;
+	console.log(addressInput.value);
+	document.sForm.submit();
 })
 
 
@@ -119,4 +123,16 @@ function removeDupArray(arr) {
     return tempArr;
 }
 
-
+function openCity(evt, cityName) {
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+	    tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (i = 0; i < tablinks.length; i++) {
+	    tablinks[i].className = tablinks[i].className.replace(" act", "");
+	  }
+	  document.getElementById(cityName).style.display = "block";
+	  evt.currentTarget.className += " act";
+	}

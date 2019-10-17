@@ -1,78 +1,52 @@
-article
-{
-    display: block;
+.container {
+    width: 1170px;
+    height: 250px;
 }
-
-.content-block
-{
-    width: 100%;
-    padding: 60px 0 60px 0;
-    z-index: 100;
-    position: relative;
-    background-color: #ffffff;
-}
-a
-{
-    color: darkorange;
-    text-decoration: none;
-}
-
-.nav-tabs > li > a
-{
-    padding: 16px 25px 12px;
-    font-size: 14px;
-    font-weight: 700;
-    font-style: normal;
-    text-transform: uppercase;
-    color: #737c85;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    border: none !important;
-    border-bottom: 4px solid transparent !important;
-}
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus
-{
-    background-color: transparent;
-    border-bottom: 4px solid darkorange !important;
-}
-*
-{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.fade
-{
-    opacity: 0;
-    -webkit-transition: opacity .15s linear;
-    -o-transition: opacity .15s linear;
-    transition: opacity .15s linear;
-}
-
-.tab-pane
-{
-    padding: 50px 0;
-    border-bottom: 1px solid #ecf0f1;
-}
-.text-center
-{
-    text-align: center;
-}
-.nav-tabs
-{
-    margin: 0 auto;
-}
-.loc
-{
+.loc {
 	list-style: none;
 	display: inline-block;
 	padding: 8px 15px;
 }
-.selected
-{
-	border: 1px;
+.selected {
+
+
+}
+
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.act {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }

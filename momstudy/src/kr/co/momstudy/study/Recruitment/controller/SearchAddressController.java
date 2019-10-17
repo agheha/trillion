@@ -2,6 +2,7 @@ package kr.co.momstudy.study.Recruitment.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,12 +24,8 @@ public class SearchAddressController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("text/html;charset=UTF-8"); 
 		
-		String[] arr = req.getParameter("code").split(",");
-		int[] codes = new int[arr.length];
-		for (int i = 0; i < arr.length; i++) {
-			codes[i] = Integer.parseInt(arr[i]);
-		}
-		
+		RequestDispatcher rd = req.getRequestDispatcher("/jsp/common/searchtab.jsp");
+		rd.forward(req, res);
 		
 		
 	}

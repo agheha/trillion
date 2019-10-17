@@ -20,6 +20,12 @@
 		<result column="pcnt" property="pCnt" />
 		<result column="count" property="count" />
 		<result column="name" property="studyName" />
+		<result column="reviewCnt" property="reviewCnt" />
+	</resultMap>
+	<resultMap type="Address" id="addressMap">
+		<result column="address_code" property="addressCode"/>
+		<result column="address_detail" property="addressDetail"/>
+		<result column="address_detail2" property="addressDetail2"/>
 	</resultMap>
 	<!-- 최신글 등록 순으로 모집글 추출하기 -->
 	<select id="viewLatestdate" resultMap="studyRecruitmentMap">
@@ -55,9 +61,10 @@
 	  from (select rownum as rnum, 
 	               a.*,
 	               count(*) over() as count
-		  	  from (select str.*,
+		  	  from (select distinct str.*,
                            nvl(r.avr, 0) avr,
-                     	   nvl(man, 1) pcnt
+                     	   nvl(man, 1) pcnt,
+                     	   nvl(reviewCnt,0) reviewCnt
  					  from tb_study_recruitment str,
        					   (select study_num,
                					   avg(score) avr
@@ -67,9 +74,13 @@
                 				   count(*) man
           				 	  from tb_participant
           			         where condition = 2
-          				     group by study_num) p            
+          				     group by study_num) p,
+          				   (select count(*) over(partition by study_num) as reviewCnt,
+            					   STUDY_NUM
+  						      from tb_review_study) s	                 
   					 where str.study_num = r.study_num(+)
    					   and str.study_num = p.study_num(+)
+   					   and str.study_num = s.study_num(+)
            			<if test="type == 'email'">
 			   	    	and str.email like '%' || #{keyword} || '%'
 			   		</if>
@@ -101,6 +112,16 @@
 					</choose>
 					) a)
 	 where rnum between #{begin} and #{end}		 
+	</select>
+	
+	<!--선택된 주소목록 내보내기 -->
+	<select id="getAnAddress" parameterType="Search" resultMap="addressMap">
+		select *
+		  from tb_address
+		 where address_code in
+		 <foreach collection="addrCode" item="addr" open="(" close=")" separator=",">
+	                    	#{addr}
+	     </foreach> 
 	</select>
 	
 	<!-- 모집글 상세 조회 -->
@@ -183,5 +204,7 @@
 		on r.file_group_code = f.file_group_code
 		where study_num = ${studyNum}
 	</select>
+	
+	
 	
 	</mapper>

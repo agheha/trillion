@@ -20,8 +20,14 @@ public class StudyRecruitment {
 	private int pCnt; // 스터디별 인원수
 	private int count; // 총 개수
 	private String studyName; // 스터디 이름
+	private int reviewCnt;
 	
-	
+	public int getReviewCnt() {
+		return reviewCnt;
+	}
+	public void setReviewCnt(int reviewCnt) {
+		this.reviewCnt = reviewCnt;
+	}
 	public String getStudyName() {
 		return studyName;
 	}

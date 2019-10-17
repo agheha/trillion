@@ -2,6 +2,7 @@ package kr.co.momstudy.repository.dao;
 
 import java.util.List;
 
+import kr.co.momstudy.repository.vo.Address;
 import kr.co.momstudy.repository.vo.FileVO;
 import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.StudyRecruitment;
@@ -40,4 +41,7 @@ public interface StudyRecruitmentDAO {
 	
 	// 해당 게시물의 사진 불러오기
 	FileVO selectFile(int studyNum);
+	
+	// 선택한 주소 목록 가져오기
+	List<Address> getAnAddress(Search search);
 } 
