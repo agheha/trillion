@@ -52,7 +52,6 @@ title {
 
 .content {
     resize: none;
-    border: solid 1px red;
 }
 .comment {
  overflow: hidden; 

@@ -110,17 +110,18 @@
 				</div>
 			
 		<div id="prpop">
-			<div id="prpop_content">
+			<div id="prpop_content" style="min-width: 450px;">
+				<button type="button" id="prpoplayer" onclick="mclose()"></button>
 				<!-- 상세신고 ui -->
 				<div id="b_main">
 				
 					<h2 id="rptitle">신고하기</h2>
 					<div id="rpemail_wrap">
-						<div class="rpemail">신고자</div>
-						<div class="rpemail">${user.email}</div>
+						<span class="rpemail">신고한 유저 : </span>
+						<span class="rpemail">${user.email}</span>
 					</div>
 					
-					<h3>신고사유 선택</h3>
+					<p>신고사유 선택</p>
 					<div>
 						<form action='<c:url value="/admin/report.do"/>' method="post" name="rpform">
 							<div>
@@ -169,14 +170,11 @@
 							</div>
 							
 							<div id="rpbtn">
-								<button type="button" id="btn" onclick="reportAjax(),mclose()">신고하기</button>
+								<button class="oneBtn" type="button" id="btn" onclick="reportAjax(),mclose()">신고하기</button>
 							</div>
 						</form>
 					</div>
 				</div>
-			
-				<div id="prpoplayer" onclick="mclose()"></div>
-				
 			</div>
 		</div>		
 		

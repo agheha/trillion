@@ -28,7 +28,7 @@
 	</section>
 	<div id="demo">
 		<div style="text-align: right; padding : 10px 5px">
-			<button type="button" id="wrtbtn" class="write_btn">문의글 작성하기</button>	
+			<button type="button" id="wrtbtn" class="oneBtn">문의글 작성하기</button>	
 		</div>
 
 		<!-- Responsive table starts here -->

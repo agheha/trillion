@@ -14,10 +14,10 @@
 	<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
 	<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
+	
 	<!-- PR신고 -->
 	<link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
-	<link rel="stylesheet"
-		href='<c:url value="/css/admin_reportform.css" />'>
+	<link rel="stylesheet" href='<c:url value="/css/admin_reportform.css" />'>
 	
 	<link rel="stylesheet"
 		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -27,37 +27,6 @@
 		href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
 	<title>스터디</title>
-
-
-<link rel="stylesheet" href='<c:url value="/css/common.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
-<!-- PR신고 -->
-<link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
-<link rel="stylesheet"
-	href='<c:url value="/css/admin_reportform.css" />'>
-
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
-
-<title>스터디</title>
-
-<!-- jquery -->
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<style>
-.prshow {
-	/* opacity: 1; */
-}
-</style>
 
 </head>
 <body>
@@ -77,8 +46,8 @@
 
        <div class="study_right_wrap">
            <div class="board_title">
-               <p>${rBoard.title}  ${study.categoryCode}</p>
-			   </div>
+               <p>${rBoard.title}</p>
+		   </div>
 		   <div class="boardInfo">
 				<span>작성자 : ${rBoard.email}</span>
 				<span>작성일 : <fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
@@ -86,7 +55,7 @@
 				<span>조회수  : ${rBoard.seeCnt} </span>
 			</div>
 
-		<!-- 추후 이미지 -->
+			<!-- 추후 이미지 -->
            <div class="image_wrap">
            		<c:if test="${file.groupCode != null}">
 	            	<img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
@@ -136,13 +105,14 @@
 
 
 		<div id="prpop">
-			<div id="prpop_content">
-				<button type="button" id="prpoplayer" onclick="mclose()">x</button>
+			<div id="prpop_content" style="min-width: 450px;">
+				<button type="button" id="prpoplayer" onclick="mclose()"></button>
 				<!-- 상세신고 ui -->
 				<div id="b_main">
 				
 					<h2 id="rptitle">신고하기</h2>
 					<div id="rpemail_wrap">
+					
 					<%-- span Tag로 변경 --%>
 						<span>신고한 유저 : </span>
 						<span>${user.email}</span>
