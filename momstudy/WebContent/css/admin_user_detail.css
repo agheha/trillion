@@ -3,67 +3,79 @@
 }
 
 .b1_main {
-	/* background: white; */
-	border: 1px solid black;
 	position: relative;
-	width: 750px;
-	height: 1230px;
-	margin: auto;
 }
-
+.b1_main > div {
+	display: table;
+	width: 100%;
+}
+.b1_main > div > div {
+	display: table-cell;
+	vertical-align: middle;
+}
 #b1_Profile {
-	border: 1px solid black;
-	width: 150px;
-	height: 150px;
-	margin-left: 60px;
-	margin-top: 60px;
-	display: inline-block;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    width: 50%;
 }
-
+#b1_Profile > div {
+	width: 150px;
+    height: 150px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+#b1_Profile > div > img {
+	width: 100%;
+}
 #b1_Info {
-	transform: translate(57px, 28px);
-	display: inline-block;
-	width: 430px;
-	height: 500px;
+	position: relative;
+    box-sizing: border-box;
+    width: 300px;
+    padding: 0 30px;
 }
 
 #b1_Function {
-	display: inline-block;
-	transform: translate(0px, -292px);
-	margin-left: 60px;
-	width: 150px;
-	height: 300px;
+    display: block;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 15px;
 }
-
-#b1_Function>div {
+#b1_Function > div {
+	display: block;
+	border-top: 1px solid #dadada;
+	box-sizing: border-box;
+	padding-top: 8px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+#b1_Function > div > div {
+	float: left;
+	width: 30%;
 	text-align: center;
-	height: 270px;
-	margin: 10px 0 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	border: 1px solid black;
 }
-
-#b1_Function>select, button {
-	box-shadow: 1px 2px 2px black;
+#b1_Function > div > div:first-child {
+	width: 40%;
 }
-
-#b1_t1, #b1_t2 {
-	border: 1px solid black;
-	width: 100px;
-	left: 80%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	text-align: center;
-	box-shadow: 2px 2px 2px black;
+#b1_Function > div > div input {
+	width: 70px;
+    height: 32px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 0 5px;
 }
-
-#b1_table1, #b1_table2 {
-	margin: 0 30px 0 30px;
-	/* border: 1px solid black; */
-	width: 90%;
-	height: auto;
+#b1_Function > div > div button {
+	border: 1px solid #333;
+	background-color: #fff;
+	padding: 3px 8px;
+	border-radius: 3px;
+}
+#b1_Function > div > div button:hover {
+	background-color: #333;
+	color: #fff;
 }
 
 #b1_table1 tr, td, #b1_table2 tr, td {
@@ -76,6 +88,10 @@ table, tr, td, th {
 	border-collapse: collapse;
 }
 
-#b1_t1, #b1_table1, #b1_t2, #b1_table2 {
-	transform: translate(10px, -264px);
+#b1_table1,  #b1_table2 {
+	overflow: auto;
+}
+
+#b1_t1 {
+	float: left;
 }

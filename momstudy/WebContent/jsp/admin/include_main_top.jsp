@@ -33,13 +33,11 @@
     		<%@include file="/jsp/common/header.jsp"%>
     </header>
 
-	<section class="section2">
+	<section>
 		<div id="content">
 		
 			<div id="responsive-admin-menu">
-
-				<div id="logo"></div>
-
+			
 				<!--Menu-->
 				<div id="menu">
 					<a href="<c:url value="/admin/reportuser.do"/>"><i
