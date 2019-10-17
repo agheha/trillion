@@ -27,13 +27,12 @@ public class CommentUpdateFreeController extends HttpServlet {
 	public void doPost(
 			HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		
+		res.setContentType("application/json; charset=utf-8");
         Comment comment = new Comment();
 		comment.setContent(req.getParameter("content"));
 		comment.setNum(Integer.parseInt(req.getParameter("commentNum")));
 		comment.setCommentGroupCode(Integer.parseInt(req.getParameter("commentGroupCode")));
 		
-		//comment.setEmail(user.getEmail());
 		dao.updateComment(comment);
 			
 		List<Comment> commentList = dao.selectComment(Integer.parseInt(req.getParameter("commentGroupCode")));

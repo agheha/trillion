@@ -17,7 +17,7 @@ import kr.co.momstudy.repository.vo.Search;
 import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.PageResult;
-@WebServlet("/board/list.do")
+@WebServlet("/study/list.do")
 public class ListBoardController extends HttpServlet {
 	
 	private BoardDAO dao;

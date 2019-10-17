@@ -30,7 +30,6 @@ public class CommentDeleteFreeController extends HttpServlet {
 	public void service(
 		HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int num = Integer.parseInt(req.getParameter("num"));
-		System.out.println(req.getParameter("num"));
 		dao1.deleteComment(num);
 		 
 		List<Comment> commentList = dao1.selectComment(Integer.parseInt(req.getParameter("commentGroupCode")));

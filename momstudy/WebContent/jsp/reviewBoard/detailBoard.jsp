@@ -210,8 +210,8 @@
 	<script type="text/javascript" src="<c:url value='/script/admin/popUp.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/script/admin/reportAjax.js'/>"></script>
 	<script>
-		let num = ${rBoard.num}
-		let email = '${user.email}'
+		let num = ${rBoard.num};
+		let email = `${user.email}`;
 	</script>
 	<script src="<c:url value='/script/review/commentReview.js' />"></script>
 

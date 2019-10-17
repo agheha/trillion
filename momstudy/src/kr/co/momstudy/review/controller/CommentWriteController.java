@@ -29,12 +29,15 @@ public class CommentWriteController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("application/json; charset=utf-8");
 		// 넘어온 파라미터의 등록된 글번호를 받아옴
 		int num = Integer.parseInt(req.getParameter("num"));
-		
+		if (num != 0) {
+			req.setAttribute("num", num);
+		}
 		// 새로 등록될 객체를 생성
 		Comment comment = new Comment();
-		
 		// 넘어온 파라미터의 현재 로그인 중인 유저의 이메일를 받아옴
 		comment.setEmail(req.getParameter("email"));
 		// 넘어온 파라미터의 content를 입력함
