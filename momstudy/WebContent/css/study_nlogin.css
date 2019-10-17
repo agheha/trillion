@@ -7,7 +7,6 @@
     box-sizing: border-box;
     width: 1200px;
     margin: 0 auto;
-    padding-top: 40px;
 }
 .board_cont_wrap > p {
     box-sizing: border-box;
@@ -22,7 +21,7 @@
     width: 100%;
 }
 .content_wrap {
-	width: 345px;
+	width: 282px;
 	display: block;
 	float: left;
     overflow: hidden;
@@ -48,11 +47,12 @@
     top: 20px;
     left: 25px;
     z-index: 3;
-    border-radius: 50%;
+    border-radius: 50% !important;
     width: 80px;
     height:  80px;
-    border:  5px solid #fff;
+    border:  5px solid #fff !important;
     overflow: hidden;
+    padding: 0 !important;
 }
 .study_cont {
 	position: relative;
@@ -71,7 +71,7 @@
     overflow-wrap: break-word;
     height: 42px;
 }
-.study_cont > div {
+.study_cont > div:nth-child(2) {
 	position: absolute;
 	width: 215px;
     top: 0;
@@ -79,18 +79,90 @@
     box-sizing: border-box;
     padding: 5px 10px 0 0;
     overflow: hidden;
+    text-align: right;
+    font-size: 14px;
+    color: #333;
 }
-.study_cont > div > span:first-child {
-    float: left;
+.posMo {
+	font-size: 14px;
+	text-align: right;
+	color: #333
+	margin-top: 5px;
 }
-.study_cont > div > span:last-child {
-    float: right;
+a {
+	text-decoration: none !important;
 }
+
+
 .board_cont_wrap > div:first-child {
 	text-align: right;
 	box-sizing: border-box;
 	padding: 0 65px;
 }
-.oneBtn {
-	
+.address2 {
+	box-sizing: border-box;
+	padding: 15px;
+	border: 1px solid #dadada;
+	width: 1100px;
+	margin: 15px auto;
+	border-radius: 3px;
+}
+
+.selected {
+	display: table;
+	box-sizing: border-box;
+	padding: 15px;
+	border: 1px solid #dadada;
+	width: 1030px;
+	margin: 0 5px 0 20px;
+	border-radius: 3px;
+}
+.selected > div:first-child {
+	text-align: center;
+	width: 120px;
+	max-width: 120px;
+}
+.selected > div {
+	display: table-cell;
+	vertical-align: middle;
+	word-break: keep-all;
+}
+.loc {
+	cursor:pointer
+}
+.loc:hover {
+	background-color: #333;
+	color: #fff;
+}
+.selected-add {
+	margin-right: 20px;
+    color: #ee22aa;
+    cursor: pointer;
+}
+.disTab {
+	display: table;
+}
+.disTab > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+#sbtn {
+	width: 65px;
+	height: 54px;
+	border: 1px solid #dadada;
+	background-color: #fff;
+	border-radius: 4px;
+}
+#sbtn:hover {
+	background-color: #333;
+	color: #fff;
+}
+.slide_wrap {
+	padding: 0 5px !important;	
+}
+.btnWrap {
+    margin: 50px 0 5px 0;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 0 35px;
 }

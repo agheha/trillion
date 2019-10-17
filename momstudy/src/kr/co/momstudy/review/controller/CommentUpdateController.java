@@ -25,6 +25,8 @@ public class CommentUpdateController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("application/json; charset=utf-8");
 		
 		int num = Integer.parseInt(req.getParameter("commentNum"));
 		int commentGroupCode = Integer.parseInt(req.getParameter("commentGroupCode"));

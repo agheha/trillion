@@ -21,7 +21,7 @@ import kr.co.momstudy.repository.vo.Study;
 import kr.co.momstudy.repository.vo.User;
 import kr.co.momstudy.util.MomstudyFileRenamePolicy;
 
-@WebServlet("/board/update.do")
+@WebServlet("/study/update.do")
 public class UpdateBoardController extends HttpServlet {
 	
 	private BoardDAO dao;

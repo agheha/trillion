@@ -1,25 +1,12 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
 
 <!-- css -->
 <link rel="stylesheet" href="<c:url value="/css/common.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/header.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/studywrite.css"/>">
 
-<title>studyreg</title>
-
-</head>
-
-<body>
 	<form name="myForm" action="studywrite.do" method="post" onsubmit="return chknull();" id="studyWriteForm">
 	<input type="hidden" value="" name="num">
 		<div class="wcotents">
@@ -68,18 +55,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="sn">
-				<button class="inbutton closer" type="button">취소</button>
+			<div class="sn" id="Ysn">
+				<button class="inbutton closer" id="clsmodbtn" type="button" >취소</button>
 				<button class="inbutton" id="studyWriteBtn">만들기</button>
 
 			</div>
 		</div>
 	</form>
+	 
 	<script src="<c:url value="/script/study/studywriteform.js"/>"></script>
-</body>
-
-</html>
-
+	 
 
 
 

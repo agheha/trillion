@@ -45,9 +45,6 @@ public class CommentWriteFreeController extends HttpServlet {
 		
 		comment.setEmail(user.getEmail());
 		comment.setContent(req.getParameter("content"));
-		
-		System.out.println("글쓴놈" + user.getEmail());
-		System.out.println("내용" + req.getParameter("content"));
 
 		int num = Integer.parseInt(req.getParameter("num"));
 		// 게시물 저장 처리 부탁..

@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<link rel="stylesheet" href="<c:url value="/css/deletestudy.css"/>">
+
 
 <title>계정관리</title>
 <!-- full calendar -->
@@ -17,15 +17,19 @@
 </head>
 <body>
 	<div class="heightAuto hidden">
-		<!-- 우측 상당 슬라이드 -->
 		<div class="right_top_cont" id="partlist"></div>
 		<table class='rwd-table'></table>
 	</div>
 	<!-- The Modal -->
-	<div id="myModal" class="modal hidden">
+	<div id="myModal" class="msgmodal hidden">
 		<!-- Modal content -->
-		<div class="modal-content" id="myBtn">
-			<%@include file="/jsp/user/deleteagree.jsp"%>
+		<div class="msgcontent" id="myBtn"></div>
+		<div id="loadingdelmsg">
+			<input type="hidden" name="stdnum" value="${str.studyNum}" />
+			<div id="que">스터디를 탈퇴하시겠습니까?</div>
+			<br />
+			<button type="button" id="signup" onclick="agree()">확인</button>
+			<button class="closer" id="closecell">취소</button>
 		</div>
 	</div>
 </body>

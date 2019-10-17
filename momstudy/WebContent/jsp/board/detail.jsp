@@ -4,12 +4,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-	List<Comment> commentList = (List<Comment>) request.getAttribute("commentList");
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -35,10 +34,19 @@
 	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
 <title>스터디 자유게시판</title>
-<!-- admin modar -->
+
+
 <style type="text/css">
-#prpop {
+<!--
+admin modar -->#prpop {
 	width: 900px !important;
+}
+
+<!--
+admin modar -->.ddddd {
+	position: relative;
+	top: 2px;
+	width: 690px !important;
 }
 </style>
 </head>
@@ -67,8 +75,9 @@
 			</div>
 
 			<div class="boardInfo">
-				<span>${board.email}</span> <span><fmt:formatDate
-						value="${board.regDate}" pattern="yyyy-MM-dd" /></span> <span>${board.seeCnt}</span>
+				<span>작성자 : ${board.email}</span> <span>작성일 : <fmt:formatDate
+						value="${board.regDate}" pattern="yyyy-MM-dd" /></span> <span>조회수
+					: ${board.seeCnt}</span> >>>>>>> 22ecf4d152900493c056f0f409cf67dc70b23956
 			</div>
 
 			<div class="board_cont">
@@ -78,165 +87,41 @@
 				</button>
 			</div>
 
-
-			<!-- ---------------------------- -->
-			<!-- Buttons 오면 되는 위치                           -->
-			<!-- detailfree.jsp 구조랑 같이 작업 바람 -->
-			<!-- ---------------------------- -->
-			<%-- <div class="buttons">
-	           <c:choose>
-			        <c:when test="${rBoard.email == user.email}">
-				        <button type="button" onclick="location.href='<c:url value="/review/updateForm.do?num=${rBoard.num}"/>' ">수정</button>
-		                <button type="button" onclick="location.href='<c:url value="/review/delete.do?num=${rBoard.num}"/>' ">삭제</button>
-			        </c:when>
-			        <c:otherwise>
-				        <button type="button" onclick="location.href='<c:url value="/review/list.do"/>' ">게시판으로 이동</button>
-			        </c:otherwise>
-	      	   </c:choose>
-           </div> --%>
-
 			<div class="buttons">
-				<button type="button">
-					<a class="del" href='updateform.do?num=${board.num}'>수정</a>
-				</button>
-				<button type="button">
-					<a class="del" href='delete.do?num=${board.num}'>삭제</a>
-				</button>
-				<button type="button">
-					<a class="del" href='list.do'>목록</a>
-				</button>
+				<c:choose>
+					<c:when test="${board.email == user.email}">
+						<button type="button"
+							onclick="location.href='<c:url value="/study/updateform.do?num=${board.num}"/>' ">수정</button>
+						<button type="button"
+							onclick="location.href='<c:url value="/study/delete.do?num=${board.num}"/>' ">삭제</button>
+						<button type="button"
+							onclick="location.href='<c:url value="/study/list.do"/>' ">목록</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button"
+							onclick="location.href='<c:url value="/study/list.do"/>' ">목록</button>
+					</c:otherwise>
+				</c:choose>
 			</div>
-			<br>
 
-			<!-- ---------------------------- -->
-			<!-- Comment 오면 되는 위치                           -->
-			<!-- detailfree.jsp 구조랑 같이 작업 바람 -->
-			<!-- ---------------------------- -->
-			<%-- <div id="comment_Wrap">
+			<!-- 여기서부터 댓글 -->
+			<div id="comment_Wrap">
 				<div id="commentRegistForm">
-					<form name="crForm" method="post" action="commentWrite.do"
-						onsubmit="return commentRegistAjax()">
-						<input type="hidden" name="num" value="${rBoard.num}" /> <input
-							id="user" type="hidden" name="email" value="${user.email}" />
+					<form name="crForm" method="post" action="commentWrite.do">
+						<input type="hidden" name="num" value="${board.num}" id="numput" />
+						<input id="user" type="hidden" name="email" value="${user.email}" />
+						<!-- >>>>>>>
+									22ecf4d152900493c056f0f409cf67dc70b23956 -->
 						<div>
-							<textarea name="content"></textarea>
+							<textarea class="ddddd" name="content"></textarea>
 						</div>
 						<div>
-							<button type="submit">등록</button>
+							<button type="button" id="addbtn">등록</button>
 						</div>
 					</form>
 				</div>
-
 				<div id="commentList"></div>
-
-			</div> --%>
-
-
-			<div class="commentWrap">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="review">
-							<form name="create" method="post" action="commentWrite.do"
-								class="commentForm" onsubmit="return check()">
-								<input type="hidden" name="num" value="${board.num}" />
-								<div>
-									<textarea id="comment_text" name="content" cols="90"
-										class="comment"></textarea>
-								</div>
-								<div class="insert1">
-									<button type="submit" class="btn btn-primary">등록</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- 댓글 삭제, 수정 -->
-				<div class="row">
-					<div class="col-sm-12">
-						<div id="commentList">
-							<c:if test="${empty commentList}">
-								<p>댓글이 존재하지 않습니다.</p>
-							</c:if>
-							<!-- parent가 0일시 들여쓰기 (댓글) -->
-							<c:forEach var="comment" items="${commentList}">
-								<c:choose>
-									<c:when test="${comment.parent == 0}">
-										<div class="row">
-									</c:when>
-									<c:otherwise>
-										<div class="comm_reply row">
-									</c:otherwise>
-								</c:choose>
-
-								<div class="comm col-sm-12">
-									<div class="comm_id">${comment.email}</div>
-									<div class="comm_reg">
-										<fmt:formatDate pattern="yy-MM-dd HH:mm"
-											value="${comment.regDate}" />
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<c:choose>
-										<c:when test="${type eq 'modify' && comment.num == commentNo}">
-											<form method="post" action="commentupdate.do"
-												class="commentForm">
-												<div>
-													<textarea id="comment_text" name="content" cols="90"
-														class="comment">${comment.content}</textarea>
-												</div>
-												<input type="hidden" name="num" value="${comment.num}" /> <input
-													type="hidden" name="commentGroupCode"
-													value="${comment.commentGroupCode}" />
-
-												<div class="insert1">
-													<button type="submit" class="btn btn-primary">수정</button>
-												</div>
-											</form>
-										</c:when>
-										<c:otherwise>
-											<div class="comm">
-												<div class="comm_content">${comment.content}</div>
-												<div class="comm_action">
-													<div class="btn-group-sm" role="group"
-														aria-label="Basic example">
-														<button type="button" class="btn btn-secondary"
-															onclick="document.location.href='commentdelete.do?commentGroupCode=${comment.commentGroupCode}&num=${comment.num}'">삭제</button>
-														<button type="button" class="btn btn-secondary"
-															onclick="document.location.href='detail.do?type=modify&commentGroupCode=${comment.commentGroupCode}&no=${board.num}&commentNo=${comment.num}'">수정</button>
-
-														<!-- 	<c:if test="${comment.parent == 0}">
-																<button type="button" class="btn btn-secondary"
-																	onclick="document.location.href='detail.do?type=reply&parentNo=${comment.num}&no=${board.num}'">답변
-																</button>
-															</c:if> -->
-													</div>
-												</div>
-											</div>
-										</c:otherwise>
-									</c:choose>
-								</div>
-
-								<c:if test="${type eq 'reply' && comment.num == parentNo}">
-									<div class="commReply">
-										<form method="post" action="detail.do" class="commentForm">
-											<input type="hidden" name="no" value="${board.num}" />
-											<div>
-												<textarea id="comment_text" name="content" cols="90"
-													class="comment"></textarea>
-											</div>
-											<div class="insert1">
-												<button type="submit" class="btn btn-primary">등록</button>
-											</div>
-										</form>
-									</div>
-								</c:if>
-						</div>
-						</c:forEach>
-					</div>
-				</div>
 			</div>
-		</div>
 		</div>
 
 		<div id="prpop">
@@ -293,8 +178,8 @@
 							</div>
 
 							<div>
-								<input type="hidden" name="type" value="board" class="type" /> <input
-									type="hidden" name="boardNum" value="${board.num}"
+								<input type="hidden" name="type" value="board" class="type" />
+								<input type="hidden" name="boardNum" value="${board.num}"
 									class="boardNum" /> <input type="hidden" name="email"
 									value="${user.email}" class="email" /> <input type="hidden"
 									name="boardType" value="free" class="boardType" /> <input
@@ -321,8 +206,16 @@
 		src="<c:url value='/script/admin/popUp.js'/>"></script>
 	<script type="text/javascript"
 		src="<c:url value='/script/admin/reportAjax.js'/>"></script>
+
+
+	<script type="text/javascript">
+		let num = $
+		{
+			board.num
+		};
+		let email = `${user.email}`;
+	</script>
 	<script type="text/javascript"
 		src="<c:url value="/script/board/detailboard.js" />"></script>
-
 </body>
 </html>

@@ -3,12 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	
-<section>
-	<div>카테고리</div>
-	<div>
-		
-	</div>
-</section>
+
 <section class="content-block content-1-8">
     <div class="container">
      	<form name="codeForm" action="#" method="post">
@@ -46,17 +41,25 @@
                 </ul>
             </div>
         </div>
-     	<div class="selected">
-     		선택된 지역 : 
-     		<span id="select-box">
-     			<c:if test="${not empty addressList}">
-     				<c:forEach items="${addressList}" var="address" varStatus="status">
-     					<span class="selected-add" id="det${address.addressCode}" onClick="deleteRegion(${address.addressCode});">${address.addressDetail} ${address.addressDetail2}</span>
-     				</c:forEach>
-     			</c:if>
-     		</span>
-     	</div>
-    	<button id="sbtn" type="button">검색</button>
+        <div class="disTab">
+        	<div>
+		     	<div class="selected">
+		     		<div>
+			     		선택된 지역 : 
+		     		</div>
+		     		<div id="select-box">
+		     			<c:if test="${not empty addressList}">
+		     				<c:forEach items="${addressList}" var="address" varStatus="status">
+		     					<span class="selected-add" id="det${address.addressCode}" onClick="deleteRegion(${address.addressCode});">${address.addressDetail} ${address.addressDetail2}</span>
+		     				</c:forEach>
+		     			</c:if>
+		     		</div>
+		     	</div>
+        	</div>
+        	<div>
+		    	<button id="sbtn" type="button">검색</button>
+        	</div>
+        </div>
      	</form>
 </section>
 <script src='<c:url value="/script/study/searchtab.js" />'></script>

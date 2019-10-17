@@ -32,6 +32,8 @@ public class CommentListFreeController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("application/json; charset=utf-8");
 		Board b = dao.selectOneBoard(Integer.parseInt(req.getParameter("num")));
 		List<Comment> commentList = dao1.selectComment(b.getCommentGroupCode());
 

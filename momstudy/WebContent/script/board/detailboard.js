@@ -2,7 +2,6 @@ let addbtn = document.querySelector("#addbtn");
 addbtn.addEventListener("click",commentRegistAjax);
 
 commentListAjax();
-
 //버튼에 속성을 주고 이벤트를 검
 function createUpdateBtn(){
 	let cmtBtn = document.querySelectorAll(".cmtBtn");
@@ -40,7 +39,7 @@ function commentListAjax() {
 			}
 		}
 	}
-	xhr.open("GET", "freecommentlist.do?num=" + num, true);
+	xhr.open("GET", "commentlist.do?num=" + num, true);
 	xhr.send();
 }
 
@@ -108,7 +107,7 @@ function commentDeleteAjax(num, commentGroupCode) {
 			} 
 		} 
 	};
-	xhr.open("GET",`freecommentdelete.do?commentGroupCode=${commentGroupCode}&num=${num}`, true);
+	xhr.open("GET",`commentdelete.do?commentGroupCode=${commentGroupCode}&num=${num}`, true);
 	xhr.send();
 }
 
@@ -123,7 +122,7 @@ function commentRegistAjax() {
 			}
 		}
 	}
-	xhr.open("POST", "freecommentWrite.do", true);
+	xhr.open("POST", "commentWrite.do", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
 	let f = document.crForm;
@@ -150,7 +149,7 @@ function commentUpdateAjax(i) {
 			}
 		}
 	}
-	xhr.open("POST", "freecommentupdate.do", true);
+	xhr.open("POST", "commentupdate.do", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send(`commentNum=${commentNum}&commentGroupCode=${commentGroupCode}&content=${values[i].value}`);
 }

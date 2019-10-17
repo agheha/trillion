@@ -21,7 +21,8 @@ upbtn.addEventListener("click", e => {
 				if (parseInt(xhr.responseText) === 1) {
 					location.href = "/momstudy/jsp/user/updatepass.jsp"
 				} else {
-					alert("비밀번호가 일치하지 않습니다.");
+					let alertwrap = document.querySelector("alert_wrap");
+					alertwrap.style.opacity="block"
 				}
 			} 
 		}

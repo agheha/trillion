@@ -1,6 +1,5 @@
 .container {
-    width: 1170px;
-    height: 250px;
+    width: 100%;
 }
 .loc {
 	list-style: none;
