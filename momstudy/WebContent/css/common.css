@@ -42,7 +42,6 @@ html, body {
 }
 .buttons button {
     min-width: 85px;
-    border: none;
     background-color: #fff;
     color: #333;
     cursor: pointer;
@@ -50,6 +49,9 @@ html, body {
     border-radius: 4px;
     margin: 0 5px;
     padding: 3px 8px;
+    width: unset;
+    height: unset;
+    letter-spacing: unset;
 }
 .buttons button:hover {
     border: 1px solid transparent;
@@ -74,6 +76,9 @@ html, body {
     cursor: pointer;
     border: 1px solid #333;
     border-radius: 4px;
+    width: unset;
+    height: unset;
+    margin: unset;
 }
 .oneBtn:hover {
     border: 1px solid transparent;
@@ -81,13 +86,16 @@ html, body {
     color: #fff;
 }
 .alertBtn {
-	position: absolute;
-	right: 0;
-	bottom: 15px;
-	border: none;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    border: none;
     background-color: #fff;
     cursor: pointer;
     padding: 5px 15px;
+    width: unset;
+    height: unset;
+    color: #333;
 }
 .alertBtn:hover {
 	color: red;

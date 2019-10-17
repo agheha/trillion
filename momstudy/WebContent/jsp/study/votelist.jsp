@@ -52,19 +52,17 @@
 
 		<div class="study_right_wrap">
 				<div class="vote_title">
-					<p>투표 하기</p>
 					<div>
-							<button type="button"
-								id="addbtn">투표등록 </button> 
+						<button class="oneBtn" type="button" id="addbtn">투표등록 </button> 
 					</div>
 				</div>
 				<div class="board_list">
 					<ul id="types">
 						<li>번호</li>
 						<li>제목</li>
-						<li>상태</li>
 						<li>작성날짜</li>
 						<li>마감날짜</li>
+						<li>상태</li>
 					</ul>
 					<c:if test="${empty vlist}">
 						<div>
@@ -80,13 +78,13 @@
 										<ul>
 											<li>${vote.numbering}</li>
 											<li>${vote.title}</li>
-											<li>마감</li>
 											<li>
 												<fmt:formatDate value="${vote.regDate}" pattern="yyyy-MM-dd" />
 											</li>
 											<li>
 												<fmt:formatDate value="${vote.limitDate}" pattern="yyyy-MM-dd" />
 											</li>
+											<li>마감</li>
 										</ul>
 									</a>
 								</c:if>
@@ -95,13 +93,13 @@
 										<ul>
 											<li>${vote.numbering}</li>
 											<li>${vote.title}</li>
-											<li>진행중</li>
 											<li>
 												<fmt:formatDate value="${vote.regDate}" pattern="yyyy-MM-dd" />
 											</li>
 											<li>
 												<fmt:formatDate value="${vote.limitDate}" pattern="yyyy-MM-dd" />
 											</li>
+											<li>진행중</li>
 										</ul>
 									</a>
 								</c:if>

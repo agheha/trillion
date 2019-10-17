@@ -68,17 +68,6 @@
 	width: 100% !important;
 }
 
-#report{
-    min-width: 85px;
-    padding: 3px 8px;
-    border: none;
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-    border: 1px solid #333;
-    border-radius: 4px;
-    margin: 0 5px;
-}
 
 .textAreaWrap {
 	display: none;

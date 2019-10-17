@@ -77,7 +77,7 @@ admin modar -->.ddddd {
 			<div class="boardInfo">
 				<span>작성자 : ${board.email}</span> <span>작성일 : <fmt:formatDate
 						value="${board.regDate}" pattern="yyyy-MM-dd" /></span> <span>조회수
-					: ${board.seeCnt}</span> >>>>>>> 22ecf4d152900493c056f0f409cf67dc70b23956
+					: ${board.seeCnt}</span>
 			</div>
 
 			<div class="board_cont">
@@ -125,17 +125,18 @@ admin modar -->.ddddd {
 		</div>
 
 		<div id="prpop">
-			<div id="prpop_content">
+			<div id="prpop_content" style="min-width: 450px;">
+				<button type="button" id="prpoplayer" onclick="mclose()"></button>
 				<!-- 상세신고 ui -->
 				<div id="b_main">
 
 					<h2 id="rptitle">신고하기</h2>
 					<div id="rpemail_wrap">
-						<div class="rpemail">신고자</div>
-						<div class="rpemail">${user.email}</div>
+						<span class="rpemail">신고한 유저 : </span> <span class="rpemail">${user.email}</span>
 					</div>
 
 					<h3>신고사유 선택</h3>
+
 					<div>
 						<form action='<c:url value="/admin/report.do"/>' method="post"
 							name="rpform">
@@ -188,14 +189,13 @@ admin modar -->.ddddd {
 							</div>
 
 							<div id="rpbtn">
-								<button type="button" id="btn" onclick="reportAjax(),mclose()">신고하기</button>
+								<button class="oneBtn" type="button" id="btn"
+									onclick="reportAjax(),mclose()">신고하기</button>
 							</div>
 						</form>
 					</div>
 				</div>
-
 				<div id="prpoplayer" onclick="mclose()"></div>
-
 			</div>
 		</div>
 

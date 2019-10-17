@@ -59,14 +59,18 @@
 			<!-- 수정 삭제 버튼 -->
 			<div class="buttons">
 				<span id="agreebtn">
-					<button type="button" id="updatequestion">수정</button>
+					<button type="button" id="updatequestion"><a>수정</a></button>
 				</span>
-				<button type="button">
-				<a class="del" href="<c:url value="/question/questiondelete.do?num=${question.num}"/>">
-				삭제</a></button>
-				<button type="button">
-					<a class="del" href="<c:url value="/question/questionform.do"/>">목록</a>
-				</button>
+				<span>
+					<button type="button">
+					<a class="del" href="<c:url value="/question/questiondelete.do?num=${question.num}"/>">
+					삭제</a></button>
+				</span>
+				<span>
+					<button type="button">
+						<a class="del" href="<c:url value="/question/questionform.do"/>">목록</a>
+					</button>
+				</span>
 			</div>
 			<br>
 		</div>

@@ -51,7 +51,7 @@ public class ReviewBoardListController extends HttpServlet {
 		String type = req.getParameter("type");
 		String keyword = req.getParameter("keyword");
 		
-		Search search = new Search(pageNo, 6);
+		Search search = new Search(pageNo, 8);
 		search.setTypes("제목","글쓴이","내용","스터디명");
 		search.setFilters("일자","별점","조회수");
 		search.setFilter(filter);
@@ -71,7 +71,7 @@ public class ReviewBoardListController extends HttpServlet {
 		PageResult pr = new PageResult(
 				pageNo,				// 현재 페이지 번호
 				count,				// 게시물 전체 갯수
-				6,					// 보여줄 게시물 갯수
+				8,					// 보여줄 게시물 갯수
 				10					// 보여줄 페이징 갯수
 				);
 		

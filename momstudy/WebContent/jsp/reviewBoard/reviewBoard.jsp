@@ -39,7 +39,7 @@
         </div>
     </section>
 
-	<section id="layout">
+	<section id="layout2">
 	
         <div class="left_list">
         	<form action="<c:url value="/review/list.do" />"  method="GET" >
