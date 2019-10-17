@@ -170,3 +170,29 @@ i:hover{
 	width: 100%;
 	max-height: auto;
 }
+
+.notfoundcon {
+	width: 900px;
+	height: 320px;
+	background: #fff;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	left: 90px;
+}
+
+.smallcon {
+	width: 90%;
+	height: 80%;
+	background: #ccc;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.studytext {
+	font-size: 30px;
+}

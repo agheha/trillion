@@ -11,7 +11,7 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">	
+	crossorigin="anonymous">
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>">
 
@@ -29,7 +29,9 @@
 <script type="text/javascript"
 	src="<c:url value="/script/slick/slick.js"/>"></script>
 
+<style>
 
+</style>
 </head>
 <body>
 	<header id="header">
@@ -51,7 +53,9 @@
 				<div class="usercontent">
 					<div class="userinfo">
 						<div class="userpic">
-							<img id="userimg" src="<c:url value="/util/download.do?fgno=${user.fileGroupCode}" />" alt="">
+							<img id="userimg"
+								src="<c:url value="/util/download.do?fgno=${user.fileGroupCode}" />"
+								alt="">
 						</div>
 						<div class="btns">
 							<div class="btn" id="userinfo">사용자 정보 수정</div>
@@ -67,26 +71,42 @@
 					</div>
 				</div>
 			</div>
-			<hr/>
+			<hr />
 			<div class="studylist">
 				<div class="bigtext" id="bigstudytitle">스터디 목록</div>
 				<div class="icons">
 					<i class="fas fa-chevron-left" id="prevBtn"></i>
 				</div>
-				<form name="sForm" action="<c:url value="/study/studymain.do" />" method="post">
-				<input type="hidden" value="" name="num" id="numput">
-				<div class="studycontent">
-					<div class="forslide">
-					<c:forEach items="${slist}" var="study">
-						<div num="${study.num}" class="studycard">
-							<div class="studypic">
-								<img class="studyimg" src="<c:url value="/util/download.do?fgno=${study.fileGroupCode}" />" alt="">
-							</div>
-							<div class="studytitle">${study.name}</div>
-						</div>					
-					</c:forEach>						
+				<form name="sForm" action="<c:url value="/study/studymain.do" />"
+					method="post">
+					<input type="hidden" value="" name="num" id="numput">
+					<div class="studycontent">
+						<c:choose>
+							<c:when test="${slist.size() > 0}">
+								<div class="forslide">
+									<c:forEach items="${slist}" var="study">
+										<div num="${study.num}" class="studycard">
+											<div class="studypic">
+												<img class="studyimg"
+													src="<c:url value="/util/download.do?fgno=${study.fileGroupCode}" />"
+													alt="">
+											</div>
+											<div class="studytitle">${study.name}</div>
+										</div>
+									</c:forEach>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="notfoundcon">
+									<div class="smallcon">
+										<span class="studytext">가입하신 스터디가 없습니다. <br /> <br />
+											스터디 찾기에서 원하는 스터디를 검색해보세요.
+										</span>
+									</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
-				</div>
 				</form>
 				<div class="icons">
 					<i class="fas fa-chevron-right" id="nextBtn"></i>
@@ -96,7 +116,7 @@
 	</section>
 	<%@include file="/jsp/user/deletestudy.jsp"%>
 	<script>
-	let email = "${user.email}";
+		let email = "${user.email}";
 	</script>
 	<script src="<c:url value="/script/user/deletestudylist.js"/>"></script>
 	<script src="<c:url value='/script/user/mypage.js'/>"></script>
