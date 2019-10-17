@@ -1,4 +1,3 @@
-let pttable = document.querySelector("#pttable");
 const ptButton = document.getElementById("participant"); 
 const ptHeightAuto = document.querySelector(".partlistModal"); 
 const ptOverlay = document.querySelector(".partlist_sub"); 
@@ -35,7 +34,7 @@ function loadPartList() {
 						<td colspan="5" style="text-align: center">신청한 스터디가 존재하지 않습니다</td>
 					</tr>
 					`
-				} else{
+				} else {
 					list.forEach(parlist => {
 						html += `
 								<tr>
