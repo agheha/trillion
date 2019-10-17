@@ -128,8 +128,7 @@ function commentRegistAjax() {
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
 	let f = document.crForm;
-	console.log("num=${num}&email=${f.email.value}&content=${f.content.value}");
-	xhr.send(`num=${num}&email=${f.email.value}&content=${f.content.value}`);
+	xhr.send(`num=${num}&email=${email}&content=${f.content.value}`);
 	
 	f.email.value="";
 	f.content.value="";
@@ -147,6 +146,7 @@ function commentUpdateAjax(i) {
 		if(xhr.readyState === 4) {
 			if(xhr.status === 200) {
 				makeCommentList(JSON.parse(xhr.responseText));
+				createUpdateBtn();
 			}
 		}
 	}
