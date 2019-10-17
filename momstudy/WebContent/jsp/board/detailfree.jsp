@@ -178,16 +178,9 @@
 	<script type="text/javascript"
 		src="<c:url value='/script/admin/reportAjax.js'/>"></script>
 	<script type="text/javascript">
-		let num = $
-		{
-			board.num
-		};
+		let num = ${board.num};
 		let email = `${user.email}`;
 	</script>
-
-	<script type="text/javascript"
-		src="<c:url value="/script/board/detailboard.js" />"></script>
-
 
 	<script type="text/javascript"  src="<c:url value="/script/board/freedetailboard.js" />"></script>
 

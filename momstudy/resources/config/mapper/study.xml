@@ -181,7 +181,7 @@
 		c.address_detail || ' ' || address_detail2 as address,
 		d.cnt as member,
 		a.reg_date as regDate,
-		nvl(e.chk,0) as chk
+		nvl(e.chk,1) as chk
 		from tb_study a
 		inner join tb_category b
 		on a.category_code = b.category_code
