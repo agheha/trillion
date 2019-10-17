@@ -1,5 +1,6 @@
 package kr.co.momstudy.repository.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kr.co.momstudy.repository.vo.FileVO;
@@ -40,4 +41,6 @@ public interface StudyRecruitmentDAO {
 	
 	// 해당 게시물의 사진 불러오기
 	FileVO selectFile(int studyNum);
+	
+	HashMap<String,Integer> selectMainCnt();
 } 

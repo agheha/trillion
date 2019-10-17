@@ -1,6 +1,7 @@
 package kr.co.momstudy.main.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,12 +23,14 @@ public class MainController extends HttpServlet{
 	}
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HashMap<String,Integer> cntmap = dao.selectMainCnt();
 		List<StudyRecruitment> viewCnt = dao.viewSeeCnt();
 		List<StudyRecruitment> viewUserCnt = dao.viewUserCnt();
 		List<StudyRecruitment> viewLatestdate = dao.viewLatestdate();
 		req.setAttribute("viewcnt", viewCnt);
 		req.setAttribute("viewusercnt", viewUserCnt);	
 		req.setAttribute("viewlatestdate", viewLatestdate);
+		req.setAttribute("cntmap", cntmap);
 		req.getRequestDispatcher("/jsp/main/main.jsp").forward(req, res);
 	}
 }

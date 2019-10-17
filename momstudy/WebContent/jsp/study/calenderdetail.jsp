@@ -85,7 +85,6 @@
 			</div>
 			<div class="sn">
 				<button class="inbutton" type="button" id="closeDetailBtn">닫기</button>
-				<button class="inbutton" id="submitresultbtn" type="button">참여</button>
 			</div>
 		</div>
 		    <script src="<c:url value="/script/study/calenderdetail.js"/>"></script>

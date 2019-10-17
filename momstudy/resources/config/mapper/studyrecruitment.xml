@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.momstudy.repository.dao.StudyRecruitmentDAO">
@@ -182,6 +182,15 @@
 		inner join tb_file f
 		on r.file_group_code = f.file_group_code
 		where study_num = ${studyNum}
+	</select>
+
+<!-- 메인페이지의 유저수와 스터디 수를 가져옴	 -->
+	<select id="selectMainCnt" resultType="java.util.LinkedHashMap">
+		select (select count(*)
+		          from tb_study) studycnt,
+		        (select count(*)
+		          from tb_user) usercnt
+   		from dual       	
 	</select>
 	
 	</mapper>
