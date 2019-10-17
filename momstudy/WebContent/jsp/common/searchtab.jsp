@@ -15,13 +15,6 @@
      		<!-- results의 value 값으로 컨트롤러에 넘길 값 -->
      		<input type="hidden" id="results" name="address" />
         	<ul class="nav nav-tabs text-center address1" role="tablist" id="myTab">
-        		<!-- 
-        		<div class="tab">
-        			<c:forEach items="${bigAList}" varStatus="status" var="address">
-	  					<button class="tablinks active01" onclick="openCity(event, '${address.addressDetail}')"data-toggle="tab">${address.addressDetail}</button>
-					</c:forEach>
-				</div>
-        		 -->
         		<c:forEach items="${bigAList}" varStatus="status" var="address">
 		       		<li class="active01">
 		            	<a href="#tab${status.count}" role="tab" 
@@ -34,12 +27,6 @@
 	 	<div class="tab-pane fade in active" id="tab1">
         	<div class="row">
             	<ul class="address2">
-            	<!-- 
-            		<div id="London" class="tabcontent">
-  						<h3>London</h3>
-  						<p>London is the capital city of England.</p>
-					</div>
-            	 -->
             	<c:if test="${empty address}">
 					<span>지역을 선택하세요.</span>
 				</c:if>              	
