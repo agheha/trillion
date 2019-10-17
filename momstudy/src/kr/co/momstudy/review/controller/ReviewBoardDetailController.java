@@ -33,7 +33,7 @@ public class ReviewBoardDetailController extends HttpServlet {
 		ReviewBoard rb = dao.selectOneBoard(num);
 		
 		// 해당 글번호의 스터디 번호를 통해 이미지 vo를 jsp로 공유
-		req.setAttribute("file", dao.selectFile(rb.getStudyNum()));
+		req.setAttribute("file", dao.selectFile(rb.getNum()));
 		// 해당 글번호의 스터디 번호를 통해 해당 스터디 vo를 jsp로 공유
 		req.setAttribute("study", dao.selectStudy2(rb.getStudyNum()));
 		// 해당 vo를 jsp로 공유

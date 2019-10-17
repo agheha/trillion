@@ -119,7 +119,7 @@
 		from tb_review_study r
 		inner join tb_file f
 		on r.file_group_code = f.file_group_code
-		where study_num = ${studyNum}
+		where num = ${Num}
 	</select>
 	
 	
