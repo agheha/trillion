@@ -29,7 +29,7 @@ function make1(list) {
 		`
 	  <div class="b1_main">
 
-        <div id="b1_Profile" ></div>
+        <div id="b1_Profile" ><img id="userimg" src="<c:url value="/util/download.do?fgno=${info.fileGroupCode}" />" alt=""></div>
         <div id="b1_Info">
             <div id="einfo">ID : ${info.email}</div>
             <div>이름 : ${info.name}</div>
