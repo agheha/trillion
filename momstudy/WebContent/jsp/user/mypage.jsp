@@ -14,6 +14,9 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href='<c:url value="/css/header.css" />'>
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/participant.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/deletestudy.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/deletemsg.css"/>">
 
 <title>마이페이지</title>
 <!-- slide plugin -->
@@ -114,19 +117,25 @@
 			</div>
 		</div>
 	</section>
+	
+	<div class="partlistModal hidden">
+		<!-- 우측 상당 슬라이드 -->
+		<div class="partlist_sub"></div>
+		<table class="part_table" id="pttable">
+		</table>
+	</div>
 	<%@include file="/jsp/user/deletestudy.jsp"%>
-	<%@include file="/jsp/user/participant.jsp"%>
 	<script>
-	let email = "${user.email}";
-	let userinfo = document.querySelector("#userinfo");
-	userinfo.addEventListener("click", e =>{
-		location.href ="/momstudy/user/userinfo.do"
-	})
+		let email = "${user.email}";
+		let userinfo = document.querySelector("#userinfo");
+		userinfo.addEventListener("click", e =>{
+			location.href ="/momstudy/user/userinfo.do"
+		})
 	</script>
 	<script src="<c:url value="/script/user/deletestudy.js"/>"></script>
 	<script src="<c:url value="/script/user/deletestudylist.js"/>"></script>
+	 <script src="<c:url value="/script/user/deletemsg.js"/>"></script>		
 	<script src="<c:url value="/script/user/deletepartisipant.js"/>"></script>
-	 <script src="<c:url value="/script/study/studysignup.js"/>"></script>		
 	<script src="<c:url value='/script/user/mypage.js'/>"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@
 		<div>
 			<label for="passchk">현재 비밀번호</label> <input type="password"
 				id="passchk" />
+			 <span id="msg" class="alert_wrap" style="opacity:0;">아이디와 비밀번호를 다시 확인해 주세요</span>
 		</div>
 		<div>
 			<button id="upbtn" class="oneBtn">확인</button>

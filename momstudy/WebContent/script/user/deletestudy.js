@@ -6,7 +6,7 @@ function btnAction(num) {
 			ele.addEventListener("click", e => {
 				select = e.target.value
 				deleteCode(num) 
-				modal.style.display = "block";
+				msgmodal.classList.add("hidden"); 
 			})
 		})
 	} else {
@@ -14,8 +14,8 @@ function btnAction(num) {
 		parcancell.forEach((ele) => {
 			ele.addEventListener("click", e => {
 				select = e.target.value
-				document.querySelector("#content").innerHTML = deleteCode(num)
-				modal.style.display = "block";
+				document.querySelector("#loadingdelmsg").innerHTML = deleteCode(num)
+				msgmodal.classList.add("hidden"); 
 			})
 		})
 			
@@ -33,14 +33,14 @@ function deleteCode(num) {
 
 function agree(num) {
 	if (num === 1) {
-		let divEle =  document.querySelector("#content");
+		let divEle =  document.querySelector("#loadingdelmsg");
 		divEle.innerHTML = "<div id='que'>탈퇴되었습니다</div>"
 			let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = e => {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					setTimeout(() => {
-						modal.style.display="none"
+						msgmodal.classList.remove("hidden"); 
 						divEle.innerHTML = deleteCode(num);
 						loadPartList()
 					}, 2000);
@@ -50,14 +50,14 @@ function agree(num) {
 		xhr.open("GET", "/momstudy/user/studydelete.do?cancell="+select)
 		xhr.send();
 	} else {
-		let divEle =  document.querySelector("#content");
+		let divEle =  document.querySelector("#loadingdelmsg");
 		divEle.innerHTML = "<div id='que'>탈퇴되었습니다</div>"
 			let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = e => {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					setTimeout(() => {
-						modal.style.display="none"
+						msgmodal.classList.remove("hidden"); 
 						divEle.innerHTML = deleteCode(num);
 						loadPart()
 					}, 2000);
