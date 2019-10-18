@@ -37,24 +37,18 @@
 }
 #que {
 	BOX-SIZING: BORDER-BOX;
-    padding: 80px;
+    padding: 45px;
     text-align: center;
     font-size: 20px;
-    color: orange;
     font-weight: bold;
 }
 button {
-    width: 105px;
-    height: 45px;
-    margin: 5px;
-    border-radius: 45px;
-    background: darkorange;
-    color: white;
     text-align: center;
     outline: none;
     border: none;
     letter-spacing: 1px;
     cursor: pointer;
+    background-color: transparent;
 }
 .signup, .closer {
     padding: 1px;
