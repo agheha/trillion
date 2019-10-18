@@ -21,6 +21,8 @@ public class AdminDeleteUserController extends HttpServlet{
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		res.setContentType("text/html;charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
 		
 		dao.deleteUser(req.getParameter("email"));
 		res.sendRedirect(req.getContextPath() + "/admin/reportuser.do");

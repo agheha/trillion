@@ -20,7 +20,12 @@
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${question.regDate}" /></td>
 
-					<td>${question.condition}</td>
+					<c:if test="${question.condition == 1}">
+					<td>답변 대기</td>
+					</c:if>
+					<c:if test="${question.condition == 2}">
+					<td>완료</td>
+					</c:if>
 
 					<td>${question.title}</td>
 				</tr>

@@ -37,9 +37,14 @@
 
 
 <style type="text/css">
-<!--
-admin modar -->#prpop {
-	width: 900px !important;
+
+#prpop {
+	position: fixed !important;	
+	width: 100% !important;
+	top: 0;
+}
+#prpop_content{
+width: 450px;
 }
 
 .ddddd {

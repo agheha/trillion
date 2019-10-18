@@ -19,6 +19,10 @@ public class CategoryInsertController extends HttpServlet{
 
 	AdminDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 	
+	
+	resp.setContentType("text/html;charset=UTF-8");
+	req.setCharacterEncoding("UTF-8");
+	
 	dao.insertCategory(req.getParameter("categoryName"));
 	resp.sendRedirect("/momstudy/admin/admincategory.do");
 	}

@@ -22,6 +22,9 @@ public class ReportController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		AdminDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
 	
+		res.setContentType("text/html;charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		
 		Report report = new Report();
 		
 		String categoryCode = req.getParameter("categoryCode");

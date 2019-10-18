@@ -25,7 +25,7 @@ public class InquiryOneController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		QuestionDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(QuestionDAO.class);
 		res.setContentType("text/html;charset=UTF-8");
-		
+		req.setCharacterEncoding("UTF-8");
 		int num = Integer.parseInt(req.getParameter("num"));
 		
 		Question Quest = dao.selectAdminOneQuestion(num);

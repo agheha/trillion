@@ -18,7 +18,8 @@ public class UserBanController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		AdminDAO dao = MyAppSqlConfig.getSqlSessionInstance().getMapper(AdminDAO.class);
-		
+		resp.setContentType("text/html;charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
 	 User user = new User();
 	 user.setBan(Integer.parseInt(req.getParameter("banDate")));
 	 user.setEmail(req.getParameter("email"));
@@ -27,7 +28,7 @@ public class UserBanController extends HttpServlet{
 	
 	dao.updateBanDate(user);
 
-	resp.sendRedirect(req.getContextPath() + "/admin/reportuser.do");
+	resp.sendRedirect(req.getContextPath() + "/admin/user.do");
 	}
 
 }

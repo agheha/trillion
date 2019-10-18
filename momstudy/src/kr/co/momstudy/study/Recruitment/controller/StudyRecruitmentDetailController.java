@@ -44,12 +44,18 @@ private StudyDAO sDao;
 			HttpSession session = req.getSession();
 			User user = (User)session.getAttribute("user");
 			Participant part = new Participant();
-			part.setEmail(user.getEmail());
-			
 			part.setStudyNum(str.getStudyNum());
 			
+			int no = 1;
+			
+			if(user != null) {				
+				part.setEmail(user.getEmail());
+				no = sDao.CheckParticipation(part);
+			}
+			
+			
+			
 			// 0이면 신청한 적이 없는 유저다.
-			int no = sDao.CheckParticipation(part);
 			
 			req.setAttribute("p_flag", no == 0 ? true : false);
 		

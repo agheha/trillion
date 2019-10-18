@@ -33,7 +33,7 @@ public class StudyWriteController extends HttpServlet{
 		study.setEmail(email);
 		study.setName(name);
 		study.setCategoryCode(Integer.parseInt(req.getParameter("category")));
-		study.setAddressCode(1);
+		study.setAddressCode(Integer.parseInt(req.getParameter("address2")));
 		
 		dao.insertStudy(study);
 		

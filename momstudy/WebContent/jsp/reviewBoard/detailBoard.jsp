@@ -5,32 +5,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	
-	<link rel="stylesheet" href='<c:url value="/css/common.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/studyboard_detail.css" />'>
-	
-	<!-- PR신고 -->
-	<link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
-	<link rel="stylesheet" href='<c:url value="/css/admin_reportform.css" />'>
-	
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-		crossorigin="anonymous">
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<link rel="stylesheet" href='<c:url value="/css/common.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/header.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/layout.css" />'>
+<link rel="stylesheet" href='<c:url value="/css/study_layout.css" />'>
+<link rel="stylesheet"
+	href='<c:url value="/css/studyboard_detail.css" />'>
+
+<!-- PR신고 -->
+<link rel="stylesheet" href='<c:url value="/css/Layer_Pop_up.css" />'>
+<link rel="stylesheet"
+	href='<c:url value="/css/admin_reportform.css" />'>
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
 
 <title>스터디</title>
 <!-- admin modar -->
 <style type="text/css">
 #prpop {
-	width: 900px !important;
+	position: fixed !important;	
+	width: 100% !important;
+	top: 0;
+}
+#prpop_content{
+width: 450px;
 }
 </style>
 
@@ -46,36 +53,36 @@
 		<%@include file="/jsp/common/header.jsp"%>
 	</header>
 
-    <!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
-    <section class="background_wrap">
-        <div class="background">
-            <h1>스터디</h1>
-            <p>--------------</p>
-        </div>
-    </section>
+	<!-- 각페이지마다 background가 바뀌어야 하는 처리 필요 -->
+	<section class="background_wrap">
+		<div class="background">
+			<h1>스터디</h1>
+			<p>--------------</p>
+		</div>
+	</section>
 
-    <section id="layout">
+	<section id="layout">
 
-       <div class="study_right_wrap">
-           <div class="board_title">
-               <p>${rBoard.title}</p>
-		   </div>
-		   <div class="boardInfo">
-				<span>작성자 : ${rBoard.email}</span>
-				<span>작성일 : <fmt:formatDate value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span>
-				<span>평점 : ${rBoard.score}</span>
-				<span>조회수  : ${rBoard.seeCnt} </span>
+		<div class="study_right_wrap">
+			<div class="board_title">
+				<p>${rBoard.title}</p>
+			</div>
+			<div class="boardInfo">
+				<span>작성자 : ${rBoard.email}</span> <span>작성일 : <fmt:formatDate
+						value="${rBoard.regDate}" pattern="yyyy-MM-dd" /></span> <span>평점
+					: ${rBoard.score}</span> <span>조회수 : ${rBoard.seeCnt} </span>
 			</div>
 
 			<!-- 추후 이미지 -->
-           <div class="image_wrap">
-           		<c:if test="${file.groupCode != null}">
-	            	<img src="<c:url value="/util/download.do?fgno=${file.groupCode}" />"  />
-           		</c:if>
-           </div>
-   
-           <div class="board_cont">
-               	${rBoard.content}
+			<div class="image_wrap">
+				<c:if test="${file.groupCode != null}">
+					<img
+						src="<c:url value="/util/download.do?fgno=${file.groupCode}" />" />
+				</c:if>
+			</div>
+
+			<div class="board_cont">
+				${rBoard.content}
 
 				<button class="alertBtn" type="button" onclick="mopen()">
 					<i class="fas fa-comment-slash"></i> 신고하기
@@ -127,10 +134,9 @@
 
 					<h2 id="rptitle">신고하기</h2>
 					<div id="rpemail_wrap">
-					
-					<%-- span Tag로 변경 --%>
-						<span>신고한 유저 : </span>
-						<span>${user.email}</span>
+
+						<%-- span Tag로 변경 --%>
+						<span>신고한 유저 : </span> <span>${user.email}</span>
 					</div>
 
 					<%-- P Tag로 변경 --%>

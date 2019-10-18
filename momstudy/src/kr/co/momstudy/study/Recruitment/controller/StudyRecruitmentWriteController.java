@@ -53,8 +53,11 @@ public class StudyRecruitmentWriteController extends HttpServlet {
 		
 		int studyNum = study.getNum();
 		str.setStudyNum(studyNum);
-		
-		str.setFileGroupCode(fu.getGroupCode());
+		if(fu.getGroupCode() == null) {
+			str.setFileGroupCode(1);			
+		} else {
+			str.setFileGroupCode(fu.getGroupCode());						
+		}
 		
 		dao.insertStudyRecruitment(str);
 		

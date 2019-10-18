@@ -58,7 +58,7 @@
 		nvl(b.FILE_GROUP_CODE,1) as file_group_code
 		from tb_study a
 		left outer join tb_study_recruitment b
-		on a.num = b.num
+		on a.num = b.study_num
 		inner join tb_participant c
 		on c.study_num = a.num
 		where c.CONDITION = 2 and c.email = #{email}
