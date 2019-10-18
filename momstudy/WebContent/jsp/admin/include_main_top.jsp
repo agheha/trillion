@@ -36,7 +36,9 @@
 #Qdtext{
 text-align: center;
 }
-
+.adhobor:hover {
+	background: 
+}
 </style>
 </head>
 

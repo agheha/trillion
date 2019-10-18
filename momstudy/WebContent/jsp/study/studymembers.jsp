@@ -28,6 +28,17 @@
     <link rel="stylesheet" href='<c:url value="/css/admin_reportform.css" />'>
 <title>스터디</title>
 
+<style type="text/css">
+#prpop {
+	position: fixed !important;	
+	width: 100% !important;
+	top: 0;
+}
+#prpop_content{
+width: 450px;
+}
+</style>
+
 <!-- jquery -->
 <script type="text/javascript"
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script>

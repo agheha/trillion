@@ -4,7 +4,6 @@ function userDtailAjax(email) {
 		if (xhr.readyState == 4) {
 			if (xhr.status == 200) {
 				let list = JSON.parse(xhr.responseText);
-				
 				make1(list);
 			}
 		}
@@ -20,6 +19,7 @@ function make1(list) {
 	let einfo = document.getElementById("einfo");
 	
 	let info = list.user;
+	console.log(`${info.fileGroupCode}`)
 	let openStudy =list.openStudy;
 	let joinStudy =list.joinStudy;
 	
@@ -31,7 +31,7 @@ function make1(list) {
 		<div>
 	        <div id="b1_Profile" >
 	        	<div>
-	        		<img id="userimg" src="<c:url value="/util/download.do?fgno=${info.fileGroupCode}" />" alt="">
+	        		<img class="studyimg" src="<c:url value='/util/download.do?fgno=${info.fileGroupCode}' />" alt="">
 	        	</div>
 	        </div>
 	        <div id="b1_Info">
@@ -132,7 +132,6 @@ function make1(list) {
 		<div id="prpoplayer1" onclick="mclose(),mclose1()"></div>
 	`;
 		
-	console.log(html);
 	popUp.innerHTML = html;
 	
 }
