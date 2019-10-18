@@ -68,4 +68,6 @@ public interface UserDAO {
 	List<Address> selectAddress(String baddr);
 	// 주소코드 넣어서 주소 가져오기
 	Address selectAddressNum(int num);
+	// 스터디참여 인원수 가져오기
+	int countStudyMember(int studyNum);
 }

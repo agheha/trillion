@@ -30,7 +30,6 @@ public class StudyAdminMemberController extends HttpServlet{
 		Study study = (Study)req.getSession().getAttribute("study"); 
 		int studyNum = study.getNum();
 		
-		
 		String sPageNo = req.getParameter("pageNo");
 		int pageNo = 1;
 		int count = 0;
