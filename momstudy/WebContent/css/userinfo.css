@@ -62,4 +62,22 @@
 .alert_wrap {
 	margin-top: 5px;
 }
-
+#showArea {
+	margin: 15px 0;
+}
+#selArea {
+	overflow: hidden;
+    word-break: keep-all;
+    color: #ee22aa;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    margin: 15px 0;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+#selArea > span {
+	float: left;
+	display: block;
+	margin-right: 15px;	
+}
