@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 	<div class="profile">
-		<img src="<c:url value="/images/test_img2.jpg" />" alt="testImg">
+		<img src="<c:url value="/util/download.do?fgno=${study.fileGroupCode}" />" alt="testImg">
 	</div>
 	<div class="left_list">
 		<div>
@@ -20,7 +20,7 @@
 				<li><a href="<c:url value="/study/member.do"/>">멤버</a></li>
 				<li><a href="<c:url value="/study/votelist.do"/>">투표</a></li>
 				<li><a
-					href="<c:url value="/board/list.do?studynum=${study.num}"/>">게시판</a></li>
+					href="<c:url value="/study/list.do"/>">게시판</a></li>
 				<c:if test="${user.email eq study.email}">
 					<li><a id="admin">스터디 관리</a></li>
 					<form name="adminForm" action="" method="post">
