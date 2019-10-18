@@ -26,6 +26,14 @@ html, body {
 	line-height: 40px;
 	padding: 0 8px;
 }
+#content-wrapper th:nth-child(1),
+#content-wrapper th:nth-child(6) {
+	width:120px;
+	max-width:120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 #content-wrapper td {
 	height: 30px;
 	padding: 0 8px;
