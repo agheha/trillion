@@ -16,7 +16,7 @@
 		</thead>
 		<tbody>
 		<c:forEach var="report" items="${list}">
-				<tr onclick="mopen(),userDtailAjax1('${report.email}')">
+				<tr class="adhobor" onclick="mopen(),userDtailAjax1('${report.email}')">
 					<td>${report.name }</td>
 					<td>${report.email }</td>
 					<td>${report.openCnt }</td>

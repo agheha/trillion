@@ -37,7 +37,7 @@
 text-align: center;
 }
 .adhobor:hover {
-	background: 
+	background: gainsboro;
 }
 </style>
 </head>

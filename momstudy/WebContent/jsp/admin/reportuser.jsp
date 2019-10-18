@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			<c:forEach var="report" items="${list}">
-				<tr onclick="mopen(),userAjax(${report.num})">
+				<tr class="adhobor" onclick="mopen(),userAjax(${report.num})">
 					<td>${report.reseaon }</td>
 					<td>${report.reportTarget }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"

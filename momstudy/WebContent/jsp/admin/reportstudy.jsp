@@ -16,7 +16,7 @@
 		</thead>
 		<tbody>
 			<c:forEach var="report" items="${list}">
-				<tr onclick="mopen(),studyAjax(${report.num})">
+				<tr class="adhobor" onclick="mopen(),studyAjax(${report.num})">
 					<td>${report.reseaon }</td>
 					<td>${report.categoryName }</td>
 					<td>${report.studyTitle }</td>

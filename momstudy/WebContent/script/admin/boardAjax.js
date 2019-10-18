@@ -37,7 +37,7 @@ function make(board) {
 	}
 	bemail.innerHTML = `
 		<div>신고자</div>
-		<div id="board_email" onclick="mopen1(),userDtailAjax('${board.email}')"> ${board.email}</div>
+		<div class="adhobor" id="board_email" onclick="mopen1(),userDtailAjax('${board.email}')"> ${board.email}</div>
 	 `;
 	con1.innerHTML = `  ${board.reseaon}`;
 	bcontent.innerHTML = `내용<br/>${board.content}`;

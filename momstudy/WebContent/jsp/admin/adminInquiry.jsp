@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			<c:forEach var="question" items="${list}">
-				<tr onclick="mopen(),Qajax(${question.num})">
+				<tr class="adhobor" onclick="mopen(),Qajax(${question.num})">
 					<td>${question.email}: ${question.num}</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${question.regDate}" /></td>

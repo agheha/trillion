@@ -27,11 +27,11 @@ function make(study) {
 	s_type.innerHTML = ` ${study.categoryName}`;
 	s_cap.innerHTML = `
 		<div>스터디 장</div>
-		<div id="s_cap" onclick="mopen1(),userDtailAjax('${study.cap}')">${study.cap}</div>
+		<div class="adhobor" id="s_cap" onclick="mopen1(),userDtailAjax('${study.cap}')">${study.cap}</div>
 	 `;
 	s_email.innerHTML = ` 
 		<div>신고자</div>
-		<div id="s_email" onclick="mopen1(),userDtailAjax('${study.email}')">${study.email}</div>
+		<div class="adhobor" id="s_email" onclick="mopen1(),userDtailAjax('${study.email}')">${study.email}</div>
 	`;
 	con1.innerHTML = ` ${study.reseaon}`;
 	b_content.innerHTML = `내용<br/>${study.content}`;

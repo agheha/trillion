@@ -17,7 +17,7 @@
 		<tbody>
 			<c:forEach var="report" items="${list}">
 					<c:set value="${report.boardType}" var="boardType"></c:set>
-				<tr onclick="mopen(),boardAjax(${report.num})">
+				<tr class="adhobor" onclick="mopen(),boardAjax(${report.num})">
 					<td>${report.reseaon}</td>
 
 					<c:choose>
@@ -51,12 +51,12 @@
 		<div id="b_main">
 			<div class="b_content">
 				<div>글</div>
-				<div id="board_title" >글 제목</div>
+				<div id="board_title" class="adhobor">글 제목</div>
 				<div id="board_type"> 게시판명</div>
 			</div>
 			<div class="b_content" id="re_email">
 				<div>신고자</div>
-				<div id="board_email" >신고자 이메일</div>
+				<div id="board_email" class="adhobor">신고자 이메일</div>
 			</div>
 			<div class="b_content">
 				<div>신고사유</div>
