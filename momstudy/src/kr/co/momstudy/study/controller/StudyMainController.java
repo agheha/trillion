@@ -30,7 +30,7 @@ public class StudyMainController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int studyNum = Integer.parseInt(req.getParameter("num"));
-		Study study = dao.selectOneStudy(studyNum);
+		Study study = dao.selectStudyInfo(studyNum);
 		
 		// 스터디 모집글 유무
 		StudyRecruitment str = strDao.whetherStudyRecruitment(studyNum);
