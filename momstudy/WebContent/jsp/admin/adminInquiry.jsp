@@ -9,7 +9,7 @@
 	<table>
 		<thead>
 			<th>작성자</th>
-			<th>작성날짜</th>
+			<th>문의날짜</th>
 			<th>답변유무</th>
 			<th>제목</th>
 		</thead>
