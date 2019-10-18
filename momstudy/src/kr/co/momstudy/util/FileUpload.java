@@ -69,7 +69,7 @@ public class FileUpload {
 		
 	}
 
-	public int getGroupCode() {
+	public Integer getGroupCode() {
 		return groupCode;
 	}
 
