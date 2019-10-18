@@ -88,11 +88,17 @@
 		<if test="type == 'email'">
 			and email like '%'||#{keyword}||'%'
 		</if>
-
-		<if test="filter == 'Qcondition'">
+	
+		<choose>
+		<when test="filter == 'Qcondition'">
 			order by condition
 			desc
-		</if>
+		</when>
+		<otherwise>
+		order by reg_date
+			desc
+		</otherwise>
+		</choose>
 
 		) a)
 		where rnum between #{begin} and #{end}
