@@ -29,7 +29,6 @@
 	<section class="background_wrap">
 		<div class="background">
 			<h1>계정관리</h1>
-			<hr>
 		</div>
 	</section>
 

@@ -134,6 +134,13 @@
     padding: 0 30px;
     float: left;
 }
+.category_wrap > span {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    word-break: keep-all;
+    color: #ee22aa;
+}
 .category_wrap label {
     padding: 6px;
 }
@@ -144,5 +151,4 @@
 #area {
     float: right;
     position: relative;
-    top: -6px;
 }

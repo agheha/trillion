@@ -82,26 +82,43 @@ td {
 .apply_user {
     margin-bottom: 20px;
 }
-table th:nth-child(1) {
+table th:nth-child(1),
+table td:nth-child(1) {
     width: 60px;
+    max-width: 60px;
 }
-table th:nth-child(2) {
+table th:nth-child(2),
+table td:nth-child(2) {
     width: 120px;
+    max-width:120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-table th:nth-child(3) {
+table th:nth-child(3),
+table td:nth-child(3) {
     width: 60px;
+    max-width: 60px;
 }
-table th:nth-child(4) {
+table th:nth-child(4),
+table td:nth-child(4) {
     width: 65px;
+    max-width: 65px;
 }
-table th:nth-child(5) {
+table th:nth-child(5),
+table td:nth-child(5) {
     width: 90px;
+    max-width: 90px;
 }
-table th:nth-child(6) {
+table th:nth-child(6),
+table td:nth-child(6) {
     width: 130px;
+    max-width: 130px;
 }
-table th:nth-child(7) {
+table th:nth-child(7),
+table td:nth-child(7) {
     width: 120px;
+    max-width: 120px;
 }
 
 .contents{

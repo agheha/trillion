@@ -14,20 +14,17 @@ fieldset {
 
 .title {
     font-size : 25px;
-    margin: 20px;
     width : 100%;
 }
 .main {
     width : 750px;
     margin : 0 auto;
-    margin-top : 60px;
 }
 .find {
     width : 100%;
     display: flex;
     justify-content: space-between;
     padding : 20px;
-    margin-top: 50px;
 }
 .find-item {
     width: 300px;
@@ -50,15 +47,19 @@ fieldset {
     font-size : 0.8rem;
 }
 .find-item-button {
-    color : #fff;
-    background-color : #f26656;
+    color : #333;
+    background-color : #fff;
     background-image : none;
-    border-color : #f0513e;
     padding: 15px 15px;
     font-size: 13px;
     line-height: 1.5438;
     border-radius: 5px;
     width: 100%;
+    border: 1px solid #888;
+}
+.find-item-button:hover {
+	color: #fff;
+	background-color: #333;
 }
 .find-item-inputbox {   
     width: 100%;

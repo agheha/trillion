@@ -55,6 +55,7 @@
 }
 .cont_img img {
     width: 100%;
+    height: 100%;
 }
 .board_cont > a:hover img {
     transform: scale(1.1);

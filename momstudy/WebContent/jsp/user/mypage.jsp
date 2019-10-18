@@ -121,18 +121,22 @@
 	<div class="partlistModal hidden">
 		<!-- 우측 상당 슬라이드 -->
 		<div class="partlist_sub"></div>
-		<table class="part_table" id="pttable">
+		<div class="table_wrap">
+			<table class="part_table" id="pttable">
+		</div>
 		</table>
 	</div>
 	<div class="heightAuto hidden">
 		<div class="right_top_cont" id="partlist"></div>
-		<table class='rwd-table'></table>
+		<div class="table_wrap">
+			<table class='rwd-table'></table>
+		</div>
 	</div>
 	<div id="myModal" class="msgmodal">
 		<!-- Modal content -->
 		<div class="msgcontent" id="myBtn">
 			<div id="que">스터디를 탈퇴하시겠습니까</div>
-			<div>
+			<div class="buttons">
 				<button type="button" id="signup" onclick="agree()">확인</button>
 				<button name="detbe" class="closer" id="closecell">취소</button>			
 			</div>
