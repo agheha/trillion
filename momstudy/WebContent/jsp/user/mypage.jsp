@@ -45,7 +45,7 @@
 	<section class="background_wrap">
 		<div class="background">
 			<h1>마이페이지</h1>
-			<p>--------------</p>
+			<p>마이페이지 입니다.</p>
 		</div>
 	</section>
 
@@ -121,10 +121,9 @@
 	<div class="partlistModal hidden">
 		<!-- 우측 상당 슬라이드 -->
 		<div class="partlist_sub"></div>
-		<div class="table_wrap">
-			<table class="part_table" id="pttable">
+		<div class="table_wrap" >
+			<table class="part_table" id="pttable"></table>
 		</div>
-		</table>
 	</div>
 	<div class="heightAuto hidden">
 		<div class="right_top_cont" id="partlist"></div>
@@ -144,7 +143,6 @@
 	</div>
 	<script>
 		let email = "${user.email}";
-		let pttable = document.querySelector("#pttable");
 		let userinfo = document.querySelector("#userinfo");
 		userinfo.addEventListener("click", e =>{
 			location.href ="/momstudy/user/userinfo.do"

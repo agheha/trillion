@@ -40,7 +40,7 @@
 	<section class="background_wrap">
 		<div class="background">
 			<h1>스터디</h1>
-			<p>--------------</p>
+			<p>스터디를 찾아보세요</p>
 		</div>
 	</section>
 		 

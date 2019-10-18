@@ -35,7 +35,7 @@
     <section class="background_wrap">
         <div class="background">
             <h1>후기게시판</h1>
-            <p>--------------</p>
+            <p>후기게시판 입니다.</p>
         </div>
     </section>
 

@@ -20,7 +20,7 @@
 	<section class="background_wrap">
 		<div class="background">
 			<h1>문의게시판</h1>
-			<hr>
+			<p>문의게시판 입니다.</p>
 		</div>
 	</section>
 	

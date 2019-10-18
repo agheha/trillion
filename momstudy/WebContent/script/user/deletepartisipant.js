@@ -12,7 +12,7 @@ ptOverlay.addEventListener("click", ptCloseModal);
 ptButton.addEventListener("click", ptOpenModal); 
 
 function loadPartList() {
-	let partlist = document.querySelector(".rwd-table");
+	let pttable = document.querySelector(".part_table");
 	let xhr = new XMLHttpRequest()
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState === 4){
@@ -31,7 +31,7 @@ function loadPartList() {
 					html +=
 					`						
 					<tr>
-						<td colspan="5" style="text-align: center">신청한 스터디가 존재하지 않습니다</td>
+						<td colspan="5" style="text-align: center">신청 스터디가 존재하지 않습니다</td>
 					</tr>
 					`
 				} else {

@@ -23,7 +23,7 @@ function deleteCode(num) {
 	return html = `
 		<div id="que">스터디를 탈퇴하시겠습니까</div>
 		<div>
-			<button type="button" id="signup" onclick="agree(${num})">확인</button>
+			<button type="button" id="signup" onclick="reragree(${num})">확인</button>
 			<button name="detbe" class="closer" id="closecell">취소</button>
 		</div>	
 			`
@@ -41,7 +41,7 @@ function agree(num) {
 					setTimeout(() => {
 						msgmodal.style.display = "none"; 
 						divEle.innerHTML = deleteCode(num);
-						loadPartList();
+						loadPart();
 					}, 1500);
 				} 
 			}
@@ -58,7 +58,7 @@ function agree(num) {
 					setTimeout(() => {
 						msgmodal.style.display = "none"; 
 						divEle.innerHTML = deleteCode(num);
-						loadPart();
+						loadPartList();
 					}, 1500);
 				} 
 			}

@@ -53,7 +53,7 @@
 									autocomplete="off" /> 
 									<span id="msg" style="display:none" class="alert_wrap">비밀번호가
 									일치하지 않습니다.</span>
-									<span id="msg1" style="display:none" class="alert_wrap">비밀번호는 8자리이상 16자리 미만 입니다.</span>
+									<span id="msg1" style="display:none" class="alert_wrap">비밀번호는 4자리이상 16자리 미만 입니다.</span>
 							</div>
 							<div>
 								<button class="submit_btn">확인</button>
@@ -69,7 +69,6 @@
 
 	<script type="text/javascript">
 		function chkpass() {
-			let passRules = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 			let msg = document.querySelector("#msg")
 			let msg1 = document.querySelector("#msg1")
 			msg.style.display="none"
@@ -80,7 +79,7 @@
 				msg.style.display="block"
 				return false;
 			}
-			if (f.pass1.value.length < 8 || f.pass1.value.length > 16 ) {
+			if (f.pass1.value.length < 4 || f.pass1.value.length > 16 ) {
 				msg1.style.display="block"
 				return false;
 			}

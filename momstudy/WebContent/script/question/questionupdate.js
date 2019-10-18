@@ -6,7 +6,7 @@ let upque = document.querySelector("#updatequestion");
 let agreebtn = document.querySelector("#agreebtn");
 let upcontent = document.querySelector(".board_cont");
 upque.addEventListener("click", () => {
-	agreebtn.innerHTML = "<button type='button' id='agbtn' >확인</button>"
+	agreebtn.innerHTML = "<button type='button' id='agbtn'><a>확인</a></button>"
 	upcontent.innerHTML = `<textarea onkeydown='resize(this)' onkeyup='resize(this)' id='uptext'>${content}</textarea>`
 	let uptext = document.querySelector("#uptext")
 	uptext.focus();

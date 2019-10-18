@@ -17,7 +17,7 @@
 	height: 100%;
 	position: absolute;
 }
-.part_table {
+.part_table, .rwd-table {
 	padding: 15px;
 	text-align: center;
 	color: #333;
@@ -26,20 +26,24 @@
 	position: relative;
 	border-collapse: collapse;
 }
-.part_table th {
+.part_table th,
+.rwd-table th {
 	line-height: 45px;
 		padding: 0 8px;
 	border-bottom:1px solid #333;
 }
-.part_table td {
+.part_table td,
+.rwd-table td {
 	line-height: 40px;
 	box-sizing: border-box;
 	padding: 0 8px;
 }
-.part_table td:nth-child(5):hover {
+.part_table td:nth-child(5):hover,
+.rwd-table td:nth-child(5):hover {
 	background-color: #333;
 }
-.part_table td:nth-child(5):hover > button {
+.part_table td:nth-child(5):hover > button,
+.rwd-table td:nth-child(5):hover > button {
 	color: #fff;
 }
 
