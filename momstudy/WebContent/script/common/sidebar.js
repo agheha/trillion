@@ -66,25 +66,34 @@ function insertInfo(){
 				})
 				f.address1.innerHTML = addrOpt;
 				
+				
+				addbutton();
+				
 				let studyWriteBtn = document.querySelector("#studyWriteBtn")
 				studyWriteBtn.innerText = "수정";
+				studyWriteBtn.type = "button";
+				studyWriteBtn.addEventListener("click",()=>{
+					if(chknull() === false) return;
+					updateStudy();
+				});
 				//Y
 				
-				let sn = document.querySelector("#Ysn");
-				let indelb = document.querySelector("#delsbtn")
-				if(indelb == null){
-				sn.innerHTML += `<button class="inbutton del" type="button" id="delsbtn" onclick="deleteStudy()">삭제</button>`;
-				}
+				
 				//Y
-				studyWriteBtn.type = "button";
-				studyWriteBtn.addEventListener("click",chknull);
-				studyWriteBtn.addEventListener("click",updateStudy);
 
 			}
 		}
 	}
 	xhr.open("GET","studyupdateform.do",true);
 	xhr.send();
+}
+
+function addbutton(){
+	let sn = document.querySelector("#Ysn");
+	let indelb = document.querySelector("#delsbtn")
+	if(indelb == null){
+	sn.innerHTML += `<button class="inbutton del" type="button" id="delsbtn" onclick="deleteStudy()">삭제</button>`;
+	}
 }
 
 function updateStudy(){
