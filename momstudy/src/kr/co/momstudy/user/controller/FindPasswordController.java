@@ -62,8 +62,8 @@ public class FindPasswordController extends HttpServlet {
 			String msg = "인증이 완료되었습니다 \n"
 					+ "링크를 클릭해 주세요 \n";
 			String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
-			final String us = "cute1990@naver.com"; // 패스워드 
-			final String pw = "sms1990q!!";      // SMTP 서버 정보를 설정한다. 
+			final String us = ""; // 패스워드 
+			final String pw = "";      // SMTP 서버 정보를 설정한다. 
 			
 			Properties props = new Properties(); 
 			props.put("mail.smtp.host", host); 
